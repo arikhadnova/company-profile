@@ -1,6 +1,0 @@
-Total Rows: 4
-
-ID: 1 | Page: home | Value: 12 | Label (ID): Kegiatan Pelatihan
-ID: 2 | Page: home | Value: 5 | Label (ID): Desa Program Diterapkan
-ID: 3 | Page: home | Value: 300 | Label (ID): Peserta Kampanye Perubahan Perilaku
-ID: 4 | Page: home | Value: 1 | Label (ID): Waste Masterplan

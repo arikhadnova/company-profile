@@ -492,34 +492,6 @@
         </div>
     </section>
 
-    <!-- STATS SECTION -->
-    <section class="gi-stats">
-        <div class="container">
-            <div class="stats-card-wrapper shadow-lg rounded-4 p-4 p-md-5 bg-white">
-                <div class="row text-center g-4">
-                    <?php if (!empty($data['impacts'])) : ?>
-                        <?php foreach ($data['impacts'] as $index => $imp) : ?>
-                            <div class="col-6 col-md-3">
-                                <div class="stat-item <?= $index > 0 ? 'border-start-md' : ''; ?>">
-                                    <h2 class="fw-bold mb-0 text-primary">
-                                        <span class="counter" data-target="<?= $imp->value; ?>">0</span><?= $imp->unit; ?>
-                                    </h2>
-                                    <p class="text-muted small text-uppercase fw-semibold mb-0" 
-                                       data-lang-id="<?= $imp->label_id; ?>" 
-                                       data-lang-en="<?= $imp->label_en; ?>">
-                                        <?= $imp->label_id; ?>
-                                    </p>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    <?php else : ?>
-                        <div class="col-12"><p class="text-muted">Data statistik belum tersedia.</p></div>
-                    <?php endif; ?>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="tentang" class="about-section">
         <div class="container">
             <!-- PARTNER LOGOS -->
@@ -666,11 +638,11 @@
             </div>
 
             <!-- Button Part -->
-            <div class="text-center mt-5 pt-3">
+            <!-- <div class="text-center mt-5 pt-3">
                 <a href="#" class="btn btn-gi-primary shadow-sm" data-i18n="partner.view_more">
                     Selengkapnya
                 </a>
-            </div>
+            </div> -->
         </div>
     </section>
 
@@ -722,11 +694,6 @@
                 </div>
             </div>
             
-            <div class="text-center mt-5">
-                <p class="text-muted small italic" data-i18n="partner.note">
-                    Catatan: Detail spesifik proyek dan dampaknya akan diuraikan lebih lanjut pada bagian PROJEK & PARTNER BISNIS.
-                </p>
-            </div>
         </div>
     </section>
 
@@ -734,7 +701,7 @@
     <section class="py-5 bg-light">
         <div class="container">
             <div class="target-container shadow-sm bg-white">
-                <h5 class="fw-bold mb-4 text-center">TARGET PROYEK</h5>
+                <h5 class="fw-bold mb-4 text-center">TARGET PROGRAM</h5>
                 <ul class="list-unstyled d-flex flex-column gap-3">
                     <li class="d-flex gap-3">
                         <i class="fas fa-circle text-primary" style="font-size: 8px; margin-top: 8px; color: var(--gosirk-orange) !important;"></i>
@@ -822,37 +789,6 @@
         </div>
     </section>
 
-    <section class="py-5 bg-light">
-        <div class="container">
-            <h4 class="text-center section-header-sm mb-5" data-i18n="gi.detail.highlights">Sorotan</h4>
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="highlight-card shadow-sm">
-                        <img src="<?= ASSETS_URL ?>img/IMG_6566.jpg" alt="Highlight 1">
-                        <div class="highlight-overlay">
-                            <p class="small mb-0" data-i18n="partner.highlight_item1">Cerita sukses pemberdayaan masyarakat di lapangan.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="highlight-card shadow-sm">
-                        <img src="<?= ASSETS_URL ?>img/IMG_8093-crop.jpg" alt="Highlight 2">
-                        <div class="highlight-overlay">
-                            <p class="small mb-0" data-i18n="partner.highlight_item2">Implementasi sistem pengelolaan sampah terpadu.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="highlight-card shadow-sm">
-                        <img src="<?= ASSETS_URL ?>img/IMG_8114.jpg" alt="Highlight 3">
-                        <div class="highlight-overlay">
-                            <p class="small mb-0" data-i18n="partner.highlight_item3">Kolaborasi dengan mitra strategis lokal.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- PORTFOLIO SECTION -->
     <section id="portfolio" class="py-5 bg-light">
@@ -860,7 +796,7 @@
             <div class="d-flex align-items-center justify-content-between mb-5">
                 <div>
                     <span class="section-subheader">Portfolio</span>
-                    <h2 class="section-title display-6 mb-0">Rekam Jejak Kami</h2>
+                    <h2 class="section-title display-6 mb-0">Kegiatan Pendampingan Desa Program Clocc</h2>
                 </div>
                 <div class="d-flex gap-2">
                     <button class="btn btn-outline-orange rounded-circle p-2 portfolio-prev" style="width: 45px; height: 45px; border-color: var(--gosirk-orange); color: var(--gosirk-orange);">
@@ -935,7 +871,7 @@
     <!-- LOGO PARTNERS SLIDER (Home Style) -->
     <section class="section bg-light pb-5">
       <div class="container">
-        <h3 class="text-center fw-bold mb-5" data-i18n="partner.implementation.partners_title">OUR PARTNER</h3>
+        <h3 class="text-center fw-bold mb-5" data-i18n="partner.implementation.partners_title">MITRA DAN JEJARING KAMI</h3>
         <div class="swiper logo-slider">
           <div class="swiper-wrapper align-items-center">
             <?php 
@@ -967,7 +903,7 @@
     </section>
 
     <!-- TESTIMONIALS SECTION -->
-    <section class="testimonial-section py-5">
+    <!-- <section class="testimonial-section py-5">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <span class="section-subheader" data-i18n="partner.testimonials.title">Bukti Kontribusi Kami</span>
@@ -1005,10 +941,10 @@
                 <div class="swiper-pagination"></div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- FAQ SECTION -->
-    <section class="py-5 bg-white">
+    <!-- <section class="py-5 bg-white">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -1046,7 +982,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- CTA SECTION - Updated to Partnership Style -->
     <section class="partnership-cta py-5 mb-5">

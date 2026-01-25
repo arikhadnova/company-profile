@@ -21,36 +21,6 @@
     </div>
 </section>
 
-<!-- Stats Section -->
-<section class="partnership-stats">
-    <div class="container">
-        <div class="stats-card-wrapper shadow-lg rounded-4 p-4 p-md-5 bg-white">
-            <div class="row text-center g-4">
-                <?php if (!empty($impacts)) : ?>
-                    <?php foreach ($impacts as $index => $imp) : ?>
-                        <div class="col-6 col-md-3">
-                            <div class="stat-item <?= $index > 0 ? 'border-start-md' : ''; ?>">
-                                <h2 class="fw-bold text-primary mb-0">
-                                    <span class="counter" 
-                                          data-target="<?= $imp->value; ?>" 
-                                          <?= strpos($imp->value, '.') !== false ? 'data-decimals="1"' : ''; ?>>0</span><?= $imp->unit; ?>
-                                </h2>
-                                <p class="text-muted small text-uppercase fw-semibold mb-0" 
-                                   data-lang-id="<?= $imp->label_id; ?>" 
-                                   data-lang-en="<?= $imp->label_en; ?>">
-                                    <?= $imp->label_id; ?>
-                                </p>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else : ?>
-                    <div class="col-12"><p class="text-muted">Data statistik belum tersedia.</p></div>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Ongoing Project -->
 <section class="py-5">
     <div class="container py-lg-5">

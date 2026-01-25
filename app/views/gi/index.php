@@ -153,22 +153,6 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                                                 <span data-i18n="gi.learn_more">Pelajari lebih lanjut</span> <i class="bi bi-box-arrow-up-right small"></i>
                                             </a>
                                         </div>
-
-                                        <?php if ($s->outputs_id) : ?>
-                                        <div class="border-top pt-3">
-                                            <div class="output-label">Output</div>
-                                            <div class="d-flex flex-wrap gap-2">
-                                                <?php 
-                                                $outputs_id = explode(',', $s->outputs_id);
-                                                $outputs_en = explode(',', $s->outputs_en);
-                                                foreach ($outputs_id as $idx => $out) : 
-                                                    $out_en = isset($outputs_en[$idx]) ? trim($outputs_en[$idx]) : trim($out);
-                                                ?>
-                                                    <div class="output-item" data-lang-id="<?= trim($out) ?>" data-lang-en="<?= $out_en ?>"><i class="bi bi-check-circle"></i> <?= trim($out) ?></div>
-                                                <?php endforeach; ?>
-                                            </div>
-                                        </div>
-                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
@@ -695,7 +679,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- TESTIMONIALS SECTION -->
-<section class="testimonial-section py-5">
+<!-- <section class="testimonial-section py-5">
     <div class="container py-5">
         <div class="text-center mb-5">
             <span class="section-subheader" data-i18n="gi.testimonial_badge">Bukti Kontribusi Kami</span>
@@ -733,9 +717,9 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="swiper-pagination"></div>
         </div>
     </div>
-</section>
+</section> -->
 
-<script>
+<!-- <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Initialize Testimonials Slider
         new Swiper(".testimonials-slider", {
@@ -758,12 +742,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-</script>
+</script> -->
 
 <!-- FAQ + CTA -->
 <section class="py-5">
     <div class="container">
-        <div class="text-center mb-5">
+        <!-- <div class="text-center mb-5">
             <h5 class="text-primary fw-bold text-uppercase" data-i18n="gi.faq_badge">FAQ</h5>
             <h2 class="fw-bold" data-i18n="gi.faq_title">Pertanyaan Umum</h2>
         </div>
@@ -797,7 +781,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <?php endif; ?>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- CTA Box -->
         <div class="cta-banner rounded-5 overflow-hidden position-relative shadow-lg mt-5">
@@ -818,4 +802,5 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </section>
+
 </div>

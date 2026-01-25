@@ -22,7 +22,7 @@
                  <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold text-uppercase"><?= $article->category ?: 'Article'; ?></span>
                  <span class="text-muted small"><i class="far fa-calendar me-2"></i> <?= date('d F Y', strtotime($article->created_at)); ?></span>
               </div>
-              <h1 class="fw-bold display-5 mb-4" data-lang-id="<?= $article->title_id; ?>" data-lang-en="<?= $article->title_en; ?>">
+              <h1 class="fw-bold display-5 mb-4" data-lang-id="<?= htmlspecialchars($article->title_id); ?>" data-lang-en="<?= htmlspecialchars($article->title_en); ?>">
                   <?= $article->title_id; ?>
               </h1>
               
@@ -41,7 +41,7 @@
             </div>
 
             <!-- Article Content -->
-            <article class="blog-content fs-5 lh-lg text-dark mb-5" data-lang-id="<?= $article->content_id ?>" data-lang-en="<?= $article->content_en ?>">
+            <article class="blog-content fs-5 lh-lg text-dark mb-5" data-lang-id="<?= htmlspecialchars($article->content_id) ?>" data-lang-en="<?= htmlspecialchars($article->content_en) ?>">
               <?= $article->content_id ?>
             </article>
 
@@ -49,9 +49,23 @@
             <div class="d-flex flex-wrap justify-content-between align-items-center border-top border-bottom py-4 mb-5">
                 <div class="mb-3 mb-md-0">
                     <span class="fw-bold me-2">Tags:</span>
-                    <a href="#" class="badge bg-light text-secondary text-decoration-none border me-1">#<?= str_replace(' ', '', $article->category) ?></a>
-                    <a href="#" class="badge bg-light text-secondary text-decoration-none border me-1">#Sustainability</a>
-                    <a href="#" class="badge bg-light text-secondary text-decoration-none border">#GoSirk</a>
+                    <?php 
+                    if (!empty($article->tags)) : 
+                        $tags = explode(',', $article->tags);
+                        foreach ($tags as $tag) : 
+                            $tag = trim($tag);
+                            if (!empty($tag)) :
+                    ?>
+                        <span class="badge bg-light text-secondary text-decoration-none border me-1">#<?= $tag ?></span>
+                    <?php 
+                            endif;
+                        endforeach; 
+                    else : 
+                    ?>
+                        <span class="badge bg-light text-secondary text-decoration-none border me-1">#<?= str_replace(' ', '', $article->category) ?></span>
+                        <span class="badge bg-light text-secondary text-decoration-none border me-1">#Sustainability</span>
+                        <span class="badge bg-light text-secondary text-decoration-none border">#GoSirk</span>
+                    <?php endif; ?>
                 </div>
                 <div class="d-flex align-items-center gap-2">
                     <span class="fw-bold me-2">Share:</span>
@@ -96,6 +110,35 @@
         }
         .blog-content p { margin-bottom: 25px; }
         .blog-content img { max-width: 100%; height: auto; border-radius: 12px; margin: 30px 0; }
+        
+        /* CKEditor Content Styling Patch */
+        .blog-content strong, .blog-content b { font-weight: 700 !important; color: #000; }
+        .blog-content em, .blog-content i { font-style: italic !important; }
+        .blog-content blockquote {
+            border-left: 5px solid #FF8F56;
+            padding: 20px 30px;
+            margin: 30px 0;
+            background: #fdf2ec;
+            font-style: italic;
+            border-radius: 0 12px 12px 0;
+            color: #555;
+            line-height: 1.8;
+        }
+        .blog-content ul, .blog-content ol {
+            padding-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .blog-content ul li { list-style-type: disc; margin-bottom: 0.5rem; }
+        .blog-content ol li { list-style-type: decimal; margin-bottom: 0.5rem; }
+        .blog-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        .blog-content table td, .blog-content table th {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+        }
         </style>
       </div>
     </div>

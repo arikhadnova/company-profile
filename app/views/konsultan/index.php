@@ -522,8 +522,8 @@
     </section>
 
     <!-- SERVICES SECTION -->
-    <section id="layanan" class="py-5 bg-white mt-2">
-        <div class="container py-5">
+    <section id="layanan" class="py-3 bg-white mt-2">
+        <div class="container py-3">
             <div class="text-center mb-5">
                 <span class="section-subheader" data-i18n="konsultan.service_subheader">Layanan Utama</span>
                 <h2 class="section-title display-6" data-i18n="konsultan.service_title">Solusi Strategis Pilihan</h2>
@@ -582,7 +582,7 @@
     </section>
 
     <!-- PORTFOLIO SECTION -->
-    <section id="portfolio" class="py-5 bg-light">
+    <!-- <section id="portfolio" class="py-5 bg-light">
         <div class="container py-5">
             <div class="text-center mb-5">
                 <span class="section-subheader">Our Portofolio</span>
@@ -620,7 +620,7 @@
                 </div>
             <?php endif; ?>
         </div>
-    </section>
+    </section> -->
 
     <!-- CTA SECTION -->
     <section id="kontak" class="py-5 mb-5">

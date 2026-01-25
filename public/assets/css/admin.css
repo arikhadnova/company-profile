@@ -629,3 +629,60 @@ body {
     border-color: #CBD5E0;
     color: #2D3748;
 }
+/* Quick Actions Section - Dashboard */
+.quick-action-card {
+    background: linear-gradient(135deg, #FF7E5F 0%, #FFB199 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.quick-action-card::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.quick-action-btn {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    padding: 1.25rem !important;
+    border-radius: 16px !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    text-align: left;
+}
+
+.quick-action-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.quick-action-btn i {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    transition: transform 0.3s ease;
+}
+
+.quick-action-btn:hover i {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.quick-action-btn span {
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+}
+
+.extra-small {
+    font-size: 10px;
+}

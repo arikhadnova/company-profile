@@ -103,7 +103,8 @@
           <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
           <div class="p-4">
             <h5>Peningkatan Kapasitas Pengelolaan Sampah (Capacity Building)</h5>
-            <p>PUntuk memastikan keberlanjutan solusi di lapangan, GoSirk membangun basis ekosistem pengetahuan dan keahlian yang kuat di bidang pengelolaan sampah melalui unit strategisnya GoSirk Institute</p>
+            <br>
+            <p>Untuk memastikan keberlanjutan solusi di lapangan, GoSirk membangun basis ekosistem pengetahuan dan keahlian yang kuat di bidang pengelolaan sampah melalui unit strategisnya GoSirk Institute</p>
             <a href="<?= BASE_URL ?>gi" class="btn btn-outline-primary btn-sm rounded-pill">
               Selengkapnya
             </a>
@@ -115,6 +116,7 @@
           <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7">
           <div class="p-4">
             <h5>Pengembangan Program dan Implementasi Partner</h5>
+            <br>
             <p>Kami memiliki misi untuk mentransformasi tantangan sampah menjadi solusi yang berkelanjutan, inklusif, dan inovatif. Fokus utama kami adalah memastikan keberhasilan proyek lapangan yang tidak hanya efektif secara teknis tetapi juga menciptakan dampak sosial yang signifikan</p>
             <a href="<?= BASE_URL ?>implementasi_partner" class="btn btn-outline-primary btn-sm rounded-pill">
               Selengkapnya
@@ -127,6 +129,7 @@
           <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca">
           <div class="p-4">
             <h5>Konsultansi & Advisory Strategis</h5>
+            <br>
             <p>Kami mendukung pengembangan usaha pengelolaan sampah melalui bantuan langsung, praktis, dan pendekatan berbasis data untuk menemukan pendekatan yang tepat sesuai kebutuhan spesifik klien</p>
             <a href="<?= BASE_URL ?>konsultan" class="btn btn-outline-primary btn-sm rounded-pill">
               Selengkapnya

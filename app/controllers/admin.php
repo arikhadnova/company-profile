@@ -56,16 +56,50 @@ class Admin extends Controller {
 
     public function index() {
         $contactModel = $this->model('Contact_model');
+        
+        // Fetch document requests (Limit 10)
+        $requests = $this->collaborationModel->getAllRequests();
+        $requests = array_slice($requests, 0, 10);
+        foreach($requests as $r) {
+            $r->activity_type = 'request';
+            $r->timestamp = strtotime($r->requested_at);
+        }
+
+        // Fetch recent articles (Limit 5)
+        $articles = $this->articleModel->getAll();
+        $articles = array_slice($articles, 0, 5);
+        foreach($articles as $a) {
+            $a->activity_type = 'article';
+            $a->timestamp = strtotime($a->created_at);
+        }
+
+        // Fetch recent messages (Limit 5)
+        $messages = $contactModel->getAll();
+        $messages = array_slice($messages, 0, 5);
+        foreach($messages as $m) {
+            $m->activity_type = 'message';
+            $m->timestamp = strtotime($m->created_at);
+        }
+
+        // Merge and sort activities
+        $activities = array_merge($requests, $articles, $messages);
+        usort($activities, function($a, $b) {
+            return $b->timestamp - $a->timestamp;
+        });
+        
+        // Take top 15
+        $activities = array_slice($activities, 0, 15);
+
         $data = [
             'title' => 'Admin Dashboard',
             'active' => 'dashboard',
+            'activities' => $activities,
             'counts' => [
-                'portfolios' => count($this->portfolioModel->getAll()),
+                'doc_requests' => count($this->collaborationModel->getAllRequests()),
                 'articles' => count($this->articleModel->getAll()),
                 'publications' => count($this->publicationModel->getAll()),
                 'partners' => count($this->partnerModel->getAll()),
                 'documents' => count($this->collaborationModel->getAllDocuments()),
-                'requests' => count($this->collaborationModel->getAllRequests()),
                 'unread_messages' => $contactModel->getUnreadCount(),
                 'total_visitors' => $this->model('Visitor_model')->getTotalCount(),
                 'visitor_stats' => $this->model('Visitor_model')->getMonthlyStats()
@@ -450,56 +484,83 @@ class Admin extends Controller {
 
     public function articles_update() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['id'];
+            try {
+                $id = $_POST['id'];
 
-            // Validation
-            $rules = [
-                'title_id' => ['required', 'min:5'],
-                'title_en' => ['min:5'], // Removed 'required'
-                'content_id' => ['required'],
-                'content_en' => [] // Removed 'required'
-            ];
-            $errors = Validator::validate($_POST, $rules);
+                // Validation
+                $rules = [
+                    'title_id' => ['required', 'min:5'],
+                    'content_id' => ['required']
+                ];
+                $errors = Validator::validate($_POST, $rules);
 
-            if (!empty($errors)) {
-                Flasher::setFlash('input artikel', 'tidak valid', 'danger', $errors);
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
-                exit;
-            }
-
-            $old_article = $this->articleModel->getById($id);
-            $image = $old_article->image;
-
-            if (!empty($_FILES['image']['name'])) {
-                $new_image = Upload::file($_FILES['image'], 'img/blog');
-                if ($new_image) {
-                    Upload::delete($old_article->image, 'img/blog');
-                    $image = $new_image;
+                if (!empty($errors)) {
+                    Flasher::setFlash('input artikel', 'tidak valid', 'danger', $errors);
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    exit;
                 }
-            }
 
-            $data = [
-                'id' => $id,
-                'title_id' => $_POST['title_id'],
-                'title_en' => $_POST['title_en'] ?: Translator::translate($_POST['title_id']),
-                'content_id' => $_POST['content_id'],
-                'content_en' => $_POST['content_en'] ?: Translator::translate($_POST['content_id']),
-                'image' => $image,
-                'category' => $_POST['category'],
-                'slug' => str_replace(' ', '-', strtolower($_POST['title_en'])),
-                'author' => 'Admin',
-                'status' => $_POST['status'],
-                'type' => $_POST['type']
-            ];
+                $old_article = $this->articleModel->getById($id);
+                if (!$old_article) {
+                    Flasher::setFlash('Artikel', 'tidak ditemukan', 'danger');
+                    header('Location: ' . BASE_URL . 'admin/articles');
+                    exit;
+                }
 
-            if ($this->articleModel->update($data)) {
+                $image = $old_article->image;
+
+                if (!empty($_FILES['image']['name'])) {
+                    $new_image = Upload::file($_FILES['image'], 'img/blog');
+                    if ($new_image) {
+                        Upload::delete($old_article->image, 'img/blog');
+                        $image = $new_image;
+                    } else {
+                        Flasher::setFlash('Gambar', 'gagal diunggah (Cek ukuran maks 2MB)', 'warning');
+                    }
+                }
+
+                // Handle Translation safely
+                $title_en = $_POST['title_en'];
+                if (empty($title_en)) {
+                    $title_en = Translator::translate($_POST['title_id']);
+                }
+
+                $content_en = $_POST['content_en'];
+                if (empty($content_en)) {
+                    // Only auto-translate if content is not too long to avoid API failures
+                    if (strlen($_POST['content_id']) < 3000) {
+                        $content_en = Translator::translate($_POST['content_id']);
+                    } else {
+                        $content_en = $_POST['content_id']; // Fallback to ID content
+                    }
+                }
+
+                $data = [
+                    'id' => $id,
+                    'title_id' => $_POST['title_id'],
+                    'title_en' => $title_en,
+                    'content_id' => $_POST['content_id'],
+                    'content_en' => $content_en,
+                    'image' => $image,
+                    'category' => $_POST['category'],
+                    'tags' => $_POST['tags'],
+                    'slug' => str_replace([' ', '/', '\\', '?', '#', '&'], '-', strtolower($title_en)),
+                    'author' => 'Admin',
+                    'status' => $_POST['status'],
+                    'type' => $_POST['type']
+                ];
+
+                if ($this->articleModel->update($data)) {
+                    $redirect = ($_POST['type'] == 'blog' ? 'admin/articles' : 'admin/library');
+                    Flasher::setFlash('Artikel', 'berhasil diperbarui', 'success');
+                    header('Location: ' . BASE_URL . $redirect);
+                    exit;
+                } else {
+                    throw new Exception("Database update returned false.");
+                }
+            } catch (Exception $e) {
                 $redirect = ($_POST['type'] == 'blog' ? 'admin/articles' : 'admin/library');
-                Flasher::setFlash('Artikel', 'berhasil diperbarui', 'success');
-                header('Location: ' . BASE_URL . $redirect);
-                exit;
-            } else {
-                $redirect = ($_POST['type'] == 'blog' ? 'admin/articles' : 'admin/library');
-                Flasher::setFlash('Artikel', 'gagal diperbarui', 'danger');
+                Flasher::setFlash('Gagal memperbarui artikel', $e->getMessage(), 'danger');
                 header('Location: ' . BASE_URL . $redirect);
                 exit;
             }
@@ -508,41 +569,66 @@ class Admin extends Controller {
 
     public function articles_store() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Validation
-            $rules = [
-                'title_id' => ['required', 'min:5'],
-                'content_id' => ['required']
-            ];
-            $errors = Validator::validate($_POST, $rules);
+            try {
+                // Validation
+                $rules = [
+                    'title_id' => ['required', 'min:5'],
+                    'content_id' => ['required']
+                ];
+                $errors = Validator::validate($_POST, $rules);
 
-            if (!empty($errors)) {
-                Flasher::setFlash('input artikel', 'tidak valid', 'danger', $errors);
-                header('Location: ' . $_SERVER['HTTP_REFERER']);
-                exit;
-            }
+                if (!empty($errors)) {
+                    Flasher::setFlash('input artikel', 'tidak valid', 'danger', $errors);
+                    header('Location: ' . $_SERVER['HTTP_REFERER']);
+                    exit;
+                }
 
-            $image = Upload::file($_FILES['image'], 'img/blog');
+                $image = '';
+                if (!empty($_FILES['image']['name'])) {
+                    $image = Upload::file($_FILES['image'], 'img/blog');
+                    if (!$image) {
+                        Flasher::setFlash('Gambar', 'gagal diunggah (Cek ukuran maks 2MB)', 'warning');
+                    }
+                }
 
-            $data = [
-                'title_id' => $_POST['title_id'],
-                'title_en' => $_POST['title_en'] ?: Translator::translate($_POST['title_id']),
-                'content_id' => $_POST['content_id'],
-                'content_en' => $_POST['content_en'] ?: Translator::translate($_POST['content_id']),
-                'image' => $image ?: '',
-                'category' => $_POST['category'],
-                'slug' => str_replace(' ', '-', strtolower($_POST['title_en'])),
-                'status' => $_POST['status'],
-                'type' => $_POST['type']
-            ];
+                $title_en = $_POST['title_en'];
+                if (empty($title_en)) {
+                    $title_en = Translator::translate($_POST['title_id']);
+                }
 
-            if ($this->articleModel->add($data)) {
+                $content_en = $_POST['content_en'];
+                if (empty($content_en)) {
+                    if (strlen($_POST['content_id']) < 3000) {
+                        $content_en = Translator::translate($_POST['content_id']);
+                    } else {
+                        $content_en = $_POST['content_id'];
+                    }
+                }
+
+                $data = [
+                    'title_id' => $_POST['title_id'],
+                    'title_en' => $title_en,
+                    'content_id' => $_POST['content_id'],
+                    'content_en' => $content_en,
+                    'image' => $image ?: '',
+                    'category' => $_POST['category'],
+                    'tags' => $_POST['tags'],
+                    'slug' => str_replace([' ', '/', '\\', '?', '#', '&'], '-', strtolower($title_en)),
+                    'status' => $_POST['status'],
+                    'type' => $_POST['type']
+                ];
+
+                if ($this->articleModel->add($data)) {
+                    $redirect = ($_POST['type'] == 'blog' ? 'admin/articles' : 'admin/library');
+                    Flasher::setFlash('Artikel', 'berhasil ditambahkan', 'success');
+                    header('Location: ' . BASE_URL . $redirect);
+                    exit;
+                } else {
+                    throw new Exception("Database insert returned false.");
+                }
+            } catch (Exception $e) {
                 $redirect = ($_POST['type'] == 'blog' ? 'admin/articles' : 'admin/library');
-                Flasher::setFlash('Artikel', 'berhasil ditambahkan', 'success');
-                header('Location: ' . BASE_URL . $redirect);
-                exit;
-            } else {
-                $redirect = ($_POST['type'] == 'blog' ? 'admin/articles' : 'admin/library');
-                Flasher::setFlash('Artikel', 'gagal ditambahkan', 'danger');
+                Flasher::setFlash('Gagal menambahkan artikel', $e->getMessage(), 'danger');
                 header('Location: ' . BASE_URL . $redirect);
                 exit;
             }

@@ -39,9 +39,9 @@ class Article_model {
 
     public function add($data) {
         $query = "INSERT INTO " . $this->table . " 
-                  (title_id, title_en, content_id, content_en, image, type, category, slug, author, status) 
+                  (title_id, title_en, content_id, content_en, image, type, category, tags, slug, author, status) 
                   VALUES 
-                  (:title_id, :title_en, :content_id, :content_en, :image, :type, :category, :slug, :author, :status)";
+                  (:title_id, :title_en, :content_id, :content_en, :image, :type, :category, :tags, :slug, :author, :status)";
         
         $this->db->query($query);
         $this->db->bind(':title_id', $data['title_id']);
@@ -51,6 +51,7 @@ class Article_model {
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':type', $data['type'] ?? 'blog');
         $this->db->bind(':category', $data['category']);
+        $this->db->bind(':tags', $data['tags']);
         $this->db->bind(':slug', $data['slug']);
         $this->db->bind(':author', $data['author'] ?? 'Admin');
         $this->db->bind(':status', $data['status'] ?? 'draft');
@@ -67,6 +68,7 @@ class Article_model {
                   image = :image, 
                   type = :type,
                   category = :category, 
+                  tags = :tags,
                   slug = :slug, 
                   author = :author, 
                   status = :status 
@@ -81,6 +83,7 @@ class Article_model {
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':type', $data['type']);
         $this->db->bind(':category', $data['category']);
+        $this->db->bind(':tags', $data['tags']);
         $this->db->bind(':slug', $data['slug']);
         $this->db->bind(':author', $data['author']);
         $this->db->bind(':status', $data['status']);

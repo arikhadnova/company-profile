@@ -57,83 +57,124 @@
     <div class="col-xl-3 col-md-6">
         <div class="stat-card-modern card shadow-sm">
             <div class="stat-icon-box stat-icon-purple">
-                <i class="fas fa-briefcase"></i>
+                <i class="fas fa-file-signature"></i>
             </div>
             <div>
-                <div class="stat-label">Total Proyek</div>
-                <div class="stat-value text-dark"><?= $counts['portfolios']; ?></div>
+                <div class="stat-label">Permintaan Dokumen</div>
+                <div class="stat-value text-dark"><?= $counts['doc_requests']; ?></div>
                 <div class="stat-trend text-purple">
-                    <i class="fas fa-check-circle me-1"></i> <?= $counts['portfolios']; ?> Active <span class="text-muted fw-normal">projects</span>
+                    <i class="fas fa-info-circle me-1"></i> CP & ExSum <span class="text-muted fw-normal">requested</span>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<?php
+function time_elapsed_string($datetime, $full = false) {
+    if ($datetime == 0) return 'baru saja';
+    $now = new DateTime;
+    $ago = new DateTime("@$datetime");
+    $diff = $now->diff($ago);
+
+    $w = floor($diff->d / 7);
+    $d = $diff->d - ($w * 7);
+
+    $string = array(
+        'y' => 'tahun',
+        'm' => 'bulan',
+        'w' => 'minggu',
+        'd' => 'hari',
+        'h' => 'jam',
+        'i' => 'menit',
+        's' => 'detik',
+    );
+    
+    // Manual map for properties
+    $props = [
+        'y' => $diff->y,
+        'm' => $diff->m,
+        'w' => $w,
+        'd' => $d,
+        'h' => $diff->h,
+        'i' => $diff->i,
+        's' => $diff->s,
+    ];
+
+    foreach ($string as $k => &$v) {
+        if ($props[$k]) {
+            $v = $props[$k] . ' ' . $v;
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' yang lalu' : 'baru saja';
+}
+?>
+
 <!-- Recent Activity & Quick Actions -->
 <div class="row g-4">
     <!-- Recent Activity Board -->
     <div class="col-lg-8">
-        <div class="card h-100 border-0 shadow-sm p-4">
+        <div class="card border-0 shadow-sm p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h5 class="fw-bold mb-0">Aktivitas Terkini</h5>
-                <a href="#" class="btn btn-sm btn-light text-primary rounded-pill px-3 fw-bold">Lihat Semua</a>
+                <a href="#" class="btn btn-sm btn-light text-primary rounded-pill px-3 fw-bold" onclick="location.reload()">Refresh</a>
             </div>
-            <div class="activity-list">
-                <div class="activity-item d-flex align-items-center">
-                    <div class="activity-dot bg-warning"></div>
-                    <div class="flex-grow-1">
-                        <p class="mb-0 fw-bold small text-dark">Admin baru saja menambahkan projek <strong>"Pemerintah Kabupaten Tabanan"</strong></p>
-                        <small class="text-muted">2 jam yang lalu</small>
+            <div class="activity-list" style="max-height: 580px; overflow-y: auto; padding-right: 10px;">
+                <?php if (!empty($activities)): ?>
+                    <?php foreach ($activities as $index => $activity): ?>
+                        <div class="activity-item d-flex align-items-center <?= $index === count($activities)-1 ? 'border-0' : ''; ?>">
+                            <?php 
+                                $dot_bg = 'bg-primary';
+                                $message = '';
+                                if ($activity->activity_type == 'request') {
+                                    $dot_bg = 'bg-warning';
+                                    $message = "<strong>{$activity->name}</strong> baru saja meminta dokumen <strong>" . ($activity->doc_title ?? 'Company Profile') . "</strong>";
+                                } elseif ($activity->activity_type == 'article') {
+                                    $dot_bg = 'bg-success';
+                                    $message = "Artikel <strong>\"{$activity->title_id}\"</strong> telah dipublikasikan";
+                                } elseif ($activity->activity_type == 'message') {
+                                    $dot_bg = 'bg-info';
+                                    $message = "Menerima pesan baru dari <strong>{$activity->name}</strong> di formulir kontak";
+                                }
+                            ?>
+                            <div class="activity-dot <?= $dot_bg; ?>"></div>
+                            <div class="flex-grow-1">
+                                <p class="mb-0 fw-bold small text-dark"><?= $message; ?></p>
+                                <small class="text-muted"><?= time_elapsed_string($activity->timestamp); ?></small>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="text-center py-5">
+                        <i class="fas fa-history fs-1 text-muted opacity-25 mb-3"></i>
+                        <p class="text-muted">Belum ada aktivitas tercatat.</p>
                     </div>
-                </div>
-                <div class="activity-item d-flex align-items-center">
-                    <div class="activity-dot bg-success"></div>
-                    <div class="flex-grow-1">
-                        <p class="mb-0 fw-bold small text-dark">Artikel <strong>"Menuju Indonesia Bebas Sampah 2030"</strong> telah dipublikasikan</p>
-                        <small class="text-muted">5 jam yang lalu</small>
-                    </div>
-                </div>
-                <div class="activity-item d-flex align-items-center">
-                    <div class="activity-dot bg-info"></div>
-                    <div class="flex-grow-1">
-                        <p class="mb-0 fw-bold small text-dark">Menerima pesan baru dari formulir kontak partner</p>
-                        <small class="text-muted">Kemarin, 14:00</small>
-                    </div>
-                </div>
-                <div class="activity-item d-flex align-items-center border-0">
-                    <div class="activity-dot bg-primary"></div>
-                    <div class="flex-grow-1">
-                        <p class="mb-0 fw-bold small text-dark">Update konfigurasi footer website</p>
-                        <small class="text-muted">2 hari yang lalu</small>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
 
     <!-- Quick Actions Panel -->
     <div class="col-lg-4">
-        <div class="card h-100 border-0 quick-action-card p-4 text-white">
+        <div class="card border-0 quick-action-card p-4 text-white">
             <h5 class="fw-bold mb-4">Aksi Cepat</h5>
             <div class="d-grid gap-3">
                 <a href="<?= BASE_URL ?>admin/articles" class="btn quick-action-btn w-100 btn-lg">
-                    <span class="small">Tulis Artikel Baru</span>
-                    <i class="fas fa-pen-nib fs-6"></i>
+                    <span>Tulis Artikel Baru</span>
+                    <i class="fas fa-pen-nib"></i>
                 </a>
                 <a href="<?= BASE_URL ?>admin/portfolio" class="btn quick-action-btn w-100 btn-lg">
-                    <span class="small">Manajemen Portfolio</span>
-                    <i class="fas fa-briefcase fs-6"></i>
+                    <span>Manajemen Portfolio</span>
+                    <i class="fas fa-briefcase"></i>
                 </a>
                 <a href="<?= BASE_URL ?>admin/settings" class="btn quick-action-btn w-100 btn-lg">
-                    <span class="small">Pengaturan Website</span>
-                    <i class="fas fa-cog fs-6"></i>
+                    <span>Pengaturan Website</span>
+                    <i class="fas fa-cog"></i>
                 </a>
-            </div>
-            <div class="mt-auto pt-5">
-                <div class="p-3 rounded-4 bg-white bg-opacity-20">
-                    <p class="small mb-0 opacity-75">Bagi mitra GoSirk, pastikan data impact diperbarui setiap bulan.</p>
-                </div>
             </div>
         </div>
     </div>

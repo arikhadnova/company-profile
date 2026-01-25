@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<form action="<?= BASE_URL; ?>admin/articles_update" method="POST" enctype="multipart/form-data">
+<form action="<?= BASE_URL; ?>admin/articles_update" method="POST" enctype="multipart/form-data" id="article-form">
     <input type="hidden" name="id" value="<?= $article->id; ?>">
     <input type="hidden" name="type" value="<?= $article->type; ?>">
     <div class="row g-4">
@@ -24,17 +24,17 @@
                 </div>
                 <div class="card-body p-4">
                     <div class="mb-4">
-                        <label class="form-label">Judul Artikel</label>
+                        <label class="form-label fw-bold">Judul Artikel</label>
                         <input type="text" name="title_id" class="form-control" value="<?= $article->title_id; ?>" required>
                         <input type="hidden" name="title_en" value="<?= $article->title_en; ?>">
                     </div>
-                    <div class="mb-0">
-                        <label class="form-label">Konten Artikel</label>
-                        <textarea name="content_id" class="form-control" rows="15" required><?= $article->content_id; ?></textarea>
-                        <input type="hidden" name="content_en" value="<?= $article->content_en; ?>">
-                    </div>
-                    <div class="mt-3">
-                        <small class="text-muted"><i class="fas fa-magic me-1"></i> Versi Bahasa Inggris akan diperbarui otomatis jika dikosongkan.</small>
+                    <div class="mb-4">
+                        <label class="form-label fw-bold">Konten Artikel</label>
+                        <textarea name="content_id" class="form-control" rows="15"><?= $article->content_id; ?></textarea>
+                        <input type="hidden" name="content_en" value="<?= htmlspecialchars($article->content_en); ?>">
+                        <div class="form-text text-muted mt-2">
+                            <i class="fas fa-info-circle me-1"></i> Kapasitas maksimal konten adalah 16MB (MediumText).
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,13 +48,19 @@
                 <div class="card-body p-4">
                     <div class="mb-4">
                         <label class="form-label">Unggah Gambar Baru (Opsional)</label>
-                        <input type="file" name="image" class="form-control" accept="image/*">
-                        <?php if ($article->image) : ?>
-                            <div class="mt-2 text-center p-2 border rounded-3 bg-light">
-                                <img src="<?= ASSETS_URL; ?>img/blog/<?= $article->image; ?>" style="max-height: 100px; border-radius: 8px;" alt="Current Image">
-                                <p class="small text-muted mt-1 mb-0">Image saat ini</p>
-                            </div>
-                        <?php endif; ?>
+                        <div class="p-3 border rounded-3 text-center bg-light border-dashed mb-2 position-relative">
+                             <div id="image-preview-container" class="mb-2">
+                                <img id="image-preview" src="<?= ASSETS_URL; ?>img/blog/<?= $article->image; ?>" alt="Preview" class="img-fluid rounded-3 shadow-sm" style="max-height: 200px;">
+                             </div>
+                             <div id="upload-placeholder" class="d-none">
+                                <i class="fas fa-cloud-upload-alt fa-2x text-muted mb-2"></i>
+                                <p class="small text-muted mb-0">Klik untuk unggah atau seret gambar ke sini</p>
+                             </div>
+                             <input type="file" name="image" id="image-input" class="form-control form-control-sm mt-2" accept="image/*">
+                        </div>
+                        <div class="small text-muted mb-2">
+                            <i class="fas fa-exclamation-triangle me-1"></i> Batas ukuran: <strong>Maks 2MB</strong>. Format: JPG, PNG, WEBP.
+                        </div>
                     </div>
                     <div class="mb-4">
                         <label class="form-label">Category</label>
@@ -67,6 +73,11 @@
                         </select>
                     </div>
                     <div class="mb-4">
+                        <label class="form-label">Tags</label>
+                        <input type="text" name="tags" class="form-control" value="<?= $article->tags ?? ''; ?>" placeholder="Contoh: Environment, Sustainability, GoSirk">
+                        <div class="text-muted small mt-1">Pisahkan dengan koma (,)</div>
+                    </div>
+                    <div class="mb-4">
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select">
                             <option value="draft" <?= $article->status == 'draft' ? 'selected' : ''; ?>>Draft</option>
@@ -74,7 +85,7 @@
                         </select>
                     </div>
                     <hr>
-                    <button type="submit" class="btn btn-primary w-100 rounded-pill py-3 fw-bold shadow-sm">
+                    <button type="submit" class="btn btn-primary w-100 rounded-pill py-3 fw-bold shadow-sm" id="submit-btn">
                         <i class="fas fa-save me-2"></i> Simpan Perubahan
                     </button>
                     <a href="<?= BASE_URL; ?>admin/<?= ($article->type == 'blog' ? 'articles' : 'library') ?>" class="btn btn-link w-100 text-decoration-none mt-2 text-muted small">Kembali</a>
@@ -83,3 +94,72 @@
         </div>
     </div>
 </form>
+
+<script>
+    let editorInstance;
+
+    ClassicEditor
+        .create(document.querySelector('textarea[name="content_id"]'), {
+            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable', 'undo', 'redo'],
+        })
+        .then(editor => {
+            editorInstance = editor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    // Image Preview Logic
+    const imageInput = document.getElementById('image-input');
+    const imagePreview = document.getElementById('image-preview');
+    const previewContainer = document.getElementById('image-preview-container');
+    const placeholder = document.getElementById('upload-placeholder');
+
+    imageInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                imagePreview.src = e.target.result;
+                previewContainer.classList.remove('d-none');
+                placeholder.classList.add('d-none');
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Form Submission Logic
+    document.getElementById('article-form').addEventListener('submit', function(e) {
+        // Sync CKEditor data to textarea
+        if (editorInstance) {
+            const data = editorInstance.getData();
+            document.querySelector('textarea[name="content_id"]').value = data;
+            
+            if (!data.trim() || data === '<p>&nbsp;</p>') {
+                e.preventDefault();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Konten artikel tidak boleh kosong!',
+                });
+                return false;
+            }
+        } else {
+            console.error('CKEditor instance not found!');
+        }
+
+        const submitBtn = document.getElementById('submit-btn');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Menyimpan...';
+    });
+</script>
+
+<style>
+    .ck-editor__editable {
+        min-height: 400px;
+    }
+    .border-dashed {
+        border-style: dashed !important;
+        border-width: 2px !important;
+    }
+</style>

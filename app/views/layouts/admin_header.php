@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="<?= BASE_URL; ?>assets/css/admin.css?v=<?= time() ?>">
     <!-- SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- CKEditor 5 -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="<?= BASE_URL; ?>assets/img/Logo-GoSirk-01.png">
 </head>

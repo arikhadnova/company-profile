@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // config/config.php
 
 // Base URL Configuration
@@ -41,3 +41,4 @@ define('MAIL_FROM_NAME', 'Go Circular Indonesia');
 define('MAIL_ADMIN_ADDRESS', 'triuliamrikhadnova2000@gmail.com'); // email to receive notifications
 
 ?>
+

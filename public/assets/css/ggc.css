@@ -1,0 +1,217 @@
+/* --- GGC Design System --- */
+:root {
+    --ggc-primary: #22c55e;
+    --ggc-primary-dark: #16a34a;
+    --ggc-orange: #f97316;
+    --ggc-blue: #2563eb;
+    --ggc-bg-light: #f8fafc;
+    --ggc-card-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    --ggc-card-hover: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.section {
+    padding: 100px 0;
+}
+
+/* --- Hero Section --- */
+.hero-ggc {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding: 60px 0 120px;
+    background: radial-gradient(circle at top right, rgba(34, 197, 94, 0.05), transparent),
+                radial-gradient(circle at bottom left, rgba(249, 115, 22, 0.05), transparent);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-ggc::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--ggc-primary);
+    filter: blur(150px);
+    opacity: 0.1;
+    top: -100px;
+    right: -100px;
+    z-index: -1;
+}
+
+.hero-title {
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.hero-title span.orange { color: var(--ggc-orange); }
+.hero-title span.green { color: var(--ggc-primary); }
+
+.tagline-hashtag {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--ggc-primary-dark);
+    padding: 8px 20px;
+    border-radius: 50px;
+    display: inline-block;
+}
+
+/* --- Impact Section --- */
+.impact-card {
+    border-radius: 24px;
+    padding: 40px 32px;
+    background: #ffffff;
+    box-shadow: var(--ggc-card-shadow);
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.impact-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--ggc-primary);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.impact-card small {
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+/* --- Program Section --- */
+.program-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--ggc-card-shadow);
+    height: 100%;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.program-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--ggc-card-hover);
+}
+
+.program-card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+}
+
+.program-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.program-card:hover img {
+    transform: scale(1.1);
+}
+
+.program-card-content {
+    padding: 30px;
+}
+
+.program-card h6 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: #1e293b;
+}
+
+/* --- Gallery --- */
+.gallery-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 280px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* --- CTA Section --- */
+.cta-ggc {
+    background: linear-gradient(rgba(10, 50, 20, 0.85), rgba(10, 50, 20, 0.85)),
+                url("https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=600") center/cover fixed;
+    color: #fff;
+    padding: 140px 0;
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-ggc-light {
+    background: #fff;
+    color: var(--ggc-primary-dark);
+    font-weight: 700;
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-ggc-light:hover {
+    background: var(--ggc-bg-light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    color: var(--ggc-primary-dark);
+}
+
+/* Section Headings */
+.section-title-wrapper {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.section-title-wrapper .title-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(0,0,0,0.03);
+    white-space: nowrap;
+    z-index: -1;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .hero-ggc {
+        padding: 120px 0 60px;
+        text-align: center;
+    }
+    .section-title-wrapper .title-bg {
+        font-size: 3rem;
+    }
+}

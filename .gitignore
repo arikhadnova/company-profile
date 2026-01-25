@@ -1,0 +1,11 @@
+# Folders to ignore
+/node_modules
+/vendor
+.env
+.DS_Store
+Thumbs.db
+*.log
+*.sql
+.vscode/
+.idea/
+/brain/

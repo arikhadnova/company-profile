@@ -1,0 +1,557 @@
+    .hero-home {
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.55), rgba(121, 121, 121, 0.55)),
+        url('../img/petugas-baju-biru.png') no-repeat;
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0;
+      color: #fff;
+    }
+
+    .hero-home h1 {
+      font-family: 'Open Sans', sans-serif;
+      margin-top: -50px;
+    }
+
+    .hero-home .btn {
+      margin: 0 0 10px;
+      padding: 12px 28px !important;
+      font-size: 1.1rem !important;
+      border-radius: 30px !important;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .btn-gi-orange {
+      background-color: #FF8F56;
+      color: white;
+      border: none;
+      padding: 8px 24px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gi-orange:hover {
+      background-color: #e5763d;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .stat-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,.05);
+    }
+
+    /* Ecosystem section cards */
+    .ecosystem .row {
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .ecosystem .stat-box {
+      max-width: 600px;
+      padding: 20px 30px;
+      min-width: 450px;
+      min-height: 200px;
+      border-radius: 15px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .ecosystem .stat-box .ecosystem-logo {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .ecosystem .stat-box .ecosystem-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .ecosystem .stat-box .ecosystem-content h5 {
+      margin: 0 0 6px 0;
+      font-size: 1.15rem;
+    }
+
+    .ecosystem .stat-box .ecosystem-content .btn {
+      align-self: flex-end;
+    }
+
+    /* Responsive: stack vertically on small screens */
+    @media (max-width: 767px) {
+      .ecosystem .stat-box {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        min-width: auto;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .ecosystem .stat-box .ecosystem-content {
+        width: 100%;
+        align-items: center;
+      }
+
+      .ecosystem .stat-box .ecosystem-logo {
+        margin-bottom: 8px;
+      }
+
+      .ecosystem .stat-box .ecosystem-content .btn {
+        align-self: center;
+      }
+    }
+
+    .ecosystem .stat-box h5 {
+      margin: 0 0 8px 0;
+      font-size: 1.25rem;
+    }
+
+    .ecosystem .stat-box p {
+      color: #6c6c6c;
+      margin: 0 0 14px 0;
+    }
+
+    .ecosystem .stat-box a {
+      display: inline-block;
+      margin-top: 6px;
+      color: #6c757d;
+      text-decoration: underline;
+      font-style: italic;
+    }
+
+    .approach-card {
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      transition: .3s ease;
+      padding: 40px 20px !important;
+    }
+
+    .approach-card .material-symbols-outlined {
+      background: linear-gradient(135deg, rgba(25, 29, 252, 0.1));
+      color: rgb(0, 68, 255);
+      width: 60px;
+      height: 60px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 24px 0;
+      font-size: 40px !important;
+    }
+
+    .approach-card h5 {
+      margin: 10px 0;
+      font-weight: 600;
+    }
+
+    .approach-card p {
+      margin: 0;
+      color: #5e5e5e;
+    }
+
+    .approach-card:hover,
+    .service-card:hover,
+    .portfolio-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .service-card,
+    .portfolio-card {
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.06);
+      transition: .3s ease;
+      background: #fff;
+    }
+
+    .service-card img,
+    .portfolio-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+    .cta-section {
+      background: linear-gradient(rgba(165, 165, 165, 0.562), rgba(255, 255, 255, 0.8)),
+                  url('https://images.pexels.com/photos/48148/document-agreement-documents-sign-48148.jpeg?_gl=1*l3kbx7*_ga*MTM3NjQ5MDU2OS4xNzYxMjAzNDY1*_ga_8JE65Q40S6*czE3NjgwOTMyODQkbzckZzEkdDE3NjgwOTMzNjgkajQwJGwwJGgw') no-repeat center center;
+      background-size: cover;
+      color: #333;
+      padding: 100px 0;
+    }
+
+    .btn-cta-yellow {
+      background-color: #f6c23e; /* Adjust to match the yellow/orange in mockup */
+      border: none;
+      color: #fff;
+      font-weight: 500;
+      color: white !important;
+      transition: all 0.3s ease;
+      min-width: 300px; /* Ensure buttons have some width */
+      justify-content: center;
+    }
+
+    .btn-cta-yellow:hover {
+      background-color: #dfa115;
+      transform: translateY(-2px);
+      color: white !important;
+    }
+
+    .btn-cta-yellow .material-symbols-outlined {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 4px; /* Slight rounded corners on icon bg if needed, or just transparent */
+      padding: 2px;
+      margin-right: 5px;
+      font-size: 20px;
+      background: transparent; /* Mockup doesn't show distinct bg for icon */
+    }
+
+    /* Logo Slider Styles */
+    .logo-slider, .network-slider {
+      padding: 20px 0;
+    }
+
+    .logo-slider .swiper-slide, .network-slider .swiper-slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 120px;
+    }
+
+    .logo-slider .swiper-slide img, .network-slider .swiper-slide img {
+      max-width: 150px;
+      max-height: 100px;
+      object-fit: contain;
+      transition: all 0.3s ease;
+    }
+
+    /* Blog Section Styles */
+    .blog-section {
+      background: #fff;
+      padding: 100px 0;
+    }
+
+    .blog-nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-nav {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #ccc;
+      background: transparent;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-size: 16px;
+    }
+
+    .btn-nav:hover {
+      border-color: #0d4a7c;
+      color: #0d4a7c;
+      background: #f0f0f0;
+    }
+
+    .blog-slider {
+      margin-bottom: 40px;
+    }
+
+    .blog-card {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      transform: translateY(-4px);
+    }
+
+    .blog-image {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .blog-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .blog-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      color: #333;
+    }
+
+    .blog-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6c757d;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .blog-excerpt {
+      font-size: 0.95rem;
+      color: #6c6c6c;
+      line-height: 1.6;
+      margin: 0 0 16px 0;
+    }
+
+    .blog-link {
+      font-size: 0.95rem;
+      color: #6c757d;
+      text-decoration: none;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      padding: 8px 20px;
+      display: inline-block;
+      transition: all 0.3s ease;
+      text-align: center;
+      align-self: flex-start;
+    }
+
+    .blog-link:hover {
+      border-color: #0d4a7c;
+      color: #0d4a7c;
+      background: #f0f7ff;
+    }
+
+    .blog-slider .swiper-slide {
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .blog-section h3 {
+        margin-bottom: 20px;
+      }
+
+      .blog-nav {
+        position: absolute;
+        top: 20px;
+        right: 0;
+      }
+
+      .blog-card {
+        border-radius: 8px;
+      }
+
+      .blog-image {
+        height: 180px;
+      }
+
+      .blog-content {
+        padding: 16px;
+      }
+    }
+
+    .banner-section {
+      width: 100%;
+      overflow: hidden;
+    }
+    .banner-section img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Horizontal Service Card */
+    .service-horizontal-card {
+      background: #fff;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+    }
+
+    .service-horizontal-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
+    }
+
+    .card-icon-wrapper {
+      background: #f8f9fa;
+      min-height: 250px;
+      position: relative;
+    }
+
+    .card-icon-wrapper::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.05), transparent);
+    }
+
+    .card-icon-wrapper .material-symbols-outlined {
+      font-size: 84px !important;
+      color: #FF8F56;
+      opacity: 0.8;
+      transition: all 0.4s ease;
+    }
+
+    .service-horizontal-card:hover .card-icon-wrapper .material-symbols-outlined {
+      transform: scale(1.1) rotate(-5deg);
+      opacity: 1;
+    }
+
+    @media (max-width: 767px) {
+      .card-icon-wrapper {
+        min-height: 180px;
+      }
+      .card-icon-wrapper::after {
+        display: none;
+      }
+    }
+
+    /* Service Detail Cards Animation */
+    .service-detail-slider-1 .card,
+    .service-detail-slider-3 .card {
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border: 1px solid rgba(0,0,0,0.03) !important;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.03) !important;
+    }
+
+    .service-detail-slider-1 .card:hover,
+    .service-detail-slider-3 .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.08) !important;
+      border-color: rgba(255, 143, 86, 0.2) !important;
+    }
+
+    .service-detail-slider-1 .card .material-symbols-outlined,
+    .service-detail-slider-3 .card .material-symbols-outlined {
+      transition: all 0.5s ease;
+    }
+
+    .service-detail-slider-1 .card:hover .material-symbols-outlined,
+    .service-detail-slider-3 .card:hover .material-symbols-outlined {
+      transform: scale(1.2) rotate(-8deg);
+      color: #FF8F56 !important;
+    }
+
+    .service-detail-slider-1 .card .btn-gi-orange,
+    .service-detail-slider-3 .card .btn-gi-orange {
+      transition: all 0.4s ease;
+    }
+
+    .service-detail-slider-1 .card:hover .btn-gi-orange,
+    .service-detail-slider-3 .card:hover .btn-gi-orange {
+      padding-left: 30px;
+      padding-right: 30px;
+      box-shadow: 0 6px 15px rgba(255, 143, 86, 0.3);
+    }
+
+    /* Testimonials Styles */
+    .testimonial-section {
+        background-color: #f8f9fa;
+    }
+    .testimonial-card {
+        background: white;
+        border-radius: 16px;
+        padding: 40px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #f0f0f0;
+        box-shadow: 0 8px 20px rgba(0,0,0,.06);
+        transition: all 0.3s ease;
+    }
+    .testimonial-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    }
+    .quote-icon {
+        font-size: 48px;
+        color: #FF8F56;
+        opacity: 0.3;
+        margin-bottom: 10px;
+        font-family: 'Material Symbols Outlined';
+    }
+    .testimonial-text {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #5e5e5e;
+        font-style: italic;
+        margin-bottom: 25px;
+        flex-grow: 1;
+    }
+    .profile-img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #f0f0f0;
+        flex-shrink: 0;
+    }
+    
+    /* FAQ Styles */
+    .accordion-gi .accordion-item {
+        border: none;
+        margin-bottom: 12px;
+        border-radius: 12px !important;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+    .accordion-gi .accordion-button {
+        padding: 18px 24px;
+        font-weight: 600;
+        color: #333;
+        background: white;
+        border: 1px solid #f0f0f0;
+    }
+    .accordion-gi .accordion-button:not(.collapsed) {
+        color: #FF8F56;
+        background: white !important;
+        border-color: #FF8F56;
+        box-shadow: none;
+    }
+    .accordion-gi .accordion-button:focus {
+        box-shadow: none;
+    }
+    .accordion-gi .accordion-body {
+        padding: 24px;
+        color: #6c6c6c;
+        background: white;
+        border: 1px solid #f0f0f0;
+        border-top: none;
+    }

@@ -1,0 +1,791 @@
+<!-- HERO -->
+<?php
+  $heroHome = $data['hero'];
+  $bgHome = $heroHome->image ?? 'petugas-baju-biru.png';
+  if ($bgHome && !filter_var($bgHome, FILTER_VALIDATE_URL)) {
+      $bgHome = ASSETS_URL . 'img/' . $bgHome;
+  }
+?>
+<section class="hero-home text-center" style="background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(121, 121, 121, 0.55)), url('<?= $bgHome ?>') !important;">
+  <div class="container">
+    <h1 class="fw-bold display-5" data-lang-id="<?= $heroHome->title_id ?>" data-lang-en="<?= $heroHome->title_en ?>" data-i18n-html="true">
+      <?= $heroHome->title_id ?>
+    </h1>
+    <p class="lead mt-3" data-lang-id="<?= $heroHome->subtitle_id ?>" data-lang-en="<?= $heroHome->subtitle_en ?>">
+      <?= $heroHome->subtitle_id ?>
+    </p>
+    <div class="mt-5 d-flex justify-content-center gap-3 flex-wrap">
+      <a href="#services" class="btn btn-light rounded-pill text-uppercase fw-semibold" style="color: #0d4a7c !important;" data-i18n="home.hero.cta_services">Lihat Layanan</a>
+      <a href="#portfolio" class="btn btn-outline-light rounded-pill text-uppercase" data-i18n="home.hero.cta_portfolio">Portofolio</a>
+      <a href="<?= BASE_URL ?>contact" class="btn btn-outline-light rounded-pill text-uppercase" data-i18n="home.hero.cta_contact">Hubungi Kami</a>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="section bg-light">
+  <div class="container">
+    <h3 class="text-center fw-bold mb-5" data-i18n="home.impact.title">KAMI MULAI MENCIPTAKAN DAMPAK</h3>
+    <div class="row g-4 justify-content-center">
+      <?php if (!empty($impacts)) : ?>
+        <?php foreach ($impacts as $imp) : ?>
+          <div class="col-md-3 col-6">
+            <div class="stat-box">
+              <h1 class="fw-bold text-primary counter" data-target="<?= (int)preg_replace('/[^0-9]/', '', $imp->value); ?>">0</h1>
+              <p data-lang-id="<?= $imp->label_id; ?>" data-lang-en="<?= $imp->label_en; ?>">
+                <?= $imp->label_id; ?>
+              </p>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else : ?>
+        <!-- Fallback if database is empty -->
+        <div class="col-md-3">
+          <div class="stat-box">
+            <h1 class="fw-bold text-primary">1</h1>
+            <p>Waste Masterplan</p>
+          </div>
+        </div>
+      <?php endif; ?>
+    </div>
+    
+    <div class="text-center mt-5">
+      <a href="<?= BASE_URL ?>home/impact" class="btn btn-outline-primary rounded-pill px-4" data-i18n="home.common.read_more">Selengkapnya</a>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="section">
+  <div class="container">
+    <h3 class="text-center fw-bold mb-5" data-i18n="home.approach.title">PENDEKATAN KAMI</h3>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="approach-card p-4 h-100">
+          <span class="material-symbols-outlined" style="font-size: 48px;">docs</span>
+          <h5 data-i18n="home.approach.data_driven.title">Berbasis Data</h5>
+          <p data-i18n="home.approach.data_driven.desc">Setiap solusi didasarkan pada studi dasar, pengumpulan data, dan penelitian yang tervalidasi.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="approach-card p-4 h-100">
+            <span class="material-symbols-outlined" style="font-size: 48px;">group</span>
+          <h5 data-i18n="home.approach.community.title">Pemberdayaan Komunitas</h5>
+          <p data-i18n="home.approach.community.desc">Memberdayakan komunitas lokal melalui peningkatan kapasitas.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="approach-card p-4 h-100">
+            <span class="material-symbols-outlined" style="font-size: 48px;">track_changes</span>
+          <h5 data-i18n="home.approach.impact_oriented.title">Berorientasi Pada Dampak</h5>
+          <p data-i18n="home.approach.impact_oriented.desc">Berfokus pada hasil yang terukur dan keberlanjutan jangka panjang.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="approach-card p-4 h-100">
+            <span class="material-symbols-outlined" style="font-size: 48px;">handshake</span>
+          <h5 data-i18n="home.approach.collaborative.title">Kolaboratif</h5>
+          <p data-i18n="home.approach.collaborative.desc">Mendorong kolaborasi antar stakeholder untuk menciptakan solusi yang selaras dan berkelanjutan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section bg-light">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-2">LAYANAN KAMI</h2>
+    <p class="text-center mb-5">Setiap pilar layanan kami bersinergi menghadirkan solusi relevan, aplikatif secara lokal, dan berkelanjutan.</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="service-card h-100">
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
+          <div class="p-4">
+            <h5>Peningkatan Kapasitas Pengelolaan Sampah (Capacity Building)</h5>
+            <p>PUntuk memastikan keberlanjutan solusi di lapangan, GoSirk membangun basis ekosistem pengetahuan dan keahlian yang kuat di bidang pengelolaan sampah melalui unit strategisnya GoSirk Institute</p>
+            <a href="<?= BASE_URL ?>gi" class="btn btn-outline-primary btn-sm rounded-pill">
+              Selengkapnya
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card h-100">
+          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7">
+          <div class="p-4">
+            <h5>Pengembangan Program dan Implementasi Partner</h5>
+            <p>Kami memiliki misi untuk mentransformasi tantangan sampah menjadi solusi yang berkelanjutan, inklusif, dan inovatif. Fokus utama kami adalah memastikan keberhasilan proyek lapangan yang tidak hanya efektif secara teknis tetapi juga menciptakan dampak sosial yang signifikan</p>
+            <a href="<?= BASE_URL ?>implementasi_partner" class="btn btn-outline-primary btn-sm rounded-pill">
+              Selengkapnya
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-card h-100">
+          <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca">
+          <div class="p-4">
+            <h5>Konsultansi & Advisory Strategis</h5>
+            <p>Kami mendukung pengembangan usaha pengelolaan sampah melalui bantuan langsung, praktis, dan pendekatan berbasis data untuk menemukan pendekatan yang tepat sesuai kebutuhan spesifik klien</p>
+            <a href="<?= BASE_URL ?>konsultan" class="btn btn-outline-primary btn-sm rounded-pill">
+              Selengkapnya
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE DETAILS -->
+<section class="section">
+  <div class="container">
+    
+    <!-- Capacity Building -->
+    <div class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold">Layanan Capacity Building</h3>
+        <div class="service-detail-nav d-flex gap-2">
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-detail-1" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-left"></i>
+           </button>
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center next-detail-1" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-right"></i>
+           </button>
+        </div>
+      </div>
+      
+      <div class="swiper service-detail-slider-1">
+        <div class="swiper-wrapper">
+          <?php if (!empty($services_cb)) : ?>
+            <?php foreach ($services_cb as $item) : ?>
+              <div class="swiper-slide">
+                <div class="card border border-light shadow-sm h-100 rounded-3">
+                  <div class="bg-light d-flex align-items-center justify-content-center rounded-top-3" style="height: 200px;">
+                      <span class="material-symbols-outlined text-secondary" style="font-size: 64px;"><?= $item->icon ?></span>
+                  </div>
+                  <div class="card-body p-4 d-flex flex-column">
+                    <h5 class="fw-bold mb-2" data-lang-id="<?= $item->title_id ?>" data-lang-en="<?= $item->title_en ?>"><?= $item->title_id ?></h5>
+                    <p class="text-muted small mb-3 flex-grow-1" data-lang-id="<?= $item->description_id ?>" data-lang-en="<?= $item->description_en ?>">
+                      <?= $item->description_id ?>
+                    </p>
+                    <div class="mt-auto">
+                        <a href="<?= BASE_URL . $item->link_url ?>" class="btn btn-gi-orange rounded-pill d-inline-flex align-items-center gap-2">
+                            Pelajari lebih lanjut <i class="bi bi-box-arrow-up-right small"></i>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-5">
+      <h3 class="fw-bold mb-4">Pengembangan Program dan Implementasi Partner</h3>
+      
+      <?php if (!empty($services_pd)) : ?>
+        <?php foreach ($services_pd as $item) : ?>
+          <div class="card border-0 shadow-sm rounded-4 overflow-hidden service-horizontal-card mb-4">
+            <div class="row g-0">
+              <div class="col-md-4 card-icon-wrapper d-flex align-items-center justify-content-center">
+                <span class="material-symbols-outlined"><?= $item->icon ?></span>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body p-4 p-lg-5">
+                  <h4 class="fw-bold mb-3" data-lang-id="<?= $item->title_id ?>" data-lang-en="<?= $item->title_en ?>">
+                    <?= $item->title_id ?> 
+                    <?php if ($item->partner_name) : ?>
+                      <br><small class="text-muted fw-normal" style="font-size: 0.9rem;">(<?= $item->partner_name ?>)</small>
+                    <?php endif; ?>
+                  </h4>
+                  <p class="text-muted mb-4 lead" style="font-size: 1.1rem; line-height: 1.6;" data-lang-id="<?= $item->description_id ?>" data-lang-en="<?= $item->description_en ?>">
+                    <?= $item->description_id ?>
+                  </p>
+                  <div class="mt-auto">
+                      <a href="<?= BASE_URL . $item->link_url ?>" class="btn btn-gi-orange rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2">
+                          Pelajari lebih lanjut <i class="bi bi-box-arrow-up-right small"></i>
+                      </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+
+    <!-- Consultancy -->
+    <div class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold">Layanan Konsultansi & Advisory Strategis</h3>
+        <div class="service-detail-nav d-flex gap-2">
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-detail-3" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-left"></i>
+           </button>
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center next-detail-3" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-right"></i>
+           </button>
+        </div>
+      </div>
+      
+      <div class="swiper service-detail-slider-3">
+          <div class="swiper-wrapper">
+          <?php if (!empty($services_cs)) : ?>
+            <?php foreach ($services_cs as $item) : ?>
+              <div class="swiper-slide">
+                <div class="card border border-light shadow-sm h-100 rounded-3">
+                  <div class="bg-light d-flex align-items-center justify-content-center rounded-top-3" style="height: 200px;">
+                      <span class="material-symbols-outlined text-secondary" style="font-size: 64px;"><?= $item->icon ?></span>
+                  </div>
+                  <div class="card-body p-4 d-flex flex-column">
+                    <h5 class="fw-bold mb-2" data-lang-id="<?= $item->title_id ?>" data-lang-en="<?= $item->title_en ?>"><?= $item->title_id ?></h5>
+                    <p class="text-muted small mb-3 flex-grow-1" data-lang-id="<?= $item->description_id ?>" data-lang-en="<?= $item->description_en ?>">
+                      <?= $item->description_id ?>
+                    </p>
+                    <div class="mt-auto">
+                        <a href="<?= BASE_URL . $item->link_url ?>" class="btn btn-gi-orange rounded-pill d-inline-flex align-items-center gap-2">
+                            Pelajari lebih lanjut <i class="bi bi-box-arrow-up-right small"></i>
+                        </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Configuration for all service detail sliders
+      const sliderConfig = {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 }
+        }
+      };
+
+      // Initialize Slider 1
+      new Swiper(".service-detail-slider-1", {
+        ...sliderConfig,
+        navigation: {
+          nextEl: ".next-detail-1",
+          prevEl: ".prev-detail-1",
+        },
+      });
+
+
+
+      // Initialize Slider 3
+      new Swiper(".service-detail-slider-3", {
+        ...sliderConfig,
+        navigation: {
+          nextEl: ".next-detail-3",
+          prevEl: ".prev-detail-3",
+        },
+      });
+    });
+  </script>
+</section>
+
+<!-- PORTFOLIO & PARTNERSHIP -->
+<section id="portfolio" class="section bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">PORTOFOLIO & KEMITRAAN KAMI</h2>
+      <p class="text-muted">Portofolio kerja sama kami mencerminkan komitmen GoSirk dalam memperluas dampak melalui kolaborasi strategis.</p>
+    </div>
+
+    <!-- 1. Capacity Building (GoSirk Institute) -->
+    <div class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold">Capacity Building (GoSirk Institute)</h4>
+        <div class="d-flex gap-2">
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-port-1" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-left"></i>
+           </button>
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center next-port-1" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-right"></i>
+           </button>
+        </div>
+      </div>
+      
+      <div class="swiper portfolio-slider-1">
+        <div class="swiper-wrapper">
+          <?php if (!empty($portfolios)) : ?>
+            <?php foreach ($portfolios as $p) : ?>
+              <?php if ($p->show_home && $p->home_category == 'institute') : ?>
+                <div class="swiper-slide">
+                  <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+                    <?php if ($p->cover_image) : ?>
+                      <div class="portfolio-cover" style="height: 180px; background-image: url('<?= ASSETS_URL ?>img/portfolio/<?= $p->cover_image ?>'); background-size: cover; background-position: center;"></div>
+                    <?php else : ?>
+                      <div class="bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="height: 180px;">
+                        <i class="<?= $p->icon_name ?: 'fas fa-folder' ?> text-muted opacity-25" style="font-size: 80px;"></i>
+                      </div>
+                    <?php endif; ?>
+                    <div class="card-body p-4 d-flex flex-column">
+                      <h6 class="fw-bold mb-1" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
+                      <p class="text-muted small mb-3"><?= $p->client_name ?: '&nbsp;' ?></p>
+                      <p class="card-text small text-secondary flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>">
+                        <?= $p->subtitle_id ?>
+                      </p>
+                      <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="btn btn-outline-secondary btn-sm rounded-pill align-self-end mt-3 px-3">Selengkapnya</a>
+                    </div>
+                  </div>
+                </div>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Pengembangan Program dan Implementasi Partner -->
+    <div class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold">Pengembangan Program dan Implementasi Partner</h4>
+        <div class="d-flex gap-2">
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-port-2" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-left"></i>
+           </button>
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center next-port-2" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-right"></i>
+           </button>
+        </div>
+      </div>
+      
+      <div class="swiper portfolio-slider-2">
+        <div class="swiper-wrapper">
+          <?php if (!empty($portfolios)) : ?>
+            <?php foreach ($portfolios as $p) : ?>
+              <?php if ($p->show_home && $p->home_category == 'partner') : ?>
+                <div class="swiper-slide">
+                  <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+                    <?php if ($p->cover_image) : ?>
+                      <div class="portfolio-cover" style="height: 180px; background-image: url('<?= ASSETS_URL ?>img/portfolio/<?= $p->cover_image ?>'); background-size: cover; background-position: center;"></div>
+                    <?php else : ?>
+                      <div class="bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="height: 180px;">
+                        <i class="<?= $p->icon_name ?: 'fas fa-handshake' ?> text-muted opacity-25" style="font-size: 80px;"></i>
+                      </div>
+                    <?php endif; ?>
+                    <div class="card-body p-4 d-flex flex-column">
+                      <h6 class="fw-bold mb-1" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
+                      <p class="text-muted small mb-3"><?= $p->client_name ?: '&nbsp;' ?></p>
+                      <p class="card-text small text-secondary flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>">
+                        <?= $p->subtitle_id ?>
+                      </p>
+                      <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="btn btn-outline-secondary btn-sm rounded-pill align-self-end mt-3 px-3">Selengkapnya</a>
+                    </div>
+                  </div>
+                </div>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Konsultansi & Advisory Strategis -->
+    <div class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="fw-bold">Konsultansi & Advisory Strategis</h4>
+        <div class="d-flex gap-2">
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-port-3" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-left"></i>
+           </button>
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center next-port-3" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-right"></i>
+           </button>
+        </div>
+      </div>
+      
+      <div class="swiper portfolio-slider-3">
+        <div class="swiper-wrapper">
+          <?php if (!empty($portfolios)) : ?>
+            <?php foreach ($portfolios as $p) : ?>
+              <?php if ($p->show_home && $p->home_category == 'advisory') : ?>
+                <div class="swiper-slide">
+                  <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+                    <?php if ($p->cover_image) : ?>
+                      <div class="portfolio-cover" style="height: 180px; background-image: url('<?= ASSETS_URL ?>img/portfolio/<?= $p->cover_image ?>'); background-size: cover; background-position: center;"></div>
+                    <?php else : ?>
+                      <div class="bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center" style="height: 180px;">
+                        <i class="<?= $p->icon_name ?: 'fas fa-lightbulb' ?> text-muted opacity-25" style="font-size: 80px;"></i>
+                      </div>
+                    <?php endif; ?>
+                    <div class="card-body p-4 d-flex flex-column">
+                      <h6 class="fw-bold mb-1" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
+                      <p class="text-muted small mb-3"><?= $p->client_name ?: '&nbsp;' ?></p>
+                      <p class="card-text small text-secondary flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>">
+                        <?= $p->subtitle_id ?>
+                      </p>
+                      <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="btn btn-outline-secondary btn-sm rounded-pill align-self-end mt-3 px-3">Selengkapnya</a>
+                    </div>
+                  </div>
+                </div>
+              <?php endif; ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Configuration for all portfolio sliders
+      const portfolioConfig = {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 }
+        }
+      };
+
+      // Initialize Slider 1
+      new Swiper(".portfolio-slider-1", {
+        ...portfolioConfig,
+        navigation: {
+          nextEl: ".next-port-1",
+          prevEl: ".prev-port-1",
+        },
+      });
+
+      // Initialize Slider 2
+      new Swiper(".portfolio-slider-2", {
+        ...portfolioConfig,
+        navigation: {
+          nextEl: ".next-port-2",
+          prevEl: ".prev-port-2",
+        },
+      });
+
+      // Initialize Slider 3
+      new Swiper(".portfolio-slider-3", {
+        ...portfolioConfig,
+        navigation: {
+          nextEl: ".next-port-3",
+          prevEl: ".prev-port-3",
+        },
+      });
+    });
+  </script>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="section ecosystem">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-2" data-i18n="home.ecosystem.title">Our Ecosystem</h2>
+    <p class="mb-5" data-i18n="home.ecosystem.desc" data-i18n-html="true">GoSirk beroperasi melalui unit khusus dalam ekosistem bisnis GoSirk untuk memastikan riset, edukasi, <br>
+    dan keterlibatan komunitas terintegrasi</p>
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-md-5">
+        <div class="stat-box">
+          <img src="<?= ASSETS_URL ?>img/logo-gi.png" alt="GoSirk Institute" class="ecosystem-logo">
+          <div class="ecosystem-content">
+            <h5 data-i18n="home.ecosystem.gi.title">GoSirk Institute</h5>
+            <p data-i18n="home.ecosystem.gi.desc">Platform edukasi persampahan berbasis praktik dan pengalaman lapangan</p>
+            <a href="<?= BASE_URL ?>gi" class="btn btn-sm" data-i18n="home.common.read_more">
+              Selengkapnya
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="stat-box">
+          <img src="<?= ASSETS_URL ?>img/logo-ggc.png" alt="GoSirk Green Community" class="ecosystem-logo">
+          <div class="ecosystem-content">
+            <h5 data-i18n="home.ecosystem.ggc.title">GoSirk Green Community</h5>
+            <p data-i18n="home.ecosystem.ggc.desc">Solusi nyata dalam pengelolaan sampah berbasis komunitas</p>
+            <a href="<?= BASE_URL ?>ggc" class="btn btn-sm" data-i18n="home.common.read_more">
+              Selengkapnya
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LOGO PARTNERS SLIDER -->
+<section class="section bg-light pb-4">
+  <div class="container">
+    <h3 class="text-center fw-bold mb-5" data-i18n="home.partners.title">OUR CONTRIBUTIONS AND PARTNER</h3>
+    <div class="swiper logo-slider">
+      <div class="swiper-wrapper align-items-center">
+        <?php 
+        $foundContribution = false;
+        if (!empty($partners)) : 
+          foreach ($partners as $ptr) : 
+            if (($ptr->category ?? '') == 'contribution') :
+              $foundContribution = true;
+        ?>
+            <div class="swiper-slide text-center">
+              <?php 
+                $logoFile = $ptr->logo;
+                
+                // Default to the new partners folder
+                $logoUrl = ASSETS_URL . 'img/partners/' . $logoFile;
+                
+                // Determine absolute path for file_exists check
+                $publicPath = dirname($_SERVER['SCRIPT_FILENAME']);
+                $pathInPartners = $publicPath . '/assets/img/partners/' . $logoFile;
+                $pathInRootImg = $publicPath . '/assets/img/' . $logoFile;
+
+                if (!empty($logoFile)) {
+                    if (file_exists($pathInPartners)) {
+                        $logoUrl = ASSETS_URL . 'img/partners/' . $logoFile;
+                    } elseif (file_exists($pathInRootImg)) {
+                        $logoUrl = ASSETS_URL . 'img/' . $logoFile;
+                    }
+                } else {
+                    $logoUrl = ASSETS_URL . 'img/Logo-GoSirk-01.png';
+                }
+              ?>
+              <img src="<?= $logoUrl ?>" alt="<?= $ptr->name ?>" style="max-height: 80px; width: auto;" onerror="this.src='<?= ASSETS_URL ?>img/Logo-GoSirk-01.png'; this.style.opacity='0.3';">
+            </div>
+        <?php 
+            endif;
+          endforeach; 
+        endif; 
+        
+        if (!$foundContribution) : ?>
+          <div class="swiper-slide text-center text-muted small">No contribution partners yet</div>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-light pt-4">
+  <div class="container">
+    <h3 class="text-center fw-bold mb-4" data-i18n="home.network.title">OUR NETWORK</h3>
+    <div class="swiper network-slider">
+      <div class="swiper-wrapper align-items-center">
+        <?php 
+        $foundNetwork = false;
+        if (!empty($partners)) : 
+          foreach ($partners as $ptr) : 
+            if (($ptr->category ?? 'network') == 'network') :
+              $foundNetwork = true;
+        ?>
+            <div class="swiper-slide text-center">
+              <?php 
+                $logoFile = $ptr->logo;
+                $logoUrl = ASSETS_URL . 'img/partners/' . $logoFile;
+                
+                if (!file_exists('assets/img/partners/' . $logoFile) && file_exists('assets/img/' . $logoFile)) {
+                    $logoUrl = ASSETS_URL . 'img/' . $logoFile;
+                }
+              ?>
+              <img src="<?= $logoUrl ?>" alt="<?= $ptr->name ?>" style="max-height: 60px; transition: all 0.3s;">
+            </div>
+        <?php 
+            endif;
+          endforeach; 
+        endif; 
+        
+        if (!$foundNetwork) : ?>
+          <div class="swiper-slide text-center text-muted small">No network partners yet</div>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG SECTION -->
+<section class="section blog-section">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+      <h3 class="fw-bold mb-0" data-i18n="home.blog.title">BLOG</h3>
+      <div class="blog-nav">
+        <a href="<?= BASE_URL ?>blog" class="btn btn-outline-primary btn-m rounded-pill" data-i18n="home.common.read_more">Selengkapnya</a>
+        <button class="btn-nav prev-blog"><i class="fas fa-chevron-left"></i></button>
+        <button class="btn-nav next-blog"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+    
+    <div class="swiper blog-slider">
+      <div class="swiper-wrapper">
+        <?php if (!empty($articles)) : ?>
+          <?php foreach (array_slice($articles, 0, 6) as $art) : ?>
+            <div class="swiper-slide">
+              <div class="blog-card">
+                <div class="blog-image">
+                  <img src="<?= ASSETS_URL ?>img/blog/<?= $art->image ?>" onerror="this.src='https://images.unsplash.com/photo-1552664730-d307ca884978'">
+                </div>
+                <div class="blog-content">
+                  <h6 class="blog-title" data-lang-id="<?= $art->title_id ?>" data-lang-en="<?= $art->title_en ?>"><?= $art->title_id ?></h6>
+                  <span class="blog-tag text-uppercase"><?= $art->category ?: 'ARTICLE' ?></span>
+                  <div class="blog-excerpt mt-2" data-lang-id="<?= substr(strip_tags($art->content_id), 0, 150) ?>..." data-lang-en="<?= substr(strip_tags($art->content_en), 0, 150) ?>...">
+                    <?= substr(strip_tags($art->content_id), 0, 150) ?>...
+                  </div>
+                  <a href="<?= BASE_URL ?>blog/detail/<?= $art->id ?>" class="blog-link">Selengkapnya</a>
+                </div>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        <?php else : ?>
+          <div class="swiper-slide">
+            <div class="text-center p-5">
+              <p class="text-muted">No articles yet</p>
+            </div>
+          </div>
+        <?php endif; ?>
+      </div>
+    </div>
+
+    
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="fw-bold mb-3" data-i18n="home.cta.title">Siap Berkolaborasi Bersama Kami?</h2>
+        <p class="mb-5 lead" data-i18n="home.cta.desc">Dapatkan detail profil perusahaan atau konsultasikan kebutuhan Anda.</p>
+        
+        <div class="d-flex flex-column align-items-center gap-3">
+          <?php if ($data['company_profile']) : ?>
+          <button type="button" class="btn btn-warning btn-cta-yellow rounded-pill px-4 py-2 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#companyProfileModal">
+            <span class="material-symbols-outlined">description</span>
+            <span data-i18n="home.cta.button_profile">Dapatkan Company Profile</span>
+          </button>
+          <?php endif; ?>
+          
+          <a href="<?= BASE_URL ?>collaboration" class="btn btn-warning btn-cta-yellow rounded-pill px-4 py-2 d-flex align-items-center gap-2">
+             <span class="material-symbols-outlined">description</span>
+            <span data-i18n="home.cta.button_collab" data-i18n-html="true">We Are Calling for Collaboration. <i class="text-decoration-underline">Click Here for more information</i></span> 
+          </a>
+
+          <a href="<?= BASE_URL ?>contact" class="btn btn-outline-dark rounded-pill px-5 py-2" data-i18n="home.cta.button_contact">
+            Hubungi Kami
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<div class="banner-section">
+    <img src="<?= ASSETS_URL ?>img/banner-1.png" alt="Banner GoSirk" class="img-fluid w-100">
+</div>
+
+<!-- Company Profile Modal -->
+<div class="modal fade" id="companyProfileModal" tabindex="-1" aria-labelledby="companyProfileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="companyProfileModalLabel" data-i18n="home.modal.title">Dapatkan Company Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-start">
+        <p class="mb-4 text-muted small" data-i18n="home.modal.desc">Silakan isi formulir di bawah ini untuk mendapatkan profil perusahaan terbaru kami.</p>
+        <form id="cpDownloadForm">
+          <input type="hidden" name="doc_id" value="<?= $data['company_profile']->id ?? '' ?>">
+          <div class="mb-3">
+            <label for="cpName" class="form-label" data-i18n="home.modal.name">Nama Lengkap</label>
+            <input type="text" class="form-control" id="cpName" placeholder="Masukkan nama Anda" data-i18n="home.modal.name_placeholder" required>
+          </div>
+          <div class="mb-3">
+            <label for="cpEmail" class="form-label" data-i18n="home.modal.email">Alamat Email</label>
+            <input type="email" class="form-control" id="cpEmail" placeholder="name@example.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="cpOrganization" class="form-label" data-i18n="home.modal.org">Instansi / Perusahaan</label>
+            <input type="text" class="form-control" id="cpOrganization" placeholder="Nama instansi Anda" data-i18n="home.modal.org_placeholder" required>
+          </div>
+          <div class="mb-3">
+            <label for="cpJabatan" class="form-label" data-i18n="home.modal.position">Jabatan</label>
+            <input type="text" class="form-control" id="cpJabatan" placeholder="Jabatan Anda" data-i18n="home.modal.position_placeholder" required>
+          </div>
+          <div class="d-grid gap-2 mt-4"> 
+            <button type="submit" class="btn btn-warning rounded-pill text-white fw-bold" data-i18n="home.modal.submit">Kirim</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const cpForm = document.getElementById('cpDownloadForm');
+    if (cpForm) {
+        cpForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalBtnHtml = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Mengirim...';
+
+            const formData = new FormData();
+            formData.append('doc_id', this.querySelector('input[name="doc_id"]').value);
+            formData.append('name', document.getElementById('cpName').value);
+            formData.append('email', document.getElementById('cpEmail').value);
+            formData.append('organization', document.getElementById('cpOrganization').value);
+            formData.append('jabatan', document.getElementById('cpJabatan').value);
+
+            fetch('<?= BASE_URL ?>collaboration/request', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        text: data.message,
+                        icon: 'success',
+                        confirmButtonColor: '#29b471'
+                    }).then(() => {
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('companyProfileModal'));
+                        modal.hide();
+                        cpForm.reset();
+                    });
+                } else {
+                    Swal.fire({
+                        title: 'Oops!',
+                        text: data.message,
+                        icon: 'error'
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Terjadi kesalahan sistem.',
+                    icon: 'error'
+                });
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            });
+        });
+    }
+
+});
+</script>

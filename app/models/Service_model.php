@@ -1,0 +1,67 @@
+<?php
+// app/models/Service_model.php
+
+class Service_model {
+    private $table = 'services';
+    private $db;
+
+    public function __construct() {
+        $this->db = new Database;
+    }
+
+    public function getAll() {
+        $this->db->query('SELECT * FROM ' . $this->table . ' ORDER BY order_priority ASC');
+        return $this->db->resultSet();
+    }
+
+    public function getById($id) {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id = :id');
+        $this->db->bind(':id', $id);
+        return $this->db->single();
+    }
+
+    public function add($data) {
+        $query = "INSERT INTO " . $this->table . " 
+                  (name_id, name_en, description_id, description_en, icon, order_priority) 
+                  VALUES 
+                  (:name_id, :name_en, :description_id, :description_en, :icon, :order_priority)";
+        
+        $this->db->query($query);
+        $this->db->bind(':name_id', $data['name_id']);
+        $this->db->bind(':name_en', $data['name_en']);
+        $this->db->bind(':description_id', $data['description_id']);
+        $this->db->bind(':description_en', $data['description_en']);
+        $this->db->bind(':icon', $data['icon']);
+        $this->db->bind(':order_priority', $data['order_priority']);
+
+        return $this->db->execute();
+    }
+
+    public function update($data) {
+        $query = "UPDATE " . $this->table . " SET 
+                  name_id = :name_id, 
+                  name_en = :name_en, 
+                  description_id = :description_id, 
+                  description_en = :description_en, 
+                  icon = :icon, 
+                  order_priority = :order_priority 
+                  WHERE id = :id";
+        
+        $this->db->query($query);
+        $this->db->bind(':id', $data['id']);
+        $this->db->bind(':name_id', $data['name_id']);
+        $this->db->bind(':name_en', $data['name_en']);
+        $this->db->bind(':description_id', $data['description_id']);
+        $this->db->bind(':description_en', $data['description_en']);
+        $this->db->bind(':icon', $data['icon']);
+        $this->db->bind(':order_priority', $data['order_priority']);
+
+        return $this->db->execute();
+    }
+
+    public function delete($id) {
+        $this->db->query('DELETE FROM ' . $this->table . ' WHERE id = :id');
+        $this->db->bind(':id', $id);
+        return $this->db->execute();
+    }
+}

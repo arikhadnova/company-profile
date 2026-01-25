@@ -1,0 +1,198 @@
+Table: articles
+ - id
+ - title_id
+ - title_en
+ - content_id
+ - content_en
+ - image
+ - type
+ - category
+ - slug
+ - author
+ - status
+ - created_at
+
+Table: collaboration_documents
+ - id
+ - title_id
+ - title_en
+ - type
+ - file_path
+ - status
+ - created_at
+
+Table: collaboration_requests
+ - id
+ - doc_id
+ - name
+ - email
+ - organization
+ - jabatan
+ - is_read
+ - requested_at
+
+Table: contacts
+ - id
+ - name
+ - email
+ - message
+ - is_read
+ - created_at
+
+Table: faqs
+ - id
+ - question_id
+ - question_en
+ - answer_id
+ - answer_en
+ - page
+ - status
+ - sort_order
+ - created_at
+ - updated_at
+
+Table: gi_services
+ - id
+ - title_id
+ - title_en
+ - category
+ - description_id
+ - description_en
+ - small_subtitle_id
+ - small_subtitle_en
+ - image
+ - outputs_id
+ - outputs_en
+ - slug
+ - detail_content_id
+ - detail_content_en
+ - order_priority
+ - created_at
+ - updated_at
+
+Table: heroes
+ - id
+ - page_name
+ - tag_id
+ - tag_en
+ - title_id
+ - title_en
+ - subtitle_id
+ - subtitle_en
+ - image
+ - updated_at
+
+Table: impact_data
+ - id
+ - label_id
+ - label_en
+ - value
+ - unit
+ - icon
+ - page
+
+Table: partners
+ - id
+ - name
+ - logo
+ - website_url
+ - type
+ - category
+
+Table: portfolios
+ - id
+ - title_id
+ - title_en
+ - subtitle_id
+ - subtitle_en
+ - description_id
+ - description_en
+ - icon_name
+ - cover_image
+ - main_category
+ - home_category
+ - partnership_category
+ - gi_category
+ - partner_type
+ - year_start
+ - year_end
+ - show_home
+ - show_partnership
+ - show_gi
+ - client_name
+ - tags
+ - created_at
+
+Table: publications
+ - id
+ - title_id
+ - title_en
+ - type
+ - file_path
+ - preview_path
+ - external_link
+ - thumbnail
+ - description_id
+ - description_en
+ - created_at
+ - is_paid
+ - price
+
+Table: service_items
+ - id
+ - category
+ - title_id
+ - title_en
+ - description_id
+ - description_en
+ - icon
+ - link_url
+ - partner_name
+ - order_priority
+ - created_at
+
+Table: services
+ - id
+ - name_id
+ - name_en
+ - description_id
+ - description_en
+ - icon
+ - order_priority
+
+Table: settings
+ - id
+ - setting_key
+ - setting_value
+ - updated_at
+
+Table: testimonials
+ - id
+ - name
+ - role_id
+ - role_en
+ - content_id
+ - content_en
+ - image
+ - status
+ - page
+ - created_at
+
+Table: users
+ - id
+ - username
+ - password
+ - name
+ - email
+ - role
+ - photo
+ - created_at
+ - reset_token
+ - reset_expiry
+
+Table: visitors
+ - id
+ - ip_address
+ - user_agent
+ - created_at
+

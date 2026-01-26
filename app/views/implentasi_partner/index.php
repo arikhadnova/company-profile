@@ -8,7 +8,14 @@
         --gi-bg-light: #f8f9fa;
         --text-dark: #1e293b;
         --text-muted: #64748b;
+        --orange-light: rgba(255, 143, 86, 0.15);
     }
+
+    .border-orange-soft { border-color: var(--orange-light) !important; }
+    .border-top-orange-3 { border-top: 3px solid var(--gosirk-orange) !important; }
+    .border-left-orange-3 { border-left: 3px solid var(--gosirk-orange) !important; }
+    .text-orange { color: var(--gosirk-orange) !important; }
+    .bg-orange-soft { background-color: var(--orange-light) !important; }
 
     body { 
         font-family: 'Plus Jakarta Sans', sans-serif;
@@ -188,35 +195,62 @@
     }
 
     /* Service Cards - GI Style */
+    /* Service Cards - Redesigned to GI Style (Vertical) */
     .service-card {
         border: 1px solid #f0f0f0;
         border-radius: 20px;
-        padding: 35px 25px;
         height: 100%;
         transition: all 0.3s ease;
         background: #fff;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
 
     .service-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
     }
 
-    .service-icon-box {
-        width: 60px;
-        height: 60px;
-        background: var(--gosirk-orange);
-        color: white;
-        border-radius: 15px;
+    .service-img-wrapper {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .service-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .service-card:hover .service-img-wrapper img {
+        transform: scale(1.1);
+    }
+
+    .service-card .badge-scope {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(5px);
+        color: var(--gosirk-orange);
+        font-weight: 700;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        z-index: 2;
+    }
+
+    .service-card .card-body {
+        padding: 25px;
+        flex-grow: 1;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 25px;
-        box-shadow: 0 10px 20px rgba(255, 143, 86, 0.2);
-    }
-
-    .service-icon-box .material-symbols-outlined {
-        font-size: 2rem; /* fs-1 equivalent */
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     /* Workflow Timeline */
@@ -492,164 +526,107 @@
         </div>
     </section>
 
-    <section id="tentang" class="about-section">
+    <!-- MITRA PENGEMBANGAN PROYEK & IMPLEMENTASI SECTION -->
+    <section id="mitra-pengembangan" class="py-5 bg-white">
         <div class="container">
-            <!-- PARTNER LOGOS -->
-            <div class="row align-items-center justify-content-center g-4 g-md-5 mb-5">
-                <div class="col-6 col-md-2 text-center">
-                    <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="GoSirk" class="img-fluid" style="max-height: 70px; width: auto;">
-                </div>
-                <div class="col-6 col-md-2 text-center">
-                    <img src="<?= ASSETS_URL ?>img/Logo CLOCC.png" alt="CLOCC" class="img-fluid" style="max-height: 70px; width: auto;">
-                </div>
-                <div class="col-6 col-md-2 text-center">
-                    <img src="<?= ASSETS_URL ?>img/logo-sirk-norge.png" alt="Sirk Norge" class="img-fluid" style="max-height: 70px; width: auto;">
-                </div>
-                <div class="col-6 col-md-2 text-center">
-                    <img src="<?= ASSETS_URL ?>img/logo-kab-tabanan.png" alt="Pemkab Tabanan" class="img-fluid" style="max-height: 70px; width: auto;">
+            <!-- ABOUT SECTION - Centralized like Konsultansi -->
+            <div class="row justify-content-center mb-5 pb-4">
+                <div class="col-lg-10 text-center">
+                    <span class="section-subheader" data-i18n="partner.dev_subheader">MITRA PENGEMBANGAN</span>
+                    <h2 class="display-6 fw-bold mb-4" style="color: var(--dark-blue);" data-i18n="partner.dev_about_title">Tentang Layanan Kami</h2>
+                    <div class="text-muted fs-5" style="line-height: 1.8;">
+                        <p data-i18n="partner.dev_about_desc1">
+                            GO Sirk berperan sebagai <b>mitra pengembangan dan implementasi proyek</b> untuk mentransformasi sampah menjadi solusi yang <b>berkelanjutan, inklusif, dan inovatif</b>. Kami mendampingi mitra sejak tahap perencanaan hingga pelaksanaan di lapangan untuk memastikan proyek berjalan <b>efektif secara teknis</b>, terukur, serta menghasilkan <b>dampak sosial dan lingkungan</b> yang nyata.
+                        </p>
+                        <p class="mb-0" data-i18n="partner.dev_about_desc2">
+                            <b>Fokus utama</b> kami adalah memastikan keberhasilan implementasi melalui penguatan kolaborasi, tata kelola, dan model operasional yang relevan dengan konteks lokal.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="row g-5">
-                <!-- Left Column: Narrative -->
-                <div class="col-lg-7">
-                    <span class="section-subheader" data-lang-id="Ringkasan Program" data-lang-en="Program Overview" data-i18n="partner.badge">Program Overview</span>
-                    <h2 class="display-6 fw-bold mb-4" style="color: var(--dark-blue);" data-i18n="partner.hero_title">Bersama Menghadapi Tantangan Persampahan di Indonesia</h2>
-                    <p class="text-muted mb-3" style="text-align: justify; line-height: 1.8;" data-i18n="partner.desc_p1">
-                        Program Clean Oceans through Clean Communities (CLOCC), yang dimiliki oleh Sirk Norge...
-                    </p>
-                    <p class="text-muted mb-4" style="text-align: justify; line-height: 1.8;" data-i18n="partner.desc_p2">
-                        Tujuan dari program pendampingan desa di desa-desa percontohan di Kabupaten Tabanan...
-                    </p>
+            <!-- SERVICE TYPES SECTION - Redesigned like Konsultansi cards -->
+            <div class="mb-5">
+                <div class="text-center mb-5">
+                    <span class="section-subheader" data-i18n="partner.dev_services_subheader">Services</span>
+                    <h2 class="section-title display-6" data-i18n="partner.dev_services_title">Jenis Layanan</h2>
                 </div>
-
-                <!-- Right Column: Role & SOW -->
-                <div class="col-lg-5 col-xl-5">
-                    <div class="p-4 bg-light rounded-4 border-start border-4 border-orange mb-4 shadow-sm">
-                        <h5 class="fw-bold mb-3" style="color: var(--gi-dark);" data-i18n="partner.gosirk_role_title">Peran GoSirk</h5>
-                        <p class="small text-muted mb-0" style="line-height: 1.6;" data-i18n="partner.gosirk_role_desc">
-                            Sebagai Mitra Pelaksana Lokal (Local Implementing Partner) CLOCC di Indonesia...
-                        </p>
+                
+                <div class="row g-4 justify-content-center">
+                    <!-- Service 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="service-card shadow-sm border-0">
+                            <div class="service-img-wrapper">
+                                <span class="badge-scope">Design</span>
+                                <img src="https://images.unsplash.com/photo-1507208773393-401962a1c746?q=80&w=800&auto=format&fit=crop" alt="Project Design">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service1_title">1. Perancangan Program & Proyek</h4>
+                                <p class="text-muted small mb-0" data-i18n="partner.dev_service1_desc">Penyusunan desain program berbasis kebutuhan lapangan, termasuk tujuan, indikator, rencana kerja, dan strategi implementasi.</p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="p-4 bg-white rounded-4 border border-1 shadow-sm">
-                        <h5 class="fw-bold mb-3" style="color: var(--gi-dark);" data-i18n="partner.sow_title">Scope of Work</h5>
-                        <p class="small text-muted mb-3" data-i18n="partner.sow_desc">
-                            Program ini berupaya mencapai target 100% melalui:
-                        </p>
-                        <ul class="list-unstyled mb-0">
-                            <li class="d-flex gap-2 mb-3">
-                                <span class="material-symbols-outlined text-orange small">check_circle</span>
-                                <span class="small text-muted" data-i18n="partner.sow_item1">Capacity building</span>
-                            </li>
-                            <li class="d-flex gap-2 mb-3">
-                                <span class="material-symbols-outlined text-orange small">check_circle</span>
-                                <span class="small text-muted" data-i18n="partner.sow_item2">Infrastructure</span>
-                            </li>
-                            <li class="d-flex gap-2 mb-3">
-                                <span class="material-symbols-outlined text-orange small">check_circle</span>
-                                <span class="small text-muted" data-i18n="partner.sow_item3">Institutional strengthening</span>
-                            </li>
-                            <li class="d-flex gap-2 mb-3">
-                                <span class="material-symbols-outlined text-orange small">check_circle</span>
-                                <span class="small text-muted" data-i18n="partner.sow_item4">Policy advocacy</span>
-                            </li>
-                            <li class="d-flex gap-2">
-                                <span class="material-symbols-outlined text-orange small">check_circle</span>
-                                <span class="small text-muted" data-i18n="partner.sow_item5">Education & awareness</span>
-                            </li>
-                        </ul>
+                    <!-- Service 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="service-card shadow-sm border-0">
+                            <div class="service-img-wrapper">
+                                <span class="badge-scope">Support</span>
+                                <img src="https://images.unsplash.com/photo-1574600124801-ffcdb096c8d2?q=80&w=800&auto=format&fit=crop" alt="Field Implementation Support">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service2_title">2. Pendampingan Implementasi Lapangan</h4>
+                                <p class="text-muted small mb-0" data-i18n="partner.dev_service2_desc">Dukungan pelaksanaan proyek secara end-to-end agar operasional berjalan efektif, sesuai standar, dan mencapai target.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="service-card shadow-sm border-0">
+                            <div class="service-img-wrapper">
+                                <span class="badge-scope">Engagement</span>
+                                <img src="https://images.unsplash.com/photo-1531206715517-5ca5c7f50ebb?q=80&w=800&auto=format&fit=crop" alt="Community Engagement">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service3_title">3. Penguatan Keterlibatan Komunitas</h4>
+                                <p class="text-muted small mb-0" data-i18n="partner.dev_service3_desc">Fasilitasi kolaborasi antara komunitas, pemerintah, sektor swasta, dan mitra lokal untuk membangun kepemilikan program dan keberlanjutan.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="service-card shadow-sm border-0">
+                            <div class="service-img-wrapper">
+                                <span class="badge-scope">System</span>
+                                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&auto=format&fit=crop" alt="Waste Management Systems">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service4_title">4. Pengembangan Sistem Pengelolaan Sampah</h4>
+                                <p class="text-muted small mb-0" data-i18n="partner.dev_service4_desc">Penyusunan sistem operasional yang efisien secara teknis, serta berkelanjutan secara finansial dan lingkungan untuk mendorong ekonomi sirkular daerah.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service 5 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="service-card shadow-sm border-0">
+                            <div class="service-img-wrapper">
+                                <span class="badge-scope">Local</span>
+                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop" alt="Local Solutions">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service5_title">5. Pengembangan Solusi Tepat Guna & Bisnis Lokal</h4>
+                                <p class="text-muted small mb-0" data-i18n="partner.dev_service5_desc">Perancangan solusi berbasis potensi lokal, termasuk skema unit usaha, kemitraan, dan pendekatan yang praktis serta mudah direplikasi.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PROGRAM_IMPLEMENTATION SECTION (Combined Background & Pilot Villages) -->
-    <section id="program-implementation" class="py-5 bg-white">
-        <div class="container">
-            <!-- Background Part -->
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-10">
-                    <div class="text-center mb-5">
-                        <h2 class="display-6 fw-bold mb-4" style="color: var(--gi-dark);" data-i18n="partner.background_title">Background</h2>
-                        <p class="text-muted" style="text-align: justify; line-height: 1.8;" data-i18n="partner.background_desc">
-                            Initiated in August 2024, the Village Assistance Program in Tabanan—delivered in
-                            partnership with PT GO Circular Solution Indonesia (GoSirk) as the local implementing
-                            partner of the CLOCC Program—aims to strengthen the capacity of village
-                            governments in advancing integrated and sustainable waste management in line
-                            with the Tabanan District Waste Management Master Plan (RIPS). The program was
-                            formally launched through the signing of a Memorandum of Understanding (MoU)
-                            between GoSirk and the governments of the three pilot villages: Bengkel, Dauh Peken,
-                            and Wongaya Gede.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Village Part -->
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-8 text-center">
-                    <h2 class="fw-bold mb-2" style="color: var(--gi-dark);" data-i18n="partner.pilot_villages_title">Desa Percontohan</h2>
-                    <div class="mx-auto mb-5 rounded-pill bg-orange opacity-25" style="width: 60px; height: 3px;"></div>
-                </div>
-            </div>
-
-            <div class="row g-4 justify-content-center">
-                <!-- Village 1: Bengkel -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden" style="border-color: #f0f0f0 !important; border-radius: 20px !important; transition: all 0.3s ease;">
-                        <div class="position-relative overflow-hidden">
-                            <img src="<?= ASSETS_URL ?>img/IMG_8082.jpg" class="card-img-top" alt="Desa Bengkel" style="height: 280px; object-fit: cover;">
-                            <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
-                                <div class="w-100 p-4 text-center">
-                                    <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" data-i18n="partner.village_bengkel">Desa Bengkel</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Village 2: Dauh Peken -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden" style="border-color: #f0f0f0 !important; border-radius: 20px !important; transition: all 0.3s ease;">
-                        <div class="position-relative overflow-hidden">
-                            <img src="<?= ASSETS_URL ?>img/IMG_8084.jpg" class="card-img-top" alt="Desa Dauh Peken" style="height: 280px; object-fit: cover;">
-                            <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
-                                <div class="w-100 p-4 text-center">
-                                    <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" data-i18n="partner.village_dauh_peken">Desa Dauh Peken</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Village 3: Wongaya Gede -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden" style="border-color: #f0f0f0 !important; border-radius: 20px !important; transition: all 0.3s ease;">
-                        <div class="position-relative overflow-hidden">
-                            <img src="<?= ASSETS_URL ?>img/IMG_8097.jpg" class="card-img-top" alt="Desa Wongaya Gede" style="height: 280px; object-fit: cover;">
-                            <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
-                                <div class="w-100 p-4 text-center">
-                                    <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" data-i18n="partner.village_wongaya_gede">Desa Wongaya Gede</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Button Part -->
-            <!-- <div class="text-center mt-5 pt-3">
-                <a href="#" class="btn btn-gi-primary shadow-sm" data-i18n="partner.view_more">
-                    Selengkapnya
-                </a>
-            </div> -->
-        </div>
-    </section>
-
-    <!-- FOCUS SECTION - Non-Card Feature Grid -->
+    <!-- Pendekatan Kami -->
     <section class="partner-focus">
         <div class="container">
-            <div class="text-center mb-5 pb-3">
+            <div class="text-center">
                 <span class="section-subheader" data-i18n="partner.focus_subheader">Strategi Kami</span>
                 <h2 class="section-title display-6" data-i18n="partner.focus_title">Pendekatan Kami</h2>
                 <div class="mx-auto mt-3 rounded-pill bg-orange opacity-25" style="width: 60px; height: 3px;"></div>
@@ -697,26 +674,189 @@
         </div>
     </section>
 
+    <section id="tentang" class="about-section">
+        <div class="container">
+            <!-- PARTNER LOGOS -->
+            <div class="row align-items-center justify-content-center g-4 g-md-5 mb-5">
+                <div class="col-6 col-md-2 text-center">
+                    <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="GoSirk" class="img-fluid" style="max-height: 70px; width: auto;">
+                </div>
+                <div class="col-6 col-md-2 text-center">
+                    <img src="<?= ASSETS_URL ?>img/Logo CLOCC.png" alt="CLOCC" class="img-fluid" style="max-height: 70px; width: auto;">
+                </div>
+                <div class="col-6 col-md-2 text-center">
+                    <img src="<?= ASSETS_URL ?>img/logo-sirk-norge.png" alt="Sirk Norge" class="img-fluid" style="max-height: 70px; width: auto;">
+                </div>
+                <div class="col-6 col-md-2 text-center">
+                    <img src="<?= ASSETS_URL ?>img/logo-kab-tabanan.png" alt="Pemkab Tabanan" class="img-fluid" style="max-height: 70px; width: auto;">
+                </div>
+            </div>
+
+            <div class="row g-5">
+                <!-- Left Column: Narrative -->
+                <div class="col-lg-7">
+                    <div class="ps-4 border-start border-3 border-orange-soft">
+                        <span class="section-subheader" data-lang-id="Ringkasan Program" data-lang-en="Program Overview" data-i18n="partner.badge">Program Overview</span>
+                        <h2 class="display-6 fw-bold mb-4" style="color: var(--dark-blue);" data-i18n="partner.hero_title">Bersama Menghadapi Tantangan Persampahan di Indonesia</h2>
+                        <div class="text-muted mb-3" style="text-align: justify; line-height: 1.8;">
+                            <p data-i18n="partner.desc_p1">
+                                Program Clean Oceans through Clean Communities (CLOCC), yang dimiliki oleh Sirk Norge dan didanai oleh NORAD...
+                            </p>
+                            <p class="mb-0" data-i18n="partner.desc_p2">
+                                Tujuan dari program pendampingan desa di desa-desa percontohan di Kabupaten Tabanan...
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Role & SOW -->
+                <div class="col-lg-5 col-xl-5">
+                    <div class="p-4 rounded-4 border-start border-3 border-orange-soft mb-4 shadow-sm">
+                        <h5 class="fw-bold mb-3" style="color: var(--gi-dark);" data-i18n="partner.gosirk_role_title">Peran GoSirk</h5>
+                        <p class="small text-muted mb-0 position-relative z-1" style="line-height: 1.6;" data-i18n="partner.gosirk_role_desc">
+                            Sebagai Mitra Pelaksana Lokal (Local Implementing Partner) CLOCC di Indonesia...
+                        </p>
+                    </div>
+
+                    <div class="p-4 bg-white rounded-4 border-start border-3 border-orange-soft shadow-sm">
+                        <h5 class="fw-bold mb-3" style="color: var(--gi-dark);" data-i18n="partner.sow_title">Scope of Work</h5>
+                        <p class="small text-muted mb-3" data-i18n="partner.sow_desc">
+                            Program ini berupaya mencapai target 100% melalui:
+                        </p>
+                        <ul class="list-unstyled mb-0">
+                            <li class="d-flex gap-2 mb-3">
+                                <span class="material-symbols-outlined text-orange small">check_circle</span>
+                                <span class="small text-muted" data-i18n="partner.sow_item1">Capacity building</span>
+                            </li>
+                            <li class="d-flex gap-2 mb-3">
+                                <span class="material-symbols-outlined text-orange small">check_circle</span>
+                                <span class="small text-muted" data-i18n="partner.sow_item2">Infrastructure</span>
+                            </li>
+                            <li class="d-flex gap-2 mb-3">
+                                <span class="material-symbols-outlined text-orange small">check_circle</span>
+                                <span class="small text-muted" data-i18n="partner.sow_item3">Institutional strengthening</span>
+                            </li>
+                            <li class="d-flex gap-2 mb-3">
+                                <span class="material-symbols-outlined text-orange small">check_circle</span>
+                                <span class="small text-muted" data-i18n="partner.sow_item4">Policy advocacy</span>
+                            </li>
+                            <li class="d-flex gap-2">
+                                <span class="material-symbols-outlined text-orange small">check_circle</span>
+                                <span class="small text-muted" data-i18n="partner.sow_item5">Education & awareness</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAM_IMPLEMENTATION SECTION (Combined Background & Pilot Villages) -->
+    <section id="program-implementation" class="py-5 bg-white">
+        <div class="container">
+            <!-- Background Part -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="text-center mb-5">
+                        <h2 class="display-6 fw-bold mb-3" style="color: var(--gi-dark);" data-i18n="partner.background_title">Background</h2>
+                        <div class="mx-auto mb-4 rounded-pill bg-orange opacity-25" style="width: 60px; height: 3px;"></div>
+                        <p class="text-muted" style="text-align: center; line-height: 1.8;" data-i18n="partner.background_desc">
+                            Initiated in August 2024, the Village Assistance Program in Tabanan—delivered in
+                            partnership with PT GO Circular Solution Indonesia (GoSirk) as the local implementing
+                            partner of the CLOCC Program—aims to strengthen the capacity of village
+                            governments in advancing integrated and sustainable waste management in line
+                            with the Tabanan District Waste Management Master Plan (RIPS). The program was
+                            formally launched through the signing of a Memorandum of Understanding (MoU)
+                            between GoSirk and the governments of the three pilot villages: Bengkel, Dauh Peken,
+                            and Wongaya Gede.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Village Part -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-8 text-center">
+                    <h2 class="fw-bold mb-2" style="color: var(--gi-dark);" data-i18n="partner.pilot_villages_title">Desa Percontohan</h2>
+                    <div class="mx-auto mb-5 rounded-pill bg-orange opacity-25" style="width: 60px; height: 3px;"></div>
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Village 1: Bengkel -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden border-top-orange-3" style="border-radius: 20px !important; transition: all 0.3s ease;">
+                        <div class="position-relative overflow-hidden">
+                            <img src="<?= ASSETS_URL ?>img/IMG_8082.jpg" class="card-img-top" alt="Desa Bengkel" style="height: 280px; object-fit: cover;">
+                            <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
+                                <div class="w-100 p-4 text-center">
+                                    <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" data-i18n="partner.village_bengkel">Desa Bengkel</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Village 2: Dauh Peken -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden border-top-orange-3" style="border-radius: 20px !important; transition: all 0.3s ease;">
+                        <div class="position-relative overflow-hidden">
+                            <img src="<?= ASSETS_URL ?>img/IMG_8084.jpg" class="card-img-top" alt="Desa Dauh Peken" style="height: 280px; object-fit: cover;">
+                            <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
+                                <div class="w-100 p-4 text-center">
+                                    <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" data-i18n="partner.village_dauh_peken">Desa Dauh Peken</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Village 3: Wongaya Gede -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden" style="border-color: #f0f0f0 !important; border-radius: 20px !important; transition: all 0.3s ease;">
+                        <div class="position-relative overflow-hidden">
+                            <img src="<?= ASSETS_URL ?>img/IMG_8097.jpg" class="card-img-top" alt="Desa Wongaya Gede" style="height: 280px; object-fit: cover;">
+                            <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
+                                <div class="w-100 p-4 text-center">
+                                    <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" data-i18n="partner.village_wongaya_gede">Desa Wongaya Gede</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button Part -->
+            <!-- <div class="text-center mt-5 pt-3">
+                <a href="#" class="btn btn-gi-primary shadow-sm" data-i18n="partner.view_more">
+                    Selengkapnya
+                </a>
+            </div> -->
+        </div>
+    </section>
+
+
+
     <!-- NEW SECTIONS: TARGET, DAMPAK, SOROTAN (GI Style) -->
     <section class="py-5 bg-light">
         <div class="container">
-            <div class="target-container shadow-sm bg-white">
-                <h5 class="fw-bold mb-4 text-center">TARGET PROGRAM</h5>
+            <div class="target-container shadow-sm bg-white border-top-orange-3 rounded-4 overflow-hidden">
+                <div class="bg-orange-soft p-3 mb-4">
+                    <h5 class="fw-bold mb-0 text-center text-orange" data-lang-id="TARGET PROGRAM" data-lang-en="PROGRAM TARGETS">TARGET PROGRAM</h5>
+                </div>
                 <ul class="list-unstyled d-flex flex-column gap-3">
                     <li class="d-flex gap-3">
-                        <i class="fas fa-circle text-primary" style="font-size: 8px; margin-top: 8px; color: var(--gosirk-orange) !important;"></i>
-                        <span data-i18n="partner.target_item1">Target 100% tingkat pengumpulan sampah (collection rate) di desa-desa percontohan secara bertahap.</span>
+                        <span class="material-symbols-outlined text-orange" style="font-size: 1.2rem;">check_circle</span>
+                        <span data-i18n="partner.target_item1">Target 100% tingkat pengumpulan sampah...</span>
                     </li>
                     <li class="d-flex gap-3">
-                        <i class="fas fa-circle text-primary" style="font-size: 8px; margin-top: 8px; color: var(--gosirk-orange) !important;"></i>
+                        <span class="material-symbols-outlined text-orange" style="font-size: 1.2rem;">check_circle</span>
                         <span data-i18n="partner.target_item2">Penurunan tingkat kebocoran sampah ke lingkungan (waste leakage rate).</span>
                     </li>
                     <li class="d-flex gap-3">
-                        <i class="fas fa-circle text-primary" style="font-size: 8px; margin-top: 8px; color: var(--gosirk-orange) !important;"></i>
+                        <span class="material-symbols-outlined text-orange" style="font-size: 1.2rem;">check_circle</span>
                         <span data-i18n="partner.target_item3">Peningkatan daur ulang (recycling rate).</span>
                     </li>
                     <li class="d-flex gap-3">
-                        <i class="fas fa-circle text-primary" style="font-size: 8px; margin-top: 8px; color: var(--gosirk-orange) !important;"></i>
+                        <span class="material-symbols-outlined text-orange" style="font-size: 1.2rem;">check_circle</span>
                         <span data-i18n="partner.target_item4">Penurunan timbulan sampah residu ke TPA yang secara jauhnya berimplikasi pada pencegahan kebocoran sampah plastik ke laut.</span>
                     </li>
                 </ul>
@@ -726,7 +866,11 @@
 
     <section class="py-5">
         <div class="container">
-            <h4 class="text-center section-header-sm mb-5" data-i18n="gi.detail.impact">Dampak</h4>
+            <div class="text-center mb-5">
+                <span class="section-subheader" data-i18n="partner.impact_title">Impact</span>
+                <h4 class="fw-bold mb-2" data-i18n="gi.detail.impact">Dampak</h4>
+                <div class="mx-auto mt-2 rounded-pill bg-orange opacity-25" style="width: 50px; height: 3px;"></div>
+            </div>
             <div class="row g-4 justify-content-center">
                 <!-- Initial items (Always visible) -->
                 <div class="col-md-4 col-6">
@@ -796,7 +940,8 @@
             <div class="d-flex align-items-center justify-content-between mb-5">
                 <div>
                     <span class="section-subheader">Portfolio</span>
-                    <h2 class="section-title display-6 mb-0">Kegiatan Pendampingan Desa Program Clocc</h2>
+                    <h2 class="section-title display-6 mb-2">Kegiatan Pendampingan Desa Program Clocc</h2>
+                    <div class="rounded-pill bg-orange opacity-25" style="width: 60px; height: 3px;"></div>
                 </div>
                 <div class="d-flex gap-2">
                     <button class="btn btn-outline-orange rounded-circle p-2 portfolio-prev" style="width: 45px; height: 45px; border-color: var(--gosirk-orange); color: var(--gosirk-orange);">
@@ -812,7 +957,7 @@
                 <div class="swiper-wrapper">
                     <!-- Slide 1 -->
                     <div class="swiper-slide h-auto">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden border-top-orange-3">
                             <div style="height: 200px; overflow: hidden;">
                                 <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80" class="w-100 h-100 object-fit-cover" alt="Village Mentoring">
                             </div>
@@ -825,7 +970,7 @@
                     </div>
                     <!-- Slide 2 -->
                     <div class="swiper-slide h-auto">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden border-top-orange-3">
                             <div style="height: 200px; overflow: hidden;">
                                 <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" class="w-100 h-100 object-fit-cover" alt="Facility Optimization">
                             </div>
@@ -838,7 +983,7 @@
                     </div>
                     <!-- Slide 3 -->
                     <div class="swiper-slide h-auto">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden border-top-orange-3">
                             <div style="height: 200px; overflow: hidden;">
                                 <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" class="w-100 h-100 object-fit-cover" alt="Community Education">
                             </div>

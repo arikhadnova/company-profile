@@ -13,6 +13,7 @@ $logo_url = (strpos($site_logo, 'http') === 0) ? $site_logo : ASSETS_URL . 'img/
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $site_title ?></title>
+    <meta name="description" content="<?= $settings['site_description'] ?? 'Go Circular Solutions Indonesia - Solusi pengelolaan sampah berkelanjutan' ?>">
     <link rel="icon" type="image/png" href="<?= $logo_url ?>">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">

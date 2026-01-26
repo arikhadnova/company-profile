@@ -32,6 +32,10 @@
                         <input type="text" id="site_title" name="site_title" class="form-control" value="<?= $settings['site_title'] ?? 'GoSirk' ?>" required>
                     </div>
                     <div class="mb-3">
+                        <label for="site_description" class="form-label small fw-bold text-dark">Site Description (SEO)</label>
+                        <textarea id="site_description" name="site_description" class="form-control" rows="3" placeholder="Deskripsi yang muncul di hasil pencarian Google"><?= $settings['site_description'] ?? '' ?></textarea>
+                    </div>
+                    <div class="mb-3">
                         <label for="logo_url" class="form-label small fw-bold text-dark">Current Logo</label>
                         <div class="p-3 border rounded-3 text-center bg-light">
                             <?php 

@@ -185,7 +185,9 @@ class Admin extends Controller {
 
     public function update_header() {
         $site_title = $_POST['site_title'] ?? '';
+        $site_description = $_POST['site_description'] ?? '';
         $this->settingModel->update('site_title', $site_title);
+        $this->settingModel->update('site_description', $site_description);
         
         // Handle Logo Upload if any
         if (!empty($_FILES['logo_file']['name'])) {

@@ -167,6 +167,10 @@ function time_elapsed_string($datetime, $full = false) {
                     <span>Tulis Artikel Baru</span>
                     <i class="fas fa-pen-nib"></i>
                 </a>
+                <a href="<?= BASE_URL ?>admin/library/create" class="btn quick-action-btn w-100 btn-lg">
+                    <span>Tambah Library Resource</span>
+                    <i class="fas fa-book"></i>
+                </a>
                 <a href="<?= BASE_URL ?>admin/portfolio" class="btn quick-action-btn w-100 btn-lg">
                     <span>Manajemen Portfolio</span>
                     <i class="fas fa-briefcase"></i>

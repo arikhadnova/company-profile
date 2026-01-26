@@ -545,7 +545,7 @@ class Admin extends Controller {
                     'category' => $_POST['category'],
                     'tags' => $_POST['tags'],
                     'slug' => str_replace([' ', '/', '\\', '?', '#', '&'], '-', strtolower($title_en)),
-                    'author' => 'Admin',
+                    'author' => $_SESSION['user_name'] ?? 'Admin',
                     'status' => $_POST['status'],
                     'type' => $_POST['type']
                 ];
@@ -614,6 +614,7 @@ class Admin extends Controller {
                     'category' => $_POST['category'],
                     'tags' => $_POST['tags'],
                     'slug' => str_replace([' ', '/', '\\', '?', '#', '&'], '-', strtolower($title_en)),
+                    'author' => $_SESSION['user_name'] ?? 'Admin',
                     'status' => $_POST['status'],
                     'type' => $_POST['type']
                 ];

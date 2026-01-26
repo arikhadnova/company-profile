@@ -32,6 +32,22 @@
                 <i class="fas fa-times fs-4"></i>
              </button>
         </div>
+
+        <!-- User Profile Section in Sidebar -->
+        <div class="px-4 py-3 mb-2 border-bottom">
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <img src="<?= (isset($_SESSION['user_photo']) && $_SESSION['user_photo']) ? ASSETS_URL . 'img/profile/' . $_SESSION['user_photo'] : 'https://ui-avatars.com/api/?name=' . urlencode($_SESSION['user_name'] ?? 'Admin') . '&background=FF7E5F&color=fff&size=200' ?>" 
+                         class="rounded-circle border" 
+                         style="width: 45px; height: 45px; object-fit: cover; background: #eee;">
+                </div>
+                <div>
+                    <h6 class="mb-0 fw-bold text-dark" style="font-size: 14px;"><?= $_SESSION['user_name'] ?? 'Admin' ?></h6>
+                    <p class="mb-0 text-muted extra-small" style="font-size: 11px;"><?= ucfirst($_SESSION['user_role'] ?? 'Admin') ?></p>
+                </div>
+            </div>
+        </div>
+
         <div class="list-group list-group-flush">
             <!-- Overview -->
             <div class="mt-3 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">Overview</small></div>
@@ -55,15 +71,15 @@
             </a>
 
             <!-- Service Pillars -->
-            <div class="mt-4 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">Service Pillars</small></div>
+            <div class="mt-4 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">Service</small></div>
             <a href="<?= BASE_URL; ?>admin/services_cb" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'services_cb') ? 'active' : '' ?>">
                 <i class="fas fa-school"></i> Capacity Building
             </a>
             <a href="<?= BASE_URL; ?>admin/gi_videos" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'gi_videos') ? 'active' : '' ?>">
-                <i class="fas fa-video"></i> GI Videos
+                <i class="fas fa-video"></i> Study with Gosirk
             </a>
             <a href="<?= BASE_URL; ?>admin/services_pd" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['category']) && $data['category'] == 'pd') ? 'active' : '' ?>">
-                <i class="fas fa-handshake"></i> Program Dev
+                <i class="fas fa-handshake"></i> Program Development
             </a>
             <a href="<?= BASE_URL; ?>admin/services_cs" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['category']) && $data['category'] == 'cs') ? 'active' : '' ?>">
                 <i class="fas fa-lightbulb"></i> Consultancy

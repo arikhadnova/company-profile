@@ -239,8 +239,8 @@ $logo_url = (strpos($site_logo, 'http') === 0) ? $site_logo : ASSETS_URL . 'img/
     <!-- Load required JS libraries for interactive components -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="<?= ASSETS_URL ?>js/about.js"></script>
-    <script src="<?= ASSETS_URL ?>js/translations.js"></script>
-    <script src="<?= ASSETS_URL ?>js/lang.js"></script>
+    <script src="<?= ASSETS_URL ?>js/translations.js?v=<?= time() ?>"></script>
+    <script src="<?= ASSETS_URL ?>js/lang.js?v=<?= time() ?>"></script>
 
 </head>
 <body>

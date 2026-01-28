@@ -535,10 +535,10 @@
                     <span class="section-subheader" data-i18n="partner.dev_subheader">MITRA PENGEMBANGAN</span>
                     <h2 class="display-6 fw-bold mb-4" style="color: var(--dark-blue);" data-i18n="partner.dev_about_title">Tentang Layanan Kami</h2>
                     <div class="text-muted fs-5" style="line-height: 1.8;">
-                        <p data-i18n="partner.dev_about_desc1">
+                        <p data-i18n="partner.dev_about_desc1" data-i18n-html="true">
                             GO Sirk berperan sebagai <b>mitra pengembangan dan implementasi proyek</b> untuk mentransformasi sampah menjadi solusi yang <b>berkelanjutan, inklusif, dan inovatif</b>. Kami mendampingi mitra sejak tahap perencanaan hingga pelaksanaan di lapangan untuk memastikan proyek berjalan <b>efektif secara teknis</b>, terukur, serta menghasilkan <b>dampak sosial dan lingkungan</b> yang nyata.
                         </p>
-                        <p class="mb-0" data-i18n="partner.dev_about_desc2">
+                        <p class="mb-0" data-i18n="partner.dev_about_desc2" data-i18n-html="true">
                             <b>Fokus utama</b> kami adalah memastikan keberhasilan implementasi melalui penguatan kolaborasi, tata kelola, dan model operasional yang relevan dengan konteks lokal.
                         </p>
                     </div>
@@ -558,7 +558,7 @@
                         <div class="service-card shadow-sm border-0">
                             <div class="service-img-wrapper">
                                 <span class="badge-scope">Design</span>
-                                <img src="https://images.unsplash.com/photo-1507208773393-401962a1c746?q=80&w=800&auto=format&fit=crop" alt="Project Design">
+                                <img src="<?= ASSETS_URL ?>img/pexels-fauxels-3184416.jpg" alt="Project Design">
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service1_title">1. Perancangan Program & Proyek</h4>
@@ -571,7 +571,7 @@
                         <div class="service-card shadow-sm border-0">
                             <div class="service-img-wrapper">
                                 <span class="badge-scope">Support</span>
-                                <img src="https://images.unsplash.com/photo-1574600124801-ffcdb096c8d2?q=80&w=800&auto=format&fit=crop" alt="Field Implementation Support">
+                                <img src="<?= ASSETS_URL ?>img/IMG_8093.jpg" alt="Field Implementation Support">
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service2_title">2. Pendampingan Implementasi Lapangan</h4>
@@ -584,7 +584,7 @@
                         <div class="service-card shadow-sm border-0">
                             <div class="service-img-wrapper">
                                 <span class="badge-scope">Engagement</span>
-                                <img src="https://images.unsplash.com/photo-1531206715517-5ca5c7f50ebb?q=80&w=800&auto=format&fit=crop" alt="Community Engagement">
+                                <img src="<?= ASSETS_URL ?>img/pexels-diva-plavalaguna-6147016.jpg" alt="Community Engagement">
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service3_title">3. Penguatan Keterlibatan Komunitas</h4>
@@ -597,7 +597,7 @@
                         <div class="service-card shadow-sm border-0">
                             <div class="service-img-wrapper">
                                 <span class="badge-scope">System</span>
-                                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=800&auto=format&fit=crop" alt="Waste Management Systems">
+                                <img src="<?= ASSETS_URL ?>img/IMG_8082.jpg" alt="Waste Management Systems">
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service4_title">4. Pengembangan Sistem Pengelolaan Sampah</h4>
@@ -610,7 +610,7 @@
                         <div class="service-card shadow-sm border-0">
                             <div class="service-img-wrapper">
                                 <span class="badge-scope">Local</span>
-                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop" alt="Local Solutions">
+                                <img src="<?= ASSETS_URL ?>img/DSC00079-1024x683.jpg" alt="Local Solutions">
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service5_title">5. Pengembangan Solusi Tepat Guna & Bisnis Lokal</h4>
@@ -638,26 +638,8 @@
                         <div class="focus-icon-box">
                             <span class="material-symbols-outlined">groups</span>
                         </div>
-                        <h4 class="focus-title" data-i18n="partner.focus1_title">Pendekatan Holistik & Inklusif</h4>
-                        <p class="focus-text" data-i18n="partner.focus1_desc">Pemberdayaan komunitas lokal, keterlibatan pemangku kepentingan, dan kolaborasi sektor swasta.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="focus-item">
-                        <div class="focus-icon-box">
-                            <span class="material-symbols-outlined">eco</span>
-                        </div>
-                        <h4 class="focus-title" data-i18n="partner.focus2_title">Solusi Berkelanjutan</h4>
-                        <p class="focus-text" data-i18n="partner.focus2_desc">Sistem pengelolaan sampah efisien dalam rangka mendorong terwujudnya ekonomi sirkular daerah.</p>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3">
-                    <div class="focus-item">
-                        <div class="focus-icon-box">
-                            <span class="material-symbols-outlined">target</span>
-                        </div>
-                        <h4 class="focus-title" data-i18n="partner.focus3_title">Tepat Guna & Tepat Sasaran</h4>
-                        <p class="focus-text" data-i18n="partner.focus3_desc">Solusi praktis menjawab kebutuhan masyarakat dan mendorong hasil nyata yang terukur.</p>
+                        <h4 class="focus-title" data-i18n="partner.focus1_title">Holistik & Inklusif</h4>
+                        <p class="focus-text" data-i18n="partner.focus1_desc">Pemberdayaan komunitas lokal, keterlibatan aktif pemangku kepentingan, dan kolaborasi strategis sektor swasta, mengintegrasikan 5 aspek persampahan; aspek teknis, sosial, kelembagaan, regulasi, dan keuangan.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -665,8 +647,26 @@
                         <div class="focus-icon-box">
                             <span class="material-symbols-outlined">handshake</span>
                         </div>
-                        <h4 class="focus-title" data-i18n="partner.focus4_title">Model Kemitraan</h4>
-                        <p class="focus-text" data-i18n="partner.focus4_desc">Kerja sama strategis fleksibel & adaptif memastikan implementasi dan pendanaan solid.</p>
+                        <h4 class="focus-title" data-i18n="partner.focus2_title">Kolaboratif</h4>
+                        <p class="focus-text" data-i18n="partner.focus2_desc">Membangun kemitraan strategis lintas sektor untuk memperkuat efektivitas implementasi dan memperluas dukungan.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="focus-item">
+                        <div class="focus-icon-box">
+                            <span class="material-symbols-outlined">eco</span>
+                        </div>
+                        <h4 class="focus-title" data-i18n="partner.focus3_title">Solusi Berkelanjutan</h4>
+                        <p class="focus-text" data-i18n="partner.focus3_desc">Mendukung sistem pengelolaan sampah yang efisien dalam rangka mendorong terwujudnya ekonomi sirkular daerah.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="focus-item">
+                        <div class="focus-icon-box">
+                            <span class="material-symbols-outlined">target</span>
+                        </div>
+                        <h4 class="focus-title" data-i18n="partner.focus4_title">Tepat Guna & Terukur</h4>
+                        <p class="focus-text" data-i18n="partner.focus4_desc">Menghadirkan solusi yang sesuai realitas lapangan, praktis diterapkan, serta didorong oleh target, indikator, dan capaian yang jelas.</p>
                     </div>
                 </div>
             </div>

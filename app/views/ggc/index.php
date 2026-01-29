@@ -149,7 +149,7 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
 
     <!-- Toggle Button -->
     <div class="text-center mt-5">
-      <button class="btn btn-outline-success rounded-pill px-5 py-3 fw-bold shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#moreImpacts" id="impactToggleButton">
+      <button class="btn btn-outline-success rounded-pill px-4 fw-bold shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#moreImpacts" id="impactToggleButton">
         LIHAT DATA LENGKAP
       </button>
     </div>

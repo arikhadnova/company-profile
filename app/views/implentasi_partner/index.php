@@ -1134,20 +1134,25 @@
                             <div class="swiper-slide h-auto">
                                 <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden border-top-orange-3">
                                     <div style="height: 200px; overflow: hidden;">
-                                        <img src="<?= BASE_URL ?>/uploads/portfolio/<?= $portfolio->cover_image ?>" 
+                                        <img src="<?= ASSETS_URL ?>img/portfolio/<?= $portfolio->cover_image ?>" 
                                              class="w-100 h-100 object-fit-cover" 
                                              alt="<?= $portfolio->title_id ?>"
                                              onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'">
                                     </div>
-                                    <div class="card-body p-4 bg-white">
-                                        <span class="badge bg-soft-orange text-orange mb-2" style="color: var(--gosirk-orange); background-color: rgba(255, 143, 86, 0.1);">
-                                            <?= $portfolio->subtitle_id ?>
-                                        </span>
-                                        <h5 class="fw-bold mb-2" data-lang-id="<?= htmlspecialchars($portfolio->title_id ?? '') ?>" data-lang-en="<?= htmlspecialchars($portfolio->title_en ?? '') ?>">
-                                            <?= $portfolio->title_id ?>
-                                        </h5>
-                                        <div class="text-muted small mb-0 line-clamp-3" data-lang-id="<?= htmlspecialchars($portfolio->description_id ?? '') ?>" data-lang-en="<?= htmlspecialchars($portfolio->description_en ?? '') ?>">
-                                            <?= $portfolio->description_id ?>
+                                    <div class="card-body p-4 bg-white d-flex flex-column">
+                                        <div class="flex-grow-1">
+                                            <span class="badge bg-soft-orange text-orange mb-2" style="color: var(--gosirk-orange); background-color: rgba(255, 143, 86, 0.1);">
+                                                <?= $portfolio->subtitle_id ?>
+                                            </span>
+                                            <h5 class="fw-bold mb-2" data-lang-id="<?= htmlspecialchars($portfolio->title_id ?? '') ?>" data-lang-en="<?= htmlspecialchars($portfolio->title_en ?? '') ?>">
+                                                <?= $portfolio->title_id ?>
+                                            </h5>
+                                            <div class="text-muted small mb-0 line-clamp-3" data-lang-id="<?= htmlspecialchars($portfolio->description_id ?? '') ?>" data-lang-en="<?= htmlspecialchars($portfolio->description_en ?? '') ?>">
+                                                <?= $portfolio->description_id ?>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 text-end">
+                                            <a href="<?= BASE_URL ?>portfolio/detail/<?= $portfolio->id ?>" class="btn btn-outline-orange rounded-pill btn-sm px-4" style="border-color: var(--gosirk-orange); color: var(--gosirk-orange);">Selengkapnya</a>
                                         </div>
                                     </div>
                                 </div>

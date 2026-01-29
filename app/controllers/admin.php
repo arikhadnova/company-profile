@@ -328,6 +328,50 @@ class Admin extends Controller {
 
             $cover_image = Upload::file($_FILES['cover_image'], 'img/portfolio');
 
+        // Process Project Logos
+        $project_logos = [];
+        if (!empty($_FILES['project_logos']['name'][0])) {
+            foreach ($_FILES['project_logos']['name'] as $key => $val) {
+                if (!empty($val)) {
+                    $file_data = [
+                        'name' => $_FILES['project_logos']['name'][$key],
+                        'type' => $_FILES['project_logos']['type'][$key],
+                        'tmp_name' => $_FILES['project_logos']['tmp_name'][$key],
+                        'error' => $_FILES['project_logos']['error'][$key],
+                        'size' => $_FILES['project_logos']['size'][$key]
+                    ];
+                    
+                    $uploaded_file = Upload::file($file_data, 'img/portfolio');
+                    if ($uploaded_file) {
+                        $project_logos[] = $uploaded_file;
+                    }
+                }
+            }
+        }
+
+            $highlights = [];
+            if (!empty($_FILES['highlight_imgs']['name'][0])) {
+                foreach ($_FILES['highlight_imgs']['name'] as $key => $val) {
+                    if (!empty($val)) {
+                        $file_data = [
+                            'name' => $_FILES['highlight_imgs']['name'][$key],
+                            'type' => $_FILES['highlight_imgs']['type'][$key],
+                            'tmp_name' => $_FILES['highlight_imgs']['tmp_name'][$key],
+                            'error' => $_FILES['highlight_imgs']['error'][$key],
+                            'size' => $_FILES['highlight_imgs']['size'][$key]
+                        ];
+                        
+                        $uploaded_file = Upload::file($file_data, 'img/portfolio');
+                        if ($uploaded_file) {
+                            $highlights[] = [
+                                'image' => $uploaded_file,
+                                'caption' => $_POST['highlight_captions'][$key] ?? ''
+                            ];
+                        }
+                    }
+                }
+            }
+
             $data = [
                 'title_id' => $_POST['title_id'],
                 'title_en' => $_POST['title_en'] ?: Translator::translate($_POST['title_id']),
@@ -348,7 +392,17 @@ class Admin extends Controller {
                 'show_partnership' => isset($_POST['show_partnership']) ? 1 : 0,
                 'show_gi' => isset($_POST['show_gi']) ? 1 : 0,
                 'client_name' => $_POST['client_name'],
-                'tags' => $_POST['tags']
+                'tags' => $_POST['tags'],
+                'detail_content_id' => $_POST['detail_content_id'] ?? '',
+                'detail_content_en' => ($_POST['detail_content_en'] ?? '') ?: Translator::translate($_POST['detail_content_id'] ?? ''),
+                'targets_id' => $_POST['targets_id'] ?? '',
+                'targets_en' => ($_POST['targets_en'] ?? '') ?: Translator::translate($_POST['targets_id'] ?? ''),
+                'metrics_id' => $_POST['metrics_id'] ?? '',
+                'metrics_en' => ($_POST['metrics_en'] ?? '') ?: Translator::translate($_POST['metrics_id'] ?? ''),
+                'approach_id' => $_POST['approach_id'] ?? '',
+                'approach_en' => ($_POST['approach_en'] ?? '') ?: Translator::translate($_POST['approach_id'] ?? ''),
+                'highlights' => json_encode($highlights),
+                'project_logos' => json_encode($project_logos)
             ];
 
             if ($this->portfolioModel->add($data)) {
@@ -386,6 +440,76 @@ class Admin extends Controller {
                 }
             }
 
+        // Process Project Logos
+        $project_logos = [];
+        
+        // Existing logos
+        if (isset($_POST['existing_project_logos'])) {
+            foreach ($_POST['existing_project_logos'] as $logo) {
+                if (!empty($logo)) {
+                    $project_logos[] = $logo;
+                }
+            }
+        }
+
+        // New logos
+        if (!empty($_FILES['project_logos']['name'][0])) {
+            foreach ($_FILES['project_logos']['name'] as $key => $val) {
+                if (!empty($val)) {
+                    $file_data = [
+                        'name' => $_FILES['project_logos']['name'][$key],
+                        'type' => $_FILES['project_logos']['type'][$key],
+                        'tmp_name' => $_FILES['project_logos']['tmp_name'][$key],
+                        'error' => $_FILES['project_logos']['error'][$key],
+                        'size' => $_FILES['project_logos']['size'][$key]
+                    ];
+                    
+                    $uploaded_file = Upload::file($file_data, 'img/portfolio');
+                    if ($uploaded_file) {
+                        $project_logos[] = $uploaded_file;
+                    }
+                }
+            }
+        }
+
+        // Process Highlights
+            $highlights = [];
+            
+            // Existing highlights
+            if (isset($_POST['existing_highlight_imgs'])) {
+                foreach ($_POST['existing_highlight_imgs'] as $key => $img) {
+                    if (!empty($img)) {
+                        $highlights[] = [
+                            'image' => $img,
+                            'caption' => $_POST['existing_highlight_captions'][$key] ?? ''
+                        ];
+                    }
+                }
+            }
+
+            // New highlights
+            if (!empty($_FILES['highlight_imgs']['name'][0])) {
+                foreach ($_FILES['highlight_imgs']['name'] as $key => $val) {
+                    if (!empty($val)) {
+                        $file_data = [
+                            'name' => $_FILES['highlight_imgs']['name'][$key],
+                            'type' => $_FILES['highlight_imgs']['type'][$key],
+                            'tmp_name' => $_FILES['highlight_imgs']['tmp_name'][$key],
+                            'error' => $_FILES['highlight_imgs']['error'][$key],
+                            'size' => $_FILES['highlight_imgs']['size'][$key]
+                        ];
+                        
+                        $uploaded_file = Upload::file($file_data, 'img/portfolio');
+                        if ($uploaded_file) {
+                            $highlights[] = [
+                                'image' => $uploaded_file,
+                                'caption' => $_POST['highlight_captions'][$key] ?? ''
+                            ];
+                        }
+                    }
+                }
+            }
+
             $data = [
                 'id' => $id,
                 'title_id' => $_POST['title_id'],
@@ -407,7 +531,17 @@ class Admin extends Controller {
                 'show_partnership' => isset($_POST['show_partnership']) ? 1 : 0,
                 'show_gi' => isset($_POST['show_gi']) ? 1 : 0,
                 'client_name' => $_POST['client_name'],
-                'tags' => $_POST['tags']
+                'tags' => $_POST['tags'],
+                'detail_content_id' => $_POST['detail_content_id'] ?? '',
+                'detail_content_en' => ($_POST['detail_content_en'] ?? '') ?: Translator::translate($_POST['detail_content_id'] ?? ''),
+                'targets_id' => $_POST['targets_id'] ?? '',
+                'targets_en' => ($_POST['targets_en'] ?? '') ?: Translator::translate($_POST['targets_id'] ?? ''),
+                'metrics_id' => $_POST['metrics_id'] ?? '',
+                'metrics_en' => ($_POST['metrics_en'] ?? '') ?: Translator::translate($_POST['metrics_id'] ?? ''),
+                'approach_id' => $_POST['approach_id'] ?? '',
+                'approach_en' => ($_POST['approach_en'] ?? '') ?: Translator::translate($_POST['approach_id'] ?? ''),
+                'highlights' => json_encode($highlights),
+                'project_logos' => json_encode($project_logos)
             ];
 
             if ($this->portfolioModel->update($data)) {

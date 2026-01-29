@@ -5,7 +5,7 @@
         </a>
         <div>
             <span class="admin-header-badge d-inline-block">PORTFOLIO / TAMBAH BARU</span>
-            <h1 class="fw-bold mb-0">Tambah Proyek Baru</h1>
+            <h1 class="fw-bold mb-0">Tambah Proyek Baru [VERSI BARU]</h1>
         </div>
     </div>
 </div>
@@ -14,62 +14,172 @@
     <div class="row g-4">
         <!-- Main Form Column -->
         <div class="col-lg-8">
+            <!-- Main Content: Indonesian -->
             <div class="card border-0 shadow-sm mb-4">
-                <div class="card-header bg-white border-bottom p-4">
-                    <h5 class="fw-bold mb-0">Informasi Proyek</h5>
+                <div class="card-header bg-white border-bottom p-4 d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold mb-0 text-primary"><i class="fas fa-file-alt me-2"></i>Konten Proyek (Bahasa Indonesia)</h5>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="toggleEnglish">
+                        <label class="form-check-label small fw-bold" for="toggleEnglish">Edit Versi English</label>
+                    </div>
                 </div>
                 <div class="card-body p-4">
+                    <!-- Basic Info -->
                     <div class="mb-4">
-                        <label class="form-label small fw-bold text-dark">Judul Proyek</label>
-                        <input type="text" name="title_id" class="form-control" placeholder="Contoh: Pendampingan Desa Bengkel" required>
-                        <input type="hidden" name="title_en" value="">
+                        <label class="form-label small fw-bold">Judul Proyek</label>
+                        <input type="text" name="title_id" class="form-control form-control-lg border-primary-soft" placeholder="Contoh: Pendampingan Desa Bengkel" required>
                     </div>
+                    <div class="mb-4 english-field" style="display: none;">
+                        <label class="form-label small fw-bold text-muted">Project Title (English)</label>
+                        <input type="text" name="title_en" class="form-control" placeholder="Leave empty for auto-translation">
+                    </div>
+
                     <div class="mb-4">
-                        <label class="form-label small fw-bold text-dark">Sub-judul / Nama Klien</label>
+                        <label class="form-label small fw-bold">Sub-judul / Nama Klien</label>
                         <input type="text" name="subtitle_id" class="form-control" placeholder="Contoh: Pemerintah Desa Bengkel, Tabanan">
-                        <input type="hidden" name="subtitle_en" value="">
                     </div>
-                    <div class="mb-0">
-                        <label class="form-label small fw-bold text-dark">Deskripsi Proyek</label>
-                        <textarea name="description_id" class="form-control" rows="6" placeholder="Jelaskan detail proyek, tujuan, dan hasil..."></textarea>
-                        <input type="hidden" name="description_en" value="">
+                    <div class="mb-4 english-field" style="display: none;">
+                        <label class="form-label small fw-bold text-muted">Subtitle / Client Name (English)</label>
+                        <input type="text" name="subtitle_en" class="form-control" placeholder="Leave empty for auto-translation">
                     </div>
-                    <div class="mt-3">
-                        <small class="text-muted"><i class="fas fa-magic me-1"></i> Versi Bahasa Inggris akan dibuat otomatis.</small>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold">Deskripsi Ringkas (Card Link)</label>
+                        <textarea name="description_id" class="form-control" rows="3" placeholder="Deskripsi pendek yang muncul di card portfolio..."></textarea>
+                    </div>
+                    <div class="mb-4 english-field" style="display: none;">
+                        <label class="form-label small fw-bold text-muted">Short Description (English)</label>
+                        <textarea name="description_en" class="form-control" rows="3" placeholder="Leave empty for auto-translation"></textarea>
+                    </div>
+
+                    <hr class="my-4 border-dashed">
+
+                    <!-- NEW: Media Section moved here -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Icon FontAwesome</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text bg-light border-end-0"><i class="fas fa-icons text-muted"></i></span>
+                                <input type="text" name="icon_name" class="form-control border-start-0" placeholder="fas fa-recycle" id="iconInput">
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <div id="iconPreview" class="bg-light rounded p-2 text-center" style="width: 40px;"><i class="fas fa-question text-muted"></i></div>
+                                <small class="text-muted extra-small">Cari di <a href="https://fontawesome.com/v5/search?m=free" target="_blank">FontAwesome 5</a></small>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label small fw-bold">Gambar Cover (Utama)</label>
+                            <input type="file" name="cover_image" class="form-control form-control-sm">
+                            <small class="text-muted extra-small d-block mt-1">Muncul di listing card dan hero detail page.</small>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold">Logo Proyek Terkait (Partner/Klien)</label>
+                        <div id="project-logos-container">
+                            <div class="project-logo-row mb-2">
+                                <div class="input-group">
+                                    <input type="file" name="project_logos[]" class="form-control form-control-sm">
+                                    <button type="button" class="btn btn-sm btn-outline-danger remove-logo"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary mt-1" id="add-logo"><i class="fas fa-plus me-1"></i> Tambah Logo</button>
+                    </div>
+
+                    <hr class="my-4 border-dashed">
+
+                    <!-- NEW: Metrics Section moved here -->
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-dark mb-3"><i class="fas fa-chart-line me-1 text-primary"></i> INDIKATOR DAMPAK (Metrics)</label>
+                        <div id="metrics-container">
+                            <div class="row g-2 mb-2 metric-row">
+                                <div class="col-4">
+                                    <input type="text" name="metrics_vals[]" class="form-control form-control-sm" placeholder="Nilai (e.g. 90%)">
+                                </div>
+                                <div class="col-7">
+                                    <input type="text" name="metrics_labels[]" class="form-control form-control-sm" placeholder="Label (e.g. Reduksi Sampah)">
+                                </div>
+                                <div class="col-1 text-end">
+                                    <button type="button" class="btn btn-sm btn-link text-danger remove-metric p-0"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="add-metric"><i class="fas fa-plus me-1"></i> Tambah Metrik</button>
+                        <input type="hidden" name="metrics_id" id="metrics_json">
+                        <input type="hidden" name="metrics_en" id="metrics_en_json">
                     </div>
                 </div>
             </div>
 
-            <!-- Media & Icons -->
-            <div class="card border-0 shadow-sm">
+            <!-- Card 2: Detailed Content -->
+            <div class="card border-0 shadow-sm mb-4">
                 <div class="card-header bg-white border-bottom p-4">
-                    <h5 class="fw-bold mb-0">Visual & Identitas</h5>
+                    <h5 class="fw-bold mb-0 text-primary"><i class="fas fa-align-left me-2"></i>Detail & Dokumentasi Proyek</h5>
                 </div>
                 <div class="card-body p-4">
-                    <div class="row g-4">
-                        <div class="col-md-6">
-                            <label class="form-label small fw-bold text-dark text-dark">Pilih Icon Representatif</label>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text bg-light border-end-0"><i class="fas fa-icons text-muted"></i></span>
-                                <input type="text" name="icon_name" class="form-control border-start-0 ps-0" placeholder="Contoh: fas fa-leaf" id="iconInput">
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="stat-icon-box stat-icon-blue" id="iconPreview" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-question text-muted"></i>
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-dark"><i class="fas fa-info-circle me-1 text-primary"></i> 1. TENTANG PROYEK (Isi Detail)</label>
+                        <textarea name="detail_content_id" id="editor_detail" class="form-control" rows="10" placeholder="Tuliskan detail panjang mengenai proyek di sini..."></textarea>
+                    </div>
+                    <div class="mb-4 english-field" style="display: none;">
+                        <label class="form-label small fw-bold text-muted">About Project (English)</label>
+                        <textarea name="detail_content_en" class="form-control" rows="8" placeholder="Leave empty for auto-translation"></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-dark"><i class="fas fa-bullseye me-1 text-primary"></i> 2. TARGET & SASARAN</label>
+                        <textarea name="targets_id" class="form-control" rows="4" placeholder="Contoh:&#10;Peningkatan kapasitas 100 warga&#10;Reduksi sampah 50%"></textarea>
+                        <small class="text-muted extra-small">Gunakan baris baru untuk setiap poin (akan menjadi list bullet).</small>
+                    </div>
+                    <div class="mb-4 english-field" style="display: none;">
+                        <label class="form-label small fw-bold text-muted">Project Targets (English)</label>
+                        <textarea name="targets_en" class="form-control" rows="4" placeholder="Leave empty for auto-translation"></textarea>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label small fw-bold text-dark mb-3"><i class="fas fa-walking me-1 text-primary"></i> 3. PENDEKATAN KERJA (Approach)</label>
+                        <div id="approach-container">
+                            <div class="p-3 bg-light rounded-3 mb-2 approach-row">
+                                <div class="mb-2">
+                                    <input type="text" name="approach_titles[]" class="form-control form-control-sm fw-bold border-0 bg-transparent" placeholder="Judul Tahapan/Pendekatan">
                                 </div>
-                                <small class="text-muted extra-small">Gunakan class FontAwesome 5 (misal: <code>fas fa-recycle</code>)</small>
+                                <div class="mb-0">
+                                    <textarea name="approach_descs[]" class="form-control form-control-sm border-0 bg-transparent" rows="2" placeholder="Jelaskan apa yang dilakukan..."></textarea>
+                                </div>
+                                <div class="text-end">
+                                    <button type="button" class="btn btn-sm btn-link text-danger remove-approach p-0 text-decoration-none extra-small">Hapus</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label small fw-bold text-dark">Atau Unggah Gambar Cover</label>
-                            <div class="p-3 border rounded-3 text-center bg-light border-dashed">
-                                <input type="file" name="cover_image" class="form-control form-control-sm mb-2">
-                                <small class="text-muted extra-small d-block">Ukuran ideal 800x600px, Maks 2MB.</small>
+                        <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="add-approach"><i class="fas fa-plus me-1"></i> Tambah Tahapan</button>
+                        <input type="hidden" name="approach_id" id="approach_json">
+                        <input type="hidden" name="approach_en" id="approach_en_json">
+                    </div>
+
+                    <div class="mb-0">
+                        <label class="form-label small fw-bold text-dark mb-3"><i class="fas fa-images me-1 text-primary"></i> 4. SOROTAN DOKUMENTASI (Highlights)</label>
+                        <div id="highlights-container">
+                                <div class="p-3 bg-light rounded-3 mb-2 highlight-row">
+                                <div class="row g-2 align-items-center">
+                                    <div class="col-md-5">
+                                        <input type="file" name="highlight_imgs[]" class="form-control form-control-sm">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" name="highlight_captions[]" class="form-control form-control-sm" placeholder="Keterangan foto...">
+                                    </div>
+                                    <div class="col-md-1 text-end">
+                                        <button type="button" class="btn btn-sm btn-link text-danger remove-highlight p-0"><i class="fas fa-trash"></i></button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="add-highlight"><i class="fas fa-plus me-1"></i> Tambah Foto</button>
+                        <input type="hidden" name="highlights" id="highlights_json" value="[]">
                     </div>
                 </div>
             </div>
+
         </div>
 
         <!-- Sidebar Options Column -->
@@ -209,16 +319,125 @@
 </form>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const iconInput = document.getElementById('iconInput');
-    const iconPreview = document.getElementById('iconPreview');
+    document.addEventListener('DOMContentLoaded', function() {
+        // CKEditor Initialization
+        ClassicEditor
+            .create(document.querySelector('#editor_detail'), {
+                toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'undo', 'redo']
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
 
-    iconInput.addEventListener('input', function() {
-        if (this.value.trim() !== '') {
-            iconPreview.innerHTML = '<i class="' + this.value + '"></i>';
-        } else {
-            iconPreview.innerHTML = '<i class="fas fa-question text-muted"></i>';
-        }
+    // Toggle English Fields
+    const toggleEnglish = document.getElementById('toggleEnglish');
+    const englishFields = document.querySelectorAll('.english-field');
+    
+    toggleEnglish.addEventListener('change', function() {
+        englishFields.forEach(el => {
+            el.style.display = this.checked ? 'block' : 'none';
+        });
+    });
+
+    // Dynamic Lists Handler
+    const setupDynamicList = (containerId, addButtonId, rowClass, removeBtnClass, template) => {
+        const container = document.getElementById(containerId);
+        const addButton = document.getElementById(addButtonId);
+
+        addButton.addEventListener('click', () => {
+            const div = document.createElement('div');
+            div.innerHTML = template.trim();
+            container.appendChild(div.firstChild);
+        });
+
+        container.addEventListener('click', (e) => {
+            if (e.target.classList.contains(removeBtnClass) || e.target.closest('.' + removeBtnClass)) {
+                const row = e.target.closest('.' + rowClass);
+                if (row) row.remove();
+            }
+        });
+    };
+
+    // Metric Template
+    const metricTemplate = `
+        <div class="row g-2 mb-2 metric-row">
+            <div class="col-4">
+                <input type="text" name="metrics_vals[]" class="form-control form-control-sm" placeholder="Nil value">
+            </div>
+            <div class="col-7">
+                <input type="text" name="metrics_labels[]" class="form-control form-control-sm" placeholder="Label">
+            </div>
+            <div class="col-1 text-end">
+                <button type="button" class="btn btn-sm btn-link text-danger remove-metric p-0"><i class="fas fa-times"></i></button>
+            </div>
+        </div>`;
+    setupDynamicList('metrics-container', 'add-metric', 'metric-row', 'remove-metric', metricTemplate);
+
+    // Approach Template
+    const approachTemplate = `
+        <div class="p-3 bg-light rounded-3 mb-2 approach-row">
+            <div class="mb-2">
+                <input type="text" name="approach_titles[]" class="form-control form-control-sm fw-bold border-0 bg-transparent" placeholder="Judul Tahapan/Pendekatan">
+            </div>
+            <div class="mb-0">
+                <textarea name="approach_descs[]" class="form-control form-control-sm border-0 bg-transparent" rows="2" placeholder="Jelaskan apa yang dilakukan..."></textarea>
+            </div>
+            <div class="text-end">
+                <button type="button" class="btn btn-sm btn-link text-danger remove-approach p-0 text-decoration-none extra-small">Hapus</button>
+            </div>
+        </div>`;
+    setupDynamicList('approach-container', 'add-approach', 'approach-row', 'remove-approach', approachTemplate);
+
+    // Highlight Template
+    const highlightTemplate = `
+        <div class="p-3 bg-light rounded-3 mb-2 highlight-row">
+            <div class="row g-2 align-items-center">
+                <div class="col-md-5">
+                    <input type="file" name="highlight_imgs[]" class="form-control form-control-sm">
+                </div>
+                <div class="col-md-6">
+                    <input type="text" name="highlight_captions[]" class="form-control form-control-sm" placeholder="Keterangan foto...">
+                </div>
+                <div class="col-md-1 text-end">
+                    <button type="button" class="btn btn-sm btn-link text-danger remove-highlight p-0"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+        </div>`;
+    setupDynamicList('highlights-container', 'add-highlight', 'highlight-row', 'remove-highlight', highlightTemplate);
+
+    // Project Logo Template
+    const logoTemplate = `
+        <div class="project-logo-row mb-2">
+            <div class="input-group">
+                <input type="file" name="project_logos[]" class="form-control form-control-sm">
+                <button type="button" class="btn btn-sm btn-outline-danger remove-logo"><i class="fas fa-times"></i></button>
+            </div>
+        </div>`;
+    setupDynamicList('project-logos-container', 'add-logo', 'project-logo-row', 'remove-logo', logoTemplate);
+
+    // Form Submission: Package JSON
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(e) {
+        // Build Metrics JSON
+        const metrics = [];
+        document.querySelectorAll('.metric-row').forEach(row => {
+            const val = row.querySelector('input[name="metrics_vals[]"]').value;
+            const label = row.querySelector('input[name="metrics_labels[]"]').value;
+            if (val || label) metrics.push({ val, label });
+        });
+        document.getElementById('metrics_json').value = JSON.stringify(metrics);
+
+        // Build Approach JSON
+        const approaches = [];
+        document.querySelectorAll('.approach-row').forEach(row => {
+            const title = row.querySelector('input[name="approach_titles[]"]').value;
+            const desc = row.querySelector('textarea[name="approach_descs[]"]').value;
+            if (title || desc) approaches.push({ title, desc });
+        });
+        document.getElementById('approach_json').value = JSON.stringify(approaches);
     });
 
     // Conditional Category Display
@@ -238,21 +457,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         checkbox.addEventListener('change', updateVisibility);
         updateVisibility(); // Initial state
-    });
-
-    // Simple Tab synchronization (Auto switch to tab if label is focused)
-    document.querySelectorAll('.form-control').forEach(input => {
-        input.addEventListener('focus', function() {
-            const pane = this.closest('.tab-pane');
-            if (pane) {
-                const id = pane.id;
-                const tabTrigger = document.querySelector(`[data-bs-target="#${id}"]`);
-                if (tabTrigger && !tabTrigger.classList.contains('active')) {
-                    const tab = new bootstrap.Tab(tabTrigger);
-                    tab.show();
-                }
-            }
-        });
     });
 });
 </script>

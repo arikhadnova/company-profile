@@ -123,7 +123,7 @@
                                             <p class="text-muted small mb-0 fs-13" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
                                         </div>
                                         <div class="card-footer bg-transparent border-0 px-4 pb-4">
-                                            <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="text-primary fw-bold text-decoration-none small" data-i18n="partnership.see_detail">Selengkapnya <i class="fas fa-chevron-right ms-1"></i></a>
+                                            <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="text-primary fw-bold text-decoration-none small" data-i18n="partnership.see_detail">Selengkapnya <i class="fas fa-chevron-right ms-1"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -187,7 +187,7 @@
                                             <p class="text-muted small mb-0 fs-13" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
                                         </div>
                                         <div class="card-footer bg-transparent border-0 px-4 pb-4">
-                                            <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="text-primary fw-bold text-decoration-none small" data-i18n="partnership.see_detail">Selengkapnya <i class="fas fa-chevron-right ms-1"></i></a>
+                                            <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="text-primary fw-bold text-decoration-none small" data-i18n="partnership.see_detail">Selengkapnya <i class="fas fa-chevron-right ms-1"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -251,7 +251,7 @@
                                             <p class="text-muted small mb-0 fs-13" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
                                         </div>
                                         <div class="card-footer bg-transparent border-0 px-4 pb-4">
-                                            <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="text-primary fw-bold text-decoration-none small" data-i18n="partnership.see_detail">Selengkapnya <i class="fas fa-chevron-right ms-1"></i></a>
+                                            <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="text-primary fw-bold text-decoration-none small" data-i18n="partnership.see_detail">Selengkapnya <i class="fas fa-chevron-right ms-1"></i></a>
                                         </div>
                                     </div>
                                 </div>

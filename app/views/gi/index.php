@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="card-body p-4 d-flex flex-column">
                                             <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
-                                            <div class="mt-auto text-end"><a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4" data-i18n="gi.btn_more">Selengkapnya</a></div>
+                                            <div class="mt-auto text-end"><a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4" data-i18n="gi.btn_more">Selengkapnya</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <div class="card-body p-4 d-flex flex-column">
                                             <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
-                                            <div class="mt-auto text-end"><a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a></div>
+                                            <div class="mt-auto text-end"><a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a></div>
                                         </div>
                                     </div>
                                 </div>
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
-                                                <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
+                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
                                             </div>
                                         </div>
                                     </div>
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
-                                                <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
+                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
                                             </div>
                                         </div>
                                     </div>
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
-                                                <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
+                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
                                             </div>
                                         </div>
                                     </div>
@@ -484,7 +484,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
-                                                <a href="<?= BASE_URL ?>gi/portfolio/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
+                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
                                             </div>
                                         </div>
                                     </div>

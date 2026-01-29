@@ -53,6 +53,78 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                 <?php endif; ?>
             </div>
         </div>
+
+        <!-- Toggle Button for More Data -->
+        <div class="text-center mt-5">
+            <button class="btn btn-outline-gi-orange rounded-pill px-4 shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#moreImpactsGI" id="impactToggleButtonGI">
+                LIHAT DATA LENGKAP
+            </button>
+        </div>
+
+        <!-- More Impacts (Collapse) -->
+        <div class="collapse mt-5 mb-5" id="moreImpactsGI">
+            <div class="row g-4 justify-content-center">
+                <!-- Mitra/Partner -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-value">1</div>
+                        <div class="metric-unit">Mitra</div>
+                        <div class="metric-label">Mitra/Partner Terjalin</div>
+                        <div class="metric-note">Kolaborasi strategis dengan mitra seperti Banyuwangi Hijau untuk program pengelolaan sampah terpadu.</div>
+                    </div>
+                </div>
+
+                <!-- Kegiatan Pelatihan -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-value">2</div>
+                        <div class="metric-unit">Kegiatan</div>
+                        <div class="metric-label">Pelatihan Terlaksana</div>
+                        <div class="metric-note">Pelatihan Model Bisnis BUMDes & Workshop Pengembangan Bisnis UPTD PPK-BLUD.</div>
+                    </div>
+                </div>
+
+                <!-- Penerima Manfaat -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-value">31</div>
+                        <div class="metric-unit">Orang</div>
+                        <div class="metric-label">Penerima Manfaat</div>
+                        <div class="metric-note">Partisipan dari desa, TPS 3R, BWH, dan Dinas LH yang mengikuti training/workshop.</div>
+                    </div>
+                </div>
+
+                <!-- Media Edukasi -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-value">32</div>
+                        <div class="metric-unit">Sarana</div>
+                        <div class="metric-label">Media Edukasi</div>
+                        <div class="metric-note">Terdiri dari buku saku (modul), slide materi, dan lembar kerja assessment yang didistribusikan.</div>
+                    </div>
+                </div>
+
+                <!-- Tumblr -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-value">29</div>
+                        <div class="metric-unit">Unit</div>
+                        <div class="metric-label">Tumblr Terdistribusi</div>
+                        <div class="metric-note">Kampanye penggunaan botol guna ulang untuk mengurangi plastik sekali pakai selama kegiatan pelatihan.</div>
+                    </div>
+                </div>
+
+                <!-- Public Engagement -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="metric-card">
+                        <div class="metric-value">2.324</div>
+                        <div class="metric-unit">Viewers</div>
+                        <div class="metric-label">Public Engagement</div>
+                        <div class="metric-note">Total penonton dan individu yang teredukasi melalui publikasi acara training di Instagram & Youtube.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -804,3 +876,20 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('impactToggleButtonGI');
+    const collapseElement = document.getElementById('moreImpactsGI');
+
+    if (toggleButton && collapseElement) {
+        collapseElement.addEventListener('show.bs.collapse', function () {
+            toggleButton.textContent = 'LIHAT LEBIH SEDIKIT';
+        });
+
+        collapseElement.addEventListener('hide.bs.collapse', function () {
+            toggleButton.textContent = 'LIHAT DATA LENGKAP';
+        });
+    }
+});
+</script>

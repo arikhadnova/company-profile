@@ -121,6 +121,69 @@
     }
 }
 
+/* --- Metric Cards (GI Style) --- */
+.metric-card {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    height: 100%;
+    border: 1px solid #f1f5f9;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border-color: #FF8F56;
+}
+
+.metric-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #FF8F56;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.metric-unit {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.metric-label {
+    font-size: 0.95rem;
+    color: var(--gi-dark);
+    font-weight: 700;
+    line-height: 1.4;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.metric-note {
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.btn-outline-gi-orange {
+    color: #FF8F56;
+    border: 2px solid #FF8F56;
+}
+
+.btn-outline-gi-orange:hover {
+    background-color: #FF8F56;
+    color: white;
+}
+
 /* --- ABOUT SECTION --- */
 .section-gap {
     padding-top: 6rem;

@@ -41,22 +41,117 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
     </div>
 
     <div class="row g-4">
-      <?php if (!empty($data['impacts'])) : ?>
-        <?php foreach ($data['impacts'] as $imp) : ?>
-          <div class="col-md-3 col-6">
-            <div class="impact-card">
-              <div class="impact-number counter text-success" data-target="<?= $imp->value; ?>"><?= $imp->value; ?></div>
-              <small class="text-uppercase tracking-wider" 
-                     data-lang-id="<?= $imp->label_id; ?>" 
-                     data-lang-en="<?= $imp->label_en; ?>">
-                <?= $imp->label_id; ?>
-              </small>
-            </div>
+      <!-- Highlight 1: Orang Teredukasi -->
+      <div class="col-lg-3 col-md-6">
+        <div class="metric-card">
+          <div class="metric-value">300</div>
+          <div class="metric-unit">Orang Teredukasi</div>
+          <div class="metric-label">Edukasi Masyarakat</div>
+          <div class="metric-note">Teredukasi mengenai proses pemilahan sampah serta pembuatan kompos metode menggunakan wadah Compost Bag dan eco-enzym.</div>
+        </div>
+      </div>
+
+      <!-- Highlight 2: Bibit Toga -->
+      <div class="col-lg-3 col-md-6">
+        <div class="metric-card">
+          <div class="metric-value">120</div>
+          <div class="metric-unit">Buah</div>
+          <div class="metric-label">Bibit Toga</div>
+          <div class="metric-note">Penanaman bibit membuka jalan bagi masyarakat untuk berkontribusi langsung pada penghijauan dan ketahanan pangan lokal.</div>
+        </div>
+      </div>
+
+      <!-- Highlight 3: Tumblr GO Sirk -->
+      <div class="col-lg-3 col-md-6">
+        <div class="metric-card">
+          <div class="metric-value">106</div>
+          <div class="metric-unit">Unit</div>
+          <div class="metric-label">Tumblr GO Sirk</div>
+          <div class="metric-note">Masyarakat kini beralih ke penggunaan tumblr, mengurangi penggunaan botol plastik sekali pakai setiap bulannya.</div>
+        </div>
+      </div>
+
+      <!-- Highlight 4: Tas Guna Ulang -->
+      <div class="col-lg-3 col-md-6">
+        <div class="metric-card">
+          <div class="metric-value">30</div>
+          <div class="metric-unit">Unit</div>
+          <div class="metric-label">Tas Guna Ulang "Ayo Ngompos"</div>
+          <div class="metric-note">Mendorong masyarakat beralih ke kebiasaan belanja yang lebih ramah lingkungan dengan mengurangi penggunaan kantong belanja plastik.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- More Impacts (Collapse) -->
+    <div class="collapse mt-4" id="moreImpacts">
+      <div class="row g-4 justify-content-center">
+        <!-- Kompos Unit -->
+        <div class="col-lg-3 col-md-6">
+          <div class="metric-card">
+            <div class="metric-value">107</div>
+            <div class="metric-unit">Unit</div>
+            <div class="metric-label">Pupuk Kompos (250gr)</div>
+            <div class="metric-note">Hasil olahan sampah organik kantor GO Sirk. Prototipe hasil praktik pengolahan sampah organik di rumah masing-masing.</div>
           </div>
-        <?php endforeach; ?>
-      <?php else : ?>
-        <div class="col-12 text-center"><p class="text-muted">Data dampak belum tersedia.</p></div>
-      <?php endif; ?>
+        </div>
+
+        <!-- Kompos KG -->
+        <div class="col-lg-3 col-md-6">
+          <div class="metric-card">
+            <div class="metric-value">26.75</div>
+            <div class="metric-unit">Kg</div>
+            <div class="metric-label">Kompos Komunitas</div>
+            <div class="metric-note">Mendorong masyarakat untuk menerapkan sirkularitas dari rumah sendiri melalui pengolahan sampah organik.</div>
+          </div>
+        </div>
+
+        <!-- Timba Biokomposter -->
+        <div class="col-lg-3 col-md-6">
+          <div class="metric-card">
+            <div class="metric-value">7</div>
+            <div class="metric-unit">Unit</div>
+            <div class="metric-label">Timba Biokomposter</div>
+            <div class="metric-note">Mandiri mengolah sampah organik menggunakan timba biokomposter, mengubah limbah dapur menjadi pupuk alami.</div>
+          </div>
+        </div>
+
+        <!-- Mitra Pemerintah Desa -->
+        <div class="col-lg-3 col-md-6">
+          <div class="metric-card">
+            <div class="metric-value">3</div>
+            <div class="metric-unit">Instansi</div>
+            <div class="metric-label">Mitra Pemerintah Desa</div>
+            <div class="metric-note">Kolaborasi strategis dengan perangkat desa untuk mewujudkan tata kelola sampah yang legal dan terorganisir.</div>
+          </div>
+        </div>
+
+        <!-- Mitra Universitas -->
+        <div class="col-lg-3 col-md-6">
+          <div class="metric-card">
+            <div class="metric-value">3</div>
+            <div class="metric-unit">Institusi</div>
+            <div class="metric-label">Mitra Universitas</div>
+            <div class="metric-note">Kemitraan akademik dalam riset, inovasi, dan pengabdian masyarakat untuk solusi sirkularitas yang ilmiah.</div>
+          </div>
+        </div>
+
+        <!-- Komunitas Penerima Manfaat -->
+        <div class="col-lg-3 col-md-6">
+          <div class="metric-card">
+            <div class="metric-value">8</div>
+            <div class="metric-unit">Komunitas</div>
+            <div class="metric-label">Komunitas Penerima Manfaat</div>
+            <div class="metric-note">Kelompok masyarakat yang telah menerapkan praktik ekonomi sirkular melalui program pendampingan GGC.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toggle Button -->
+    <div class="text-center mt-5">
+      <button class="btn btn-outline-success rounded-pill px-5 py-3 fw-bold shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#moreImpacts" id="impactToggleButton">
+        LIHAT DATA LENGKAP
+      </button>
     </div>
   </div>
 </section>
@@ -257,3 +352,20 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
     </div>
   </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const impactToggle = document.getElementById('impactToggleButton');
+    const impactCollapse = document.getElementById('moreImpacts');
+    
+    if (impactToggle && impactCollapse) {
+        impactCollapse.addEventListener('show.bs.collapse', function () {
+            impactToggle.textContent = 'LIHAT LEBIH SEDIKIT';
+        });
+        
+        impactCollapse.addEventListener('hide.bs.collapse', function () {
+            impactToggle.textContent = 'LIHAT DATA LENGKAP';
+        });
+    }
+});
+</script>

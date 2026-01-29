@@ -27,26 +27,34 @@
   <div class="container">
     <h3 class="text-center fw-bold mb-5" data-i18n="home.impact.title">KAMI MULAI MENCIPTAKAN DAMPAK</h3>
     <div class="row g-4 justify-content-center">
-      <?php if (!empty($impacts)) : ?>
-        <?php foreach ($impacts as $imp) : ?>
-          <div class="col-md-3 col-6">
-            <div class="stat-box">
-              <h1 class="fw-bold text-primary counter" data-target="<?= (int)preg_replace('/[^0-9]/', '', $imp->value); ?>">0</h1>
-              <p data-lang-id="<?= $imp->label_id; ?>" data-lang-en="<?= $imp->label_en; ?>">
-                <?= $imp->label_id; ?>
-              </p>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      <?php else : ?>
-        <!-- Fallback if database is empty -->
-        <div class="col-md-3">
-          <div class="stat-box">
-            <h1 class="fw-bold text-primary">1</h1>
-            <p>Waste Masterplan</p>
-          </div>
+      <!-- Metric 1: Waste -->
+      <div class="col-md-3 col-6">
+        <div class="stat-box">
+          <h1 class="fw-bold text-primary counter" data-target="513" data-i18n="home.impact.m1_val">513,03</h1>
+          <p data-i18n="home.impact.m1_label">Ton Sampah Terkelola</p>
         </div>
-      <?php endif; ?>
+      </div>
+      <!-- Metric 2: Households -->
+      <div class="col-md-3 col-6">
+        <div class="stat-box">
+          <h1 class="fw-bold text-primary counter" data-target="6056" data-i18n="home.impact.m2_val">6.056</h1>
+          <p data-i18n="home.impact.m2_label">Rumah Tangga Terlibat</p>
+        </div>
+      </div>
+      <!-- Metric 3: Jobs -->
+      <div class="col-md-3 col-6">
+        <div class="stat-box">
+          <h1 class="fw-bold text-primary counter" data-target="113" data-i18n="home.impact.m3_val">113</h1>
+          <p data-i18n="home.impact.m3_label">Lapangan Kerja Hijau</p>
+        </div>
+      </div>
+      <!-- Metric 4: Recycling -->
+      <div class="col-md-3 col-6">
+        <div class="stat-box">
+          <h1 class="fw-bold text-primary counter" data-target="26" data-i18n="home.impact.m4_val">26,76%</h1>
+          <p data-i18n="home.impact.m4_label">Tingkat Daur Ulang</p>
+        </div>
+      </div>
     </div>
     
     <div class="text-center mt-5">

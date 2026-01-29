@@ -499,6 +499,135 @@
         padding: 20px;
         color: white;
     }
+
+    /* IMPACT STYLES */
+    .impact-tabs .nav-link {
+        border: none;
+        color: var(--text-muted);
+        font-weight: 600;
+        padding: 1rem 1.5rem;
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+    }
+    .impact-tabs .nav-link.active {
+        background: transparent;
+        color: var(--gosirk-orange);
+        border-bottom-color: var(--gosirk-orange);
+    }
+    .impact-tabs .nav-link:hover:not(.active) {
+        color: var(--gosirk-orange);
+        opacity: 0.7;
+    }
+    .wp-header {
+        background: var(--orange-light);
+        border-left: 4px solid var(--gosirk-orange);
+        padding: 1.5rem;
+        border-radius: 0 12px 12px 0;
+        margin-bottom: 2rem;
+    }
+    .impact-table {
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+    .impact-table thead th {
+        background: var(--gi-dark);
+        color: white;
+        border: none;
+        padding: 1.2rem;
+        font-weight: 600;
+    }
+    .impact-table tbody td {
+        padding: 1.2rem;
+        vertical-align: middle;
+        border-color: #f1f5f9;
+    }
+    .impact-val-box {
+        background: var(--orange-light);
+        color: var(--gosirk-orange);
+        font-weight: 800;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        display: inline-block;
+        min-width: 80px;
+        text-align: center;
+    }
+
+    .metric-card {
+        background: white;
+        border-radius: 20px;
+        padding: 1.5rem;
+        height: 100%;
+        border: 1px solid #f1f5f9;
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+    .metric-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        border-color: var(--gosirk-orange);
+    }
+    .metric-value {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--gosirk-orange);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+    .metric-unit {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1rem;
+    }
+    .metric-label {
+        font-size: 0.9rem;
+        color: var(--gi-dark);
+        font-weight: 700;
+        line-height: 1.4;
+        margin-top: 0.5rem;
+    }
+    .metric-note {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px dashed #eee;
+        font-style: italic;
+    }
+    .accordion-gi .accordion-button::after {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f26522'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    }
+    .text-orange {
+        color: var(--gosirk-orange) !important;
+    }
+
+    @media (max-width: 991px) {
+        .impact-tabs {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 0.5rem;
+        }
+        .impact-tabs::-webkit-scrollbar {
+            height: 4px;
+        }
+        .impact-tabs::-webkit-scrollbar-thumb {
+            background: var(--orange-light);
+            border-radius: 10px;
+        }
+    }
 </style>
 
 <div class="partner-page">
@@ -811,7 +940,7 @@
                 </div>
                 <!-- Village 3: Wongaya Gede -->
                 <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden" style="border-color: #f0f0f0 !important; border-radius: 20px !important; transition: all 0.3s ease;">
+                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden border-top-orange-3" style="border-radius: 20px !important; transition: all 0.3s ease;">
                         <div class="position-relative overflow-hidden">
                             <img src="<?= ASSETS_URL ?>img/IMG_8097.jpg" class="card-img-top" alt="Desa Wongaya Gede" style="height: 280px; object-fit: cover;">
                             <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
@@ -864,71 +993,116 @@
 
 
     <!-- IMPACT -->
-    <section class="py-5">
+    <section class="py-5 bg-white overflow-hidden">
         <div class="container">
             <div class="text-center mb-5">
-                <span class="section-subheader" data-i18n="partner.impact_title">Impact</span>
-                <h4 class="fw-bold mb-2" data-i18n="gi.detail.impact">Dampak</h4>
+                <span class="section-subheader" data-i18n="partner.impact.title">Impact Metrics CLOCC</span>
+                <h4 class="fw-bold mb-2" data-i18n="partner.impact.subtitle">Wrap-up of Program (Per September 2025)</h4>
                 <div class="mx-auto mt-2 rounded-pill bg-orange opacity-25" style="width: 50px; height: 3px;"></div>
             </div>
-            <div class="row g-4 justify-content-center">
-                <!-- Initial items (Always visible) -->
-                <div class="col-md-4 col-6">
-                    <div class="impact-grid-item">
-                        <span class="impact-value-blue">90%</span>
-                        <span class="impact-label-gray" data-i18n="partner.impact_item1">waste reduced through recycling & composting</span>
-                    </div>
-                </div>
-                <div class="col-md-4 col-6">
-                    <div class="impact-grid-item">
-                        <span class="impact-value-blue">120+</span>
-                        <span class="impact-label-gray" data-i18n="partner.impact_item2">Established partnerships</span>
-                    </div>
-                </div>
-                <div class="col-md-4 col-6">
-                    <div class="impact-grid-item">
-                        <span class="impact-value-blue">1000+</span>
-                        <span class="impact-label-gray" data-i18n="partner.impact_item3">tons of waste collected and treated</span>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Expandable items -->
-            <div class="collapse mt-4" id="moreImpacts">
-                <div class="row g-4 justify-content-center">
-                    <div class="col-md-4 col-6">
-                        <div class="impact-grid-item">
-                            <span class="impact-value-blue">5000+</span>
-                            <span class="impact-label-gray">Community members reached</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="impact-grid-item">
-                            <span class="impact-value-blue">50+</span>
-                            <span class="impact-label-gray">Local Champions trained</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-6">
-                        <div class="impact-grid-item">
-                            <span class="impact-value-blue">15+</span>
-                            <span class="impact-label-gray">Village policies developed</span>
+            <!-- Accordion Impact -->
+            <div class="accordion accordion-gi" id="impactAccordion">
+                <?php
+                $impact_data = [
+                    1 => [
+                        ['Trainings/Workshops completed', '15', 'Trainings/Workshop'],
+                        ['Individuals trained (feminine/masculine)', '299', 'Individuals'],
+                        ['Training/Workshop days', '14', 'Days'],
+                        ['Learning modules produced', '5', 'Modules']
+                    ],
+                    2 => [
+                        ['Trainings/Workshops completed', '1', 'Workshop'],
+                        ['Individuals trained (feminine/masculine)', '32', 'Individuals'],
+                        ['Training/Workshop days', '1', 'Full-Day']
+                    ],
+                    3 => [
+                        ['Number of WMP politically approved', '6', 'Planning Document'],
+                        ['Number of plans developed on operational level', '3', 'Planning Document']
+                    ],
+                    4 => [
+                        ['Number of villages or towns with access to pre-disposal waste treatment', '3', 'Villages'],
+                        ['Number of MRFs partnerships', '3', 'Partnerships']
+                    ],
+                    5 => [
+                        ['Number of formal partnerships established', '7', 'Private Sector Partners'],
+                        ['Number of informal sector waste workers/recyclers benefited', '4', 'Informal Sectors']
+                    ],
+                    6 => [
+                        ['Village waste programs receive funding allocations from the 2025 village budget (APBDes)', '404.286.014', 'IDR'],
+                        ['Number of households that pay waste fee', '840', 'Household'],
+                        ['Jobs created in MRFs', '113', 'People'],
+                        ['Number of partnership (CLOCC\'s Network)', '> 25', 'Sub-Partnership']
+                    ],
+                    7 => [
+                        ['Number of households in pilot villages', '6.055', 'Household'],
+                        ['Population in pilot villages', '19.908', 'People'],
+                        ['Number of households served', '3.189', 'Household'],
+                        ['Waste collected total (leakage prevented)', '513,03', 'Tonnes'],
+                        ['Source separation rate of collected inorganic waste (Waste Bank)', '2.392', 'Household'],
+                        ['Waste recycled total (valorised)', '137,3', 'Tonnes'],
+                        ['Waste recycled in most recent year', '98,04', 'Tonnes'],
+                        ['Recycling rate % in most recent year', '26,76', '%'],
+                        ['Organic waste recycled total', '41,09', 'Tonnes'],
+                        ['Plastic waste recycled total', '55', 'Tonnes'],
+                        ['Paper & card recycled total', '27,01', 'Tonnes'],
+                        ['Metals recycled total', '3,3', 'Tonnes'],
+                        ['GHG emissions prevented in Pilot Villages total', '> 161', 'Tonnes CO2eq']
+                    ],
+                    8 => [
+                        ['Education/behavior change events', '23', 'Event'],
+                        ['Total number of individuals that have attended behavioural change events', '2.239', 'Participants'],
+                        ['Number of school students receiving training', '1.914', 'Students'],
+                        ['Hotspots cleared (clearing events)', '8', 'Hotspots'],
+                        ['Number of schools participating in educational video campaign on waste', '45', 'School'],
+                        ['Public engagement through CLOCC publications on social media', '169.215', 'Views']
+                    ],
+                    9 => [
+                        ['Number toolkits to supporting waste facility (TPS 3R/Waste Bank) optimization', '584', 'Supporting Tools'],
+                        ['Number toolkits to supporting behavior change developed', '> 476', 'Educational Media Materials'],
+                        ['Number of toolkits developed to support decision-making on waste management system', '36', 'Toolkits']
+                    ]
+                ];
+
+                foreach($impact_data as $wp_num => $items):
+                ?>
+                <div class="accordion-item shadow-sm mb-3 border-0 rounded-4 overflow-hidden">
+                    <h2 class="accordion-header" id="headingWP<?= $wp_num ?>">
+                        <button class="accordion-button <?= $wp_num != 1 ? 'collapsed' : '' ?> fw-bold py-4 px-4" 
+                                type="button" 
+                                data-bs-toggle="collapse" 
+                                data-bs-target="#collapseWP<?= $wp_num ?>" 
+                                aria-expanded="<?= $wp_num == 1 ? 'true' : 'false' ?>" 
+                                aria-controls="collapseWP<?= $wp_num ?>"
+                                style="background: white; color: var(--gi-dark);">
+                            <span data-i18n="partner.impact.wp<?= $wp_num ?>.title">WP <?= $wp_num ?></span>
+                        </button>
+                    </h2>
+                    <div id="collapseWP<?= $wp_num ?>" 
+                         class="accordion-collapse collapse <?= $wp_num == 1 ? 'show' : '' ?>" 
+                         aria-labelledby="headingWP<?= $wp_num ?>" 
+                         data-bs-parent="#impactAccordion">
+                        <div class="accordion-body bg-light-subtle p-4">
+                            <div class="row g-4 justify-content-center">
+                                <?php foreach($items as $idx => $item): ?>
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <div class="metric-card bg-white">
+                                        <div class="metric-value"><?= $item[1] ?></div>
+                                        <div class="metric-unit"><?= $item[2] ?></div>
+                                        <div class="metric-label" data-i18n="partner.impact.wp<?= $wp_num ?>.item<?= $idx+1 ?>">
+                                            <?= $item[0] ?>
+                                        </div>
+                                        <div class="metric-note" data-i18n="partner.impact.wp<?= $wp_num ?>.item<?= $idx+1 ?>_note">
+                                            <!-- Detailed note from translations.js -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Toggle Button -->
-            <div class="text-center mt-4">
-                <button class="btn btn-outline-orange rounded-pill px-4" 
-                        type="button" 
-                        data-bs-toggle="collapse" 
-                        data-bs-target="#moreImpacts" 
-                        aria-expanded="false" 
-                        aria-controls="moreImpacts"
-                        id="impactToggleButton"
-                        data-i18n="partner.view_more_impact">
-                    Lihat Lebih Banyak Dampak
-                </button>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>

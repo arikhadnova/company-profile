@@ -105,6 +105,11 @@ class Portfolio_model {
         return $this->db->execute();
     }
 
+    public function getByShowPartner() {
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE partner_type = "partner" OR show_partnership = 1 ORDER BY created_at DESC');
+        return $this->db->resultSet();
+    }
+
     public function delete($id) {
         $this->db->query('DELETE FROM ' . $this->table . ' WHERE id = :id');
         $this->db->bind(':id', $id);

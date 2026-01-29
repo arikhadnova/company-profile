@@ -314,7 +314,7 @@ const resources = {
                     "a3": "Kami terbuka untuk kolaborasi selama ada komitmen kuat untuk keberlanjutan lingkungan dan pemberdayaan masyarakat lokal."
                 },
                 "implementation": {
-                    "partners_title": "KONTRIBUSI MANAJEMEN DAN IMPLEMENTASI PROGRAM"
+                    "partners_title": "MITRA DAN JEJARING KAMI"
                 },
                 "target_item1": "Target 100% tingkat pengumpulan sampah (collection rate) di desa-desa percontohan secara bertahap.",
                 "target_item2": "Penurunan tingkat kebocoran sampah ke lingkungan (waste leakage rate).",
@@ -344,7 +344,8 @@ const resources = {
                 "dev_service4_title": "4. Pengembangan Sistem Pengelolaan Sampah",
                 "dev_service4_desc": "Penyusunan sistem operasional yang efisien secara teknis, serta berkelanjutan secara finansial dan lingkungan untuk mendorong ekonomi sirkular daerah.",
                 "dev_service5_title": "5. Pengembangan Solusi Tepat Guna & Bisnis Lokal",
-                "dev_service5_desc": "Perancangan solusi berbasis potensi lokal, termasuk skema unit usaha, kemitraan, dan pendekatan yang praktis serta mudah direplikasi."
+                "dev_service5_desc": "Perancangan solusi berbasis potensi lokal, termasuk skema unit usaha, kemitraan, dan pendekatan yang praktis serta mudah direplikasi.",
+                "portfolio_empty": "Data portofolio belum tersedia."
             },
             "konsultan": {
                 "badge": "Layanan Kami",
@@ -820,7 +821,7 @@ const resources = {
                     "a3": "We are open to collaboration as long as there is a strong commitment to environmental sustainability and local community empowerment."
                 },
                 "implementation": {
-                    "partners_title": "MANAGEMENT CONTRIBUTION AND PROGRAM IMPLEMENTATION"
+                    "partners_title": "OUR PARTNERS AND NETWORKS"
                 },
                 "target_item1": "Target 100% waste collection rate in pilot villages gradually.",
                 "target_item2": "Reduction in waste leakage rate to the environment.",
@@ -850,7 +851,8 @@ const resources = {
                 "dev_service4_title": "4. Waste Management Systems",
                 "dev_service4_desc": "Preparation of technically efficient operational systems, as well as financially and environmentally sustainable systems to drive regional circular economy.",
                 "dev_service5_title": "5. Local Solutions & Business Models",
-                "dev_service5_desc": "Designing solutions based on local potential, including business unit schemes, partnerships, and practical, easily replicable approaches."
+                "dev_service5_desc": "Designing solutions based on local potential, including business unit schemes, partnerships, and practical, easily replicable approaches.",
+                "portfolio_empty": "Portfolio data is not yet available."
             },
             "konsultan": {
                 "badge": "Our Services",

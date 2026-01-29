@@ -7,7 +7,8 @@ class implementasi_partner extends Controller {
             'impacts' => $this->model('Impact_model')->getByPage('implementasi'),
             'testimonials' => $this->model('Testimonial_model')->getByPage('implentasi_partner'),
             'faqs' => $this->model('Faq_model')->getByPage('implentasi_partner'),
-            'partners' => $this->model('Partner_model')->getAll()
+            'partners' => $this->model('Partner_model')->getAll(),
+            'portfolios' => $this->model('Portfolio_model')->getByShowPartner()
         ];
         $this->views('layouts/header');
         $this->views('implentasi_partner/index', $data);

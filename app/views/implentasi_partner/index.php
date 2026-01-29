@@ -955,58 +955,38 @@
 
             <div class="swiper portfolio-slider">
                 <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden border-top-orange-3">
-                            <div style="height: 200px; overflow: hidden;">
-                                <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=800&q=80" class="w-100 h-100 object-fit-cover" alt="Village Mentoring">
+                    <?php if (!empty($data['portfolios'])): ?>
+                        <?php foreach ($data['portfolios'] as $portfolio): ?>
+                            <div class="swiper-slide h-auto">
+                                <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden border-top-orange-3">
+                                    <div style="height: 200px; overflow: hidden;">
+                                        <img src="<?= BASE_URL ?>/uploads/portfolio/<?= $portfolio->cover_image ?>" 
+                                             class="w-100 h-100 object-fit-cover" 
+                                             alt="<?= $portfolio->title_id ?>"
+                                             onerror="this.src='https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80'">
+                                    </div>
+                                    <div class="card-body p-4 bg-white">
+                                        <span class="badge bg-soft-orange text-orange mb-2" style="color: var(--gosirk-orange); background-color: rgba(255, 143, 86, 0.1);">
+                                            <?= $portfolio->subtitle_id ?>
+                                        </span>
+                                        <h5 class="fw-bold mb-2" data-lang-id="<?= htmlspecialchars($portfolio->title_id ?? '') ?>" data-lang-en="<?= htmlspecialchars($portfolio->title_en ?? '') ?>">
+                                            <?= $portfolio->title_id ?>
+                                        </h5>
+                                        <div class="text-muted small mb-0 line-clamp-3" data-lang-id="<?= htmlspecialchars($portfolio->description_id ?? '') ?>" data-lang-en="<?= htmlspecialchars($portfolio->description_en ?? '') ?>">
+                                            <?= $portfolio->description_id ?>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="card-body p-4 bg-white">
-                                <span class="badge bg-soft-orange text-orange mb-2" style="color: var(--gosirk-orange); background-color: rgba(255, 143, 86, 0.1);">Mentoring Program</span>
-                                <h5 class="fw-bold mb-2">Program Pendampingan Desa GoSirk-CLOCC</h5>
-                                <p class="text-muted small mb-0">Implementasi sistem pengelolaan sampah terintegrasi di Tabanan, Bali, yang melibatkan 3 desa mitra.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden border-top-orange-3">
-                            <div style="height: 200px; overflow: hidden;">
-                                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" class="w-100 h-100 object-fit-cover" alt="Facility Optimization">
-                            </div>
-                            <div class="card-body p-4 bg-white">
-                                <span class="badge bg-soft-orange text-orange mb-2" style="color: var(--gosirk-orange); background-color: rgba(255, 143, 86, 0.1);">Infrastructure</span>
-                                <h5 class="fw-bold mb-2">Optimalisasi TPS 3R & Bank Sampah</h5>
-                                <p class="text-muted small mb-0">Penyediaan fasilitas dan alat pendukung untuk meningkatkan efisiensi operasional pengelolaan sampah tingkat desa.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden border-top-orange-3">
-                            <div style="height: 200px; overflow: hidden;">
-                                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" class="w-100 h-100 object-fit-cover" alt="Community Education">
-                            </div>
-                            <div class="card-body p-4 bg-white">
-                                <span class="badge bg-soft-orange text-orange mb-2" style="color: var(--gosirk-orange); background-color: rgba(255, 143, 86, 0.1);">Education</span>
-                                <h5 class="fw-bold mb-2">Kampanye Perubahan Perilaku Siswa</h5>
-                                <p class="text-muted small mb-0">Edukasi pengelolaan sampah yang menjangkau ribuan siswa di berbagai sekolah wilayah mitra.</p>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <div class="swiper-slide w-100">
+                            <div class="text-center py-5 w-100 bg-white rounded-4 border border-orange-soft">
+                                <span class="material-symbols-outlined text-orange opacity-25" style="font-size: 4rem;">folder_off</span>
+                                <p class="text-muted mt-3 mb-0" data-i18n="partner.portfolio_empty">Data portofolio belum tersedia.</p>
                             </div>
                         </div>
-                    </div>
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                            <div style="height: 200px; overflow: hidden;">
-                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" class="w-100 h-100 object-fit-cover" alt="Institutional Strength">
-                            </div>
-                            <div class="card-body p-4 bg-white">
-                                <span class="badge bg-soft-orange text-orange mb-2" style="color: var(--gosirk-orange); background-color: rgba(255, 143, 86, 0.1);">Governance</span>
-                                <h5 class="fw-bold mb-2">Penyusunan Perdes Persampahan</h5>
-                                <p class="text-muted small mb-0">Penyusunan payung kebijakan tingkat desa untuk memastikan keberlanjutan sistem pengelolaan sampah.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
                 <div class="swiper-pagination mt-4 position-relative"></div>
             </div>

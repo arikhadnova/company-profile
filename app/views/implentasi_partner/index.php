@@ -545,7 +545,7 @@
                 </div>
             </div>
 
-            <!-- SERVICE TYPES SECTION - Redesigned like Konsultansi cards -->
+    <!-- SERVICE TYPES SECTION - Redesigned like Konsultansi cards -->
             <div class="mb-5">
                 <div class="text-center mb-5">
                     <span class="section-subheader" data-i18n="partner.dev_services_subheader">Services</span>
@@ -833,9 +833,7 @@
         </div>
     </section>
 
-
-
-    <!-- NEW SECTIONS: TARGET, DAMPAK, SOROTAN (GI Style) -->
+    <!-- TARGET PROGRAM -->
     <section class="py-5 bg-light">
         <div class="container">
             <div class="target-container shadow-sm bg-white border-top-orange-3 rounded-4 overflow-hidden">
@@ -864,6 +862,8 @@
         </div>
     </section>
 
+
+    <!-- IMPACT -->
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">

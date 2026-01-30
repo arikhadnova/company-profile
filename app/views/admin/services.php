@@ -32,7 +32,7 @@
         <table class="table table-hover align-middle mb-0">
             <thead class="bg-light">
                 <tr>
-                    <th class="ps-4" style="width: 80px;">Icon</th>
+                    <th class="ps-4" style="width: 100px;">Gambar</th>
                     <th>Nama Layanan</th>
                     <th>Deskripsi</th>
                     <th class="text-center">Total Items</th>
@@ -50,8 +50,14 @@
                     <?php foreach ($services as $s) : ?>
                         <tr>
                             <td class="ps-4">
-                                <div class="stat-icon-box stat-icon-blue m-0" style="width: 45px; height: 45px;">
-                                    <i class="<?= $s->icon ?: 'fas fa-concierge-bell'; ?> fs-6"></i>
+                                <div class="rounded-3 overflow-hidden bg-light" style="width: 60px; height: 45px;">
+                                    <?php if (isset($s->image) && $s->image) : ?>
+                                        <img src="<?= ASSETS_URL; ?>img/services/<?= $s->image; ?>" class="w-100 h-100 object-fit-cover">
+                                    <?php else : ?>
+                                        <div class="d-flex h-100 align-items-center justify-content-center text-muted">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </td>
                             <td>

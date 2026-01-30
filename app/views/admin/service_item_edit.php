@@ -11,7 +11,7 @@
     </div>
 </div>
 
-<form action="<?= BASE_URL; ?>admin/service_item_update" method="POST">
+<form action="<?= BASE_URL; ?>admin/service_item_update" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="id" value="<?= $item->id ?>">
     <input type="hidden" name="category" value="<?= $item->category ?>">
     
@@ -48,17 +48,15 @@
                 </div>
                 <div class="card-body p-4">
                     <div class="mb-4">
-                        <label class="form-label fw-bold small text-dark">Icon (FontAwesome)</label>
-                        <div class="input-group mb-2">
-                            <span class="input-group-text bg-light border-end-0"><i class="fas fa-icons text-muted"></i></span>
-                            <input type="text" name="icon" class="form-control border-start-0 ps-0" value="<?= $item->icon ?>" id="iconInput" placeholder="fa-school" required>
-                        </div>
-                        <div class="d-flex align-items-center gap-3 mt-3">
-                            <div id="iconPreview" class="stat-icon-box stat-icon-blue" style="width: 50px; height: 50px;">
-                                <i class="fas fa-<?= $item->icon ?: 'question' ?>"></i>
+                        <label class="form-label fw-bold small text-dark">Gambar Layanan</label>
+                        <?php if (!empty($item->image)) : ?>
+                            <div class="mb-3">
+                                <img src="<?= ASSETS_URL ?>img/services/<?= $item->image ?>" alt="Preview" class="img-fluid rounded-3 shadow-sm border" style="max-height: 150px;">
+                                <p class="text-muted extra-small mt-1 mb-0">Gambar saat ini</p>
                             </div>
-                            <small class="text-muted extra-small">Preview ikon akan muncul secara otomatis.</small>
-                        </div>
+                        <?php endif; ?>
+                        <input type="file" name="image" class="form-control" accept="image/*">
+                        <small class="text-muted extra-small d-block mt-2">Biarkan kosong jika tidak ingin mengubah gambar.</small>
                     </div>
 
                     <div class="mb-4">
@@ -93,29 +91,4 @@
         </div>
     </div>
 </form>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const iconInput = document.getElementById('iconInput');
-    const iconPreview = document.getElementById('iconPreview');
-
-    function updateIconPreview() {
-        let iconClass = iconInput.value.trim();
-        if (iconClass !== '') {
-            // Remove 'fa-' if user typed it twice or just handle both 'fa-xxx' and 'xxx'
-            if (!iconClass.startsWith('fa') && !iconClass.startsWith('fab') && !iconClass.startsWith('fas')) {
-                iconClass = 'fas fa-' + iconClass;
-            } else if (!iconClass.includes(' ')) {
-                iconClass = 'fas ' + iconClass;
-            }
-            iconPreview.innerHTML = '<i class="' + iconClass + '"></i>';
-        } else {
-            iconPreview.innerHTML = '<i class="fas fa-question text-muted"></i>';
-        }
-    }
-
-    iconInput.addEventListener('input', updateIconPreview);
-    updateIconPreview(); // Initial preview
-});
-</script>
 

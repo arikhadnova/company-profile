@@ -106,45 +106,44 @@
     <h2 class="text-center fw-bold mb-2">LAYANAN KAMI</h2>
     <p class="text-center mb-5">Setiap pilar layanan kami bersinergi menghadirkan solusi relevan, aplikatif secara lokal, dan berkelanjutan.</p>
     <div class="row g-4">
-      <div class="col-md-4">
-        <div class="service-card h-100">
-          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d">
-          <div class="p-4">
-            <h5>Peningkatan Kapasitas Pengelolaan Sampah (Capacity Building)</h5>
-            <br>
-            <p>Untuk memastikan keberlanjutan solusi di lapangan, GoSirk membangun basis ekosistem pengetahuan dan keahlian yang kuat di bidang pengelolaan sampah melalui unit strategisnya GoSirk Institute</p>
-            <a href="<?= BASE_URL ?>gi" class="btn btn-outline-primary btn-sm rounded-pill">
-              Selengkapnya
-            </a>
+      <?php if (!empty($data['services'])) : ?>
+        <?php foreach ($data['services'] as $s) : ?>
+          <?php 
+             $link = '#';
+             $lowerTitle = strtolower($s->name_id);
+             if (strpos($lowerTitle, 'capacity building') !== false || strpos($lowerTitle, 'gi') !== false || strpos($lowerTitle, 'institue') !== false) {
+                 $link = BASE_URL . 'gi';
+             } elseif (strpos($lowerTitle, 'implementasi') !== false || strpos($lowerTitle, 'program development') !== false) {
+                 $link = BASE_URL . 'implementasi_partner';
+             } elseif (strpos($lowerTitle, 'konsultansi') !== false || strpos($lowerTitle, 'advisory') !== false) {
+                 $link = BASE_URL . 'konsultan';
+             }
+          ?>
+          <div class="col-md-4">
+            <div class="service-card h-100">
+              <div class="card-image-wrapper bg-light d-flex align-items-center justify-content-center rounded-top-3" style="height: 200px; overflow: hidden;">
+                <?php if (isset($s->image) && $s->image) : ?>
+                  <img src="<?= ASSETS_URL ?>img/services/<?= $s->image ?>" alt="<?= $s->name_id ?>" class="w-100 h-100 object-fit-cover">
+                <?php else : ?>
+                  <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="GoSirk" class="opacity-25" style="width: 120px;">
+                <?php endif; ?>
+              </div>
+              <div class="p-4">
+                <h5 class="fw-bold" data-lang-id="<?= $s->name_id ?>" data-lang-en="<?= $s->name_en ?>"><?= $s->name_id ?></h5>
+                <br>
+                <div class="text-muted small" style="text-align: justify;" data-lang-id="<?= $s->description_id ?>" data-lang-en="<?= $s->description_en ?>">
+                  <?= $s->description_id ?>
+                </div>
+                <div class="mt-4">
+                  <a href="<?= $link ?>" class="btn btn-outline-primary btn-sm rounded-pill px-4">
+                    Selengkapnya
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-card h-100">
-          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7">
-          <div class="p-4">
-            <h5>Pengembangan Program dan Implementasi Partner</h5>
-            <br>
-            <p>Kami memiliki misi untuk mentransformasi tantangan sampah menjadi solusi yang berkelanjutan, inklusif, dan inovatif. Fokus utama kami adalah memastikan keberhasilan proyek lapangan yang tidak hanya efektif secara teknis tetapi juga menciptakan dampak sosial yang signifikan</p>
-            <a href="<?= BASE_URL ?>implementasi_partner" class="btn btn-outline-primary btn-sm rounded-pill">
-              Selengkapnya
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="service-card h-100">
-          <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca">
-          <div class="p-4">
-            <h5>Konsultansi & Advisory Strategis</h5>
-            <br>
-            <p>Kami mendukung pengembangan usaha pengelolaan sampah melalui bantuan langsung, praktis, dan pendekatan berbasis data untuk menemukan pendekatan yang tepat sesuai kebutuhan spesifik klien</p>
-            <a href="<?= BASE_URL ?>konsultan" class="btn btn-outline-primary btn-sm rounded-pill">
-              Selengkapnya
-            </a>
-          </div>
-        </div>
-      </div>
+        <?php endforeach; ?>
+      <?php endif; ?>
     </div>
   </div>
 </section>
@@ -173,16 +172,20 @@
             <?php foreach ($services_cb as $item) : ?>
               <div class="swiper-slide">
                 <div class="card border border-light shadow-sm h-100 rounded-3">
-                  <div class="bg-light d-flex align-items-center justify-content-center rounded-top-3" style="height: 200px;">
-                      <span class="material-symbols-outlined text-secondary" style="font-size: 64px;"><?= $item->icon ?></span>
+                  <div class="card-image-wrapper bg-light d-flex align-items-center justify-content-center rounded-top-3" style="height: 200px; overflow: hidden;">
+                    <?php if (!empty($item->image)) : ?>
+                      <img src="<?= ASSETS_URL ?>img/gi/<?= $item->image ?>" alt="<?= $item->title_id ?>" class="w-100 h-100 object-fit-cover">
+                    <?php else : ?>
+                      <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="GoSirk" class="opacity-25" style="width: 120px;">
+                    <?php endif; ?>
                   </div>
                   <div class="card-body p-4 d-flex flex-column">
                     <h5 class="fw-bold mb-2" data-lang-id="<?= $item->title_id ?>" data-lang-en="<?= $item->title_en ?>"><?= $item->title_id ?></h5>
-                    <p class="text-muted small mb-3 flex-grow-1" data-lang-id="<?= $item->description_id ?>" data-lang-en="<?= $item->description_en ?>">
-                      <?= $item->description_id ?>
+                    <p class="text-muted small mb-3 flex-grow-1" data-lang-id="<?= substr(strip_tags($item->description_id), 0, 150) ?>..." data-lang-en="<?= substr(strip_tags($item->description_en), 0, 150) ?>...">
+                      <?= substr(strip_tags($item->description_id), 0, 150) ?>...
                     </p>
                     <div class="mt-auto">
-                        <a href="<?= BASE_URL . $item->link_url ?>" class="btn btn-gi-orange rounded-pill d-inline-flex align-items-center gap-2">
+                        <a href="<?= BASE_URL ?>gi/detail/<?= $item->slug ?>" class="btn btn-gi-orange rounded-pill d-inline-flex align-items-center gap-2">
                             Pelajari lebih lanjut <i class="bi bi-box-arrow-up-right small"></i>
                         </a>
                     </div>
@@ -195,38 +198,45 @@
       </div>
     </div>
 
+    <!-- Implementasi Partner -->
     <div class="mb-5">
-      <h3 class="fw-bold mb-4">Pengembangan Program dan Implementasi Partner</h3>
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold">Pengembangan Program dan Implementasi Partner</h3>
+        <div class="service-detail-nav d-flex gap-2">
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-detail-2" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-left"></i>
+           </button>
+           <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center next-detail-2" style="width: 40px; height: 40px;">
+             <i class="fas fa-arrow-right"></i>
+           </button>
+        </div>
+      </div>
       
-      <?php if (!empty($services_pd)) : ?>
-        <?php foreach ($services_pd as $item) : ?>
-          <div class="card border-0 shadow-sm rounded-4 overflow-hidden service-horizontal-card mb-4">
-            <div class="row g-0">
-              <div class="col-md-4 card-icon-wrapper d-flex align-items-center justify-content-center">
-                <span class="material-symbols-outlined"><?= $item->icon ?></span>
-              </div>
-              <div class="col-md-8">
-                <div class="card-body p-4 p-lg-5">
-                  <h4 class="fw-bold mb-3" data-lang-id="<?= $item->title_id ?>" data-lang-en="<?= $item->title_en ?>">
-                    <?= $item->title_id ?> 
-                    <?php if ($item->partner_name) : ?>
-                      <br><small class="text-muted fw-normal" style="font-size: 0.9rem;">(<?= $item->partner_name ?>)</small>
+      <div class="swiper service-detail-slider-2">
+        <div class="swiper-wrapper">
+          <?php if (!empty($services_pd)) : ?>
+            <?php foreach ($services_pd as $item) : ?>
+              <div class="swiper-slide">
+                <div class="card border border-light shadow-sm h-100 rounded-3">
+                  <div class="card-image-wrapper bg-light d-flex align-items-center justify-content-center rounded-top-3" style="height: 200px; overflow: hidden;">
+                    <?php if (!empty($item->image)) : ?>
+                      <img src="<?= ASSETS_URL ?>img/services/<?= $item->image ?>" alt="<?= $item->title_id ?>" class="w-100 h-100 object-fit-cover">
+                    <?php else : ?>
+                      <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="GoSirk" class="opacity-25" style="width: 120px;">
                     <?php endif; ?>
-                  </h4>
-                  <p class="text-muted mb-4 lead" style="font-size: 1.1rem; line-height: 1.6;" data-lang-id="<?= $item->description_id ?>" data-lang-en="<?= $item->description_en ?>">
-                    <?= $item->description_id ?>
-                  </p>
-                  <div class="mt-auto">
-                      <a href="<?= BASE_URL . $item->link_url ?>" class="btn btn-gi-orange rounded-pill px-4 py-2 d-inline-flex align-items-center gap-2">
-                          Pelajari lebih lanjut <i class="bi bi-box-arrow-up-right small"></i>
-                      </a>
+                  </div>
+                  <div class="card-body p-4 d-flex flex-column">
+                    <h5 class="fw-bold mb-2" data-lang-id="<?= $item->title_id ?>" data-lang-en="<?= $item->title_en ?>"><?= $item->title_id ?></h5>
+                    <p class="text-muted small mb-0" data-lang-id="<?= substr(strip_tags($item->description_id), 0, 150) ?>..." data-lang-en="<?= substr(strip_tags($item->description_en), 0, 150) ?>...">
+                      <?= substr(strip_tags($item->description_id), 0, 150) ?>...
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        <?php endforeach; ?>
-      <?php endif; ?>
+            <?php endforeach; ?>
+          <?php endif; ?>
+        </div>
+      </div>
     </div>
 
     <!-- Consultancy -->
@@ -244,24 +254,23 @@
       </div>
       
       <div class="swiper service-detail-slider-3">
-          <div class="swiper-wrapper">
+        <div class="swiper-wrapper">
           <?php if (!empty($services_cs)) : ?>
             <?php foreach ($services_cs as $item) : ?>
               <div class="swiper-slide">
                 <div class="card border border-light shadow-sm h-100 rounded-3">
-                  <div class="bg-light d-flex align-items-center justify-content-center rounded-top-3" style="height: 200px;">
-                      <span class="material-symbols-outlined text-secondary" style="font-size: 64px;"><?= $item->icon ?></span>
+                  <div class="card-image-wrapper bg-light d-flex align-items-center justify-content-center rounded-top-3" style="height: 200px; overflow: hidden;">
+                    <?php if (!empty($item->image)) : ?>
+                      <img src="<?= ASSETS_URL ?>img/services/<?= $item->image ?>" alt="<?= $item->title_id ?>" class="w-100 h-100 object-fit-cover">
+                    <?php else : ?>
+                      <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="GoSirk" class="opacity-25" style="width: 120px;">
+                    <?php endif; ?>
                   </div>
                   <div class="card-body p-4 d-flex flex-column">
                     <h5 class="fw-bold mb-2" data-lang-id="<?= $item->title_id ?>" data-lang-en="<?= $item->title_en ?>"><?= $item->title_id ?></h5>
-                    <p class="text-muted small mb-3 flex-grow-1" data-lang-id="<?= $item->description_id ?>" data-lang-en="<?= $item->description_en ?>">
-                      <?= $item->description_id ?>
+                    <p class="text-muted small mb-0" data-lang-id="<?= substr(strip_tags($item->description_id), 0, 150) ?>..." data-lang-en="<?= substr(strip_tags($item->description_en), 0, 150) ?>...">
+                      <?= substr(strip_tags($item->description_id), 0, 150) ?>...
                     </p>
-                    <div class="mt-auto">
-                        <a href="<?= BASE_URL . $item->link_url ?>" class="btn btn-gi-orange rounded-pill d-inline-flex align-items-center gap-2">
-                            Pelajari lebih lanjut <i class="bi bi-box-arrow-up-right small"></i>
-                        </a>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -294,7 +303,14 @@
         },
       });
 
-
+      // Initialize Slider 2
+      new Swiper(".service-detail-slider-2", {
+        ...sliderConfig,
+        navigation: {
+          nextEl: ".next-detail-2",
+          prevEl: ".prev-detail-2",
+        },
+      });
 
       // Initialize Slider 3
       new Swiper(".service-detail-slider-3", {

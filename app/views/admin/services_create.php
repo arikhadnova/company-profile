@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<form action="<?= BASE_URL; ?>admin/services_store" method="POST">
+<form action="<?= BASE_URL; ?>admin/services_store" method="POST" enctype="multipart/form-data">
     <div class="row g-4">
         <div class="col-lg-8">
             <div class="card border-0 shadow-sm rounded-4 mb-4">
@@ -42,16 +42,19 @@
                 </div>
                 <div class="card-body p-4">
                     <div class="mb-4">
-                        <label class="form-label fw-bold small text-dark">Icon (FontAwesome)</label>
-                        <div class="input-group mb-2">
-                            <span class="input-group-text bg-light border-end-0"><i class="fas fa-icons text-muted"></i></span>
-                            <input type="text" name="icon" class="form-control border-start-0 ps-0" placeholder="recycle" id="iconInput" required>
-                        </div>
-                        <div class="d-flex align-items-center gap-3 mt-3">
-                            <div id="iconPreview" class="stat-icon-box stat-icon-blue" style="width: 50px; height: 50px;">
-                                <i class="fas fa-question text-muted"></i>
+                        <label class="form-label fw-bold small text-dark">Gambar Layanan</label>
+                        <div class="form-group mb-3">
+                            <div class="image-upload-wrapper p-3 border-2 border-dashed rounded-4 text-center bg-light" id="imageDropZone" style="cursor: pointer; border: 2px dashed #CBD5E0 !important;">
+                                <input type="file" name="image" id="imageInput" class="d-none" accept="image/*">
+                                <div id="imagePreview" class="d-none mb-3">
+                                    <img src="" class="img-fluid rounded-3 shadow-sm" style="max-height: 200px;">
+                                </div>
+                                <div id="uploadPlaceholder">
+                                    <i class="fas fa-cloud-upload-alt text-primary display-6 mb-2"></i>
+                                    <p class="small text-muted mb-0">Klik atau seret gambar ke sini</p>
+                                    <p class="extra-small text-muted">Format: JPG, PNG, WEBP (Maks. 2MB)</p>
+                                </div>
                             </div>
-                            <small class="text-muted extra-small">Ikon akan muncul secara otomatis.</small>
                         </div>
                     </div>
                     <div class="mb-4">
@@ -71,24 +74,53 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const iconInput = document.getElementById('iconInput');
-    const iconPreview = document.getElementById('iconPreview');
+    const imageInput = document.getElementById('imageInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const previewImg = imagePreview.querySelector('img');
+    const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+    const imageDropZone = document.getElementById('imageDropZone');
 
-    function updateIconPreview() {
-        let iconClass = iconInput.value.trim();
-        if (iconClass !== '') {
-            if (!iconClass.startsWith('fa') && !iconClass.startsWith('fab') && !iconClass.startsWith('fas')) {
-                iconClass = 'fas fa-' + iconClass;
-            } else if (!iconClass.includes(' ')) {
-                iconClass = 'fas ' + iconClass;
+    imageDropZone.addEventListener('click', () => imageInput.click());
+
+    imageInput.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                imagePreview.classList.remove('d-none');
+                uploadPlaceholder.classList.add('d-none');
             }
-            iconPreview.innerHTML = '<i class="' + iconClass + '"></i>';
-        } else {
-            iconPreview.innerHTML = '<i class="fas fa-question text-muted"></i>';
+            reader.readAsDataURL(this.files[0]);
         }
-    }
+    });
 
-    iconInput.addEventListener('input', updateIconPreview);
-    updateIconPreview();
+    // Drag and drop
+    imageDropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        imageDropZone.style.borderColor = '#0d4a7c';
+        imageDropZone.style.backgroundColor = '#f0f7ff';
+    });
+
+    imageDropZone.addEventListener('dragleave', () => {
+        imageDropZone.style.borderColor = '#CBD5E0';
+        imageDropZone.style.backgroundColor = '#f8f9fa';
+    });
+
+    imageDropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        imageDropZone.style.borderColor = '#CBD5E0';
+        imageDropZone.style.backgroundColor = '#f8f9fa';
+        
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            imageInput.files = e.dataTransfer.files;
+            const reader = new FileReader();
+            reader.onload = function(ex) {
+                previewImg.src = ex.target.result;
+                imagePreview.classList.remove('d-none');
+                uploadPlaceholder.classList.add('d-none');
+            }
+            reader.readAsDataURL(e.dataTransfer.files[0]);
+        }
+    });
 });
 </script>

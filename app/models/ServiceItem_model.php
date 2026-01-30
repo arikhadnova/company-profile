@@ -28,9 +28,9 @@ class ServiceItem_model {
 
     public function add($data) {
         $query = "INSERT INTO " . $this->table . " 
-                  (category, title_id, title_en, description_id, description_en, icon, link_url, partner_name, order_priority) 
+                  (category, title_id, title_en, description_id, description_en, image, link_url, partner_name, order_priority) 
                   VALUES 
-                  (:category, :title_id, :title_en, :description_id, :description_en, :icon, :link_url, :partner_name, :order_priority)";
+                  (:category, :title_id, :title_en, :description_id, :description_en, :image, :link_url, :partner_name, :order_priority)";
         
         $this->db->query($query);
         $this->db->bind(':category', $data['category']);
@@ -38,7 +38,7 @@ class ServiceItem_model {
         $this->db->bind(':title_en', $data['title_en']);
         $this->db->bind(':description_id', $data['description_id']);
         $this->db->bind(':description_en', $data['description_en']);
-        $this->db->bind(':icon', $data['icon']);
+        $this->db->bind(':image', $data['image']);
         $this->db->bind(':link_url', $data['link_url']);
         $this->db->bind(':partner_name', $data['partner_name']);
         $this->db->bind(':order_priority', $data['order_priority']);
@@ -53,7 +53,7 @@ class ServiceItem_model {
                   title_en = :title_en, 
                   description_id = :description_id, 
                   description_en = :description_en, 
-                  icon = :icon, 
+                  image = :image, 
                   link_url = :link_url, 
                   partner_name = :partner_name, 
                   order_priority = :order_priority 
@@ -66,7 +66,7 @@ class ServiceItem_model {
         $this->db->bind(':title_en', $data['title_en']);
         $this->db->bind(':description_id', $data['description_id']);
         $this->db->bind(':description_en', $data['description_en']);
-        $this->db->bind(':icon', $data['icon']);
+        $this->db->bind(':image', $data['image']);
         $this->db->bind(':link_url', $data['link_url']);
         $this->db->bind(':partner_name', $data['partner_name']);
         $this->db->bind(':order_priority', $data['order_priority']);

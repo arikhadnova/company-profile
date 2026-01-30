@@ -10,7 +10,7 @@
     </div>
 </div>
 
-<form action="<?= BASE_URL; ?>admin/service_item_store" method="POST">
+<form action="<?= BASE_URL; ?>admin/service_item_store" method="POST" enctype="multipart/form-data">
     <input type="hidden" name="category" value="<?= $data['category'] ?>">
     
     <div class="row g-4">
@@ -46,17 +46,9 @@
                 </div>
                 <div class="card-body p-4">
                     <div class="mb-4">
-                        <label class="form-label fw-bold small text-dark">Icon (FontAwesome)</label>
-                        <div class="input-group mb-2">
-                            <span class="input-group-text bg-light border-end-0"><i class="fas fa-icons text-muted"></i></span>
-                            <input type="text" name="icon" class="form-control border-start-0 ps-0" placeholder="recycle" id="iconInput" required>
-                        </div>
-                        <div class="d-flex align-items-center gap-3 mt-3">
-                            <div id="iconPreview" class="stat-icon-box stat-icon-blue" style="width: 50px; height: 50px;">
-                                <i class="fas fa-question text-muted"></i>
-                            </div>
-                            <small class="text-muted extra-small">Ikon akan muncul di sini saat Anda mengetik.</small>
-                        </div>
+                        <label class="form-label fw-bold small text-dark">Gambar Utama Layanan</label>
+                        <input type="file" name="image" class="form-control" accept="image/*" required>
+                        <small class="text-muted extra-small d-block mt-2">Rekomendasi: 800x600px (JPG/PNG/WEBP)</small>
                     </div>
 
                     <div class="mb-4">
@@ -91,28 +83,3 @@
         </div>
     </div>
 </form>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const iconInput = document.getElementById('iconInput');
-    const iconPreview = document.getElementById('iconPreview');
-
-    function updateIconPreview() {
-        let iconClass = iconInput.value.trim();
-        if (iconClass !== '') {
-            // Normalize FontAwesome class
-            if (!iconClass.startsWith('fa') && !iconClass.startsWith('fab') && !iconClass.startsWith('fas')) {
-                iconClass = 'fas fa-' + iconClass;
-            } else if (!iconClass.includes(' ')) {
-                iconClass = 'fas ' + iconClass;
-            }
-            iconPreview.innerHTML = '<i class="' + iconClass + '"></i>';
-        } else {
-            iconPreview.innerHTML = '<i class="fas fa-question text-muted"></i>';
-        }
-    }
-
-    iconInput.addEventListener('input', updateIconPreview);
-    updateIconPreview(); // Set initial
-});
-</script>

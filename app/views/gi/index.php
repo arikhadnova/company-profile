@@ -219,7 +219,7 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                                         <?php if ($s->image) : ?>
                                             <img src="<?= ASSETS_URL ?>img/gi/<?= $s->image ?>" class="w-100 h-100 object-fit-cover">
                                         <?php else : ?>
-                                            <i class="bi bi-image fs-1 opacity-25"></i>
+                                            <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="GoSirk" class="opacity-10" style="width: 100px;">
                                         <?php endif; ?>
                                     </div>
                                 </div>

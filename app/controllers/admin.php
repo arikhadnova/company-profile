@@ -1038,11 +1038,10 @@ class Admin extends Controller {
 
     public function services_store() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Validation
+            // Unset icon rule and check for image
             $rules = [
                 'name_id' => ['required'],
-                'name_en' => ['required'],
-                'icon' => ['required']
+                'name_en' => ['required']
             ];
             $errors = Validator::validate($_POST, $rules);
 
@@ -1052,20 +1051,22 @@ class Admin extends Controller {
                 exit;
             }
 
+            $image = Upload::file($_FILES['image'], 'img/services');
+
             $data = [
                 'name_id' => $_POST['name_id'],
                 'name_en' => $_POST['name_en'] ?: Translator::translate($_POST['name_id']),
                 'description_id' => $_POST['description_id'],
                 'description_en' => $_POST['description_en'] ?: Translator::translate($_POST['description_id']),
-                'icon' => $_POST['icon'],
+                'image' => $image ?: '',
                 'order_priority' => $_POST['order_priority']
             ];
 
             if ($this->serviceModel->add($data)) {
-                Flasher::setFlash('Layanan', 'berhasil ditambahkan', 'success');
+                Flasher::setFlash('Kategori Layanan', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/services');
             } else {
-                Flasher::setFlash('Layanan', 'gagal ditambahkan', 'danger');
+                Flasher::setFlash('Kategori Layanan', 'gagal ditambahkan', 'danger');
                 header('Location: ' . BASE_URL . 'admin/services');
             }
         }
@@ -1073,11 +1074,12 @@ class Admin extends Controller {
 
     public function services_update() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Validation
+            $id = $_POST['id'];
+            $old_data = $this->serviceModel->getById($id);
+            
             $rules = [
                 'name_id' => ['required'],
-                'name_en' => ['required'],
-                'icon' => ['required']
+                'name_en' => ['required']
             ];
             $errors = Validator::validate($_POST, $rules);
 
@@ -1087,31 +1089,47 @@ class Admin extends Controller {
                 exit;
             }
 
+            $image = $old_data->image;
+            if (!empty($_FILES['image']['name'])) {
+                $new_image = Upload::file($_FILES['image'], 'img/services');
+                if ($new_image) {
+                    if ($image) {
+                        Upload::delete($image, 'img/services');
+                    }
+                    $image = $new_image;
+                }
+            }
+
             $data = [
-                'id' => $_POST['id'],
+                'id' => $id,
                 'name_id' => $_POST['name_id'],
                 'name_en' => $_POST['name_en'] ?: Translator::translate($_POST['name_id']),
                 'description_id' => $_POST['description_id'],
                 'description_en' => $_POST['description_en'] ?: Translator::translate($_POST['description_id']),
-                'icon' => $_POST['icon'],
+                'image' => $image,
                 'order_priority' => $_POST['order_priority']
             ];
 
             if ($this->serviceModel->update($data)) {
-                Flasher::setFlash('Layanan', 'berhasil diperbarui', 'success');
+                Flasher::setFlash('Kategori Layanan', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/services');
             } else {
-                Flasher::setFlash('Layanan', 'gagal diperbarui', 'danger');
+                Flasher::setFlash('Kategori Layanan', 'gagal diperbarui', 'danger');
                 header('Location: ' . BASE_URL . 'admin/services');
             }
         }
     }
 
     public function services_delete($id) {
+        $service = $this->serviceModel->getById($id);
+        if ($service && $service->image) {
+            Upload::delete($service->image, 'img/services');
+        }
+
         if ($this->serviceModel->delete($id)) {
-            Flasher::setFlash('Layanan', 'berhasil dihapus', 'success');
+            Flasher::setFlash('Kategori Layanan', 'berhasil dihapus', 'success');
         } else {
-            Flasher::setFlash('Layanan', 'gagal dihapus', 'danger');
+            Flasher::setFlash('Kategori Layanan', 'gagal dihapus', 'danger');
         }
         header('Location: ' . BASE_URL . 'admin/services');
         exit;
@@ -1151,10 +1169,14 @@ class Admin extends Controller {
 
     public function service_item_store() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST['title_en'] = $_POST['title_en'] ?: Translator::translate($_POST['title_id']);
-            $_POST['description_en'] = $_POST['description_en'] ?: Translator::translate($_POST['description_id']);
+            $image = Upload::file($_FILES['image'], 'img/services');
             
-            if ($this->serviceItemModel->add($_POST)) {
+            $data = $_POST;
+            $data['image'] = $image ?: '';
+            $data['title_en'] = $_POST['title_en'] ?: Translator::translate($_POST['title_id']);
+            $data['description_en'] = $_POST['description_en'] ?: Translator::translate($_POST['description_id']);
+            
+            if ($this->serviceItemModel->add($data)) {
                 Flasher::setFlash('Item layanan', 'berhasil ditambahkan', 'success');
             } else {
                 Flasher::setFlash('Item layanan', 'gagal ditambahkan', 'danger');
@@ -1175,10 +1197,26 @@ class Admin extends Controller {
 
     public function service_item_update() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST['title_en'] = $_POST['title_en'] ?: Translator::translate($_POST['title_id']);
-            $_POST['description_en'] = $_POST['description_en'] ?: Translator::translate($_POST['description_id']);
+            $id = $_POST['id'];
+            $old = $this->serviceItemModel->getById($id);
+            $image = $old->image;
 
-            if ($this->serviceItemModel->update($_POST)) {
+            if (!empty($_FILES['image']['name'])) {
+                $new_image = Upload::file($_FILES['image'], 'img/services');
+                if ($new_image) {
+                    if ($old->image) {
+                        Upload::delete($old->image, 'img/services');
+                    }
+                    $image = $new_image;
+                }
+            }
+
+            $data = $_POST;
+            $data['image'] = $image;
+            $data['title_en'] = $_POST['title_en'] ?: Translator::translate($_POST['title_id']);
+            $data['description_en'] = $_POST['description_en'] ?: Translator::translate($_POST['description_id']);
+
+            if ($this->serviceItemModel->update($data)) {
                 Flasher::setFlash('Item layanan', 'berhasil diperbarui', 'success');
             } else {
                 Flasher::setFlash('Item layanan', 'gagal diperbarui', 'danger');
@@ -1192,6 +1230,11 @@ class Admin extends Controller {
     public function service_item_delete($id) {
         $item = $this->serviceItemModel->getById($id);
         $category = $item->category;
+        
+        if ($item->image) {
+            Upload::delete($item->image, 'img/services');
+        }
+
         if ($this->serviceItemModel->delete($id)) {
             Flasher::setFlash('Item layanan', 'berhasil dihapus', 'success');
         } else {

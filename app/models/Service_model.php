@@ -22,16 +22,16 @@ class Service_model {
 
     public function add($data) {
         $query = "INSERT INTO " . $this->table . " 
-                  (name_id, name_en, description_id, description_en, icon, order_priority) 
+                  (name_id, name_en, description_id, description_en, image, order_priority) 
                   VALUES 
-                  (:name_id, :name_en, :description_id, :description_en, :icon, :order_priority)";
+                  (:name_id, :name_en, :description_id, :description_en, :image, :order_priority)";
         
         $this->db->query($query);
         $this->db->bind(':name_id', $data['name_id']);
         $this->db->bind(':name_en', $data['name_en']);
         $this->db->bind(':description_id', $data['description_id']);
         $this->db->bind(':description_en', $data['description_en']);
-        $this->db->bind(':icon', $data['icon']);
+        $this->db->bind(':image', $data['image']);
         $this->db->bind(':order_priority', $data['order_priority']);
 
         return $this->db->execute();
@@ -43,7 +43,7 @@ class Service_model {
                   name_en = :name_en, 
                   description_id = :description_id, 
                   description_en = :description_en, 
-                  icon = :icon, 
+                  image = :image, 
                   order_priority = :order_priority 
                   WHERE id = :id";
         
@@ -53,7 +53,7 @@ class Service_model {
         $this->db->bind(':name_en', $data['name_en']);
         $this->db->bind(':description_id', $data['description_id']);
         $this->db->bind(':description_en', $data['description_en']);
-        $this->db->bind(':icon', $data['icon']);
+        $this->db->bind(':image', $data['image']);
         $this->db->bind(':order_priority', $data['order_priority']);
 
         return $this->db->execute();

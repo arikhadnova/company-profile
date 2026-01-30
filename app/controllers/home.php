@@ -10,7 +10,7 @@ class home extends Controller {
             'partners' => $this->model('Partner_model')->getAll(),
             'portfolios' => $this->model('Portfolio_model')->getAll(),
             'articles' => $this->model('Article_model')->getByType('blog'),
-            'services_cb' => $this->model('ServiceItem_model')->getByCategory('cb'),
+            'services_cb' => $this->model('GiService_model')->getAll(),
             'services_pd' => $this->model('ServiceItem_model')->getByCategory('pd'),
             'services_cs' => $this->model('ServiceItem_model')->getByCategory('cs'),
             'company_profile' => $this->model('Collaboration_model')->getActiveDocumentsByType('company_profile')[0] ?? null,

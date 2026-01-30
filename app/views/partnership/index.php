@@ -60,7 +60,7 @@
                         <img src="<?= ASSETS_URL ?>img/logo-kab-tabanan.png" alt="Pemkab Tabanan" style="max-height: 40px; width: auto;">
                     </div>
                     <div>
-                        <a href="<?= BASE_URL ?>implementasi_partner" class="btn btn-primary rounded-pill px-4" style="background-color: #FF8F56; border: none;" data-i18n="partnership.see_detail">See Details</a>
+                        <a href="<?= BASE_URL ?>implementasi_partner#program-clocc" class="btn btn-primary rounded-pill px-4" style="background-color: #FF8F56; border: none;" data-i18n="partnership.see_detail">See Details</a>
                     </div>
                 </div>
             </div>

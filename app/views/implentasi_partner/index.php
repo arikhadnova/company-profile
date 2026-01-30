@@ -691,7 +691,7 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service1_title">1. Perancangan Program & Proyek</h4>
-                                <p class="text-muted small mb-0" data-i18n="partner.dev_service1_desc">Penyusunan desain program berbasis kebutuhan lapangan, termasuk tujuan, indikator, rencana kerja, dan strategi implementasi.</p>
+                                <p class="text-muted small mb-0 text-truncate-3" data-i18n="partner.dev_service1_desc">Penyusunan desain program berbasis kebutuhan lapangan, termasuk tujuan, indikator, rencana kerja, dan strategi implementasi.</p>
                             </div>
                         </div>
                     </div>
@@ -704,7 +704,7 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service2_title">2. Pendampingan Implementasi Lapangan</h4>
-                                <p class="text-muted small mb-0" data-i18n="partner.dev_service2_desc">Dukungan pelaksanaan proyek secara end-to-end agar operasional berjalan efektif, sesuai standar, dan mencapai target.</p>
+                                <p class="text-muted small mb-0 text-truncate-3" data-i18n="partner.dev_service2_desc">Dukungan pelaksanaan proyek secara end-to-end agar operasional berjalan efektif, sesuai standar, dan mencapai target.</p>
                             </div>
                         </div>
                     </div>
@@ -717,7 +717,7 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service3_title">3. Penguatan Keterlibatan Komunitas</h4>
-                                <p class="text-muted small mb-0" data-i18n="partner.dev_service3_desc">Fasilitasi kolaborasi antara komunitas, pemerintah, sektor swasta, dan mitra lokal untuk membangun kepemilikan program dan keberlanjutan.</p>
+                                <p class="text-muted small mb-0 text-truncate-3" data-i18n="partner.dev_service3_desc">Fasilitasi kolaborasi antara komunitas, pemerintah, sektor swasta, dan mitra lokal untuk membangun kepemilikan program dan keberlanjutan.</p>
                             </div>
                         </div>
                     </div>
@@ -730,7 +730,7 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service4_title">4. Pengembangan Sistem Pengelolaan Sampah</h4>
-                                <p class="text-muted small mb-0" data-i18n="partner.dev_service4_desc">Penyusunan sistem operasional yang efisien secara teknis, serta berkelanjutan secara finansial dan lingkungan untuk mendorong ekonomi sirkular daerah.</p>
+                                <p class="text-muted small mb-0 text-truncate-3" data-i18n="partner.dev_service4_desc">Penyusunan sistem operasional yang efisien secara teknis, serta berkelanjutan secara finansial dan lingkungan untuk mendorong ekonomi sirkular daerah.</p>
                             </div>
                         </div>
                     </div>
@@ -743,7 +743,7 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="fw-bold mb-3 h5" data-i18n="partner.dev_service5_title">5. Pengembangan Solusi Tepat Guna & Bisnis Lokal</h4>
-                                <p class="text-muted small mb-0" data-i18n="partner.dev_service5_desc">Perancangan solusi berbasis potensi lokal, termasuk skema unit usaha, kemitraan, dan pendekatan yang praktis serta mudah direplikasi.</p>
+                                <p class="text-muted small mb-0 text-truncate-3" data-i18n="partner.dev_service5_desc">Perancangan solusi berbasis potensi lokal, termasuk skema unit usaha, kemitraan, dan pendekatan yang praktis serta mudah direplikasi.</p>
                             </div>
                         </div>
                     </div>
@@ -768,7 +768,7 @@
                             <span class="material-symbols-outlined">groups</span>
                         </div>
                         <h4 class="focus-title" data-i18n="partner.focus1_title">Holistik & Inklusif</h4>
-                        <p class="focus-text" data-i18n="partner.focus1_desc">Pemberdayaan komunitas lokal, keterlibatan aktif pemangku kepentingan, dan kolaborasi strategis sektor swasta, mengintegrasikan 5 aspek persampahan; aspek teknis, sosial, kelembagaan, regulasi, dan keuangan.</p>
+                        <p class="focus-text text-truncate-4" data-i18n="partner.focus1_desc">Pemberdayaan komunitas lokal, keterlibatan aktif pemangku kepentingan, dan kolaborasi strategis sektor swasta, mengintegrasikan 5 aspek persampahan; aspek teknis, sosial, kelembagaan, regulasi, dan keuangan.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -777,7 +777,7 @@
                             <span class="material-symbols-outlined">handshake</span>
                         </div>
                         <h4 class="focus-title" data-i18n="partner.focus2_title">Kolaboratif</h4>
-                        <p class="focus-text" data-i18n="partner.focus2_desc">Membangun kemitraan strategis lintas sektor untuk memperkuat efektivitas implementasi dan memperluas dukungan.</p>
+                        <p class="focus-text text-truncate-4" data-i18n="partner.focus2_desc">Membangun kemitraan strategis lintas sektor untuk memperkuat efektivitas implementasi dan memperluas dukungan.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -786,7 +786,7 @@
                             <span class="material-symbols-outlined">eco</span>
                         </div>
                         <h4 class="focus-title" data-i18n="partner.focus3_title">Solusi Berkelanjutan</h4>
-                        <p class="focus-text" data-i18n="partner.focus3_desc">Mendukung sistem pengelolaan sampah yang efisien dalam rangka mendorong terwujudnya ekonomi sirkular daerah.</p>
+                        <p class="focus-text text-truncate-4" data-i18n="partner.focus3_desc">Mendukung sistem pengelolaan sampah yang efisien dalam rangka mendorong terwujudnya ekonomi sirkular daerah.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -795,7 +795,7 @@
                             <span class="material-symbols-outlined">target</span>
                         </div>
                         <h4 class="focus-title" data-i18n="partner.focus4_title">Tepat Guna & Terukur</h4>
-                        <p class="focus-text" data-i18n="partner.focus4_desc">Menghadirkan solusi yang sesuai realitas lapangan, praktis diterapkan, serta didorong oleh target, indikator, dan capaian yang jelas.</p>
+                        <p class="focus-text text-truncate-4" data-i18n="partner.focus4_desc">Menghadirkan solusi yang sesuai realitas lapangan, praktis diterapkan, serta didorong oleh target, indikator, dan capaian yang jelas.</p>
                     </div>
                 </div>
             </div>
@@ -803,7 +803,7 @@
         </div>
     </section>
 
-    <section id="tentang" class="about-section">
+    <section id="program-clocc" class="about-section">
         <div class="container">
             <!-- PARTNER LOGOS -->
             <div class="row align-items-center justify-content-center g-4 g-md-5 mb-5">
@@ -1144,11 +1144,11 @@
                                             <span class="badge bg-soft-orange text-orange mb-2" style="color: var(--gosirk-orange); background-color: rgba(255, 143, 86, 0.1);">
                                                 <?= $portfolio->subtitle_id ?>
                                             </span>
-                                            <h5 class="fw-bold mb-2" data-lang-id="<?= htmlspecialchars($portfolio->title_id ?? '') ?>" data-lang-en="<?= htmlspecialchars($portfolio->title_en ?? '') ?>">
+                                            <h5 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= strip_tags($portfolio->title_id ?? '') ?>" data-lang-en="<?= strip_tags($portfolio->title_en ?? '') ?>">
                                                 <?= $portfolio->title_id ?>
                                             </h5>
-                                            <div class="text-muted small mb-0 line-clamp-3" data-lang-id="<?= htmlspecialchars($portfolio->description_id ?? '') ?>" data-lang-en="<?= htmlspecialchars($portfolio->description_en ?? '') ?>">
-                                                <?= $portfolio->description_id ?>
+                                            <div class="text-muted small mb-0 text-truncate-3" data-lang-id="<?= strip_tags($portfolio->description_id ?? '') ?>" data-lang-en="<?= strip_tags($portfolio->description_en ?? '') ?>">
+                                                <?= strip_tags($portfolio->description_id) ?>
                                             </div>
                                         </div>
                                         <div class="mt-3 text-end">

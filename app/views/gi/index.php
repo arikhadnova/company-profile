@@ -242,9 +242,9 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                                         <div class="mb-1">
                                             <span class="service-category-tag mb-1" data-lang-id="<?= $cat_label_id ?>" data-lang-en="<?= $cat_label_en ?>"><?= $cat_label_id ?></span>
                                         </div>
-                                        <h4 class="card-title fw-bold mb-3" data-lang-id="<?= $s->title_id ?>" data-lang-en="<?= $s->title_en ?>"><?= $s->title_id ?></h4>
-                                        <p class="card-text text-muted mb-4" data-lang-id="<?= $s->description_id ?>" data-lang-en="<?= $s->description_en ?>">
-                                            <?= $s->description_id ?>
+                                        <h4 class="card-title fw-bold mb-3 text-truncate-2" data-lang-id="<?= strip_tags($s->title_id) ?>" data-lang-en="<?= strip_tags($s->title_en) ?>"><?= $s->title_id ?></h4>
+                                        <p class="card-text text-muted mb-4 text-truncate-3" data-lang-id="<?= strip_tags($s->description_id) ?>" data-lang-en="<?= strip_tags($s->description_en) ?>">
+                                            <?= strip_tags($s->description_id) ?>
                                         </p>
                                         
                                         <div class="mb-4">
@@ -342,8 +342,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <?php endif; ?>
                                         </div>
                                         <div class="card-body p-4 d-flex flex-column">
-                                            <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
-                                            <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
+                                            <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
+                                            <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end"><a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4" data-i18n="gi.btn_more">Selengkapnya</a></div>
                                         </div>
                                     </div>
@@ -374,8 +374,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <?php endif; ?>
                                         </div>
                                         <div class="card-body p-4 d-flex flex-column">
-                                            <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
-                                            <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
+                                            <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
+                                            <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end"><a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a></div>
                                         </div>
                                     </div>
@@ -406,8 +406,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <?php endif; ?>
                                         </div>
                                         <div class="card-body p-4 d-flex flex-column">
-                                            <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
-                                            <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
+                                            <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
+                                            <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
                                                 <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
                                             </div>
@@ -440,8 +440,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <?php endif; ?>
                                         </div>
                                         <div class="card-body p-4 d-flex flex-column">
-                                            <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
-                                            <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
+                                            <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
+                                            <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
                                                 <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
                                             </div>
@@ -474,8 +474,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <?php endif; ?>
                                         </div>
                                         <div class="card-body p-4 d-flex flex-column">
-                                            <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
-                                            <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
+                                            <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
+                                            <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
                                                 <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
                                             </div>
@@ -508,8 +508,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <?php endif; ?>
                                         </div>
                                         <div class="card-body p-4 d-flex flex-column">
-                                            <h6 class="fw-bold mb-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
-                                            <p class="text-muted small mb-4 flex-grow-1" data-lang-id="<?= $p->subtitle_id ?>" data-lang-en="<?= $p->subtitle_en ?>"><?= $p->subtitle_id ?></p>
+                                            <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
+                                            <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
                                                 <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
                                             </div>
@@ -578,8 +578,8 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="col-lg-6">
                 <span class="highlight-badge mb-3 d-inline-block">Highlight</span>
                 <h3 class="fw-bold mb-3" data-lang-id="<?= $hVid->title_id ?>" data-lang-en="<?= $hVid->title_en ?>"><?= $hVid->title_id ?></h3>
-                <p class="text-muted mb-4 text-truncate-4" data-lang-id="<?= $hVid->description_id ?>" data-lang-en="<?= $hVid->description_en ?>">
-                    <?= $hVid->description_id ?>
+                <p class="text-muted mb-4 text-truncate-4" data-lang-id="<?= strip_tags($hVid->description_id) ?>" data-lang-en="<?= strip_tags($hVid->description_en) ?>">
+                    <?= strip_tags($hVid->description_id) ?>
                 </p>
                 <!-- Button removed - play via thumbnail click -->
             </div>
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <?= $article->title_id ?>
                                         </h5>
                                         <span class="article-tag"><?= $article->category ?: 'Library' ?></span>
-                                        <p class="article-excerpt text-truncate-3" data-lang-id="<?= $article->content_id ?>" data-lang-en="<?= $article->content_en ?>">
+                                        <p class="article-excerpt text-truncate-3" data-lang-id="<?= strip_tags($article->content_id) ?>" data-lang-en="<?= strip_tags($article->content_en) ?>">
                                             <?= strip_tags($article->content_id) ?>
                                         </p>
                                     </div>

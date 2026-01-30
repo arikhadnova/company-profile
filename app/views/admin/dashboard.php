@@ -139,6 +139,12 @@ function time_elapsed_string($datetime, $full = false) {
                                 } elseif ($activity->activity_type == 'message') {
                                     $dot_bg = 'bg-info';
                                     $message = "Menerima pesan baru dari <strong>{$activity->name}</strong> di formulir kontak";
+                                } elseif ($activity->activity_type == 'portfolio') {
+                                    $dot_bg = 'bg-primary';
+                                    $message = "Portofolio baru <strong>\"{$activity->display_title}\"</strong> telah ditambahkan";
+                                } elseif ($activity->activity_type == 'service') {
+                                    $dot_bg = 'bg-secondary';
+                                    $message = "Layanan GI baru <strong>\"{$activity->display_title}\"</strong> telah ditambahkan";
                                 }
                             ?>
                             <div class="activity-dot <?= $dot_bg; ?>"></div>

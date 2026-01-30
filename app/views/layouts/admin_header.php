@@ -69,6 +69,9 @@
             <a href="<?= BASE_URL; ?>admin/partners" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'partners') ? 'active' : '' ?>">
                 <i class="fas fa-handshake"></i> Partners list
             </a>
+            <a href="<?= BASE_URL; ?>admin/partnership_settings" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'partnership_settings') ? 'active' : '' ?>">
+                <i class="fas fa-users-cog"></i> Partnership Settings
+            </a>
 
             <!-- Service Pillars -->
             <div class="mt-4 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">Service</small></div>

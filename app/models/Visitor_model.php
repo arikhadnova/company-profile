@@ -11,12 +11,11 @@ class Visitor_model {
 
     public function logHit() {
         // Simple hit logging
-        // To prevent over-counting, we could check session or last hit from this IP
         $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
         $ua = $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown';
 
-        // Check if this IP has visited in the last hour to prevent spamming
-        $this->db->query("SELECT id FROM " . $this->table . " WHERE ip_address = :ip AND created_at > DATE_SUB(NOW(), INTERVAL 1 HOUR)");
+        // Check if this IP has visited in the last 24 hours to prevent spamming
+        $this->db->query("SELECT id FROM " . $this->table . " WHERE ip_address = :ip AND created_at > DATE_SUB(NOW(), INTERVAL 24 HOUR)");
         $this->db->bind(':ip', $ip);
         if ($this->db->single()) {
             return false; // Already logged recently

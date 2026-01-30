@@ -17,11 +17,13 @@ class GiService_model {
             category VARCHAR(100) NOT NULL,
             description_id TEXT,
             description_en TEXT,
-            small_subtitle_id VARCHAR(255),
-            small_subtitle_en VARCHAR(255),
             image VARCHAR(255),
-            outputs_id TEXT,
-            outputs_en TEXT,
+            program_points_en LONGTEXT,
+            highlights LONGTEXT,
+            location_id VARCHAR(255),
+            location_en VARCHAR(255),
+            service_type_id VARCHAR(255),
+            service_type_en VARCHAR(255),
             slug VARCHAR(255) UNIQUE NOT NULL,
             detail_content_id LONGTEXT,
             detail_content_en LONGTEXT,
@@ -53,11 +55,15 @@ class GiService_model {
     public function add($data) {
         $query = "INSERT INTO " . $this->table . " (
                     title_id, title_en, category, description_id, description_en, 
-                    small_subtitle_id, small_subtitle_en, image, outputs_id, outputs_en, 
+                    image, 
+                    program_points_id, program_points_en, highlights,
+                    location_id, location_en, service_type_id, service_type_en,
                     slug, detail_content_id, detail_content_en, order_priority
                   ) VALUES (
                     :title_id, :title_en, :category, :description_id, :description_en, 
-                    :small_subtitle_id, :small_subtitle_en, :image, :outputs_id, :outputs_en, 
+                    :image, 
+                    :program_points_id, :program_points_en, :highlights,
+                    :location_id, :location_en, :service_type_id, :service_type_en,
                     :slug, :detail_content_id, :detail_content_en, :order_priority
                   )";
         $this->db->query($query);
@@ -66,11 +72,15 @@ class GiService_model {
         $this->db->bind(':category', $data['category']);
         $this->db->bind(':description_id', $data['description_id']);
         $this->db->bind(':description_en', $data['description_en']);
-        $this->db->bind(':small_subtitle_id', $data['small_subtitle_id']);
-        $this->db->bind(':small_subtitle_en', $data['small_subtitle_en']);
         $this->db->bind(':image', $data['image']);
-        $this->db->bind(':outputs_id', $data['outputs_id']);
-        $this->db->bind(':outputs_en', $data['outputs_en']);
+
+        $this->db->bind(':program_points_id', $data['program_points_id']);
+        $this->db->bind(':program_points_en', $data['program_points_en']);
+        $this->db->bind(':highlights', $data['highlights']);
+        $this->db->bind(':location_id', $data['location_id']);
+        $this->db->bind(':location_en', $data['location_en']);
+        $this->db->bind(':service_type_id', $data['service_type_id']);
+        $this->db->bind(':service_type_en', $data['service_type_en']);
         $this->db->bind(':slug', $data['slug']);
         $this->db->bind(':detail_content_id', $data['detail_content_id']);
         $this->db->bind(':detail_content_en', $data['detail_content_en']);
@@ -85,11 +95,14 @@ class GiService_model {
                     category = :category, 
                     description_id = :description_id, 
                     description_en = :description_en, 
-                    small_subtitle_id = :small_subtitle_id, 
-                    small_subtitle_en = :small_subtitle_en, 
                     image = :image, 
-                    outputs_id = :outputs_id, 
-                    outputs_en = :outputs_en, 
+                    program_points_id = :program_points_id,
+                    program_points_en = :program_points_en,
+                    highlights = :highlights,
+                    location_id = :location_id,
+                    location_en = :location_en,
+                    service_type_id = :service_type_id,
+                    service_type_en = :service_type_en,
                     slug = :slug, 
                     detail_content_id = :detail_content_id, 
                     detail_content_en = :detail_content_en, 
@@ -102,11 +115,15 @@ class GiService_model {
         $this->db->bind(':category', $data['category']);
         $this->db->bind(':description_id', $data['description_id']);
         $this->db->bind(':description_en', $data['description_en']);
-        $this->db->bind(':small_subtitle_id', $data['small_subtitle_id']);
-        $this->db->bind(':small_subtitle_en', $data['small_subtitle_en']);
+
         $this->db->bind(':image', $data['image']);
-        $this->db->bind(':outputs_id', $data['outputs_id']);
-        $this->db->bind(':outputs_en', $data['outputs_en']);
+        $this->db->bind(':program_points_id', $data['program_points_id']);
+        $this->db->bind(':program_points_en', $data['program_points_en']);
+        $this->db->bind(':highlights', $data['highlights']);
+        $this->db->bind(':location_id', $data['location_id']);
+        $this->db->bind(':location_en', $data['location_en']);
+        $this->db->bind(':service_type_id', $data['service_type_id']);
+        $this->db->bind(':service_type_en', $data['service_type_en']);
         $this->db->bind(':slug', $data['slug']);
         $this->db->bind(':detail_content_id', $data['detail_content_id']);
         $this->db->bind(':detail_content_en', $data['detail_content_en']);

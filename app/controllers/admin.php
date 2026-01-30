@@ -81,8 +81,27 @@ class Admin extends Controller {
             $m->timestamp = strtotime($m->created_at);
         }
 
+        // Fetch recent portfolios (Limit 5)
+        $portfolios = $this->portfolioModel->getAll();
+        $portfolios = array_slice($portfolios, 0, 5);
+        foreach($portfolios as $p) {
+            $p->activity_type = 'portfolio';
+            // Assuming created_at exists, otherwise use a fallback or current time
+            $p->timestamp = isset($p->created_at) ? strtotime($p->created_at) : time();
+            $p->display_title = $p->title_id;
+        }
+
+        // Fetch recent GI services (Limit 5)
+        $gi_services = $this->giServiceModel->getAll();
+        $gi_services = array_slice($gi_services, 0, 5);
+        foreach($gi_services as $s) {
+            $s->activity_type = 'service';
+            $s->timestamp = strtotime($s->created_at);
+            $s->display_title = $s->title_id;
+        }
+
         // Merge and sort activities
-        $activities = array_merge($requests, $articles, $messages);
+        $activities = array_merge($requests, $articles, $messages, $portfolios, $gi_services);
         usort($activities, function($a, $b) {
             return $b->timestamp - $a->timestamp;
         });
@@ -226,6 +245,36 @@ class Admin extends Controller {
         Flasher::setFlash('Footer', 'berhasil diperbarui', 'success');
         header('Location: ' . BASE_URL . 'admin/settings');
         exit;
+    }
+
+    public function partnership_settings() {
+        $data = [
+            'title' => 'Partnership Settings',
+            'active' => 'partnership_settings',
+            'settings' => $this->settingModel->getAll()
+        ];
+        $this->views('layouts/admin_header', $data);
+        $this->views('admin/partnership_settings', $data);
+        $this->views('layouts/admin_footer');
+    }
+
+    public function update_partnership_settings() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            foreach ($_POST as $key => $value) {
+                // Update the Indonesian version
+                $this->settingModel->update($key, $value);
+
+                // Auto-translate to English if it's an _id field
+                if (strpos($key, '_id') !== false) {
+                    $en_key = str_replace('_id', '_en', $key);
+                    $en_value = Translator::translate($value);
+                    $this->settingModel->update($en_key, $en_value);
+                }
+            }
+            Flasher::setFlash('Settings Partnership', 'berhasil diperbarui', 'success');
+            header('Location: ' . BASE_URL . 'admin/partnership_settings');
+            exit;
+        }
     }
 
     public function hero() {
@@ -1961,15 +2010,42 @@ class Admin extends Controller {
     public function gi_services_store() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $image = Upload::file($_FILES['image'], 'img/gi');
+            
+            // Process Highlights
+            $highlights = [];
+            if (!empty($_FILES['highlight_imgs']['name'][0])) {
+                foreach ($_FILES['highlight_imgs']['name'] as $key => $val) {
+                    if (!empty($val)) {
+                        $file_data = [
+                            'name' => $_FILES['highlight_imgs']['name'][$key],
+                            'type' => $_FILES['highlight_imgs']['type'][$key],
+                            'tmp_name' => $_FILES['highlight_imgs']['tmp_name'][$key],
+                            'error' => $_FILES['highlight_imgs']['error'][$key],
+                            'size' => $_FILES['highlight_imgs']['size'][$key]
+                        ];
+                        $uploaded_file = Upload::file($file_data, 'img/gi');
+                        if ($uploaded_file) {
+                            $highlights[] = [
+                                'image' => $uploaded_file,
+                                'caption' => $_POST['highlight_captions'][$key] ?? ''
+                            ];
+                        }
+                    }
+                }
+            }
+
             $data = $_POST;
             $data['image'] = $image ?: '';
+            $data['highlights'] = json_encode($highlights);
             
             // Auto-translate
             $data['title_en'] = $data['title_en'] ?: Translator::translate($data['title_id']);
-            $data['small_subtitle_en'] = $data['small_subtitle_en'] ?: Translator::translate($data['small_subtitle_id']);
+
             $data['description_en'] = $data['description_en'] ?: Translator::translate($data['description_id']);
-            $data['outputs_en'] = $data['outputs_en'] ?: Translator::translate($data['outputs_id']);
             $data['detail_content_en'] = $data['detail_content_en'] ?: Translator::translate($data['detail_content_id']);
+            $data['program_points_en'] = $data['program_points_en'] ?: Translator::translate($data['program_points_id']);
+            $data['location_en'] = $data['location_en'] ?: Translator::translate($data['location_id'] ?: '');
+            $data['service_type_en'] = $data['service_type_en'] ?: Translator::translate($data['service_type_id'] ?: '');
 
             $data['slug'] = str_replace(' ', '-', strtolower($data['title_en']));
 
@@ -2008,15 +2084,56 @@ class Admin extends Controller {
                 }
             }
 
+            // Process Highlights
+            $highlights = [];
+            
+            // Existing highlights
+            if (isset($_POST['existing_highlight_imgs'])) {
+                foreach ($_POST['existing_highlight_imgs'] as $key => $img) {
+                    if (!empty($img)) {
+                        $highlights[] = [
+                            'image' => $img,
+                            'caption' => $_POST['existing_highlight_captions'][$key] ?? ''
+                        ];
+                    }
+                }
+            }
+
+            // New highlights
+            if (!empty($_FILES['highlight_imgs']['name'][0])) {
+                foreach ($_FILES['highlight_imgs']['name'] as $key => $val) {
+                    if (!empty($val)) {
+                        $file_data = [
+                            'name' => $_FILES['highlight_imgs']['name'][$key],
+                            'type' => $_FILES['highlight_imgs']['type'][$key],
+                            'tmp_name' => $_FILES['highlight_imgs']['tmp_name'][$key],
+                            'error' => $_FILES['highlight_imgs']['error'][$key],
+                            'size' => $_FILES['highlight_imgs']['size'][$key]
+                        ];
+                        
+                        $uploaded_file = Upload::file($file_data, 'img/gi');
+                        if ($uploaded_file) {
+                            $highlights[] = [
+                                'image' => $uploaded_file,
+                                'caption' => $_POST['highlight_captions'][$key] ?? ''
+                            ];
+                        }
+                    }
+                }
+            }
+
             $data = $_POST;
             $data['image'] = $image;
+            $data['highlights'] = json_encode($highlights);
 
             // Auto-translate
             $data['title_en'] = $data['title_en'] ?: Translator::translate($data['title_id']);
-            $data['small_subtitle_en'] = $data['small_subtitle_en'] ?: Translator::translate($data['small_subtitle_id']);
+
             $data['description_en'] = $data['description_en'] ?: Translator::translate($data['description_id']);
-            $data['outputs_en'] = $data['outputs_en'] ?: Translator::translate($data['outputs_id']);
             $data['detail_content_en'] = $data['detail_content_en'] ?: Translator::translate($data['detail_content_id']);
+            $data['program_points_en'] = $data['program_points_en'] ?: Translator::translate($data['program_points_id']);
+            $data['location_en'] = $data['location_en'] ?: Translator::translate($data['location_id']);
+            $data['service_type_en'] = $data['service_type_en'] ?: Translator::translate($data['service_type_id']);
 
             $data['slug'] = str_replace(' ', '-', strtolower($data['title_en']));
 

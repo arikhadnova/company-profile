@@ -1,4 +1,15 @@
 <div class="gi-page">
+<style>
+    .service-category-tag {
+        color: #FF8F56;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+        display: block;
+    }
+</style>
 <!-- HERO SECTION -->
 <?php
 $heroGI = $data['hero'];
@@ -214,7 +225,23 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="card-body p-4">
-                                        <div class="mb-1 text-secondary small" data-lang-id="<?= $s->small_subtitle_id ?>" data-lang-en="<?= $s->small_subtitle_en ?>"><?= $s->small_subtitle_id ?></div>
+                                        <?php 
+                                            $cat_label_id = 'Capacity Building';
+                                            $cat_label_en = 'Capacity Building';
+                                            if($s->category == 'training') {
+                                                $cat_label_id = 'Training';
+                                                $cat_label_en = 'Training';
+                                            } elseif($s->category == 'publikasi-riset') {
+                                                $cat_label_id = 'Publikasi dan Riset';
+                                                $cat_label_en = 'Publication & Research';
+                                            } elseif($s->category == 'fasilitasi-knowledge') {
+                                                $cat_label_id = 'Fasilitasi & Knowledge Exchange';
+                                                $cat_label_en = 'Facilitation & Knowledge Exchange';
+                                            }
+                                        ?>
+                                        <div class="mb-1">
+                                            <span class="service-category-tag mb-1" data-lang-id="<?= $cat_label_id ?>" data-lang-en="<?= $cat_label_en ?>"><?= $cat_label_id ?></span>
+                                        </div>
                                         <h4 class="card-title fw-bold mb-3" data-lang-id="<?= $s->title_id ?>" data-lang-en="<?= $s->title_en ?>"><?= $s->title_id ?></h4>
                                         <p class="card-text text-muted mb-4" data-lang-id="<?= $s->description_id ?>" data-lang-en="<?= $s->description_en ?>">
                                             <?= $s->description_id ?>

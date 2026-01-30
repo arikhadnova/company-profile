@@ -88,17 +88,26 @@
                     <div class="col-lg-7 ps-lg-5">
                         <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <h3 class="fw-bold text-dark-blue mb-1">Community Partnership</h3>
-                                <p class="text-primary fw-medium small mb-4" style="color: #FF8F56 !important;">Focal on community empowerment and social impact.</p>
+                                <h3 class="fw-bold text-dark-blue mb-1" 
+                                    data-lang-id="<?= $settings['ps_comm_title_id'] ?? 'Community Partnership' ?>" 
+                                    data-lang-en="<?= $settings['ps_comm_title_en'] ?? 'Community Partnership' ?>">
+                                    <?= $settings['ps_comm_title_id'] ?? 'Community Partnership' ?>
+                                </h3>
+                                <p class="text-primary fw-medium small mb-4" style="color: #FF8F56 !important;"
+                                   data-lang-id="<?= $settings['ps_comm_sub_id'] ?? 'Focal on community empowerment and social impact.' ?>" 
+                                   data-lang-en="<?= $settings['ps_comm_sub_en'] ?? 'Focal on community empowerment and social impact.' ?>">
+                                    <?= $settings['ps_comm_sub_id'] ?? 'Focal on community empowerment and social impact.' ?>
+                                </p>
                             </div>
                             <div class="category-nav d-none d-md-flex">
                                 <div class="btn-nav-swiper prev-comm"><i class="fas fa-chevron-left"></i></div>
                                 <div class="btn-nav-swiper next-comm"><i class="fas fa-chevron-right"></i></div>
                             </div>
                         </div>
-                        <p class="text-secondary mb-0 line-height-relaxed" data-i18n="partnership.comm_desc">
-                            Bekerja sama dengan berbagai komunitas lokal untuk meningkatkan kesadaran publik, 
-                            mengimplementasikan sistem pengomposan mandiri, dan meningkatkan praktik pengurangan sampah dari sumbernya melalui keterlibatan aktif tingkat rukun warga (RW).
+                        <p class="text-secondary mb-0 line-height-relaxed" 
+                           data-lang-id="<?= $settings['ps_comm_desc_id'] ?? '' ?>" 
+                           data-lang-en="<?= $settings['ps_comm_desc_en'] ?? '' ?>">
+                            <?= $settings['ps_comm_desc_id'] ?? '' ?>
                         </p>
                     </div>
                 </div>
@@ -147,17 +156,26 @@
                     <div class="col-lg-7 order-2 order-lg-1 pe-lg-5">
                         <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <h3 class="fw-bold text-dark-blue mb-1">Academic Partnership</h3>
-                                <p class="text-primary fw-medium small mb-4" style="color: #FF8F56 !important;">Collaboration with research and higher education institutions.</p>
+                                <h3 class="fw-bold text-dark-blue mb-1" 
+                                    data-lang-id="<?= $settings['ps_acad_title_id'] ?? 'Academic Partnership' ?>" 
+                                    data-lang-en="<?= $settings['ps_acad_title_en'] ?? 'Academic Partnership' ?>">
+                                    <?= $settings['ps_acad_title_id'] ?? 'Academic Partnership' ?>
+                                </h3>
+                                <p class="text-primary fw-medium small mb-4" style="color: #FF8F56 !important;"
+                                   data-lang-id="<?= $settings['ps_acad_sub_id'] ?? 'Collaboration with research and higher education institutions.' ?>" 
+                                   data-lang-en="<?= $settings['ps_acad_sub_en'] ?? 'Collaboration with research and higher education institutions.' ?>">
+                                    <?= $settings['ps_acad_sub_id'] ?? 'Collaboration with research and higher education institutions.' ?>
+                                </p>
                             </div>
                             <div class="category-nav d-none d-md-flex">
                                 <div class="btn-nav-swiper prev-acad"><i class="fas fa-chevron-left"></i></div>
                                 <div class="btn-nav-swiper next-acad"><i class="fas fa-chevron-right"></i></div>
                             </div>
                         </div>
-                        <p class="text-secondary mb-0 line-height-relaxed" data-i18n="partnership.acad_desc">
-                            Mendorong inovasi dan penelitian berbasis data dengan menggandeng universitas dan pusat studi 
-                            untuk memformulasikan solusi pengelolaan sampah yang aplikatif dan berbasis teknologi tepat guna.
+                        <p class="text-secondary mb-0 line-height-relaxed" 
+                           data-lang-id="<?= $settings['ps_acad_desc_id'] ?? '' ?>" 
+                           data-lang-en="<?= $settings['ps_acad_desc_en'] ?? '' ?>">
+                            <?= $settings['ps_acad_desc_id'] ?? '' ?>
                         </p>
                     </div>
                     <div class="col-lg-5 order-1 order-lg-2">
@@ -216,17 +234,26 @@
                     <div class="col-lg-7 ps-lg-5">
                         <div class="d-flex justify-content-between align-items-start">
                             <div>
-                                <h3 class="fw-bold text-dark-blue mb-1">Program Partnership</h3>
-                                <p class="text-primary fw-medium small mb-4" style="color: #FF8F56 !important;">Strategic partnerships with government and CSR.</p>
+                                <h3 class="fw-bold text-dark-blue mb-1" 
+                                    data-lang-id="<?= $settings['ps_prog_title_id'] ?? 'Program Partnership' ?>" 
+                                    data-lang-en="<?= $settings['ps_prog_title_en'] ?? 'Program Partnership' ?>">
+                                    <?= $settings['ps_prog_title_id'] ?? 'Program Partnership' ?>
+                                </h3>
+                                <p class="text-primary fw-medium small mb-4" style="color: #FF8F56 !important;"
+                                   data-lang-id="<?= $settings['ps_prog_sub_id'] ?? 'Strategic partnerships with government and CSR.' ?>" 
+                                   data-lang-en="<?= $settings['ps_prog_sub_en'] ?? 'Strategic partnerships with government and CSR.' ?>">
+                                    <?= $settings['ps_prog_sub_id'] ?? 'Strategic partnerships with government and CSR.' ?>
+                                </p>
                             </div>
                             <div class="category-nav d-none d-md-flex">
                                 <div class="btn-nav-swiper prev-prog"><i class="fas fa-chevron-left"></i></div>
                                 <div class="btn-nav-swiper next-prog"><i class="fas fa-chevron-right"></i></div>
                             </div>
                         </div>
-                        <p class="text-secondary mb-0 line-height-relaxed" data-i18n="partnership.prog_desc">
-                            Mendukung penyelarasan program tanggung jawab sosial perusahaan dan kebijakan publik 
-                            untuk menciptakan skalabilitas dampak dalam pengelolaan sampah di berbagai daerah di Indonesia.
+                        <p class="text-secondary mb-0 line-height-relaxed" 
+                           data-lang-id="<?= $settings['ps_prog_desc_id'] ?? '' ?>" 
+                           data-lang-en="<?= $settings['ps_prog_desc_en'] ?? '' ?>">
+                            <?= $settings['ps_prog_desc_id'] ?? '' ?>
                         </p>
                     </div>
                 </div>

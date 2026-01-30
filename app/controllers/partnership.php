@@ -9,7 +9,8 @@ class partnership extends Controller {
             'partners' => $this->model('Partner_model')->getAll(),
             'impacts' => $this->model('Impact_model')->getByPage('partnership'),
             'testimonials' => $this->model('Testimonial_model')->getByPage('partnership'),
-            'faqs' => $this->model('Faq_model')->getByPage('partnership')
+            'faqs' => $this->model('Faq_model')->getByPage('partnership'),
+            'settings' => $this->model('Setting_model')->getAll()
         ];
         $this->views('layouts/header', $data);
         $this->views('partnership/index', $data);

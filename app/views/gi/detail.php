@@ -34,17 +34,19 @@
         justify-content: center;
         color: #adb5bd;
     }
-    .btn-green-gi {
-        background-color: #29b471;
+    .btn-orange-gi {
+        background-color: #FF8F56;
         color: white;
         border: none;
         padding: 12px 30px;
         border-radius: 50px;
         font-weight: 600;
+        transition: all 0.3s ease;
     }
-    .btn-green-gi:hover {
-        background-color: #1e8552;
+    .btn-orange-gi:hover {
+        background-color: #e5763d;
         color: white;
+        transform: translateY(-2px);
     }
     
     .section-title {
@@ -130,7 +132,7 @@
         font-size: 0.85rem;
         border-bottom: 1px solid #eee;
     }
-    .status-check { color: #29b471; font-weight: bold; }
+    .status-check { color: #FF8F56; font-weight: bold; }
     .status-cross { color: #dc3545; font-weight: bold; }
     
     /* FAQ Accordion */
@@ -176,7 +178,52 @@
         background-color: #fff;
         padding: 60px 40px;
         width: 60%;
-        border-top: 5px solid #29b471;
+        border-top: 5px solid #FF8F56;
+    }
+
+    .highlight-card {
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        height: 220px;
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+        cursor: pointer;
+    }
+    .highlight-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 45px rgba(0,0,0,0.15) !important;
+    }
+    .highlight-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    .highlight-card:hover img {
+        transform: scale(1.1);
+    }
+    .highlight-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 40%, transparent 100%);
+        display: flex;
+        align-items: flex-end;
+        padding: 25px;
+        color: white;
+        opacity: 0.9;
+        transition: all 0.4s ease;
+    }
+    .highlight-card:hover .highlight-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+    }
+    .highlight-overlay p {
+        transform: translateY(5px);
+        transition: transform 0.4s ease;
+        font-size: 0.9rem;
+    }
+    .highlight-card:hover .highlight-overlay p {
+        transform: translateY(0);
     }
     
     .testimonial-card {
@@ -209,7 +256,7 @@
                     <?= $s->description_id ?>
                 </p>
                 <div class="d-flex gap-3">
-                    <a href="<?= BASE_URL ?>contact" class="btn btn-green-gi">Hubungi Kami</a>
+                    <a href="<?= BASE_URL ?>contact" class="btn btn-orange-gi">Hubungi Kami</a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -234,23 +281,55 @@
                     <?= $s->detail_content_id ?>
                 </div>
 
-                <?php if ($s->outputs_id) : ?>
-                <div class="mt-5 pt-4">
-                    <h4 class="fw-bold mb-4">Outputs</h4>
-                    <div class="d-flex flex-wrap gap-2">
-                        <?php 
-                        $outputs_id = explode(',', $s->outputs_id);
-                        $outputs_en = explode(',', $s->outputs_en);
-                        foreach ($outputs_id as $idx => $out) : 
-                            $out_en = isset($outputs_en[$idx]) ? trim($outputs_en[$idx]) : trim($out);
+                <?php 
+                $points = json_decode($s->program_points_id ?: '[]', true);
+                $points_en = json_decode($s->program_points_en ?: '[]', true);
+                if (!empty($points)) : 
+                ?>
+                <div class="mt-5">
+                    <h4 class="fw-bold mb-4">Program Points</h4>
+                    <div class="row g-4">
+                        <?php foreach($points as $idx => $p) : 
+                            $p_en = $points_en[$idx] ?? $p;
                         ?>
-                            <div class="badge bg-light text-dark p-3 rounded-pill border d-flex align-items-center gap-2" data-lang-id="<?= trim($out) ?>" data-lang-en="<?= $out_en ?>">
-                                <i class="bi bi-check-circle text-success"></i> <?= trim($out) ?>
+                        <div class="col-12">
+                            <div class="materi-item">
+                                <div class="materi-number"><?= str_pad($idx + 1, 2, '0', STR_PAD_LEFT); ?></div>
+                                <div class="materi-content">
+                                    <h6 data-lang-id="<?= $p['title'] ?? '' ?>" data-lang-en="<?= $p_en['title'] ?? '' ?>"><?= $p['title'] ?? '' ?></h6>
+                                    <p data-lang-id="<?= $p['desc'] ?? '' ?>" data-lang-en="<?= $p_en['desc'] ?? '' ?>"><?= $p['desc'] ?? '' ?></p>
+                                </div>
                             </div>
+                        </div>
                         <?php endforeach; ?>
                     </div>
                 </div>
                 <?php endif; ?>
+
+                <?php if ($s->highlights && $s->highlights != '[]') : ?>
+                <div class="mt-5">
+                    <h4 class="fw-bold mb-4">Highlights</h4>
+                    <div class="row g-3">
+                        <?php 
+                        $highlights = json_decode($s->highlights, true);
+                        foreach($highlights as $h) : 
+                        ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="highlight-card shadow-sm">
+                                <img src="<?= ASSETS_URL ?>img/gi/<?= $h['image'] ?>" alt="Highlight">
+                                <div class="highlight-overlay">
+                                    <p class="small mb-0" data-lang-id="<?= htmlspecialchars($h['caption'] ?? '') ?>" data-lang-en="<?= htmlspecialchars($h['caption'] ?? '') ?>">
+                                        <?= $h['caption'] ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+
             </div>
             
             <div class="col-lg-4">
@@ -269,7 +348,9 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="sidebar-info-text">
                             <small>Lokasi</small>
-                            <span>Online / Offline (Disesuaikan)</span>
+                            <span data-lang-id="<?= $s->location_id ?: 'Online / Offline (Disesuaikan)'; ?>" data-lang-en="<?= $s->location_en ?: 'Online / Offline (Adjusted)'; ?>">
+                                <?= $s->location_id ?: 'Online / Offline (Disesuaikan)'; ?>
+                            </span>
                         </div>
                     </div>
                     
@@ -277,14 +358,13 @@
                         <i class="fas fa-clock"></i>
                         <div class="sidebar-info-text">
                             <small>Sifat Layanan</small>
-                            <span>Profesional & Adaptif</span>
+                            <span data-lang-id="<?= $s->service_type_id ?: 'Profesional & Adaptif'; ?>" data-lang-en="<?= $s->service_type_en ?: 'Professional & Adaptive'; ?>">
+                                <?= $s->service_type_id ?: 'Profesional & Adaptif'; ?>
+                            </span>
                         </div>
                     </div>
                     
-                    <a href="<?= BASE_URL ?>contact" class="btn btn-orange-sidebar text-decoration-none d-block text-center shadow-sm">
-                        Hubungi Kami
-                    </a>
-                    <p class="text-center small opacity-75 mt-3 mb-0">Klik tombol di atas untuk tanya-tanya seputar layanan ini.</p>
+
                 </div>
             </div>
         </div>
@@ -322,7 +402,7 @@
                         <label class="form-label small fw-bold">PESAN / KEBUTUHAN</label>
                         <textarea name="message" class="form-control border-0 bg-light py-3 border-bottom rounded-0 shadow-none" rows="3" placeholder="Jelaskan kebutuhan Anda..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-green-gi w-100 py-3 mt-3 shadow-sm">Kirim Permintaan Sekarang</button>
+                    <button type="submit" class="btn btn-orange-gi w-100 py-3 mt-3 shadow-sm">Kirim Permintaan Sekarang</button>
                 </form>
             </div>
         </div>

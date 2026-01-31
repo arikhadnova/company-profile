@@ -103,8 +103,8 @@
 <!-- SERVICES -->
 <section id="services" class="section bg-light">
   <div class="container">
-    <h2 class="text-center fw-bold mb-2">LAYANAN KAMI</h2>
-    <p class="text-center mb-5">Setiap pilar layanan kami bersinergi menghadirkan solusi relevan, aplikatif secara lokal, dan berkelanjutan.</p>
+    <h2 class="text-center fw-bold mb-2" data-i18n="home.services.title">LAYANAN KAMI</h2>
+    <p class="text-center mb-5" data-i18n="home.services.subtitle">Setiap pilar layanan kami bersinergi menghadirkan solusi relevan, aplikatif secara lokal, dan berkelanjutan.</p>
     <div class="row g-4">
       <?php if (!empty($data['services'])) : ?>
         <?php foreach ($data['services'] as $s) : ?>
@@ -135,7 +135,7 @@
                   <?= $s->description_id ?>
                 </div>
                 <div class="mt-4">
-                  <a href="<?= $link ?>" class="btn btn-outline-primary btn-sm rounded-pill px-4">
+                  <a href="<?= $link ?>" class="btn btn-outline-primary btn-sm rounded-pill px-4" data-i18n="home.common.read_more">
                     Selengkapnya
                   </a>
                 </div>
@@ -155,7 +155,7 @@
     <!-- Capacity Building -->
     <div class="mb-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="fw-bold">Layanan Capacity Building</h3>
+        <h3 class="fw-bold" data-i18n="home.services.cb_title">Layanan Capacity Building</h3>
         <div class="service-detail-nav d-flex gap-2">
            <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-detail-1" style="width: 40px; height: 40px;">
              <i class="fas fa-arrow-left"></i>
@@ -186,7 +186,7 @@
                     </p>
                     <div class="mt-auto">
                         <a href="<?= BASE_URL ?>gi/detail/<?= $item->slug ?>" class="btn btn-gi-orange rounded-pill d-inline-flex align-items-center gap-2">
-                            Pelajari lebih lanjut <i class="bi bi-box-arrow-up-right small"></i>
+                            <span data-i18n="home.common.learn_more">Pelajari lebih lanjut</span> <i class="bi bi-box-arrow-up-right small"></i>
                         </a>
                     </div>
                   </div>
@@ -201,7 +201,7 @@
     <!-- Implementasi Partner -->
     <div class="mb-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="fw-bold">Pengembangan Program dan Implementasi Partner</h3>
+        <h3 class="fw-bold" data-i18n="home.services.pd_title">Pengembangan Program dan Implementasi Partner</h3>
         <div class="service-detail-nav d-flex gap-2">
            <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-detail-2" style="width: 40px; height: 40px;">
              <i class="fas fa-arrow-left"></i>
@@ -242,7 +242,7 @@
     <!-- Consultancy -->
     <div class="mb-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h3 class="fw-bold">Layanan Konsultansi & Advisory Strategis</h3>
+        <h3 class="fw-bold" data-i18n="home.services.cs_title">Layanan Konsultansi & Advisory Strategis</h3>
         <div class="service-detail-nav d-flex gap-2">
            <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-detail-3" style="width: 40px; height: 40px;">
              <i class="fas fa-arrow-left"></i>
@@ -328,14 +328,14 @@
 <section id="portfolio" class="section bg-light">
   <div class="container">
     <div class="text-center mb-5">
-      <h2 class="fw-bold">PORTOFOLIO & KEMITRAAN KAMI</h2>
-      <p class="text-muted">Portofolio kerja sama kami mencerminkan komitmen GoSirk dalam memperluas dampak melalui kolaborasi strategis.</p>
+      <h2 class="fw-bold" data-i18n="home.portfolio.title">PORTOFOLIO & KEMITRAAN KAMI</h2>
+      <p class="text-muted" data-i18n="home.portfolio.subtitle">Portofolio kerja sama kami mencerminkan komitmen GoSirk dalam memperluas dampak melalui kolaborasi strategis.</p>
     </div>
 
     <!-- 1. Capacity Building (GoSirk Institute) -->
     <div class="mb-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4 class="fw-bold">Capacity Building (GoSirk Institute)</h4>
+        <h4 class="fw-bold" data-i18n="home.portfolio.cb_title">Capacity Building (GoSirk Institute)</h4>
         <div class="d-flex gap-2">
            <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-port-1" style="width: 40px; height: 40px;">
              <i class="fas fa-arrow-left"></i>
@@ -380,7 +380,7 @@
     <!-- 2. Pengembangan Program dan Implementasi Partner -->
     <div class="mb-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4 class="fw-bold">Pengembangan Program dan Implementasi Partner</h4>
+        <h4 class="fw-bold" data-i18n="home.portfolio.pd_title">Pengembangan Program dan Implementasi Partner</h4>
         <div class="d-flex gap-2">
            <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-port-2" style="width: 40px; height: 40px;">
              <i class="fas fa-arrow-left"></i>
@@ -425,7 +425,7 @@
     <!-- 3. Konsultansi & Advisory Strategis -->
     <div class="mb-5">
       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h4 class="fw-bold">Konsultansi & Advisory Strategis</h4>
+        <h4 class="fw-bold" data-i18n="home.portfolio.cs_title">Konsultansi & Advisory Strategis</h4>
         <div class="d-flex gap-2">
            <button class="btn btn-outline-dark rounded-circle p-2 d-flex align-items-center justify-content-center prev-port-3" style="width: 40px; height: 40px;">
              <i class="fas fa-arrow-left"></i>

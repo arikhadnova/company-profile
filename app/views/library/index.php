@@ -2,16 +2,16 @@
 <section class="section py-5 bg-light">
     <div class="container">
         <div class="text-center mb-5">
-            <span class="badge bg-primary rounded-pill px-3 py-2 mb-3 fw-bold">GOSIRK INSTITUTE</span>
-            <h2 class="fw-bold display-5 mb-3">Library & Resources</h2>
-            <p class="lead text-muted mx-auto" style="max-width: 800px;">
+            <span class="badge bg-primary rounded-pill px-3 py-2 mb-3 fw-bold" data-i18n="library.badge">GOSIRK INSTITUTE</span>
+            <h2 class="fw-bold display-5 mb-3" data-i18n="library.title">Library & Resources</h2>
+            <p class="lead text-muted mx-auto" style="max-width: 800px;" data-i18n="library.subtitle">
                 Kumpulan artikel, hasil penelitian, dan materi edukatif untuk mendukung pengelolaan sampah berkelanjutan.
             </p>
         </div>
 
         <!-- Library Filter Tags (Optional for better UX) -->
         <div class="d-flex justify-content-center gap-2 mb-5 flex-wrap">
-            <button class="btn btn-outline-dark rounded-pill px-4 active">Semua</button>
+            <button class="btn btn-outline-dark rounded-pill px-4 active" data-i18n="library.category_all">Semua</button>
             <button class="btn btn-outline-dark rounded-pill px-4">Series Belajar</button>
             <button class="btn btn-outline-dark rounded-pill px-4">Artikel</button>
             <button class="btn btn-outline-dark rounded-pill px-4">Studi Kasus</button>
@@ -44,7 +44,7 @@
                                 </p>
                             </div>
                             <div class="mt-3 pt-3 border-top text-end">
-                                <a href="<?= BASE_URL ?>blog/detail/<?= $item->id ?>" class="btn btn-link article-link p-0 text-decoration-none fw-bold">Selengkapnya</a>
+                                <a href="<?= BASE_URL ?>blog/detail/<?= $item->id ?>" class="btn btn-link article-link p-0 text-decoration-none fw-bold" data-i18n="library.read_more">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                 <?php endforeach; ?>
             <?php else : ?>
                 <div class="col-12 text-center py-5">
-                    <p class="text-muted">Belum ada resource di library saat ini.</p>
+                    <p class="text-muted" data-i18n="library.empty">Belum ada resource di library saat ini.</p>
                 </div>
             <?php endif; ?>
         </div>

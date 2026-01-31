@@ -1,9 +1,9 @@
 <section class="section py-5">
     <div class="container">
         <div class="text-center mb-5">
-            <span class="badge bg-warning text-dark rounded-pill px-3 py-2 mb-3 fw-bold">OUR STORIES</span>
-            <h2 class="fw-bold display-5 mb-3">Berita & Artikel</h2>
-            <p class="lead text-muted mx-auto" style="max-width: 700px;">
+            <span class="badge bg-warning text-dark rounded-pill px-3 py-2 mb-3 fw-bold" data-i18n="blog.badge">OUR STORIES</span>
+            <h2 class="fw-bold display-5 mb-3" data-i18n="blog.title">Berita & Artikel</h2>
+            <p class="lead text-muted mx-auto" style="max-width: 700px;" data-i18n="blog.subtitle">
                 Insight, update program, dan cerita perubahan dari lapangan.
             </p>
         </div>
@@ -18,15 +18,15 @@
                             <span class="input-group-text border-0 bg-transparent ps-4">
                                 <span class="material-symbols-outlined text-muted">search</span>
                             </span>
-                            <input type="text" class="form-control border-0 py-3 shadow-none bg-transparent" placeholder="Cari berita atau artikel menarik..." id="articleSearch">
-                            <button class="btn btn-warning rounded-pill px-4 fw-bold me-1 my-1">Cari</button>
+                            <input type="text" class="form-control border-0 py-3 shadow-none bg-transparent" placeholder="Cari berita atau artikel menarik..." id="articleSearch" data-i18n-placeholder="blog.search_placeholder">
+                            <button class="btn btn-warning rounded-pill px-4 fw-bold me-1 my-1" data-i18n="blog.search_btn">Cari</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Category Filters -->
                 <div class="article-categories d-flex flex-wrap justify-content-center gap-2">
-                    <a href="#" class="btn btn-warning rounded-pill px-4 fw-bold btn-category active" data-category="all">Semua</a>
+                    <a href="#" class="btn btn-warning rounded-pill px-4 fw-bold btn-category active" data-category="all" data-i18n="blog.category_all">Semua</a>
                     <a href="#" class="btn btn-outline-secondary rounded-pill px-4 btn-category" data-category="Implementing Partner">Implementing Partner</a>
                     <a href="#" class="btn btn-outline-secondary rounded-pill px-4 btn-category" data-category="Training">Training</a>
                     <a href="#" class="btn btn-outline-secondary rounded-pill px-4 btn-category" data-category="Environment">Environment</a>
@@ -49,7 +49,7 @@
                 <div class="col-lg-5">
                     <div class="card-body p-5 d-flex flex-column justify-content-center h-100 bg-dark text-white">
                         <div class="mb-3">
-                             <span class="badge bg-danger rounded-pill px-3 py-2 fw-bold">HIGHLIGHT</span>
+                             <span class="badge bg-danger rounded-pill px-3 py-2 fw-bold" data-i18n="blog.highlight_badge">HIGHLIGHT</span>
                              <span class="ms-2 text-white-50 small"><i class="far fa-calendar-alt me-1"></i> <?= date('d M Y', strtotime($hero->created_at)) ?></span>
                         </div>
                         <h2 class="card-title fw-bold mb-3 display-6" data-lang-id="<?= $hero->title_id ?>" data-lang-en="<?= $hero->title_en ?>">
@@ -58,7 +58,7 @@
                         <div class="card-text text-white-50 fs-5 mb-4" data-lang-id="<?= substr(strip_tags($hero->content_id), 0, 150) ?>..." data-lang-en="<?= substr(strip_tags($hero->content_en), 0, 150) ?>...">
                             <?= substr(strip_tags($hero->content_id), 0, 150) ?>...
                         </div>
-                        <a href="<?= BASE_URL ?>blog/detail/<?= $hero->id ?>" class="btn btn-warning btn-lg text-dark fw-bold align-self-start rounded-pill px-4">
+                        <a href="<?= BASE_URL ?>blog/detail/<?= $hero->id ?>" class="btn btn-warning btn-lg text-dark fw-bold align-self-start rounded-pill px-4" data-i18n="blog.read_main">
                             Baca Artikel Utama
                         </a>
                     </div>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="d-flex align-items-center gap-2 mt-3 pt-3 border-top">
                              <span class="material-symbols-outlined text-warning">arrow_forward</span>
-                             <span class="fw-bold text-warning">Baca Selengkapnya</span>
+                             <span class="fw-bold text-warning" data-i18n="blog.read_more">Baca Selengkapnya</span>
                         </div>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
         </div>
         <?php else : ?>
             <div class="text-center py-5">
-                <h3 class="text-muted">Belum ada artikel yang dipublikasikan.</h3>
+                <h3 class="text-muted" data-i18n="blog.empty">Belum ada artikel yang dipublikasikan.</h3>
             </div>
         <?php endif; ?>
         </div>

@@ -25,9 +25,9 @@
 <section class="section py-5 bg-light">
   <div class="container">
     <div class="text-center mb-5">
-        <span class="badge bg-warning text-dark rounded-pill px-3 py-2 mb-3 fw-bold">COLLABORATION</span>
-        <h2 class="fw-bold display-5 mb-3">EXECUTIVE SUMMARY</h2>
-        <p class="lead text-muted mx-auto" style="max-width: 700px;">
+        <span class="badge bg-warning text-dark rounded-pill px-3 py-2 mb-3 fw-bold" data-i18n="collaboration.badge">COLLABORATION</span>
+        <h2 class="fw-bold display-5 mb-3" data-i18n="collaboration.title">EXECUTIVE SUMMARY</h2>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;" data-i18n="collaboration.subtitle">
             Pelajari lebih lanjut tentang inisiatif, pencapaian, dan rencana strategis kami melalui dokumen-dokumen berikut.
         </p>
     </div>
@@ -38,7 +38,7 @@
         <?php if (empty($data['docs'])) : ?>
             <div class="text-center py-5">
                 <i class="fas fa-file-invoice fs-1 text-muted mb-3"></i>
-                <p class="text-muted">Belum ada dokumen yang tersedia saat ini.</p>
+                <p class="text-muted" data-i18n="collaboration.empty">Belum ada dokumen yang tersedia saat ini.</p>
             </div>
         <?php else : ?>
             <?php foreach ($data['docs'] as $doc) : ?>
@@ -53,11 +53,11 @@
                     </div>
                     <div class="col-md-9">
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <span class="badge bg-light text-primary border border-primary rounded-pill">Executive Summary</span>
-                            <small class="text-muted"><i class="far fa-clock me-1"></i> Updated: <?= date('M Y', strtotime($doc->created_at)) ?></small>
+                            <span class="badge bg-light text-primary border border-primary rounded-pill" data-i18n="collaboration.doc_badge">Executive Summary</span>
+                            <small class="text-muted"><i class="far fa-clock me-1"></i> <span data-i18n="collaboration.doc_updated">Updated</span>: <?= date('M Y', strtotime($doc->created_at)) ?></small>
                         </div>
                         <h3 class="fw-bold mb-3 text-dark"><?= $doc->title_id ?></h3>
-                        <p class="text-muted mb-4 small">
+                        <p class="text-muted mb-4 small" data-i18n="collaboration.doc_desc">
                             Klik tombol di bawah ini untuk mendapatkan salinan dokumen ini melalui email Anda.
                         </p>
                         <div class="d-flex align-items-center flex-wrap gap-3">
@@ -67,7 +67,7 @@
                                 data-doc-id="<?= $doc->id ?>">
                             <div class="d-flex align-items-center gap-2">
                                 <span class="material-symbols-outlined">download</span>
-                                <span>Download Dokumen</span>
+                                <span data-i18n="collaboration.btn_download">Download Dokumen</span>
                             </div>
                         </button>
                         </div>
@@ -91,39 +91,39 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content border-0 rounded-4 shadow">
       <div class="modal-header border-bottom-0 pb-0">
-        <h5 class="modal-title fw-bold" id="downloadModalLabel">Dapatkan Executive Summary Kami</h5>
+        <h5 class="modal-title fw-bold" id="downloadModalLabel" data-i18n="collaboration.modal.title">Dapatkan Executive Summary Kami</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-4">
-        <p class="mb-4 text-muted">Untuk mengunduh dokumen ini, mohon isi formulir berikut. Dokumen akan dikirimkan ke email Anda.</p>
+        <p class="mb-4 text-muted" data-i18n="collaboration.modal.desc">Untuk mengunduh dokumen ini, mohon isi formulir berikut. Dokumen akan dikirimkan ke email Anda.</p>
         
         <div class="alert alert-warning d-flex align-items-center gap-2 mb-4" role="alert">
             <span class="material-symbols-outlined">folder_open</span>
-            <div>
-               Dokumen: <strong id="modalDocTitle">...</strong>
+            <div class="d-flex gap-1">
+               <span data-i18n="collaboration.modal.doc_label">Dokumen</span>: <strong id="modalDocTitle">...</strong>
             </div>
         </div>
 
         <form id="downloadForm">
           <input type="hidden" name="doc_id" id="modalDocId">
           <div class="mb-3">
-            <label for="dlName" class="form-label fw-bold small text-uppercase text-muted">Nama Lengkap</label>
-            <input type="text" class="form-control bg-light border-0 py-2" id="dlName" placeholder="Masukkan nama Anda" required>
+            <label for="dlName" class="form-label fw-bold small text-uppercase text-muted" data-i18n="collaboration.modal.name">Nama Lengkap</label>
+            <input type="text" class="form-control bg-light border-0 py-2" id="dlName" placeholder="Masukkan nama Anda" required data-i18n-placeholder="collaboration.modal.name_placeholder">
           </div>
           <div class="mb-3">
-            <label for="dlEmail" class="form-label fw-bold small text-uppercase text-muted">Alamat Email</label>
+            <label for="dlEmail" class="form-label fw-bold small text-uppercase text-muted" data-i18n="collaboration.modal.email">Alamat Email</label>
             <input type="email" class="form-control bg-light border-0 py-2" id="dlEmail" placeholder="name@company.com" required>
           </div>
           <div class="mb-3">
-            <label for="dlOrganization" class="form-label fw-bold small text-uppercase text-muted">Organisasi / Perusahaan</label>
-            <input type="text" class="form-control bg-light border-0 py-2" id="dlOrganization" placeholder="Nama organisasi Anda" required>
+            <label for="dlOrganization" class="form-label fw-bold small text-uppercase text-muted" data-i18n="collaboration.modal.org">Organisasi / Perusahaan</label>
+            <input type="text" class="form-control bg-light border-0 py-2" id="dlOrganization" placeholder="Nama organisasi Anda" required data-i18n-placeholder="collaboration.modal.org_placeholder">
           </div>
           <div class="mb-3">
-            <label for="dlJabatan" class="form-label fw-bold small text-uppercase text-muted">Jabatan</label>
-            <input type="text" class="form-control bg-light border-0 py-2" id="dlJabatan" placeholder="Posisi atau jabatan Anda" required>
+            <label for="dlJabatan" class="form-label fw-bold small text-uppercase text-muted" data-i18n="collaboration.modal.position">Jabatan</label>
+            <input type="text" class="form-control bg-light border-0 py-2" id="dlJabatan" placeholder="Posisi atau jabatan Anda" required data-i18n-placeholder="collaboration.modal.position_placeholder">
           </div>
           <div class="d-grid">
-            <button type="submit" class="btn btn-warning text-white fw-bold py-2 rounded-pill shadow-sm">
+            <button type="submit" class="btn btn-warning text-white fw-bold py-2 rounded-pill shadow-sm" data-i18n="collaboration.modal.submit">
               Kirim
             </button>
           </div>
@@ -157,8 +157,10 @@
             const originalBtnHtml = submitBtn.innerHTML;
             
             // Show loading state
+            const lang = localStorage.getItem('selectedLanguage') || 'id';
+            const sendingText = resources[lang].translation.collaboration.modal.sending;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span> Mengirim...';
+            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> ${sendingText}`;
 
             const formData = new FormData();
             formData.append('doc_id', document.getElementById('modalDocId').value);
@@ -174,8 +176,9 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
+                    const lang = localStorage.getItem('selectedLanguage') || 'id';
                     Swal.fire({
-                        title: 'Berhasil!',
+                        title: resources[lang].translation.common.success,
                         text: data.message,
                         icon: 'success',
                         confirmButtonColor: '#29b471'

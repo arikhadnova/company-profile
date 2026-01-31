@@ -7,7 +7,7 @@
             KOLABORASI UNTUK SOLUSI <br>
             <span class="text-primary">PERSAMPAHAN BERKELANJUTAN</span>
         </h1>
-        <p class="lead mb-5 text-secondary animate__animated animate__fadeInUp animate__delay-1s mx-auto" style="max-width: 800px;" data-i18n="partnership.hero_desc_fallback">
+        <p class="lead mb-5 text-secondary animate__animated animate__fadeInUp animate__delay-1s mx-auto" style="max-width: 800px;" data-i18n="partnership.hero_desc">
             Kami telah dipercaya untuk menjalankan berbagai proyek di bidang sanitasi, mulai dari pelatihan teknis, pendampingan mitra implementasi, hingga layanan konsultansi strategis
         </p>
         <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-2s mb-5">
@@ -49,7 +49,7 @@
                         <i class="fas fa-calendar-alt me-2 text-primary" style="color: #FF8F56 !important;"></i>
                         <span>2023 - 2025</span>
                     </div>
-                    <p class="text-secondary mb-4 fs-6">
+                    <p class="text-secondary mb-4 fs-6" data-i18n="partnership.clocc_desc">
                         Inisiatif kolaboratif untuk mempercepat kemandirian pengelolaan sampah di tingkat desa melalui 
                         penerapan skema bisnis sirkular yang terintegrasi, pemberdayaan UMKM lokal, dan edukasi masif kepada masyarakat.
                     </p>

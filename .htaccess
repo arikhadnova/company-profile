@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect empty path to public/
+    RewriteRule ^$ public/ [L]
+    
+    # Redirect all other paths to public/
+    RewriteRule (.*) public/$1 [L]
+</IfModule>

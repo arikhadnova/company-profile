@@ -94,18 +94,28 @@ const resources = {
                 "services": {
                     "title": "LAYANAN KAMI",
                     "subtitle": "Setiap pilar layanan kami bersinergi menghadirkan solusi relevan, aplikatif secara lokal, dan berkelanjutan.",
+                    "cb_title": "Layanan Capacity Building",
+                    "pd_title": "Pengembangan Program dan Implementasi Partner",
+                    "cs_title": "Layanan Konsultansi & Advisory Strategis",
                     "cb": {
                         "title": "Peningkatan Kapasitas Pengelolaan Sampah (Capacity Building)",
                         "desc": "Untuk memastikan keberlanjutan solusi di lapangan, GoSirk membangun basis ekosistem pengetahuan dan keahlian yang kuat di bidang pengelolaan sampah melalui unit strategisnya GoSirk Institute"
-                    },
-                    "pd": {
-                        "title": "Pengembangan Program dan Implementasi Partner",
-                        "desc": "Kami memiliki misi untuk mentransformasi tantangan sampah menjadi solusi yang berkelanjutan, inklusif, dan inovatif. Fokus utama kami adalah memastikan keberhasilan proyek lapangan yang tidak hanya efektif secara teknis tetapi juga menciptakan dampak sosial yang signifikan"
-                    },
-                    "consult": {
-                        "title": "Konsultansi & Advisory Strategis",
-                        "desc": "Kami mendukung pengembangan usaha pengelolaan sampah melalui bantuan langsung, praktis, dan pendekatan berbasis data untuk menemukan pendekatan yang tepat sesuai kebutuhan spesifik klien"
                     }
+                },
+                "portfolio": {
+                    "title": "PORTOFOLIO & KEMITRAAN KAMI",
+                    "subtitle": "Portofolio kerja sama kami mencerminkan komitmen GoSirk dalam memperluas dampak melalui kolaborasi strategis.",
+                    "cb_title": "Capacity Building (GoSirk Institute)",
+                    "pd_title": "Pengembangan Program dan Implementasi Partner",
+                    "cs_title": "Konsultansi & Advisory Strategis"
+                },
+                "pd": {
+                    "title": "Pengembangan Program dan Implementasi Partner",
+                    "desc": "Kami memiliki misi untuk mentransformasi tantangan sampah menjadi solusi yang berkelanjutan, inklusif, dan inovatif. Fokus utama kami adalah memastikan keberhasilan proyek lapangan yang tidak hanya efektif secara teknis tetapi juga menciptakan dampak sosial yang signifikan"
+                },
+                "consult": {
+                    "title": "Konsultansi & Advisory Strategis",
+                    "desc": "Kami mendukung pengembangan usaha pengelolaan sampah melalui bantuan langsung, praktis, dan pendekatan berbasis data untuk menemukan pendekatan yang tepat sesuai kebutuhan spesifik klien"
                 },
                 "common": {
                     "read_more": "Selengkapnya",
@@ -573,6 +583,127 @@ const resources = {
                 "p2_desc": "Memastikan adopsi kebijakan berjalan hingga tingkat operasional.",
                 "testimonial_title": "Apa Kata Klien Kami?",
                 "faq_subtitle": "Pertanyaan Umum"
+            },
+            "ggc": {
+                "hero": {
+                    "cta_learn": "Pelajari Lebih Lanjut",
+                    "cta_action": "Aksi Kami"
+                },
+                "impact": {
+                    "title_bg": "Impact",
+                    "title": "DAMPAK YANG TERUKUR",
+                    "subtitle": "Kontribusi nyata kami dalam membangun ekosistem hijau berbasis komunitas.",
+                    "m1_val": "300", "m1_unit": "Orang Teredukasi", "m1_label": "Edukasi Masyarakat", "m1_note": "Teredukasi mengenai proses pemilahan sampah serta pembuatan kompos metode menggunakan wadah Compost Bag dan eco-enzym.",
+                    "m2_val": "120", "m2_unit": "Buah", "m2_label": "Bibit Toga", "m2_note": "Penanaman bibit membuka jalan bagi masyarakat untuk berkontribusi langsung pada penghijauan dan ketahanan pangan lokal.",
+                    "m3_val": "106", "m3_unit": "Unit", "m3_label": "Tumblr GO Sirk", "m3_note": "Masyarakat kini beralih ke penggunaan tumblr, mengurangi penggunaan botol plastik sekali pakai setiap bulannya.",
+                    "m4_val": "30", "m4_unit": "Unit", "m4_label": "Tas Guna Ulang \"Ayo Ngompos\"", "m4_note": "Mendorong masyarakat beralih ke kebiasaan belanja yang lebih ramah lingkungan dengan mengurangi penggunaan kantong belanja plastik.",
+                    "m5_val": "107", "m5_unit": "Unit", "m5_label": "Pupuk Kompos (250gr)", "m5_note": "Hasil olahan sampah organik kantor GO Sirk. Prototipe hasil praktik pengolahan sampah organik di rumah masing-masing.",
+                    "m6_val": "26.75", "m6_unit": "Kg", "m6_label": "Kompos Komunitas", "m6_note": "Mendorong masyarakat untuk menerapkan sirkularitas dari rumah sendiri melalui pengolahan sampah organik.",
+                    "m7_val": "7", "m7_unit": "Unit", "m7_label": "Timba Biokomposter", "m7_note": "Mandiri mengolah sampah organik menggunakan timba biokomposter, mengubah limbah dapur menjadi pupuk alami.",
+                    "m8_val": "3", "m8_unit": "Instansi", "m8_label": "Mitra Pemerintah Desa", "m8_note": "Kolaborasi strategis dengan perangkat desa untuk mewujudkan tata kelola sampah yang legal dan terorganisir.",
+                    "m9_val": "3", "m9_unit": "Institusi", "m9_label": "Mitra Universitas", "m9_note": "Kemitraan akademik dalam riset, inovasi, dan pengabdian masyarakat untuk solusi sirkularitas yang ilmiah.",
+                    "m10_val": "8", "m10_unit": "Komunitas", "m10_label": "Komunitas Penerima Manfaat", "m10_note": "Kelompok masyarakat yang telah menerapkan praktik ekonomi sirkular melalui program pendampingan GGC.",
+                    "btn_more": "LIHAT DATA LENGKAP",
+                    "btn_less": "LIHAT LEBIH SEDIKIT"
+                },
+                "about": {
+                    "badge": "SIAPA KAMI?",
+                    "title": "MENGENAL <span class=\"text-success\">GOSIRK GREEN COMMUNITY</span>",
+                    "p1": "GoSirk Green Community adalah inisiatif unggulan yang digagas oleh PT Go Circular Solutions Indonesia (GoSirk) yang menghadirkan solusi nyata dalam pengelolaan sampah berbasis komunitas.",
+                    "p2": "Melalui pendekatan partisipatif, edukatif, dan kolaborasi lintas sektor, program ini mendorong transformasi sosial dan pelestarian lingkungan di tingkat desa dan kelurahan."
+                },
+                "programs": {
+                    "title_bg": "Programs",
+                    "title": "PROGRAM BERDAMPAK KAMI",
+                    "subtitle": "Kami merancang inisiatif yang fokus pada pemberdayaan dan perubahan perilaku masyarakat.",
+                    "p1_title": "Pelatihan Pengolahan Sampah",
+                    "p1_desc": "Meningkatkan kemampuan kader desa dalam pemilahan dan pengolahan sampah.",
+                    "p1_badge": "Pemberdayaan",
+                    "p2_title": "Pelatihan Kader (PRA)",
+                    "p2_desc": "Mendorong peran kader PKK dalam pengelolaan sampah rumah tangga.",
+                    "p2_badge": "Edukasi",
+                    "p3_title": "Pendampingan & Edukasi",
+                    "p3_desc": "Praktik pengelolaan sampah berkelanjutan di desa binaan.",
+                    "p3_badge": "Pendampingan",
+                    "p4_title": "Pengurangan Emisi",
+                    "p4_desc": "Berkontribusi dalam pengurangan emisi gas rumah kaca.",
+                    "p4_badge": "Lingkungan",
+                    "p5_title": "Penanaman Bibit Tanaman",
+                    "p5_desc": "Mendukung ketahanan pangan dan pemenuhan tanaman obat.",
+                    "p5_badge": "Ketahanan Pangan"
+                },
+                "gallery": {
+                    "title_bg": "Gallery",
+                    "title": "AKSI KAMI",
+                    "subtitle": "Momen-momen inspiratif dalam setiap kegiatan komunitas kami.",
+                    "i1_title": "Aksi Tanam Mangrove", "i1_desc": "Restorasi kawasan pesisir bersama pemuda desa setempat.",
+                    "i2_title": "Workshop Kompos", "i2_desc": "Pelatihan pengolahan sampah organik rumah tangga.",
+                    "i3_title": "Edukasi Lingkungan", "i3_desc": "Menanamkan nilai kelestarian kepada generasi muda.",
+                    "i4_title": "Kebun Toga Komunitas", "i4_desc": "Pemanfaatan pekarangan untuk ketahanan pangan.",
+                    "i5_title": "Aksi Pilah Sampah", "i5_desc": "Gerakan pilah dari sumber di lingkup rukun tetangga.",
+                    "i6_title": "Pertemuan Kader GGC", "i6_desc": "Koordinasi rutin perencanaan program pemberdayaan."
+                },
+                "cta": {
+                    "title": "Mari Bangun Dampak Bersama",
+                    "desc": "Kami percaya kolaborasi yang tepat dapat menciptakan perubahan lingkungan yang berkelanjutan. Bersama komunitas, kita bisa memberikan kontribusi lebih bagi bumi.",
+                    "btn": "Hubungi Kami"
+                }
+            },
+            "blog": {
+                "badge": "OUR STORIES",
+                "title": "Berita & Artikel",
+                "subtitle": "Insight, update program, dan cerita perubahan dari lapangan.",
+                "search_placeholder": "Cari berita atau artikel menarik...",
+                "search_btn": "Cari",
+                "category_all": "Semua",
+                "highlight_badge": "HIGHLIGHT",
+                "read_main": "Baca Artikel Utama",
+                "read_more": "Baca Selengkapnya",
+                "empty": "Belum ada artikel yang dipublikasikan."
+            },
+            "library": {
+                "badge": "GOSIRK INSTITUTE",
+                "title": "Library & Resources",
+                "subtitle": "Kumpulan artikel, hasil penelitian, dan materi edukatif untuk mendukung pengelolaan sampah berkelanjutan.",
+                "category_all": "Semua",
+                "empty": "Belum ada resource di library saat ini.",
+                "read_more": "Selengkapnya"
+            },
+            "collaboration": {
+                "badge": "COLLABORATION",
+                "title": "EXECUTIVE SUMMARY",
+                "subtitle": "Pelajari lebih lanjut tentang inisiatif, pencapaian, dan rencana strategis kami melalui dokumen-dokumen berikut.",
+                "empty": "Belum ada dokumen yang tersedia saat ini.",
+                "doc_badge": "Executive Summary",
+                "doc_updated": "Diperbarui",
+                "doc_desc": "Klik tombol di bawah ini untuk mendapatkan salinan dokumen ini melalui email Anda.",
+                "btn_download": "Download Dokumen",
+                "modal": {
+                    "title": "Dapatkan Executive Summary Kami",
+                    "desc": "Untuk mengunduh dokumen ini, mohon isi formulir berikut. Dokumen akan dikirimkan ke email Anda.",
+                    "doc_label": "Dokumen",
+                    "name": "Nama Lengkap",
+                    "name_placeholder": "Masukkan nama Anda",
+                    "email": "Alamat Email",
+                    "org": "Organisasi / Perusahaan",
+                    "org_placeholder": "Nama organisasi Anda",
+                    "position": "Jabatan",
+                    "position_placeholder": "Posisi atau jabatan Anda",
+                    "submit": "Kirim",
+                    "sending": "Mengirim..."
+                }
+            },
+            "common": {
+                "read_more": "Selengkapnya",
+                "learn_more": "Pelajari lebih lanjut",
+                "back": "Kembali",
+                "search": "Cari",
+                "submit": "Kirim",
+                "contact_us": "Hubungi Kami",
+                "sending": "Mengirim...",
+                "success": "Berhasil!",
+                "failed": "Gagal!",
+                "error": "Error!"
             }
         }
     },
@@ -665,19 +796,29 @@ const resources = {
                 },
                 "services": {
                     "title": "OUR SERVICES",
-                    "subtitle": "Each pillar of our services synergizes to deliver relevant, locally applicable, and sustainable solutions.",
+                    "subtitle": "Each of our service pillars synergizes to deliver relevant, locally applicable, and sustainable solutions.",
+                    "cb_title": "Capacity Building Services",
+                    "pd_title": "Program Development and Implementation Partner",
+                    "cs_title": "Consultancy & Strategic Advisory Services",
                     "cb": {
                         "title": "Waste Management Capacity Building",
-                        "desc": "To ensure the sustainability of solutions on the ground, GoSirk builds a strong ecosystem of knowledge and expertise in waste management through its strategic unit, GoSirk Institute."
-                    },
-                    "pd": {
-                        "title": "Program Development and Partner Implementation",
-                        "desc": "Our mission is to transform waste challenges into sustainable, inclusive, and innovative solutions. Our main focus is ensuring the success of field projects that are not only technically effective but also create significant social impact."
-                    },
-                    "consult": {
-                        "title": "Strategic Consultancy & Advisory",
-                        "desc": "We support waste management business development through direct, practical assistance and data-driven approaches to find the right solutions tailored to specific client needs."
+                        "desc": "To ensure the sustainability of solutions in the field, GoSirk builds a strong basis of knowledge ecosystems and expertise in the field of waste management through its strategic unit GoSirk Institute"
                     }
+                },
+                "portfolio": {
+                    "title": "OUR PORTFOLIO & PARTNERSHIPS",
+                    "subtitle": "Our partnership portfolio reflects GoSirk's commitment to expanding impact through strategic collaboration.",
+                    "cb_title": "Capacity Building (GoSirk Institute)",
+                    "pd_title": "Program Development and Implementation Partner",
+                    "cs_title": "Consultancy & Strategic Advisory Services"
+                },
+                "pd": {
+                    "title": "Program Development and Partner Implementation",
+                    "desc": "Our mission is to transform waste challenges into sustainable, inclusive, and innovative solutions. Our main focus is ensuring the success of field projects that are not only technically effective but also create significant social impact."
+                },
+                "consult": {
+                    "title": "Strategic Consultancy & Advisory",
+                    "desc": "We support waste management business development through direct, practical assistance and data-driven approaches to find the right solutions tailored to specific client needs."
                 },
                 "common": {
                     "read_more": "Read More",
@@ -1145,6 +1286,127 @@ const resources = {
                 "p2_desc": "Ensuring policy adoption runs up to the operational level.",
                 "testimonial_title": "What Our Clients Say",
                 "faq_subtitle": "Common Questions"
+            },
+            "ggc": {
+                "hero": {
+                    "cta_learn": "Learn More",
+                    "cta_action": "Our Action"
+                },
+                "impact": {
+                    "title_bg": "Impact",
+                    "title": "MEASURABLE IMPACT",
+                    "subtitle": "Our tangible contributions to building community-based green ecosystems.",
+                    "m1_val": "300", "m1_unit": "People Educated", "m1_label": "Community Education", "m1_note": "Educated on waste separation processes and composting methods using Compost Bags and eco-enzymes.",
+                    "m2_val": "120", "m2_unit": "Pcs", "m2_label": "Medicinal Seedlings", "m2_note": "Planting seedlings paves the way for the community to directly contribute to greening and local food security.",
+                    "m3_val": "106", "m3_unit": "Units", "m3_label": "GoSirk Tumbler", "m3_note": "Communities are now switching to tumblers, reducing the use of single-use plastic bottles every month.",
+                    "m4_val": "30", "m4_unit": "Units", "m4_label": "Reusable Bag \"Ayo Ngompos\"", "m4_note": "Encouraging communities to switch to more eco-friendly shopping habits by reducing the use of plastic shopping bags.",
+                    "m5_val": "107", "m5_unit": "Units", "m5_label": "Compost Fertilizer (250gr)", "m5_note": "Processed from GoSirk office organic waste. Prototype from organic waste processing practices at respective homes.",
+                    "m6_val": "26.75", "m6_unit": "Kg", "m6_label": "Community Compost", "m6_note": "Encouraging communities to implement circularity from their own homes through organic waste processing.",
+                    "m7_val": "7", "m7_unit": "Units", "m7_label": "Biocomposter Bucket", "m7_note": "Independently processing organic waste using biocomposter buckets, turning kitchen waste into natural fertilizer.",
+                    "m8_val": "3", "m8_unit": "Agencies", "m8_label": "Village Government Partners", "m8_note": "Strategic collaboration with village officials to realize legal and organized waste management.",
+                    "m9_val": "3", "m9_unit": "Institutions", "m9_label": "University Partners", "m9_note": "Academic partnerships in research, innovation, and community service for scientific circularity solutions.",
+                    "m10_val": "8", "m10_unit": "Communities", "m10_label": "Beneficiary Communities", "m10_note": "Community groups that have implemented circular economy practices through GGC assistance programs.",
+                    "btn_more": "VIEW FULL DATA",
+                    "btn_less": "VIEW LESS"
+                },
+                "about": {
+                    "badge": "WHO ARE WE?",
+                    "title": "GETTING TO KNOW <span class=\"text-success\">GOSIRK GREEN COMMUNITY</span>",
+                    "p1": "GoSirk Green Community is a flagship initiative initiated by PT Go Circular Solutions Indonesia (GoSirk) that presents real solutions in community-based waste management.",
+                    "p2": "Through participatory, educational approaches and cross-sector collaboration, this program encourages social transformation and environmental preservation at the village and sub-district levels."
+                },
+                "programs": {
+                    "title_bg": "Programs",
+                    "title": "OUR IMPACTFUL PROGRAMS",
+                    "subtitle": "We design initiatives that focus on empowerment and behavioral change in the community.",
+                    "p1_title": "Waste Processing Training",
+                    "p1_desc": "Improving the ability of village cadres in waste separation and processing.",
+                    "p1_badge": "Empowerment",
+                    "p2_title": "Cadre Training (PRA)",
+                    "p2_desc": "Encouraging the role of PKK cadres in household waste management.",
+                    "p2_badge": "Education",
+                    "p3_title": "Assistance & Education",
+                    "p3_desc": "Sustainable waste management practices in fostered villages.",
+                    "p3_badge": "Assistance",
+                    "p4_title": "Emission Reduction",
+                    "p4_desc": "Contributing to the reduction of greenhouse gas emissions.",
+                    "p4_badge": "Environment",
+                    "p5_title": "Plant Seedling Planting",
+                    "p5_desc": "Supporting food security and medicinal plant fulfillment.",
+                    "p5_badge": "Food Security"
+                },
+                "gallery": {
+                    "title_bg": "Gallery",
+                    "title": "OUR ACTION",
+                    "subtitle": "Inspirational moments in each of our community activities.",
+                    "i1_title": "Mangrove Planting Action", "i1_desc": "Coastal area restoration together with local village youth.",
+                    "i2_title": "Compost Workshop", "i2_desc": "Household organic waste processing training.",
+                    "i3_title": "Environmental Education", "i3_desc": "Instilling sustainability values in the younger generation.",
+                    "i4_title": "Community Medicinal Garden", "i4_desc": "Yard utilization for food security.",
+                    "i5_title": "Waste Sorting Action", "i5_desc": "Sorting from the source movement within neighborhoods.",
+                    "i6_title": "GGC Cadre Meeting", "i6_desc": "Regular coordination for empowerment program planning."
+                },
+                "cta": {
+                    "title": "Let's Build Impact Together",
+                    "desc": "We believe the right collaboration can create sustainable environmental change. Together with the community, we can contribute more to the earth.",
+                    "btn": "Contact Us"
+                }
+            },
+            "blog": {
+                "badge": "OUR STORIES",
+                "title": "News & Articles",
+                "subtitle": "Insights, program updates, and stories of change from the field.",
+                "search_placeholder": "Search for news or interesting articles...",
+                "search_btn": "Search",
+                "category_all": "All",
+                "highlight_badge": "HIGHLIGHT",
+                "read_main": "Read Main Article",
+                "read_more": "Read More",
+                "empty": "No articles published yet."
+            },
+            "library": {
+                "badge": "GOSIRK INSTITUTE",
+                "title": "Library & Resources",
+                "subtitle": "A collection of articles, research findings, and educational materials to support sustainable waste management.",
+                "category_all": "All",
+                "empty": "No resources in the library at this time.",
+                "read_more": "Read More"
+            },
+            "collaboration": {
+                "badge": "COLLABORATION",
+                "title": "EXECUTIVE SUMMARY",
+                "subtitle": "Learn more about our initiatives, achievements, and strategic plans through the following documents.",
+                "empty": "No documents available at this time.",
+                "doc_badge": "Executive Summary",
+                "doc_updated": "Updated",
+                "doc_desc": "Click the button below to receive a copy of this document via your email.",
+                "btn_download": "Download Document",
+                "modal": {
+                    "title": "Get Our Executive Summary",
+                    "desc": "To download this document, please fill out the following form. The document will be sent to your email.",
+                    "doc_label": "Document",
+                    "name": "Full Name",
+                    "name_placeholder": "Enter your name",
+                    "email": "Email Address",
+                    "org": "Organization / Company",
+                    "org_placeholder": "Your organization name",
+                    "position": "Position",
+                    "position_placeholder": "Your position or title",
+                    "submit": "Send",
+                    "sending": "Sending..."
+                }
+            },
+            "common": {
+                "read_more": "Read More",
+                "learn_more": "Learn More",
+                "back": "Back",
+                "search": "Search",
+                "submit": "Submit",
+                "contact_us": "Contact Us",
+                "sending": "Sending...",
+                "success": "Success!",
+                "failed": "Failed!",
+                "error": "Error!"
             }
         }
     }

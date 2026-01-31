@@ -17,8 +17,8 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
           <?= $heroGGC->subtitle_id ?>
         </p>
         <div class="d-flex gap-3">
-          <a href="#about" class="btn btn-success btn-sm rounded-pill px-4 py-3 fw-bold shadow-sm">Pelajari Lebih Lanjut</a>
-          <a href="#gallery" class="btn btn-outline-success btn-sm rounded-pill px-4 py-3 fw-bold">Aksi Kami</a>
+          <a href="#about" class="btn btn-success btn-sm rounded-pill px-4 py-3 fw-bold shadow-sm" data-i18n="ggc.hero.cta_learn">Pelajari Lebih Lanjut</a>
+          <a href="#gallery" class="btn btn-outline-success btn-sm rounded-pill px-4 py-3 fw-bold" data-i18n="ggc.hero.cta_action">Aksi Kami</a>
         </div>
       </div>
       <div class="col-lg-6 d-none d-lg-block">
@@ -35,49 +35,49 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
 <section class="section bg-white border-top">
   <div class="container">
     <div class="section-title-wrapper text-center">
-      <div class="title-bg">Impact</div>
-      <h4 class="fw-bold fs-2 mb-2 text-success">DAMPAK YANG TERUKUR</h4>
-      <p class="text-muted">Kontribusi nyata kami dalam membangun ekosistem hijau berbasis komunitas.</p>
+      <div class="title-bg" data-i18n="ggc.impact.title_bg">Impact</div>
+      <h4 class="fw-bold fs-2 mb-2 text-success" data-i18n="ggc.impact.title">DAMPAK YANG TERUKUR</h4>
+      <p class="text-muted" data-i18n="ggc.impact.subtitle">Kontribusi nyata kami dalam membangun ekosistem hijau berbasis komunitas.</p>
     </div>
 
     <div class="row g-4">
       <!-- Highlight 1: Orang Teredukasi -->
       <div class="col-lg-3 col-md-6">
         <div class="metric-card">
-          <div class="metric-value">300</div>
-          <div class="metric-unit">Orang Teredukasi</div>
-          <div class="metric-label">Edukasi Masyarakat</div>
-          <div class="metric-note">Teredukasi mengenai proses pemilahan sampah serta pembuatan kompos metode menggunakan wadah Compost Bag dan eco-enzym.</div>
+          <div class="metric-value" data-i18n="ggc.impact.m1_val">300</div>
+          <div class="metric-unit" data-i18n="ggc.impact.m1_unit">Orang Teredukasi</div>
+          <div class="metric-label" data-i18n="ggc.impact.m1_label">Edukasi Masyarakat</div>
+          <div class="metric-note" data-i18n="ggc.impact.m1_note">Teredukasi mengenai proses pemilahan sampah serta pembuatan kompos metode menggunakan wadah Compost Bag dan eco-enzym.</div>
         </div>
       </div>
 
       <!-- Highlight 2: Bibit Toga -->
       <div class="col-lg-3 col-md-6">
         <div class="metric-card">
-          <div class="metric-value">120</div>
-          <div class="metric-unit">Buah</div>
-          <div class="metric-label">Bibit Toga</div>
-          <div class="metric-note">Penanaman bibit membuka jalan bagi masyarakat untuk berkontribusi langsung pada penghijauan dan ketahanan pangan lokal.</div>
+          <div class="metric-value" data-i18n="ggc.impact.m2_val">120</div>
+          <div class="metric-unit" data-i18n="ggc.impact.m2_unit">Buah</div>
+          <div class="metric-label" data-i18n="ggc.impact.m2_label">Bibit Toga</div>
+          <div class="metric-note" data-i18n="ggc.impact.m2_note">Penanaman bibit membuka jalan bagi masyarakat untuk berkontribusi langsung pada penghijauan dan ketahanan pangan lokal.</div>
         </div>
       </div>
 
       <!-- Highlight 3: Tumblr GO Sirk -->
       <div class="col-lg-3 col-md-6">
         <div class="metric-card">
-          <div class="metric-value">106</div>
-          <div class="metric-unit">Unit</div>
-          <div class="metric-label">Tumblr GO Sirk</div>
-          <div class="metric-note">Masyarakat kini beralih ke penggunaan tumblr, mengurangi penggunaan botol plastik sekali pakai setiap bulannya.</div>
+          <div class="metric-value" data-i18n="ggc.impact.m3_val">106</div>
+          <div class="metric-unit" data-i18n="ggc.impact.m3_unit">Unit</div>
+          <div class="metric-label" data-i18n="ggc.impact.m3_label">Tumblr GO Sirk</div>
+          <div class="metric-note" data-i18n="ggc.impact.m3_note">Masyarakat kini beralih ke penggunaan tumblr, mengurangi penggunaan botol plastik sekali pakai setiap bulannya.</div>
         </div>
       </div>
 
       <!-- Highlight 4: Tas Guna Ulang -->
       <div class="col-lg-3 col-md-6">
         <div class="metric-card">
-          <div class="metric-value">30</div>
-          <div class="metric-unit">Unit</div>
-          <div class="metric-label">Tas Guna Ulang "Ayo Ngompos"</div>
-          <div class="metric-note">Mendorong masyarakat beralih ke kebiasaan belanja yang lebih ramah lingkungan dengan mengurangi penggunaan kantong belanja plastik.</div>
+          <div class="metric-value" data-i18n="ggc.impact.m4_val">30</div>
+          <div class="metric-unit" data-i18n="ggc.impact.m4_unit">Unit</div>
+          <div class="metric-label" data-i18n="ggc.impact.m4_label">Tas Guna Ulang "Ayo Ngompos"</div>
+          <div class="metric-note" data-i18n="ggc.impact.m4_note">Mendorong masyarakat beralih ke kebiasaan belanja yang lebih ramah lingkungan dengan mengurangi penggunaan kantong belanja plastik.</div>
         </div>
       </div>
     </div>
@@ -88,60 +88,60 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
         <!-- Kompos Unit -->
         <div class="col-lg-3 col-md-6">
           <div class="metric-card">
-            <div class="metric-value">107</div>
-            <div class="metric-unit">Unit</div>
-            <div class="metric-label">Pupuk Kompos (250gr)</div>
-            <div class="metric-note">Hasil olahan sampah organik kantor GO Sirk. Prototipe hasil praktik pengolahan sampah organik di rumah masing-masing.</div>
+            <div class="metric-value" data-i18n="ggc.impact.m5_val">107</div>
+            <div class="metric-unit" data-i18n="ggc.impact.m5_unit">Unit</div>
+            <div class="metric-label" data-i18n="ggc.impact.m5_label">Pupuk Kompos (250gr)</div>
+            <div class="metric-note" data-i18n="ggc.impact.m5_note">Hasil olahan sampah organik kantor GO Sirk. Prototipe hasil praktik pengolahan sampah organik di rumah masing-masing.</div>
           </div>
         </div>
 
         <!-- Kompos KG -->
         <div class="col-lg-3 col-md-6">
           <div class="metric-card">
-            <div class="metric-value">26.75</div>
-            <div class="metric-unit">Kg</div>
-            <div class="metric-label">Kompos Komunitas</div>
-            <div class="metric-note">Mendorong masyarakat untuk menerapkan sirkularitas dari rumah sendiri melalui pengolahan sampah organik.</div>
+            <div class="metric-value" data-i18n="ggc.impact.m6_val">26.75</div>
+            <div class="metric-unit" data-i18n="ggc.impact.m6_unit">Kg</div>
+            <div class="metric-label" data-i18n="ggc.impact.m6_label">Kompos Komunitas</div>
+            <div class="metric-note" data-i18n="ggc.impact.m6_note">Mendorong masyarakat untuk menerapkan sirkularitas dari rumah sendiri melalui pengolahan sampah organik.</div>
           </div>
         </div>
 
         <!-- Timba Biokomposter -->
         <div class="col-lg-3 col-md-6">
           <div class="metric-card">
-            <div class="metric-value">7</div>
-            <div class="metric-unit">Unit</div>
-            <div class="metric-label">Timba Biokomposter</div>
-            <div class="metric-note">Mandiri mengolah sampah organik menggunakan timba biokomposter, mengubah limbah dapur menjadi pupuk alami.</div>
+            <div class="metric-value" data-i18n="ggc.impact.m7_val">7</div>
+            <div class="metric-unit" data-i18n="ggc.impact.m7_unit">Unit</div>
+            <div class="metric-label" data-i18n="ggc.impact.m7_label">Timba Biokomposter</div>
+            <div class="metric-note" data-i18n="ggc.impact.m7_note">Mandiri mengolah sampah organik menggunakan timba biokomposter, mengubah limbah dapur menjadi pupuk alami.</div>
           </div>
         </div>
 
         <!-- Mitra Pemerintah Desa -->
         <div class="col-lg-3 col-md-6">
           <div class="metric-card">
-            <div class="metric-value">3</div>
-            <div class="metric-unit">Instansi</div>
-            <div class="metric-label">Mitra Pemerintah Desa</div>
-            <div class="metric-note">Kolaborasi strategis dengan perangkat desa untuk mewujudkan tata kelola sampah yang legal dan terorganisir.</div>
+            <div class="metric-value" data-i18n="ggc.impact.m8_val">3</div>
+            <div class="metric-unit" data-i18n="ggc.impact.m8_unit">Instansi</div>
+            <div class="metric-label" data-i18n="ggc.impact.m8_label">Mitra Pemerintah Desa</div>
+            <div class="metric-note" data-i18n="ggc.impact.m8_note">Kolaborasi strategis dengan perangkat desa untuk mewujudkan tata kelola sampah yang legal dan terorganisir.</div>
           </div>
         </div>
 
         <!-- Mitra Universitas -->
         <div class="col-lg-3 col-md-6">
           <div class="metric-card">
-            <div class="metric-value">3</div>
-            <div class="metric-unit">Institusi</div>
-            <div class="metric-label">Mitra Universitas</div>
-            <div class="metric-note">Kemitraan akademik dalam riset, inovasi, dan pengabdian masyarakat untuk solusi sirkularitas yang ilmiah.</div>
+            <div class="metric-value" data-i18n="ggc.impact.m9_val">3</div>
+            <div class="metric-unit" data-i18n="ggc.impact.m9_unit">Institusi</div>
+            <div class="metric-label" data-i18n="ggc.impact.m9_label">Mitra Universitas</div>
+            <div class="metric-note" data-i18n="ggc.impact.m9_note">Kemitraan akademik dalam riset, inovasi, dan pengabdian masyarakat untuk solusi sirkularitas yang ilmiah.</div>
           </div>
         </div>
 
         <!-- Komunitas Penerima Manfaat -->
         <div class="col-lg-3 col-md-6">
           <div class="metric-card">
-            <div class="metric-value">8</div>
-            <div class="metric-unit">Komunitas</div>
-            <div class="metric-label">Komunitas Penerima Manfaat</div>
-            <div class="metric-note">Kelompok masyarakat yang telah menerapkan praktik ekonomi sirkular melalui program pendampingan GGC.</div>
+            <div class="metric-value" data-i18n="ggc.impact.m10_val">8</div>
+            <div class="metric-unit" data-i18n="ggc.impact.m10_unit">Komunitas</div>
+            <div class="metric-label" data-i18n="ggc.impact.m10_label">Komunitas Penerima Manfaat</div>
+            <div class="metric-note" data-i18n="ggc.impact.m10_note">Kelompok masyarakat yang telah menerapkan praktik ekonomi sirkular melalui program pendampingan GGC.</div>
           </div>
         </div>
       </div>
@@ -149,7 +149,7 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
 
     <!-- Toggle Button -->
     <div class="text-center mt-5">
-      <button class="btn border-1 btn-outline-success rounded-pill px-4 shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#moreImpacts" id="impactToggleButton">
+      <button class="btn border-1 btn-outline-success rounded-pill px-4 shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target="#moreImpacts" id="impactToggleButton" data-i18n="ggc.impact.btn_more">
         LIHAT DATA LENGKAP
       </button>
     </div>
@@ -167,21 +167,20 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
       </div>
       <div class="col-lg-6">
         <div class="ps-lg-4">
-            <div class="text-success fw-bold mb-2">SIAPA KAMI?</div>
-            <h2 class="fw-bold mb-4 display-6">
+            <div class="text-success fw-bold mb-2" data-i18n="ggc.about.badge">SIAPA KAMI?</div>
+            <h2 class="fw-bold mb-4 display-6" data-i18n="ggc.about.title">
               MENGENAL <span class="text-success">GOSIRK GREEN COMMUNITY</span>
             </h2>
-            <p class="lead text-secondary mb-4">
+            <p class="lead text-secondary mb-4" data-i18n="ggc.about.p1">
               GoSirk Green Community adalah inisiatif unggulan yang digagas oleh
               PT Go Circular Solutions Indonesia (GoSirk) yang menghadirkan solusi
               nyata dalam pengelolaan sampah berbasis komunitas.
             </p>
-            <p class="text-muted mb-4">
+            <p class="text-muted mb-4" data-i18n="ggc.about.p2">
               Melalui pendekatan partisipatif, edukatif, dan kolaborasi lintas sektor,
               program ini mendorong transformasi sosial dan pelestarian lingkungan
               di tingkat desa dan kelurahan.
             </p>
-            
         </div>
       </div>
     </div>
@@ -192,9 +191,9 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
 <section class="section bg-light-subtle">
   <div class="container">
     <div class="section-title-wrapper text-center">
-      <div class="title-bg">Programs</div>
-      <h4 class="fw-bold fs-2 mb-2 text-success">PROGRAM BERDAMPAK KAMI</h4>
-      <p class="text-muted mx-auto" style="max-width: 600px;">Kami merancang inisiatif yang fokus pada pemberdayaan dan perubahan perilaku masyarakat.</p>
+      <div class="title-bg" data-i18n="ggc.programs.title_bg">Programs</div>
+      <h4 class="fw-bold fs-2 mb-2 text-success" data-i18n="ggc.programs.title">PROGRAM BERDAMPAK KAMI</h4>
+      <p class="text-muted mx-auto" style="max-width: 600px;" data-i18n="ggc.programs.subtitle">Kami merancang inisiatif yang fokus pada pemberdayaan dan perubahan perilaku masyarakat.</p>
     </div>
 
     <div class="row g-4 justify-content-center">
@@ -202,11 +201,11 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
         <div class="program-card">
           <div class="program-card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1526951521990-620dc14c214b?auto=format&fit=crop&q=80&w=800" alt="Pelatihan Pengolahan Sampah">
-            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-success text-white rounded-pill small fw-bold">Pemberdayaan</div>
+            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-success text-white rounded-pill small fw-bold" data-i18n="ggc.programs.p1_badge">Pemberdayaan</div>
           </div>
           <div class="program-card-content text-center">
-            <h6 class="fw-bold">Pelatihan Pengolahan Sampah</h6>
-            <p class="text-muted small">
+            <h6 class="fw-bold" data-i18n="ggc.programs.p1_title">Pelatihan Pengolahan Sampah</h6>
+            <p class="text-muted small" data-i18n="ggc.programs.p1_desc">
               Meningkatkan kemampuan kader desa dalam pemilahan dan pengolahan sampah.
             </p>
           </div>
@@ -217,11 +216,11 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
         <div class="program-card">
           <div class="program-card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800" alt="Pelatihan Kader (PRA)">
-            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-primary text-white rounded-pill small fw-bold">Edukasi</div>
+            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-primary text-white rounded-pill small fw-bold" data-i18n="ggc.programs.p2_badge">Edukasi</div>
           </div>
           <div class="program-card-content text-center">
-            <h6 class="fw-bold">Pelatihan Kader (PRA)</h6>
-            <p class="text-muted small">
+            <h6 class="fw-bold" data-i18n="ggc.programs.p2_title">Pelatihan Kader (PRA)</h6>
+            <p class="text-muted small" data-i18n="ggc.programs.p2_desc">
               Mendorong peran kader PKK dalam pengelolaan sampah rumah tangga.
             </p>
           </div>
@@ -232,11 +231,11 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
         <div class="program-card">
           <div class="program-card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" alt="Pendampingan & Edukasi">
-            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-orange text-white rounded-pill small fw-bold" style="background-color: var(--ggc-orange);">Pendampingan</div>
+            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-orange text-white rounded-pill small fw-bold" style="background-color: var(--ggc-orange);" data-i18n="ggc.programs.p3_badge">Pendampingan</div>
           </div>
           <div class="program-card-content text-center">
-            <h6 class="fw-bold">Pendampingan & Edukasi</h6>
-            <p class="text-muted small">
+            <h6 class="fw-bold" data-i18n="ggc.programs.p3_title">Pendampingan & Edukasi</h6>
+            <p class="text-muted small" data-i18n="ggc.programs.p3_desc">
               Praktik pengelolaan sampah berkelanjutan di desa binaan.
             </p>
           </div>
@@ -247,11 +246,11 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
         <div class="program-card">
           <div class="program-card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800" alt="Pengurangan Emisi">
-            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-info text-white rounded-pill small fw-bold">Lingkungan</div>
+            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-info text-white rounded-pill small fw-bold" data-i18n="ggc.programs.p4_badge">Lingkungan</div>
           </div>
           <div class="program-card-content text-center">
-            <h6 class="fw-bold">Pelatihan Pengolahan Sampah</h6>
-            <p class="text-muted small">
+            <h6 class="fw-bold" data-i18n="ggc.programs.p4_title">Pelatihan Pengolahan Sampah</h6>
+            <p class="text-muted small" data-i18n="ggc.programs.p4_desc">
               Berkontribusi dalam pengurangan emisi gas rumah kaca.
             </p>
           </div>
@@ -262,11 +261,11 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
         <div class="program-card">
           <div class="program-card-img-wrapper">
             <img src="https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=800" alt="Penanaman Bibit">
-            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-warning text-dark rounded-pill small fw-bold">Ketahanan Pangan</div>
+            <div class="position-absolute top-0 start-0 m-3 px-3 py-1 bg-warning text-dark rounded-pill small fw-bold" data-i18n="ggc.programs.p5_badge">Ketahanan Pangan</div>
           </div>
           <div class="program-card-content text-center">
-            <h6 class="fw-bold">Penanaman Bibit Tanaman</h6>
-            <p class="text-muted small">
+            <h6 class="fw-bold" data-i18n="ggc.programs.p5_title">Penanaman Bibit Tanaman</h6>
+            <p class="text-muted small" data-i18n="ggc.programs.p5_desc">
               Mendukung ketahanan pangan dan pemenuhan tanaman obat.
             </p>
           </div>
@@ -281,9 +280,9 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
 <section class="section pb-5" id="gallery">
   <div class="container">
     <div class="section-title-wrapper text-center">
-      <div class="title-bg">Gallery</div>
-      <h4 class="fw-bold fs-2 mb-2 text-success">AKSI KAMI</h4>
-      <p class="text-muted">Momen-momen inspiratif dalam setiap kegiatan komunitas kami.</p>
+      <div class="title-bg" data-i18n="ggc.gallery.title_bg">Gallery</div>
+      <h4 class="fw-bold fs-2 mb-2 text-success" data-i18n="ggc.gallery.title">AKSI KAMI</h4>
+      <p class="text-muted" data-i18n="ggc.gallery.subtitle">Momen-momen inspiratif dalam setiap kegiatan komunitas kami.</p>
     </div>
 
     <div class="row g-4 overflow-hidden">
@@ -340,12 +339,12 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
   <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <h2 class="fw-bold mb-4 display-5">Mari Bangun Dampak Bersama</h2>
-            <p class="mb-5 lead opacity-75">
+            <h2 class="fw-bold mb-4 display-5" data-i18n="ggc.cta.title">Mari Bangun Dampak Bersama</h2>
+            <p class="mb-5 lead opacity-75" data-i18n="ggc.cta.desc">
               Kami percaya kolaborasi yang tepat dapat menciptakan perubahan lingkungan
               yang berkelanjutan. Bersama komunitas, kita bisa memberikan kontribusi lebih bagi bumi.
             </p>
-            <a href="<?= BASE_URL ?>contact" class="btn btn-ggc-light btn-lg shadow-lg">
+            <a href="<?= BASE_URL ?>contact" class="btn btn-ggc-light btn-lg shadow-lg" data-i18n="ggc.cta.btn">
                 <i class="bi bi-chat-dots-fill me-2"></i> Hubungi Kami
             </a>
         </div>
@@ -360,11 +359,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (impactToggle && impactCollapse) {
         impactCollapse.addEventListener('show.bs.collapse', function () {
-            impactToggle.textContent = 'LIHAT LEBIH SEDIKIT';
+            const lang = localStorage.getItem('selectedLanguage') || 'id';
+            impactToggle.textContent = resources[lang].translation.ggc.impact.btn_less;
+            impactToggle.setAttribute('data-i18n', 'ggc.impact.btn_less');
         });
         
         impactCollapse.addEventListener('hide.bs.collapse', function () {
-            impactToggle.textContent = 'LIHAT DATA LENGKAP';
+            const lang = localStorage.getItem('selectedLanguage') || 'id';
+            impactToggle.textContent = resources[lang].translation.ggc.impact.btn_more;
+            impactToggle.setAttribute('data-i18n', 'ggc.impact.btn_more');
         });
     }
 });

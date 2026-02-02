@@ -41,109 +41,51 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
     </div>
 
     <div class="row g-4">
-      <!-- Highlight 1: Orang Teredukasi -->
-      <div class="col-lg-3 col-md-6">
-        <div class="metric-card">
-          <div class="metric-value" data-i18n="ggc.impact.m1_val">300</div>
-          <div class="metric-unit" data-i18n="ggc.impact.m1_unit">Orang Teredukasi</div>
-          <div class="metric-label" data-i18n="ggc.impact.m1_label">Edukasi Masyarakat</div>
-          <div class="metric-note" data-i18n="ggc.impact.m1_note">Teredukasi mengenai proses pemilahan sampah serta pembuatan kompos metode menggunakan wadah Compost Bag dan eco-enzym.</div>
-        </div>
-      </div>
-
-      <!-- Highlight 2: Bibit Toga -->
-      <div class="col-lg-3 col-md-6">
-        <div class="metric-card">
-          <div class="metric-value" data-i18n="ggc.impact.m2_val">120</div>
-          <div class="metric-unit" data-i18n="ggc.impact.m2_unit">Buah</div>
-          <div class="metric-label" data-i18n="ggc.impact.m2_label">Bibit Toga</div>
-          <div class="metric-note" data-i18n="ggc.impact.m2_note">Penanaman bibit membuka jalan bagi masyarakat untuk berkontribusi langsung pada penghijauan dan ketahanan pangan lokal.</div>
-        </div>
-      </div>
-
-      <!-- Highlight 3: Tumblr GO Sirk -->
-      <div class="col-lg-3 col-md-6">
-        <div class="metric-card">
-          <div class="metric-value" data-i18n="ggc.impact.m3_val">106</div>
-          <div class="metric-unit" data-i18n="ggc.impact.m3_unit">Unit</div>
-          <div class="metric-label" data-i18n="ggc.impact.m3_label">Tumblr GO Sirk</div>
-          <div class="metric-note" data-i18n="ggc.impact.m3_note">Masyarakat kini beralih ke penggunaan tumblr, mengurangi penggunaan botol plastik sekali pakai setiap bulannya.</div>
-        </div>
-      </div>
-
-      <!-- Highlight 4: Tas Guna Ulang -->
-      <div class="col-lg-3 col-md-6">
-        <div class="metric-card">
-          <div class="metric-value" data-i18n="ggc.impact.m4_val">30</div>
-          <div class="metric-unit" data-i18n="ggc.impact.m4_unit">Unit</div>
-          <div class="metric-label" data-i18n="ggc.impact.m4_label">Tas Guna Ulang "Ayo Ngompos"</div>
-          <div class="metric-note" data-i18n="ggc.impact.m4_note">Mendorong masyarakat beralih ke kebiasaan belanja yang lebih ramah lingkungan dengan mengurangi penggunaan kantong belanja plastik.</div>
-        </div>
-      </div>
+      <?php 
+      $main_impacts = array_filter($data['impacts'], fn($i) => $i->section === 'Main');
+      $collapsed_impacts = array_filter($data['impacts'], fn($i) => $i->section === 'Collapse');
+      ?>
+      <?php if (!empty($main_impacts)) : ?>
+        <?php foreach($main_impacts as $imp): ?>
+          <div class="col-lg-3 col-md-6">
+            <div class="metric-card">
+              <div class="metric-value"><?= $imp->value ?></div>
+              <div class="metric-unit"><?= $imp->unit ?></div>
+              <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
+                <?= $imp->label_id ?>
+              </div>
+              <div class="metric-note" data-lang-id="<?= $imp->note_id ?>" data-lang-en="<?= $imp->note_en ?>">
+                <?= $imp->note_id ?>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <div class="col-12 text-center text-muted">No primary impact data available.</div>
+      <?php endif; ?>
     </div>
 
     <!-- More Impacts (Collapse) -->
     <div class="collapse mt-4" id="moreImpacts">
       <div class="row g-4 justify-content-center">
-        <!-- Kompos Unit -->
-        <div class="col-lg-3 col-md-6">
-          <div class="metric-card">
-            <div class="metric-value" data-i18n="ggc.impact.m5_val">107</div>
-            <div class="metric-unit" data-i18n="ggc.impact.m5_unit">Unit</div>
-            <div class="metric-label" data-i18n="ggc.impact.m5_label">Pupuk Kompos (250gr)</div>
-            <div class="metric-note" data-i18n="ggc.impact.m5_note">Hasil olahan sampah organik kantor GO Sirk. Prototipe hasil praktik pengolahan sampah organik di rumah masing-masing.</div>
-          </div>
-        </div>
-
-        <!-- Kompos KG -->
-        <div class="col-lg-3 col-md-6">
-          <div class="metric-card">
-            <div class="metric-value" data-i18n="ggc.impact.m6_val">26.75</div>
-            <div class="metric-unit" data-i18n="ggc.impact.m6_unit">Kg</div>
-            <div class="metric-label" data-i18n="ggc.impact.m6_label">Kompos Komunitas</div>
-            <div class="metric-note" data-i18n="ggc.impact.m6_note">Mendorong masyarakat untuk menerapkan sirkularitas dari rumah sendiri melalui pengolahan sampah organik.</div>
-          </div>
-        </div>
-
-        <!-- Timba Biokomposter -->
-        <div class="col-lg-3 col-md-6">
-          <div class="metric-card">
-            <div class="metric-value" data-i18n="ggc.impact.m7_val">7</div>
-            <div class="metric-unit" data-i18n="ggc.impact.m7_unit">Unit</div>
-            <div class="metric-label" data-i18n="ggc.impact.m7_label">Timba Biokomposter</div>
-            <div class="metric-note" data-i18n="ggc.impact.m7_note">Mandiri mengolah sampah organik menggunakan timba biokomposter, mengubah limbah dapur menjadi pupuk alami.</div>
-          </div>
-        </div>
-
-        <!-- Mitra Pemerintah Desa -->
-        <div class="col-lg-3 col-md-6">
-          <div class="metric-card">
-            <div class="metric-value" data-i18n="ggc.impact.m8_val">3</div>
-            <div class="metric-unit" data-i18n="ggc.impact.m8_unit">Instansi</div>
-            <div class="metric-label" data-i18n="ggc.impact.m8_label">Mitra Pemerintah Desa</div>
-            <div class="metric-note" data-i18n="ggc.impact.m8_note">Kolaborasi strategis dengan perangkat desa untuk mewujudkan tata kelola sampah yang legal dan terorganisir.</div>
-          </div>
-        </div>
-
-        <!-- Mitra Universitas -->
-        <div class="col-lg-3 col-md-6">
-          <div class="metric-card">
-            <div class="metric-value" data-i18n="ggc.impact.m9_val">3</div>
-            <div class="metric-unit" data-i18n="ggc.impact.m9_unit">Institusi</div>
-            <div class="metric-label" data-i18n="ggc.impact.m9_label">Mitra Universitas</div>
-            <div class="metric-note" data-i18n="ggc.impact.m9_note">Kemitraan akademik dalam riset, inovasi, dan pengabdian masyarakat untuk solusi sirkularitas yang ilmiah.</div>
-          </div>
-        </div>
-
-        <!-- Komunitas Penerima Manfaat -->
-        <div class="col-lg-3 col-md-6">
-          <div class="metric-card">
-            <div class="metric-value" data-i18n="ggc.impact.m10_val">8</div>
-            <div class="metric-unit" data-i18n="ggc.impact.m10_unit">Komunitas</div>
-            <div class="metric-label" data-i18n="ggc.impact.m10_label">Komunitas Penerima Manfaat</div>
-            <div class="metric-note" data-i18n="ggc.impact.m10_note">Kelompok masyarakat yang telah menerapkan praktik ekonomi sirkular melalui program pendampingan GGC.</div>
-          </div>
-        </div>
+        <?php if (!empty($collapsed_impacts)) : ?>
+          <?php foreach($collapsed_impacts as $imp): ?>
+            <div class="col-lg-3 col-md-6">
+              <div class="metric-card">
+                <div class="metric-value"><?= $imp->value ?></div>
+                <div class="metric-unit"><?= $imp->unit ?></div>
+                <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
+                  <?= $imp->label_id ?>
+                </div>
+                <div class="metric-note" data-lang-id="<?= $imp->note_id ?>" data-lang-en="<?= $imp->note_en ?>">
+                  <?= $imp->note_id ?>
+                </div>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <div class="col-12 text-center text-muted">No additional impact data available.</div>
+        <?php endif; ?>
       </div>
     </div>
 

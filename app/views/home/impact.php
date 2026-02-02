@@ -22,6 +22,11 @@
 <section class="section bg-light">
   <div class="container">
     
+    <?php 
+    $sustainability = array_filter($data['impacts'], fn($i) => $i->section === 'Sustainability');
+    $social = array_filter($data['impacts'], fn($i) => $i->section === 'Social');
+    ?>
+
     <!-- Category A: Sustainability Impact -->
     <div class="mb-5">
       <div class="d-flex align-items-center mb-5 pb-2 border-bottom border-primary border-3">
@@ -30,16 +35,20 @@
       </div>
       
       <div class="row g-4 justify-content-center">
-        <?php for($i=1; $i<=9; $i++): ?>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="metric-card bg-white">
-                <div class="metric-value" data-i18n="home.impact_detail.sustainability.item<?= $i ?>_val">0</div>
-                <div class="metric-unit" data-i18n="home.impact_detail.sustainability.item<?= $i ?>_unit">UNIT</div>
-                <div class="metric-label" data-i18n="home.impact_detail.sustainability.item<?= $i ?>_label">Label</div>
-                <div class="metric-note" data-i18n="home.impact_detail.sustainability.item<?= $i ?>_note">Note</div>
+        <?php if (!empty($sustainability)) : ?>
+          <?php foreach($sustainability as $imp): ?>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="metric-card bg-white">
+                  <div class="metric-value"><?= $imp->value ?></div>
+                  <div class="metric-unit"><?= $imp->unit ?></div>
+                  <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>"><?= $imp->label_id ?></div>
+                  <div class="metric-note" data-lang-id="<?= $imp->note_id ?>" data-lang-en="<?= $imp->note_en ?>"><?= $imp->note_id ?></div>
+              </div>
             </div>
-          </div>
-        <?php endfor; ?>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <div class="col-12 text-center text-muted">No sustainability impact data available.</div>
+        <?php endif; ?>
       </div>
     </div>
 
@@ -51,16 +60,20 @@
       </div>
       
       <div class="row g-4 justify-content-center">
-        <?php for($i=1; $i<=11; $i++): ?>
-          <div class="col-lg-3 col-md-4 col-sm-6">
-            <div class="metric-card bg-white">
-                <div class="metric-value" data-i18n="home.impact_detail.social.item<?= $i ?>_val">0</div>
-                <div class="metric-unit" data-i18n="home.impact_detail.social.item<?= $i ?>_unit">UNIT</div>
-                <div class="metric-label" data-i18n="home.impact_detail.social.item<?= $i ?>_label">Label</div>
-                <div class="metric-note" data-i18n="home.impact_detail.social.item<?= $i ?>_note">Note</div>
+        <?php if (!empty($social)) : ?>
+          <?php foreach($social as $imp): ?>
+            <div class="col-lg-3 col-md-4 col-sm-6">
+              <div class="metric-card bg-white">
+                  <div class="metric-value"><?= $imp->value ?></div>
+                  <div class="metric-unit"><?= $imp->unit ?></div>
+                  <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>"><?= $imp->label_id ?></div>
+                  <div class="metric-note" data-lang-id="<?= $imp->note_id ?>" data-lang-en="<?= $imp->note_en ?>"><?= $imp->note_id ?></div>
+              </div>
             </div>
-          </div>
-        <?php endfor; ?>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <div class="col-12 text-center text-muted">No social impact data available.</div>
+        <?php endif; ?>
       </div>
     </div>
 

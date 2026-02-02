@@ -1244,49 +1244,18 @@ class Admin extends Controller {
         exit;
     }
 
-    public function impact($action = null, $id = null) {
-        if ($action === 'create') return $this->impact_create();
-        if ($action === 'edit' && $id) return $this->impact_edit($id);
+    public function impact($page_target = 'home', $action = null, $id = null) {
+        // Handle nested actions if called like admin/impact/home/edit/1
+        if ($page_target === 'create') return $this->impact_create();
+        if ($page_target === 'edit' && $action) return $this->impact_edit($action);
 
-        // Auto-Sync Slots (Ensure 4 per page)
-        $pagesList = ['home', 'gi', 'ggc', 'partnership', 'implementasi', 'konsultan'];
-        foreach ($pagesList as $p) {
-            $existingCount = count($this->impactModel->getByPage($p));
-            if ($existingCount < 4) {
-                $needed = 4 - $existingCount;
-                for ($i = 0; $i < $needed; $i++) {
-                    $this->impactModel->add([
-                        'label_id' => 'Data Kosong',
-                        'label_en' => 'Empty Slot',
-                        'value' => '0',
-                        'unit' => '',
-                        'icon' => 'fas fa-info-circle',
-                        'page' => $p
-                    ]);
-                }
-            }
-        }
+        $allImpacts = $this->impactModel->getByPage($page_target);
         
-        $allImpacts = $this->impactModel->getAll();
-        $grouped = [
-            'home' => [],
-            'gi' => [],
-            'ggc' => [],
-            'partnership' => [],
-            'implementasi' => [],
-            'konsultan' => []
-        ];
-        
-        foreach ($allImpacts as $imp) {
-            if (isset($grouped[$imp->page])) {
-                $grouped[$imp->page][] = $imp;
-            }
-        }
-
         $data = [
-            'title' => 'Manage Impact Data',
-            'active' => 'impact',
-            'grouped_impacts' => $grouped
+            'title' => 'Manage Impact: ' . strtoupper($page_target),
+            'active' => 'impact_' . $page_target,
+            'page_target' => $page_target,
+            'impacts' => $allImpacts
         ];
         $this->views('layouts/admin_header', $data);
         $this->views('admin/impact', $data);
@@ -1306,19 +1275,11 @@ class Admin extends Controller {
 
     public function impact_store() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Check limit (max 4 per page)
-            $existing = $this->impactModel->getByPage($_POST['page']);
-            if (count($existing) >= 4) {
-                Flasher::setFlash('Gagal', 'Halaman ' . $_POST['page'] . ' sudah mencapai batas maksimal 4 data dampak', 'danger');
-                header('Location: ' . BASE_URL . 'admin/impact');
-                exit;
-            }
-
             $rules = [
                 'label_id' => ['required'],
                 'value' => ['required'],
-                'icon' => ['required'],
-                'page' => ['required']
+                'page' => ['required'],
+                'section' => ['required']
             ];
             $errors = Validator::validate($_POST, $rules);
 
@@ -1327,31 +1288,39 @@ class Admin extends Controller {
                 header('Location: ' . $_SERVER['HTTP_REFERER']);
                 exit;
             }
-
+            $page = $_POST['page'] ?? 'home';
             $data = [
                 'label_id' => $_POST['label_id'],
                 'label_en' => $_POST['label_en'] ?: Translator::translate($_POST['label_id']),
                 'value' => $_POST['value'],
                 'unit' => $_POST['unit'],
-                'icon' => $_POST['icon'],
-                'page' => $_POST['page']
+                'icon' => '', // Icon removed as per request
+                'page' => $page,
+                'section' => $_POST['section'],
+                'section_title_id' => $_POST['section_title_id'] ?? '',
+                'section_title_en' => ($_POST['section_title_en'] ?? '') ?: (($_POST['section_title_id'] ?? '') ? Translator::translate($_POST['section_title_id']) : ''),
+                'note_id' => $_POST['note_id'] ?? '',
+                'note_en' => ($_POST['note_en'] ?? '') ?: (($_POST['note_id'] ?? '') ? Translator::translate($_POST['note_id']) : ''),
+                'order_num' => $_POST['order_num'] ?? 0
             ];
 
             if ($this->impactModel->add($data)) {
-                Flasher::setFlash('Data Dampak', 'berhasil ditambahkan', 'success');
-                header('Location: ' . BASE_URL . 'admin/impact');
+                Flasher::setFlash('Metrik', 'berhasil ditambahkan', 'success');
+                header('Location: ' . BASE_URL . 'admin/impact/' . $page);
             } else {
-                Flasher::setFlash('Data Dampak', 'gagal ditambahkan', 'danger');
-                header('Location: ' . BASE_URL . 'admin/impact');
+                Flasher::setFlash('Metrik', 'gagal ditambahkan', 'danger');
+                header('Location: ' . BASE_URL . 'admin/impact/' . $page);
             }
+            exit;
         }
     }
 
     public function impact_edit($id) {
+        $impact = $this->impactModel->getById($id);
         $data = [
-            'title' => 'Edit Data Dampak',
-            'active' => 'impact',
-            'impact' => $this->impactModel->getById($id)
+            'title' => 'Edit Impact Data',
+            'active' => 'impact_' . ($impact->page ?? 'home'),
+            'impact' => $impact
         ];
         $this->views('layouts/admin_header', $data);
         $this->views('admin/impact_edit', $data);
@@ -1360,22 +1329,12 @@ class Admin extends Controller {
 
     public function impact_update() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Check if page is changing and if new page is full
-            $oldData = $this->impactModel->getById($_POST['id']);
-            if ($oldData->page != $_POST['page']) {
-                $existing = $this->impactModel->getByPage($_POST['page']);
-                if (count($existing) >= 4) {
-                    Flasher::setFlash('Gagal Pindah', 'Halaman tujuan ' . $_POST['page'] . ' sudah penuh (maksimal 4 data dampak)', 'danger');
-                    header('Location: ' . BASE_URL . 'admin/impact');
-                    exit;
-                }
-            }
-
             // Validation
             $rules = [
                 'label_id' => ['required'],
                 'value' => ['required'],
-                'icon' => ['required']
+                'page' => ['required'],
+                'section' => ['required']
             ];
             $errors = Validator::validate($_POST, $rules);
 
@@ -1385,33 +1344,45 @@ class Admin extends Controller {
                 exit;
             }
 
+            $page = $_POST['page'] ?? 'home';
             $data = [
                 'id' => $_POST['id'],
                 'label_id' => $_POST['label_id'],
                 'label_en' => $_POST['label_en'] ?: Translator::translate($_POST['label_id']),
                 'value' => $_POST['value'],
                 'unit' => $_POST['unit'],
-                'icon' => $_POST['icon'],
-                'page' => $_POST['page']
+                'icon' => '', // Icon removed
+                'page' => $page,
+                'section' => $_POST['section'],
+                'section_title_id' => $_POST['section_title_id'] ?? '',
+                'section_title_en' => ($_POST['section_title_en'] ?? '') ?: (($_POST['section_title_id'] ?? '') ? Translator::translate($_POST['section_title_id']) : ''),
+                'note_id' => $_POST['note_id'] ?? '',
+                'note_en' => ($_POST['note_en'] ?? '') ?: (($_POST['note_id'] ?? '') ? Translator::translate($_POST['note_id']) : ''),
+                'order_num' => $_POST['order_num'] ?? 0
             ];
 
             if ($this->impactModel->update($data)) {
-                Flasher::setFlash('Data Dampak', 'berhasil diperbarui', 'success');
-                header('Location: ' . BASE_URL . 'admin/impact');
+                Flasher::setFlash('Metrik', 'berhasil diperbarui', 'success');
+                header('Location: ' . BASE_URL . 'admin/impact/' . $page);
             } else {
-                Flasher::setFlash('Data Dampak', 'gagal diperbarui', 'danger');
-                header('Location: ' . BASE_URL . 'admin/impact');
+                Flasher::setFlash('Metrik', 'gagal diperbarui', 'danger');
+                header('Location: ' . BASE_URL . 'admin/impact/' . $page);
             }
+            exit;
         }
     }
 
     public function impact_delete($id) {
+        $impact = $this->impactModel->getById($id);
+        $page = $impact ? $impact->page : 'home';
+        
         if ($this->impactModel->delete($id)) {
-            Flasher::setFlash('Data Dampak', 'berhasil dihapus', 'success');
+            Flasher::setFlash('Metrik', 'berhasil dihapus', 'success');
         } else {
-            Flasher::setFlash('Data Dampak', 'gagal dihapus', 'danger');
+            Flasher::setFlash('Metrik', 'gagal dihapus', 'danger');
         }
-        header('Location: ' . BASE_URL . 'admin/impact');
+        header('Location: ' . BASE_URL . 'admin/impact/' . $page);
+        exit;
     }
 
     public function partners($action = null, $id = null) {

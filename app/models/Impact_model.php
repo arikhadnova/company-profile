@@ -27,14 +27,14 @@ class Impact_model {
     }
 
     public function getAllByPage($page) {
-        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE page = :page ORDER BY id ASC');
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE page = :page ORDER BY order_num ASC, id ASC');
         $this->db->bind(':page', $page);
         return $this->db->resultSet();
     }
 
     public function add($data) {
-        $query = "INSERT INTO " . $this->table . " (label_id, label_en, value, unit, icon, page) 
-                  VALUES (:label_id, :label_en, :value, :unit, :icon, :page)";
+        $query = "INSERT INTO " . $this->table . " (label_id, label_en, value, unit, icon, page, section, section_title_id, section_title_en, note_id, note_en, order_num) 
+                  VALUES (:label_id, :label_en, :value, :unit, :icon, :page, :section, :section_title_id, :section_title_en, :note_id, :note_en, :order_num)";
         
         $this->db->query($query);
         $this->db->bind(':label_id', $data['label_id']);
@@ -43,6 +43,12 @@ class Impact_model {
         $this->db->bind(':unit', $data['unit']);
         $this->db->bind(':icon', $data['icon']);
         $this->db->bind(':page', $data['page']);
+        $this->db->bind(':section', $data['section']);
+        $this->db->bind(':section_title_id', $data['section_title_id']);
+        $this->db->bind(':section_title_en', $data['section_title_en']);
+        $this->db->bind(':note_id', $data['note_id']);
+        $this->db->bind(':note_en', $data['note_en']);
+        $this->db->bind(':order_num', $data['order_num']);
 
         return $this->db->execute();
     }
@@ -54,7 +60,13 @@ class Impact_model {
                   value = :value, 
                   unit = :unit, 
                   icon = :icon,
-                  page = :page
+                  page = :page,
+                  section = :section,
+                  section_title_id = :section_title_id,
+                  section_title_en = :section_title_en,
+                  note_id = :note_id,
+                  note_en = :note_en,
+                  order_num = :order_num
                   WHERE id = :id";
         
         $this->db->query($query);
@@ -65,6 +77,12 @@ class Impact_model {
         $this->db->bind(':unit', $data['unit']);
         $this->db->bind(':icon', $data['icon']);
         $this->db->bind(':page', $data['page']);
+        $this->db->bind(':section', $data['section']);
+        $this->db->bind(':section_title_id', $data['section_title_id']);
+        $this->db->bind(':section_title_en', $data['section_title_en']);
+        $this->db->bind(':note_id', $data['note_id']);
+        $this->db->bind(':note_en', $data['note_en']);
+        $this->db->bind(':order_num', $data['order_num']);
 
         return $this->db->execute();
     }

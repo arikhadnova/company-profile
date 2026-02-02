@@ -27,35 +27,27 @@
   <div class="container">
     <h3 class="text-center fw-bold mb-5" data-i18n="home.impact.title">KAMI MULAI MENCIPTAKAN DAMPAK</h3>
     <div class="row g-4 justify-content-center">
-      <!-- Metric 1: Waste -->
-      <div class="col-md-3 col-6">
-        <div class="stat-box">
-          <h1 class="fw-bold text-primary counter" data-target="513" data-i18n="home.impact.m1_val">513,03</h1>
-          <p data-i18n="home.impact.m1_label">Ton Sampah Terkelola</p>
-        </div>
-      </div>
-      <!-- Metric 2: Households -->
-      <div class="col-md-3 col-6">
-        <div class="stat-box">
-          <h1 class="fw-bold text-primary counter" data-target="6056" data-i18n="home.impact.m2_val">6.056</h1>
-          <p data-i18n="home.impact.m2_label">Rumah Tangga Terlibat</p>
-        </div>
-      </div>
-      <!-- Metric 3: Jobs -->
-      <div class="col-md-3 col-6">
-        <div class="stat-box">
-          <h1 class="fw-bold text-primary counter" data-target="113" data-i18n="home.impact.m3_val">113</h1>
-          <p data-i18n="home.impact.m3_label">Lapangan Kerja Hijau</p>
-        </div>
-      </div>
-      <!-- Metric 4: Recycling -->
-      <div class="col-md-3 col-6">
-        <div class="stat-box">
-          <h1 class="fw-bold text-primary counter" data-target="26" data-i18n="home.impact.m4_val">26,76%</h1>
-          <p data-i18n="home.impact.m4_label">Tingkat Daur Ulang</p>
-        </div>
-      </div>
-    </div>
+                <?php 
+                $main_impacts = array_filter($data['impacts'], fn($imp) => $imp->section === 'Main');
+                if (!empty($main_impacts)) : 
+                    foreach ($main_impacts as $imp) : 
+                ?>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-box">
+                            <h1 class="fw-bold text-primary counter" 
+                                data-target="<?= $imp->value ?>" 
+                                <?= strpos($imp->value, '.') !== false ? 'data-decimals="2"' : '' ?>>
+                                0
+                            </h1>
+                            <p data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
+                                <?= $imp->label_id ?>
+                            </p>
+                        </div>
+                    </div>
+                <?php 
+                    endforeach; 
+                endif; 
+                ?>
     
     <div class="text-center mt-5">
       <a href="<?= BASE_URL ?>home/impact" class="btn btn-outline-primary rounded-pill px-4" data-i18n="home.common.read_more">Selengkapnya</a>

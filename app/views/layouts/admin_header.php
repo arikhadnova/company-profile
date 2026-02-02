@@ -63,14 +63,19 @@
             <a href="<?= BASE_URL; ?>admin/hero" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'hero') ? 'active' : '' ?>">
                 <i class="fas fa-image"></i> Hero Section
             </a>
-            <a href="<?= BASE_URL; ?>admin/impact" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'impact') ? 'active' : '' ?>">
-                <i class="fas fa-chart-bar"></i> Impact Data
+            <!-- Impact Data -->
+            <div class="mt-4 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">Impact Data</small></div>
+            <a href="<?= BASE_URL; ?>admin/impact/home" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'impact_home') ? 'active' : '' ?>">
+                <i class="fas fa-home"></i> Home Impact
             </a>
-            <a href="<?= BASE_URL; ?>admin/partners" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'partners') ? 'active' : '' ?>">
-                <i class="fas fa-handshake"></i> Partners list
+            <a href="<?= BASE_URL; ?>admin/impact/gi" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'impact_gi') ? 'active' : '' ?>">
+                <i class="fas fa-university"></i> GI Impact
             </a>
-            <a href="<?= BASE_URL; ?>admin/partnership_settings" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'partnership_settings') ? 'active' : '' ?>">
-                <i class="fas fa-users-cog"></i> Partnership Settings
+            <a href="<?= BASE_URL; ?>admin/impact/ggc" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'impact_ggc') ? 'active' : '' ?>">
+                <i class="fas fa-leaf"></i> GGC Impact
+            </a>
+            <a href="<?= BASE_URL; ?>admin/impact/clocc" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'impact_clocc') ? 'active' : '' ?>">
+                <i class="fas fa-users"></i> CLOCC Impact
             </a>
 
             <!-- Service Pillars -->
@@ -114,6 +119,17 @@
 
             <!-- Collaboration -->
             <div class="mt-4 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">Collaboration</small></div>
+            <a href="<?= BASE_URL; ?>admin/partners" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'partners') ? 'active' : '' ?>">
+                <i class="fas fa-handshake"></i> Partners list
+            </a>
+            <a href="<?= BASE_URL; ?>admin/partnership_settings" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'partnership_settings') ? 'active' : '' ?>">
+                <i class="fas fa-users-cog"></i> Partnership Settings
+            </a>
+            <?php if ($_SESSION['user_role'] == 'admin') : ?>
+            <a href="<?= BASE_URL; ?>admin/contacts" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'contacts') ? 'active' : '' ?>">
+                <i class="fas fa-envelope"></i> Contact Messages
+            </a>
+            <?php endif; ?>
             <a href="<?= BASE_URL; ?>admin/collaboration" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'collaboration') ? 'active' : '' ?>">
                 <i class="fas fa-file-shield"></i> Documents
             </a>
@@ -122,24 +138,19 @@
             </a>
 
             <!-- System -->
-            <?php if ($_SESSION['user_role'] == 'admin') : ?>
             <div class="mt-4 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">System</small></div>
-            <a href="<?= BASE_URL; ?>admin/contacts" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'contacts') ? 'active' : '' ?>">
-                <i class="fas fa-envelope"></i> Contact Messages
-            </a>
+            <?php if ($_SESSION['user_role'] == 'admin') : ?>
             <a href="<?= BASE_URL; ?>admin/users" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'users') ? 'active' : '' ?>">
                 <i class="fas fa-users-gear"></i> User Accounts
             </a>
             <?php endif; ?>
-
-            <div class="mt-auto pt-5">
-                <a href="<?= BASE_URL; ?>" target="_blank" class="list-group-item list-group-item-action d-flex align-items-center text-secondary border-top">
-                    <i class="fas fa-external-link-alt"></i> View Website
-                </a>
-                <a href="<?= BASE_URL; ?>auth/logout" class="list-group-item list-group-item-action d-flex align-items-center text-danger">
-                    <i class="fas fa-sign-out-alt"></i> Sign Out
-                </a>
-            </div>
+            
+            <a href="<?= BASE_URL; ?>" target="_blank" class="list-group-item list-group-item-action d-flex align-items-center text-secondary">
+                <i class="fas fa-external-link-alt"></i> View Website
+            </a>
+            <a href="<?= BASE_URL; ?>auth/logout" class="list-group-item list-group-item-action d-flex align-items-center text-danger">
+                <i class="fas fa-sign-out-alt"></i> Sign Out
+            </a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->

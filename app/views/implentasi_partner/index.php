@@ -768,7 +768,7 @@
                             <span class="material-symbols-outlined">groups</span>
                         </div>
                         <h4 class="focus-title" data-i18n="partner.focus1_title">Holistik & Inklusif</h4>
-                        <p class="focus-text text-truncate-4" data-i18n="partner.focus1_desc">Pemberdayaan komunitas lokal, keterlibatan aktif pemangku kepentingan, dan kolaborasi strategis sektor swasta, mengintegrasikan 5 aspek persampahan; aspek teknis, sosial, kelembagaan, regulasi, dan keuangan.</p>
+                        <p class="focus-text" data-i18n="partner.focus1_desc">Pemberdayaan komunitas lokal, keterlibatan aktif pemangku kepentingan, dan kolaborasi strategis sektor swasta, mengintegrasikan 5 aspek persampahan; aspek teknis, sosial, kelembagaan, regulasi, dan keuangan.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -777,7 +777,7 @@
                             <span class="material-symbols-outlined">handshake</span>
                         </div>
                         <h4 class="focus-title" data-i18n="partner.focus2_title">Kolaboratif</h4>
-                        <p class="focus-text text-truncate-4" data-i18n="partner.focus2_desc">Membangun kemitraan strategis lintas sektor untuk memperkuat efektivitas implementasi dan memperluas dukungan.</p>
+                        <p class="focus-text" data-i18n="partner.focus2_desc">Membangun kemitraan strategis lintas sektor untuk memperkuat efektivitas implementasi dan memperluas dukungan.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -786,7 +786,7 @@
                             <span class="material-symbols-outlined">eco</span>
                         </div>
                         <h4 class="focus-title" data-i18n="partner.focus3_title">Solusi Berkelanjutan</h4>
-                        <p class="focus-text text-truncate-4" data-i18n="partner.focus3_desc">Mendukung sistem pengelolaan sampah yang efisien dalam rangka mendorong terwujudnya ekonomi sirkular daerah.</p>
+                        <p class="focus-text" data-i18n="partner.focus3_desc">Mendukung sistem pengelolaan sampah yang efisien dalam rangka mendorong terwujudnya ekonomi sirkular daerah.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -795,7 +795,7 @@
                             <span class="material-symbols-outlined">target</span>
                         </div>
                         <h4 class="focus-title" data-i18n="partner.focus4_title">Tepat Guna & Terukur</h4>
-                        <p class="focus-text text-truncate-4" data-i18n="partner.focus4_desc">Menghadirkan solusi yang sesuai realitas lapangan, praktis diterapkan, serta didorong oleh target, indikator, dan capaian yang jelas.</p>
+                        <p class="focus-text" data-i18n="partner.focus4_desc">Menghadirkan solusi yang sesuai realitas lapangan, praktis diterapkan, serta didorong oleh target, indikator, dan capaian yang jelas.</p>
                     </div>
                 </div>
             </div>
@@ -1004,96 +1004,55 @@
             <!-- Accordion Impact -->
             <div class="accordion accordion-gi" id="impactAccordion">
                 <?php
-                $impact_data = [
-                    1 => [
-                        ['Trainings/Workshops completed', '15', 'Trainings/Workshop'],
-                        ['Individuals trained (feminine/masculine)', '299', 'Individuals'],
-                        ['Training/Workshop days', '14', 'Days'],
-                        ['Learning modules produced', '5', 'Modules']
-                    ],
-                    2 => [
-                        ['Trainings/Workshops completed', '1', 'Workshop'],
-                        ['Individuals trained (feminine/masculine)', '32', 'Individuals'],
-                        ['Training/Workshop days', '1', 'Full-Day']
-                    ],
-                    3 => [
-                        ['Number of WMP politically approved', '6', 'Planning Document'],
-                        ['Number of plans developed on operational level', '3', 'Planning Document']
-                    ],
-                    4 => [
-                        ['Number of villages or towns with access to pre-disposal waste treatment', '3', 'Villages'],
-                        ['Number of MRFs partnerships', '3', 'Partnerships']
-                    ],
-                    5 => [
-                        ['Number of formal partnerships established', '7', 'Private Sector Partners'],
-                        ['Number of informal sector waste workers/recyclers benefited', '4', 'Informal Sectors']
-                    ],
-                    6 => [
-                        ['Village waste programs receive funding allocations from the 2025 village budget (APBDes)', '404.286.014', 'IDR'],
-                        ['Number of households that pay waste fee', '840', 'Household'],
-                        ['Jobs created in MRFs', '113', 'People'],
-                        ['Number of partnership (CLOCC\'s Network)', '> 25', 'Sub-Partnership']
-                    ],
-                    7 => [
-                        ['Number of households in pilot villages', '6.055', 'Household'],
-                        ['Population in pilot villages', '19.908', 'People'],
-                        ['Number of households served', '3.189', 'Household'],
-                        ['Waste collected total (leakage prevented)', '513,03', 'Tonnes'],
-                        ['Source separation rate of collected inorganic waste (Waste Bank)', '2.392', 'Household'],
-                        ['Waste recycled total (valorised)', '137,3', 'Tonnes'],
-                        ['Waste recycled in most recent year', '98,04', 'Tonnes'],
-                        ['Recycling rate % in most recent year', '26,76', '%'],
-                        ['Organic waste recycled total', '41,09', 'Tonnes'],
-                        ['Plastic waste recycled total', '55', 'Tonnes'],
-                        ['Paper & card recycled total', '27,01', 'Tonnes'],
-                        ['Metals recycled total', '3,3', 'Tonnes'],
-                        ['GHG emissions prevented in Pilot Villages total', '> 161', 'Tonnes CO2eq']
-                    ],
-                    8 => [
-                        ['Education/behavior change events', '23', 'Event'],
-                        ['Total number of individuals that have attended behavioural change events', '2.239', 'Participants'],
-                        ['Number of school students receiving training', '1.914', 'Students'],
-                        ['Hotspots cleared (clearing events)', '8', 'Hotspots'],
-                        ['Number of schools participating in educational video campaign on waste', '45', 'School'],
-                        ['Public engagement through CLOCC publications on social media', '169.215', 'Views']
-                    ],
-                    9 => [
-                        ['Number toolkits to supporting waste facility (TPS 3R/Waste Bank) optimization', '584', 'Supporting Tools'],
-                        ['Number toolkits to supporting behavior change developed', '> 476', 'Educational Media Materials'],
-                        ['Number of toolkits developed to support decision-making on waste management system', '36', 'Toolkits']
-                    ]
-                ];
+                // Group impacts by section
+                $wp_groups = [];
+                if (!empty($data['impacts'])) {
+                    foreach ($data['impacts'] as $imp) {
+                        $wp_groups[$imp->section][] = $imp;
+                    }
+                }
+                
+                // Sort keys to ensure WP 1 comes before WP 2, etc.
+                ksort($wp_groups);
 
-                foreach($impact_data as $wp_num => $items):
+                $first = true;
+                foreach($wp_groups as $wp_section => $items):
+                    // Generate a slug-safe ID for the accordion
+                    $wp_id = str_replace(' ', '', $wp_section);
+                    // Get section title from the first item
+                    $section_title_id = $items[0]->section_title_id ?: $wp_section;
+                    $section_title_en = $items[0]->section_title_en ?: $wp_section;
                 ?>
                 <div class="accordion-item shadow-sm mb-3 border-0 rounded-4 overflow-hidden">
-                    <h2 class="accordion-header" id="headingWP<?= $wp_num ?>">
-                        <button class="accordion-button <?= $wp_num != 1 ? 'collapsed' : '' ?> fw-bold py-4 px-4" 
+                    <h2 class="accordion-header" id="heading<?= $wp_id ?>">
+                        <button class="accordion-button <?= !$first ? 'collapsed' : '' ?> fw-bold py-4 px-4" 
                                 type="button" 
                                 data-bs-toggle="collapse" 
-                                data-bs-target="#collapseWP<?= $wp_num ?>" 
-                                aria-expanded="<?= $wp_num == 1 ? 'true' : 'false' ?>" 
-                                aria-controls="collapseWP<?= $wp_num ?>"
+                                data-bs-target="#collapse<?= $wp_id ?>" 
+                                aria-expanded="<?= $first ? 'true' : 'false' ?>" 
+                                aria-controls="collapse<?= $wp_id ?>"
                                 style="background: white; color: var(--gi-dark);">
-                            <span data-i18n="partner.impact.wp<?= $wp_num ?>.title">WP <?= $wp_num ?></span>
+                            <span data-lang-id="<?= $section_title_id ?>" data-lang-en="<?= $section_title_en ?>">
+                                <?= $section_title_id ?>
+                            </span>
                         </button>
                     </h2>
-                    <div id="collapseWP<?= $wp_num ?>" 
-                         class="accordion-collapse collapse <?= $wp_num == 1 ? 'show' : '' ?>" 
-                         aria-labelledby="headingWP<?= $wp_num ?>" 
+                    <div id="collapse<?= $wp_id ?>" 
+                         class="accordion-collapse collapse <?= $first ? 'show' : '' ?>" 
+                         aria-labelledby="heading<?= $wp_id ?>" 
                          data-bs-parent="#impactAccordion">
                         <div class="accordion-body bg-light-subtle p-4">
                             <div class="row g-4 justify-content-center">
-                                <?php foreach($items as $idx => $item): ?>
+                                <?php foreach($items as $imp): ?>
                                 <div class="col-lg-3 col-md-4 col-sm-6">
                                     <div class="metric-card bg-white">
-                                        <div class="metric-value"><?= $item[1] ?></div>
-                                        <div class="metric-unit"><?= $item[2] ?></div>
-                                        <div class="metric-label" data-i18n="partner.impact.wp<?= $wp_num ?>.item<?= $idx+1 ?>">
-                                            <?= $item[0] ?>
+                                        <div class="metric-value"><?= $imp->value ?></div>
+                                        <div class="metric-unit"><?= $imp->unit ?></div>
+                                        <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
+                                            <?= $imp->label_id ?>
                                         </div>
-                                        <div class="metric-note" data-i18n="partner.impact.wp<?= $wp_num ?>.item<?= $idx+1 ?>_note">
-                                            <!-- Detailed note from translations.js -->
+                                        <div class="metric-note" data-lang-id="<?= $imp->note_id ?>" data-lang-en="<?= $imp->note_en ?>">
+                                            <?= $imp->note_id ?>
                                         </div>
                                     </div>
                                 </div>
@@ -1102,7 +1061,11 @@
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
+                <?php $first = false; endforeach; ?>
+
+                <?php if (empty($wp_groups)) : ?>
+                    <div class="text-center py-5 text-muted">No impact data available for this page.</div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

@@ -41,10 +41,14 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
     <div class="container">
         <div class="stats-card-wrapper shadow-lg rounded-4 p-4 p-md-5 bg-white">
             <div class="row text-center g-4">
-                <?php if (!empty($data['impacts'])) : ?>
-                    <?php foreach ($data['impacts'] as $index => $imp) : ?>
+                <?php 
+                $main_impacts = array_filter($data['impacts'], fn($i) => $i->section === 'Main');
+                $collapsed_impacts = array_filter($data['impacts'], fn($i) => $i->section === 'Collapse');
+                ?>
+                <?php if (!empty($main_impacts)) : ?>
+                    <?php $idx = 0; foreach ($main_impacts as $imp) : ?>
                         <div class="col-6 col-md-3">
-                            <div class="stat-item <?= $index > 0 ? 'border-start-md' : ''; ?>">
+                            <div class="stat-item <?= $idx > 0 ? 'border-start-md' : ''; ?>">
                                 <h2 class="fw-bold mb-0">
                                     <span class="counter" 
                                           data-target="<?= $imp->value; ?>" 
@@ -57,10 +61,10 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                                 </p>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php $idx++; endforeach; ?>
                 <?php else : ?>
                     <!-- Fallback if no impact data -->
-                    <div class="col-12"><p class="text-muted mb-0">No impact data available.</p></div>
+                    <div class="col-12"><p class="text-muted mb-0">No primary impact data available.</p></div>
                 <?php endif; ?>
             </div>
         </div>
@@ -75,65 +79,24 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
         <!-- More Impacts (Collapse) -->
         <div class="collapse mt-5 mb-5" id="moreImpactsGI">
             <div class="row g-4 justify-content-center">
-                <!-- Mitra/Partner -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-value" data-i18n="gi.impact.m1_val">1</div>
-                        <div class="metric-unit" data-i18n="gi.impact.m1_unit">Mitra</div>
-                        <div class="metric-label" data-i18n="gi.impact.m1_label">Mitra/Partner Terjalin</div>
-                        <div class="metric-note" data-i18n="gi.impact.m1_note">Kolaborasi strategis dengan mitra seperti Banyuwangi Hijau untuk program pengelolaan sampah terpadu.</div>
-                    </div>
-                </div>
-
-                <!-- Kegiatan Pelatihan -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-value" data-i18n="gi.impact.m2_val">2</div>
-                        <div class="metric-unit" data-i18n="gi.impact.m2_unit">Kegiatan</div>
-                        <div class="metric-label" data-i18n="gi.impact.m2_label">Pelatihan Terlaksana</div>
-                        <div class="metric-note" data-i18n="gi.impact.m2_note">Pelatihan Model Bisnis BUMDes & Workshop Pengembangan Bisnis UPTD PPK-BLUD.</div>
-                    </div>
-                </div>
-
-                <!-- Penerima Manfaat -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-value" data-i18n="gi.impact.m3_val">31</div>
-                        <div class="metric-unit" data-i18n="gi.impact.m3_unit">Orang</div>
-                        <div class="metric-label" data-i18n="gi.impact.m3_label">Penerima Manfaat</div>
-                        <div class="metric-note" data-i18n="gi.impact.m3_note">Partisipan dari desa, TPS 3R, BWH, dan Dinas LH yang mengikuti training/workshop.</div>
-                    </div>
-                </div>
-
-                <!-- Media Edukasi -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-value" data-i18n="gi.impact.m4_val">32</div>
-                        <div class="metric-unit" data-i18n="gi.impact.m4_unit">Sarana</div>
-                        <div class="metric-label" data-i18n="gi.impact.m4_label">Media Edukasi</div>
-                        <div class="metric-note" data-i18n="gi.impact.m4_note">Terdiri dari buku saku (modul), slide materi, dan lembar kerja assessment yang didistribusikan.</div>
-                    </div>
-                </div>
-
-                <!-- Tumblr -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-value" data-i18n="gi.impact.m5_val">29</div>
-                        <div class="metric-unit" data-i18n="gi.impact.m5_unit">Unit</div>
-                        <div class="metric-label" data-i18n="gi.impact.m5_label">Tumblr Terdistribusi</div>
-                        <div class="metric-note" data-i18n="gi.impact.m5_note">Kampanye penggunaan botol guna ulang untuk mengurangi plastik sekali pakai selama kegiatan pelatihan.</div>
-                    </div>
-                </div>
-
-                <!-- Public Engagement -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="metric-card">
-                        <div class="metric-value" data-i18n="gi.impact.m6_val">2.324</div>
-                        <div class="metric-unit" data-i18n="gi.impact.m6_unit">Viewers</div>
-                        <div class="metric-label" data-i18n="gi.impact.m6_label">Public Engagement</div>
-                        <div class="metric-note" data-i18n="gi.impact.m6_note">Total penonton dan individu yang teredukasi melalui publikasi acara training di Instagram & Youtube.</div>
-                    </div>
-                </div>
+                <?php if (!empty($collapsed_impacts)) : ?>
+                    <?php foreach ($collapsed_impacts as $imp) : ?>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="metric-card">
+                                <div class="metric-value"><?= $imp->value ?></div>
+                                <div class="metric-unit"><?= $imp->unit ?></div>
+                                <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
+                                    <?= $imp->label_id ?>
+                                </div>
+                                <div class="metric-note" data-lang-id="<?= $imp->note_id ?>" data-lang-en="<?= $imp->note_en ?>">
+                                    <?= $imp->note_id ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <div class="col-12 text-center text-muted">No additional impact data available.</div>
+                <?php endif; ?>
             </div>
         </div>
     </div>

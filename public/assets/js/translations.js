@@ -955,7 +955,7 @@ const resources = {
                 "village_wongaya_gede": "Wongaya Gede Village",
                 "view_more": "Learn More",
                 "cta_primary": "Discuss Your Needs",
-                "cta_secondary": "Collaboration Scheme",
+                "cta_secondary": "Contact Us",
                 "stats": {
                     "partners": "Partner Institutions",
                     "individuals": "Individuals Involved",

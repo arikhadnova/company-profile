@@ -22,7 +22,6 @@
                     <div class="mb-4">
                         <label class="form-label fw-bold small text-dark">Judul Video / Playlist</label>
                         <input type="text" name="title_id" class="form-control form-control-lg" placeholder="Contoh: Ngobrol Sampah" value="<?= $video->title_id; ?>" required>
-                        <input type="hidden" name="title_en" value="<?= $video->title_en; ?>">
                     </div>
                     <div class="mb-4">
                         <label class="form-label fw-bold small text-dark">URL Video / Playlist YouTube</label>
@@ -31,7 +30,6 @@
                     <div class="mb-0">
                         <label class="form-label fw-bold small text-dark">Deskripsi</label>
                         <textarea name="description_id" id="yt_desc" class="form-control" rows="4" placeholder="Ringkasan tentang video atau playlist ini..."><?= $video->description_id; ?></textarea>
-                        <input type="hidden" name="description_en" id="yt_desc_en" value="<?= $video->description_en; ?>">
                     </div>
                     <div class="mt-3">
                         <small class="text-muted"><i class="fas fa-magic me-1"></i> Versi Bahasa Inggris akan diperbarui otomatis jika dikosongkan.</small>
@@ -77,17 +75,3 @@
         </div>
     </div>
 </form>
-<script>
-document.querySelector('form').addEventListener('submit', function(e) {
-    const titleId = this.querySelector('[name="title_id"]').value;
-    const descId = this.querySelector('[name="description_id"]').value;
-    
-    // Simple logic: if title_en is empty, use title_id
-    if (this.querySelector('[name="title_en"]').value === '') {
-        this.querySelector('[name="title_en"]').value = titleId;
-    }
-    if (this.querySelector('[name="description_en"]').value === '') {
-        this.querySelector('[name="description_en"]').value = descId;
-    }
-});
-</script>

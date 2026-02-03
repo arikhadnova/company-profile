@@ -12,10 +12,10 @@
         <!-- Library Filter Tags (Optional for better UX) -->
         <div class="d-flex justify-content-center gap-2 mb-5 flex-wrap">
             <button class="btn btn-outline-dark rounded-pill px-4 active" data-i18n="library.category_all">Semua</button>
-            <button class="btn btn-outline-dark rounded-pill px-4">Series Belajar</button>
-            <button class="btn btn-outline-dark rounded-pill px-4">Artikel</button>
-            <button class="btn btn-outline-dark rounded-pill px-4">Studi Kasus</button>
-            <button class="btn btn-outline-dark rounded-pill px-4">Tutorial</button>
+            <button class="btn btn-outline-dark rounded-pill px-4" data-i18n="library.category_series">Series Belajar</button>
+            <button class="btn btn-outline-dark rounded-pill px-4" data-i18n="library.category_article">Artikel</button>
+            <button class="btn btn-outline-dark rounded-pill px-4" data-i18n="library.category_cases">Studi Kasus</button>
+            <button class="btn btn-outline-dark rounded-pill px-4" data-i18n="library.category_tutorial">Tutorial</button>
         </div>
 
         <div class="row g-4 mb-5">

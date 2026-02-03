@@ -240,7 +240,10 @@
         </nav>
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <span class="service-category-tag"><?= ucfirst(str_replace('-', ' ', $s->category)); ?></span>
+                <?php 
+                    $cat_key = 'gi.filter_' . ($s->category == 'publikasi-riset' ? 'pub' : ($s->category == 'fasilitasi-knowledge' ? 'knowledge' : $s->category));
+                ?>
+                <span class="service-category-tag" data-i18n="<?= $cat_key ?>"><?= ucfirst(str_replace('-', ' ', $s->category)); ?></span>
                 <h1 class="detail-title text-uppercase" data-lang-id="<?= $s->title_id ?>" data-lang-en="<?= $s->title_en ?>"><?= $s->title_id ?></h1>
                 <p class="detail-desc" data-lang-id="<?= $s->description_id ?>" data-lang-en="<?= $s->description_en ?>">
                     <?= $s->description_id ?>
@@ -330,7 +333,7 @@
                         <i class="fas fa-tag"></i>
                         <div class="sidebar-info-text">
                             <small data-i18n="gi.detail.category">Kategori</small>
-                            <span><?= ucfirst(str_replace('-', ' ', $s->category)); ?></span>
+                            <span data-i18n="<?= $cat_key ?>"><?= ucfirst(str_replace('-', ' ', $s->category)); ?></span>
                         </div>
                     </div>
                     

@@ -52,7 +52,7 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                                 <h2 class="fw-bold mb-0">
                                     <span class="counter" 
                                           data-target="<?= $imp->value; ?>" 
-                                          <?= strpos($imp->value, '.') !== false ? 'data-decimals="1"' : ''; ?>>0</span><?= $imp->unit; ?>
+                                          <?= strpos($imp->value, '.') !== false ? 'data-decimals="1"' : ''; ?>>0</span><span data-i18n="units.<?= strtolower(str_replace([' ', '/', '(', ')'], '_', $imp->unit ?? '')) ?>"><?= $imp->unit; ?></span>
                                 </h2>
                                 <p class="text-muted small text-uppercase fw-semibold mb-0" 
                                    data-lang-id="<?= $imp->label_id; ?>" 
@@ -84,7 +84,7 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                         <div class="col-lg-3 col-md-6">
                             <div class="metric-card">
                                 <div class="metric-value"><?= $imp->value ?></div>
-                                <div class="metric-unit"><?= $imp->unit ?></div>
+                                <div class="metric-unit" data-i18n="units.<?= strtolower(str_replace([' ', '/', '(', ')'], '_', $imp->unit ?? '')) ?>"><?= $imp->unit ?></div>
                                 <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
                                     <?= $imp->label_id ?>
                                 </div>
@@ -148,9 +148,9 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                         <span class="text-secondary small fw-medium text-nowrap" data-i18n="gi.filter_category">Pilih Kategori</span>
                         <select id="serviceCategory" class="form-select border-0 shadow-sm rounded-pill py-2 ps-3 pe-5" style="max-width: 350px">
                             <option value="all" selected data-i18n="gi.filter_all">Semua layanan</option>
-                            <option value="training">Training</option>
-                            <option value="publikasi-riset">Publikasi dan Riset</option>
-                            <option value="fasilitasi-knowledge">Fasilitasi & Knowledge Exchange</option>
+                            <option value="training" data-i18n="gi.filter_training">Training</option>
+                            <option value="publikasi-riset" data-i18n="gi.filter_pub">Publikasi dan Riset</option>
+                            <option value="fasilitasi-knowledge" data-i18n="gi.filter_knowledge">Fasilitasi & Knowledge Exchange</option>
                         </select>
                     </div>
                 </div>
@@ -189,16 +189,19 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
                                             if($s->category == 'training') {
                                                 $cat_label_id = 'Training';
                                                 $cat_label_en = 'Training';
+                                                $cat_i18n_key = 'gi.filter_training';
                                             } elseif($s->category == 'publikasi-riset') {
                                                 $cat_label_id = 'Publikasi dan Riset';
                                                 $cat_label_en = 'Publication & Research';
+                                                $cat_i18n_key = 'gi.filter_pub';
                                             } elseif($s->category == 'fasilitasi-knowledge') {
                                                 $cat_label_id = 'Fasilitasi & Knowledge Exchange';
                                                 $cat_label_en = 'Facilitation & Knowledge Exchange';
+                                                $cat_i18n_key = 'gi.filter_knowledge';
                                             }
                                         ?>
                                         <div class="mb-1">
-                                            <span class="service-category-tag mb-1" data-lang-id="<?= $cat_label_id ?>" data-lang-en="<?= $cat_label_en ?>"><?= $cat_label_id ?></span>
+                                            <span class="service-category-tag mb-1" data-lang-id="<?= $cat_label_id ?>" data-lang-en="<?= $cat_label_en ?>" data-i18n="<?= $cat_i18n_key ?>"><?= $cat_label_id ?></span>
                                         </div>
                                         <h4 class="card-title fw-bold mb-3 text-truncate-2" data-lang-id="<?= strip_tags($s->title_id) ?>" data-lang-en="<?= strip_tags($s->title_en) ?>"><?= $s->title_id ?></h4>
                                         <p class="card-text text-muted mb-4 text-truncate-3" data-lang-id="<?= strip_tags($s->description_id) ?>" data-lang-en="<?= strip_tags($s->description_en) ?>">
@@ -367,7 +370,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
-                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
+                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4" data-i18n="gi.btn_more">Selengkapnya</a>
                                             </div>
                                         </div>
                                     </div>
@@ -401,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
-                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
+                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4" data-i18n="gi.btn_more">Selengkapnya</a>
                                             </div>
                                         </div>
                                     </div>
@@ -435,7 +438,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
-                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
+                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4" data-i18n="gi.btn_more">Selengkapnya</a>
                                             </div>
                                         </div>
                                     </div>
@@ -469,7 +472,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                             <h6 class="fw-bold mb-2 text-truncate-2" data-lang-id="<?= $p->title_id ?>" data-lang-en="<?= $p->title_en ?>"><?= $p->title_id ?></h6>
                                             <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= strip_tags($p->subtitle_id) ?>" data-lang-en="<?= strip_tags($p->subtitle_en) ?>"><?= $p->subtitle_id ?></p>
                                             <div class="mt-auto text-end">
-                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4">Selengkapnya</a>
+                                                <a href="<?= BASE_URL ?>portfolio/detail/<?= $p->id ?>" class="btn btn-portfolio-outline rounded-pill px-4" data-i18n="gi.btn_more">Selengkapnya</a>
                                             </div>
                                         </div>
                                     </div>
@@ -516,7 +519,8 @@ document.addEventListener('DOMContentLoaded', function() {
                      data-bs-toggle="modal" 
                      data-bs-target="#videoModal" 
                      data-video-url="<?= $hVid->url ?>"
-                     data-video-title="<?= $hVid->title_id ?>">
+                     data-video-title-id="<?= htmlspecialchars($hVid->title_id) ?>"
+                     data-video-title-en="<?= htmlspecialchars($hVid->title_en) ?>">
                     <div class="bg-dark ratio ratio-16x9 d-flex align-items-center justify-content-center overflow-hidden">
                         <?php if ($thumb) : ?>
                             <img src="<?= $thumb ?>" class="w-100 h-100 object-fit-cover" alt="<?= $hVid->title_id ?>">
@@ -534,10 +538,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
             <div class="col-lg-6">
-                <span class="highlight-badge mb-3 d-inline-block">Highlight</span>
-                <h3 class="fw-bold mb-3" data-lang-id="<?= $hVid->title_id ?>" data-lang-en="<?= $hVid->title_en ?>"><?= $hVid->title_id ?></h3>
-                <p class="text-muted mb-4 text-truncate-4" data-lang-id="<?= strip_tags($hVid->description_id) ?>" data-lang-en="<?= strip_tags($hVid->description_en) ?>">
-                    <?= strip_tags($hVid->description_id) ?>
+                <span class="highlight-badge mb-3 d-inline-block" data-i18n="gi.highlight_badge">Highlight</span>
+                <h3 class="fw-bold mb-3" data-lang-id="<?= htmlspecialchars($hVid->title_id) ?>" data-lang-en="<?= htmlspecialchars($hVid->title_en) ?>"><?= $hVid->title_id ?></h3>
+                <p class="text-muted mb-4 text-truncate-4" data-lang-id="<?= htmlspecialchars($hVid->description_id) ?>" data-lang-en="<?= htmlspecialchars($hVid->description_en) ?>">
+                    <?= $hVid->description_id ?>
                 </p>
                 <!-- Button removed - play via thumbnail click -->
             </div>
@@ -567,11 +571,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             <img src="<?= $p_thumb ?>" alt="<?= $pVid->title_id ?>">
                         </div>
                         <div class="card-body p-4 text-center d-flex flex-column">
-                            <h5 class="fw-bold mb-3 text-truncate-2" data-lang-id="<?= $pVid->title_id ?>" data-lang-en="<?= $pVid->title_en ?>"><?= $pVid->title_id ?></h5>
-                            <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= $pVid->description_id ?>" data-lang-en="<?= $pVid->description_en ?>">
+                            <h5 class="fw-bold mb-3 text-truncate-2" data-lang-id="<?= htmlspecialchars($pVid->title_id) ?>" data-lang-en="<?= htmlspecialchars($pVid->title_en) ?>"><?= $pVid->title_id ?></h5>
+                            <p class="text-muted small mb-4 flex-grow-1 text-truncate-3" data-lang-id="<?= htmlspecialchars($pVid->description_id) ?>" data-lang-en="<?= htmlspecialchars($pVid->description_en) ?>">
                                 <?= $pVid->description_id ?>
                             </p>
-                            <a href="<?= $pVid->url ?>" target="_blank" class="btn btn-playlist-outline" data-i18n="gi.btn_more">Lihat Playlist</a>
+                            <a href="<?= $pVid->url ?>" target="_blank" class="btn btn-playlist-outline" data-i18n="gi.btn_playlist">Lihat Playlist</a>
                         </div>
                     </div>
                 </div>
@@ -587,7 +591,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="text-center">
             <div class="small text-muted mb-2" data-i18n="gi.video_more_insight">More Insight On</div>
             <a href="https://youtube.com/@gosirk_institute" target="_blank" class="btn btn-youtube-red d-inline-flex align-items-center gap-2">
-                <i class="bi bi-youtube fs-5"></i> Youtube GoSirk Institute
+                <i class="bi bi-youtube fs-5"></i> <span data-i18n="gi.video_youtube_btn">Youtube GoSirk Institute</span>
             </a>
         </div>
     </div>
@@ -619,7 +623,10 @@ document.addEventListener('DOMContentLoaded', function() {
         videoModal.addEventListener('show.bs.modal', function(event) {
             const button = event.relatedTarget;
             const url = button.getAttribute('data-video-url');
-            const title = button.getAttribute('data-video-title');
+            
+            // Get current language and set title
+            const lang = localStorage.getItem('gosirk_language') || 'en';
+            const title = lang === 'en' ? button.getAttribute('data-video-title-en') : button.getAttribute('data-video-title-id');
             
             modalTitle.textContent = title;
 
@@ -869,13 +876,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (toggleButton && collapseElement) {
         collapseElement.addEventListener('show.bs.collapse', function () {
-            const lang = localStorage.getItem('selectedLanguage') || 'id';
+            const lang = localStorage.getItem('gosirk_language') || 'en';
             toggleButton.textContent = resources[lang].translation.gi.impact.btn_less;
             toggleButton.setAttribute('data-i18n', 'gi.impact.btn_less');
         });
         
         collapseElement.addEventListener('hide.bs.collapse', function () {
-            const lang = localStorage.getItem('selectedLanguage') || 'id';
+            const lang = localStorage.getItem('gosirk_language') || 'en';
             toggleButton.textContent = resources[lang].translation.gi.impact.btn_more;
             toggleButton.setAttribute('data-i18n', 'gi.impact.btn_more');
         });

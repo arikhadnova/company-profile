@@ -2204,14 +2204,24 @@ class Admin extends Controller {
             $data = $_POST;
             $data['thumbnail'] = null;
 
-            if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['name']) {
-                $upload = Upload::file($_FILES['thumbnail'], 'img/gi/videos');
-                if ($upload) {
-                    $data['thumbnail'] = $upload;
-                }
-            }
-
             if ($this->giVideoModel->add($data)) {
+                // Get the ID of the newly added video
+                $newVideo = $this->db->lastInsertId();
+                if ($newVideo) {
+                    $videoData = $this->giVideoModel->getById($newVideo);
+                    $updateData = [
+                        'id' => $newVideo,
+                        'title_id' => $videoData->title_id,
+                        'title_en' => Translator::translate($videoData->title_id),
+                        'description_id' => $videoData->description_id,
+                        'description_en' => Translator::translate($videoData->description_id),
+                        'url' => $videoData->url,
+                        'type' => $videoData->type,
+                        'thumbnail' => $videoData->thumbnail,
+                        'order_priority' => $videoData->order_priority
+                    ];
+                    $this->giVideoModel->update($updateData);
+                }
                 Flasher::setFlash('Video GI', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/gi_videos');
             } else {
@@ -2248,12 +2258,9 @@ class Admin extends Controller {
                 }
             }
 
-            if (empty($data['title_en'])) {
-                $data['title_en'] = $data['title_id'];
-            }
-            if (empty($data['description_en'])) {
-                $data['description_en'] = $data['description_id'];
-            }
+            // Automatically translate to English
+            $data['title_en'] = Translator::translate($data['title_id']);
+            $data['description_en'] = Translator::translate($data['description_id']);
 
             if ($this->giVideoModel->update($data)) {
                 Flasher::setFlash('Video GI', 'berhasil diperbarui', 'success');

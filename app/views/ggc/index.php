@@ -303,13 +303,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (impactToggle && impactCollapse) {
         impactCollapse.addEventListener('show.bs.collapse', function () {
-            const lang = localStorage.getItem('selectedLanguage') || 'id';
+            const lang = localStorage.getItem('gosirk_language') || 'en';
             impactToggle.textContent = resources[lang].translation.ggc.impact.btn_less;
             impactToggle.setAttribute('data-i18n', 'ggc.impact.btn_less');
         });
         
         impactCollapse.addEventListener('hide.bs.collapse', function () {
-            const lang = localStorage.getItem('selectedLanguage') || 'id';
+            const lang = localStorage.getItem('gosirk_language') || 'en';
             impactToggle.textContent = resources[lang].translation.ggc.impact.btn_more;
             impactToggle.setAttribute('data-i18n', 'ggc.impact.btn_more');
         });

@@ -157,7 +157,7 @@
             const originalBtnHtml = submitBtn.innerHTML;
             
             // Show loading state
-            const lang = localStorage.getItem('selectedLanguage') || 'id';
+            const lang = localStorage.getItem('gosirk_language') || 'en';
             const sendingText = resources[lang].translation.collaboration.modal.sending;
             submitBtn.disabled = true;
             submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span> ${sendingText}`;
@@ -176,7 +176,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    const lang = localStorage.getItem('selectedLanguage') || 'id';
+                    const lang = localStorage.getItem('gosirk_language') || 'en';
                     Swal.fire({
                         title: resources[lang].translation.common.success,
                         text: data.message,

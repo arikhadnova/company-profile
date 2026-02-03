@@ -1174,7 +1174,7 @@
         <div class="container py-5">
             <div class="text-center mb-5">
                 <span class="section-subheader" data-i18n="partner.testimonials.title">Bukti Kontribusi Kami</span>
-                <h3 class="fw-bold">Apa Kata Mitra Kami?</h3>
+                <h3 class="fw-bold" data-i18n="partner.testimonials.title">Apa Kata Mitra Kami?</h3>
             </div>
             
             <div class="swiper testimonials-slider">
@@ -1217,7 +1217,7 @@
                 <div class="col-lg-8">
                     <div class="text-center mb-5">
                         <span class="section-subheader" data-i18n="partner.faq.title">FAQ Implementasi</span>
-                        <h3 class="fw-bold">Pertanyaan Umum</h3>
+                        <h3 class="fw-bold" data-i18n="partner.faq.title">Pertanyaan Umum</h3>
                     </div>
                     
                     <div class="accordion accordion-gi" id="faqAccordion">
@@ -1242,7 +1242,7 @@
                             <?php endforeach; ?>
                         <?php else : ?>
                             <div class="text-center p-4">
-                                <p class="text-muted">FAQ belum tersedia untuk kategori ini.</p>
+                                <p class="text-muted" data-i18n="partner.faq.empty">FAQ belum tersedia untuk kategori ini.</p>
                             </div>
                         <?php endif; ?>
                     </div>

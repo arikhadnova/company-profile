@@ -8,7 +8,7 @@
             <span class="text-primary">PERSAMPAHAN BERKELANJUTAN</span>
         </h1>
         <p class="lead mb-5 text-secondary animate__animated animate__fadeInUp animate__delay-1s mx-auto" style="max-width: 800px;" data-i18n="partnership.hero_desc">
-            Kami telah dipercaya untuk menjalankan berbagai proyek di bidang sanitasi, mulai dari pelatihan teknis, pendampingan mitra implementasi, hingga layanan konsultansi strategis
+            We have been trusted to execute various sanitation projects, ranging from technical training, assistance with implementation partners, to strategic consultancy services.
         </p>
         <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-2s mb-5">
              <a href="#partnership" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm" data-i18n="partnership.our_partnership">
@@ -38,16 +38,16 @@
                 </div>
                 <div class="col-lg-6 p-4 p-md-5 d-flex flex-column justify-content-center">
                     <div class="mb-3">
-                        <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill fw-semibold">Community Impact</span>
-                        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-semibold ms-2" style="background-color: #FF8F56 !important; color: white !important;">Village Circular</span>
+                        <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill fw-semibold" data-i18n="partnership.clocc_badge_1">Community Impact</span>
+                        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-semibold ms-2" style="background-color: #FF8F56 !important; color: white !important;" data-i18n="partnership.clocc_badge_2">Village Circular</span>
                     </div>
-                    <h3 class="fw-bold mb-3">Program Pendampingan Desa: CLOCC x GOSIRK</h3>
+                    <h3 class="fw-bold mb-3" data-i18n="partnership.clocc_title">Program Pendampingan Desa: CLOCC x GOSIRK</h3>
                     <div class="d-flex align-items-center text-muted mb-4">
                         <i class="fas fa-map-marker-alt me-2 text-primary" style="color: #FF8F56 !important;"></i>
-                        <span>Kabupaten Tabanan, Bali</span>
+                        <span data-i18n="partnership.clocc_loc">Kabupaten Tabanan, Bali</span>
                         <span class="mx-2">•</span>
                         <i class="fas fa-calendar-alt me-2 text-primary" style="color: #FF8F56 !important;"></i>
-                        <span>2023 - 2025</span>
+                        <span data-i18n="partnership.clocc_dur">2023 - 2025</span>
                     </div>
                     <p class="text-secondary mb-4 fs-6" data-i18n="partnership.clocc_desc">
                         Inisiatif kolaboratif untuk mempercepat kemandirian pengelolaan sampah di tingkat desa melalui 

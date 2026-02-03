@@ -109,13 +109,8 @@ if ($bgGI && !filter_var($bgGI, FILTER_VALIDATE_URL)) {
             <div class="col-lg-6">
                 <h5 class="text-primary fw-bold text-uppercase mb-3" data-i18n="gi.about_badge">Tentang Kami</h5>
                 <h2 class="fw-bold mb-4 display-6" data-i18n="gi.about_title">Membangun Ekosistem Pengetahuan Sirkular</h2>
-                <p class="text-muted mb-4" style="text-align: justify; line-height: 1.8;">
-                    GoSirk Institute merupakan bagian dari unit strategis dalam ekosistem bisnis 
-                    PT GO Circular Solutions Indonesia (GoSirk) dalam membangun sistem manajemen 
-                    pengetahuan yang terstruktur di bidang pengelolaan sampah. Sebagai unit khusus 
-                    dalam lini usaha <i><b>Capacity Building</b></i>, GoSirk Institute menjadi wadah untuk 
-                    mengembangkan dan menyebarluaskan pembelajaran, praktik baik, serta 
-                    inovasi-inovasi yang lahir dari pengalaman nyata di lapangan.
+                <p class="text-muted mb-4" style="text-align: justify; line-height: 1.8;" data-i18n="gi.about_desc">
+                    GoSirk Institute merupakan bagian dari unit strategis dalam ekosistem bisnis PT GO Circular Solutions Indonesia (GoSirk) dalam membangun sistem manajemen pengetahuan yang terstruktur di bidang pengelolaan sampah. Sebagai unit khusus dalam lini usaha Capacity Building, GoSirk Institute menjadi wadah untuk mengembangkan dan menyebarluaskan pembelajaran, praktik baik, serta inovasi-inovasi yang lahir dari pengalaman nyata di lapangan.
                 </p>
             </div>
             <div class="col-lg-6 position-relative">

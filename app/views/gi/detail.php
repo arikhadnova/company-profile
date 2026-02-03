@@ -246,7 +246,7 @@
                     <?= $s->description_id ?>
                 </p>
                 <div class="d-flex gap-3">
-                    <a href="<?= BASE_URL ?>contact" class="btn btn-orange-gi">Hubungi Kami</a>
+                    <a href="<?= BASE_URL ?>contact" class="btn btn-orange-gi" data-i18n="gi.detail.contact_btn">Hubungi Kami</a>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -277,7 +277,7 @@
                 if (!empty($points)) : 
                 ?>
                 <div class="mt-5">
-                    <h4 class="fw-bold mb-4">Program Points</h4>
+                    <h4 class="fw-bold mb-4" data-i18n="gi.detail.program_points">Program Points</h4>
                     <div class="row g-4">
                         <?php foreach($points as $idx => $p) : 
                             $p_en = $points_en[$idx] ?? $p;
@@ -298,7 +298,7 @@
 
                 <?php if ($s->highlights && $s->highlights != '[]') : ?>
                 <div class="mt-5">
-                    <h4 class="fw-bold mb-4">Highlights</h4>
+                    <h4 class="fw-bold mb-4" data-i18n="gi.detail.highlights">Highlights</h4>
                     <div class="row g-3">
                         <?php 
                         $highlights = json_decode($s->highlights, true);
@@ -324,12 +324,12 @@
             
             <div class="col-lg-4">
                 <div class="sidebar-box shadow-lg border-0">
-                    <h5 class="fw-bold mb-4">Detail Layanan</h5>
+                    <h5 class="fw-bold mb-4" data-i18n="gi.detail.service_detail">Detail Layanan</h5>
                     
                     <div class="sidebar-info-item">
                         <i class="fas fa-tag"></i>
                         <div class="sidebar-info-text">
-                            <small>Kategori</small>
+                            <small data-i18n="gi.detail.category">Kategori</small>
                             <span><?= ucfirst(str_replace('-', ' ', $s->category)); ?></span>
                         </div>
                     </div>
@@ -337,7 +337,7 @@
                     <div class="sidebar-info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div class="sidebar-info-text">
-                            <small>Lokasi</small>
+                            <small data-i18n="gi.detail.location">Lokasi</small>
                             <span data-lang-id="<?= $s->location_id ?: 'Online / Offline (Disesuaikan)'; ?>" data-lang-en="<?= $s->location_en ?: 'Online / Offline (Adjusted)'; ?>">
                                 <?= $s->location_id ?: 'Online / Offline (Disesuaikan)'; ?>
                             </span>
@@ -347,7 +347,7 @@
                     <div class="sidebar-info-item">
                         <i class="fas fa-clock"></i>
                         <div class="sidebar-info-text">
-                            <small>Sifat Layanan</small>
+                            <small data-i18n="gi.detail.service_type">Sifat Layanan</small>
                             <span data-lang-id="<?= $s->service_type_id ?: 'Profesional & Adaptif'; ?>" data-lang-en="<?= $s->service_type_en ?: 'Professional & Adaptive'; ?>">
                                 <?= $s->service_type_id ?: 'Profesional & Adaptif'; ?>
                             </span>

@@ -133,7 +133,9 @@ if (!isset($settings)) {
               // Format with thousand separator if it's a large number and not decimal
               let formattedValue = currentValue.toFixed(decimals);
               if (decimals === 0 && target >= 1000) {
-                  formattedValue = Math.floor(currentValue).toLocaleString('id-ID');
+                  const currentLang = (typeof GoSirkLang !== 'undefined') ? GoSirkLang.getCurrent() : 'id';
+                  const locale = currentLang === 'en' ? 'en-US' : 'id-ID';
+                  formattedValue = Math.floor(currentValue).toLocaleString(locale);
               }
               
               counter.innerText = formattedValue;
@@ -141,7 +143,9 @@ if (!isset($settings)) {
               if (progress < 1) {
                   requestAnimationFrame(updateCount);
               } else {
-                  counter.innerText = decimals === 0 && target >= 1000 ? target.toLocaleString('id-ID') : target.toFixed(decimals);
+                  const currentLang = (typeof GoSirkLang !== 'undefined') ? GoSirkLang.getCurrent() : 'id';
+                  const locale = currentLang === 'en' ? 'en-US' : 'id-ID';
+                  counter.innerText = decimals === 0 && target >= 1000 ? target.toLocaleString(locale) : target.toFixed(decimals);
               }
           };
 
@@ -163,6 +167,20 @@ if (!isset($settings)) {
 
       counters.forEach(counter => {
           counterObserver.observe(counter);
+      });
+
+      // Update counters when language changes
+      window.addEventListener('languageChanged', function() {
+          counters.forEach(counter => {
+              const target = +counter.getAttribute('data-target');
+              const decimals = +counter.getAttribute('data-decimals') || 0;
+              const currentLang = GoSirkLang.getCurrent();
+              const locale = currentLang === 'en' ? 'en-US' : 'id-ID';
+              
+              counter.innerText = (decimals === 0 && target >= 1000) ? 
+                  target.toLocaleString(locale) : 
+                  target.toFixed(decimals);
+          });
       });
     </script>
 </body>

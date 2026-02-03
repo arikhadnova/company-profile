@@ -45,12 +45,12 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
       $main_impacts = array_filter($data['impacts'], fn($i) => $i->section === 'Main');
       $collapsed_impacts = array_filter($data['impacts'], fn($i) => $i->section === 'Collapse');
       ?>
-      <?php if (!empty($main_impacts)) : ?>
+      <?php if (!empty($main_impacts)) : $idx = 1; ?>
         <?php foreach($main_impacts as $imp): ?>
           <div class="col-lg-3 col-md-6">
             <div class="metric-card">
               <div class="metric-value"><?= $imp->value ?></div>
-              <div class="metric-unit"><?= $imp->unit ?></div>
+              <div class="metric-unit" data-i18n="ggc.impact.m<?= $idx ?>_unit"><?= $imp->unit ?></div>
               <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
                 <?= $imp->label_id ?>
               </div>
@@ -59,7 +59,7 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
               </div>
             </div>
           </div>
-        <?php endforeach; ?>
+        <?php $idx++; endforeach; ?>
       <?php else: ?>
         <div class="col-12 text-center text-muted">No primary impact data available.</div>
       <?php endif; ?>
@@ -68,12 +68,12 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
     <!-- More Impacts (Collapse) -->
     <div class="collapse mt-4" id="moreImpacts">
       <div class="row g-4 justify-content-center">
-        <?php if (!empty($collapsed_impacts)) : ?>
+        <?php if (!empty($collapsed_impacts)) : $idx = 5; // Continuing from m5 ?>
           <?php foreach($collapsed_impacts as $imp): ?>
             <div class="col-lg-3 col-md-6">
               <div class="metric-card">
                 <div class="metric-value"><?= $imp->value ?></div>
-                <div class="metric-unit"><?= $imp->unit ?></div>
+                <div class="metric-unit" data-i18n="ggc.impact.m<?= $idx ?>_unit"><?= $imp->unit ?></div>
                 <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
                   <?= $imp->label_id ?>
                 </div>
@@ -82,7 +82,7 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
                 </div>
               </div>
             </div>
-          <?php endforeach; ?>
+          <?php $idx++; endforeach; ?>
         <?php else: ?>
           <div class="col-12 text-center text-muted">No additional impact data available.</div>
         <?php endif; ?>
@@ -221,11 +221,13 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
 <!-- GALLERY SECTION -->
 <section class="section pb-5" id="gallery">
   <div class="container">
-    <div class="section-title-wrapper text-center">
-      <div class="title-bg" data-i18n="ggc.gallery.title_bg">Gallery</div>
-      <h4 class="fw-bold fs-2 mb-2 text-success" data-i18n="ggc.gallery.title">AKSI KAMI</h4>
-      <p class="text-muted" data-i18n="ggc.gallery.subtitle">Momen-momen inspiratif dalam setiap kegiatan komunitas kami.</p>
-    </div>
+            <!-- Gallery Header -->
+            <div class="position-relative text-center mb-5">
+                <div class="title-bg" data-i18n="ggc.gallery.title_bg">Gallery</div>
+                <div class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-bold mb-3" data-i18n="ggc.gallery.badge">HIGHLIGHT</div>
+                <h4 class="fw-bold fs-2 mb-2 text-success" data-i18n="ggc.gallery.title">AKSI KAMI</h4>
+                <p class="text-muted" data-i18n="ggc.gallery.subtitle">Momen-momen inspiratif dalam setiap kegiatan komunitas kami.</p>
+            </div>
 
     <div class="row g-4 overflow-hidden">
       <?php 

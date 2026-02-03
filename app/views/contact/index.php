@@ -53,18 +53,18 @@
                 <div class="form-panel">
                     <p data-i18n="contact.form.title">Silahkan tinggalkan pesan anda dibawah ini</p>
                     <form id="contactForm">
-                        <div class="mb-3">
-                            <label class="form-label" data-i18n="contact.form.name">Nama</label>
-                            <input type="text" name="name" class="form-control" placeholder="Nama Anda" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" data-i18n="contact.form.email">Email</label>
-                            <input type="email" name="email" class="form-control" placeholder="Email Anda" required>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" data-i18n="contact.form.message">Message</label>
-                            <textarea name="message" class="form-control" rows="5" placeholder="Pesan Anda" required></textarea>
-                        </div>
+                            <div class="mb-4">
+                                <label class="form-label" data-i18n="contact.form.name">Nama</label>
+                                <input type="text" name="name" class="form-control" placeholder="Nama Anda" required data-i18n="contact.form.name_placeholder">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" data-i18n="contact.form.email">Email</label>
+                                <input type="email" name="email" class="form-control" placeholder="Email Anda" required data-i18n="contact.form.email_placeholder">
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" data-i18n="contact.form.message">Pesan</label>
+                                <textarea name="message" class="form-control" rows="5" placeholder="Pesan Anda" required data-i18n="contact.form.message_placeholder"></textarea>
+                            </div>
                         <button type="submit" id="btnSubmit" class="btn btn-submit" data-i18n="contact.form.submit">Submit</button>
                     </form>
                 </div>

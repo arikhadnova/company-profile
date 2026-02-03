@@ -532,7 +532,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card shadow-sm border-0">
                         <div class="service-img-wrapper">
-                            <span class="badge-scope">Policy</span>
+                            <span class="badge-scope" data-i18n="konsultan.scope_policy">Policy</span>
                             <img src="<?= ASSETS_URL ?>img/IMG_8084.jpg" alt="Policy Advisory">
                         </div>
                         <div class="card-body">
@@ -544,7 +544,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card shadow-sm border-0">
                         <div class="service-img-wrapper">
-                            <span class="badge-scope">Finance</span>
+                            <span class="badge-scope" data-i18n="konsultan.scope_finance">Finance</span>
                             <img src="<?= ASSETS_URL ?>img/IMG_0506-1536x1024.jpg" alt="Financial Innovation">
                         </div>
                         <div class="card-body">
@@ -556,7 +556,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card shadow-sm border-0">
                         <div class="service-img-wrapper">
-                            <span class="badge-scope">Operations</span>
+                            <span class="badge-scope" data-i18n="konsultan.scope_ops">Operations</span>
                             <img src="<?= ASSETS_URL ?>img/petugas-baju-biru.png" alt="Operational Systems">
                         </div>
                         <div class="card-body">
@@ -568,7 +568,7 @@
                 <div class="col-md-6 col-lg-3">
                     <div class="service-card shadow-sm border-0">
                         <div class="service-img-wrapper">
-                            <span class="badge-scope">Partnership</span>
+                            <span class="badge-scope" data-i18n="konsultan.scope_partner">Partnership</span>
                             <img src="<?= ASSETS_URL ?>img/pexels-fauxels-3184416.jpg" alt="PPP Facilitation">
                         </div>
                         <div class="card-body">

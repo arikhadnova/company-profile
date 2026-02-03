@@ -584,7 +584,7 @@
         endif; 
         
         if (!$foundContribution) : ?>
-          <div class="swiper-slide text-center text-muted small">No contribution partners yet</div>
+          <div class="swiper-slide text-center text-muted small" data-i18n="home.partners.empty">No contribution partners yet</div>
         <?php endif; ?>
       </div>
     </div>
@@ -620,7 +620,7 @@
         endif; 
         
         if (!$foundNetwork) : ?>
-          <div class="swiper-slide text-center text-muted small">No network partners yet</div>
+          <div class="swiper-slide text-center text-muted small" data-i18n="home.network.empty">No network partners yet</div>
         <?php endif; ?>
       </div>
     </div>

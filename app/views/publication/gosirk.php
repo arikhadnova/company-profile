@@ -26,9 +26,9 @@
     <div class="container">
         <!-- Header -->
         <div class="text-center mb-5">
-            <span class="badge bg-primary text-white rounded-pill px-3 py-2 mb-3 fw-bold">KNOWLEDGE HUB</span>
+            <span class="badge bg-primary text-white rounded-pill px-3 py-2 mb-3 fw-bold" data-i18n="publication.header.badge">KNOWLEDGE HUB</span>
             <h2 class="fw-bold display-5 mb-3">GoSirk Publications</h2>
-            <p class="lead text-muted mx-auto" style="max-width: 700px;">
+            <p class="lead text-muted mx-auto" style="max-width: 700px;" data-i18n="publication.gosirk.desc">
                 Temukan berbagai publikasi resmi, laporan, dan panduan dari GoSirk.
             </p>
         </div>
@@ -42,7 +42,7 @@
                             <span class="input-group-text border-0 bg-transparent ps-4">
                                 <span class="material-symbols-outlined text-muted">search</span>
                             </span>
-                            <input type="text" class="form-control border-0 py-3 shadow-none bg-transparent" placeholder="Cari publikasi atau laporan..." id="pubSearch">
+                            <input type="text" class="form-control border-0 py-3 shadow-none bg-transparent" placeholder="Cari publikasi atau laporan..." id="pubSearch" data-i18n="publication.gosirk.search_placeholder">
                         </div>
                     </div>
                 </div>
@@ -88,16 +88,16 @@
                                                 $message = urlencode("Halo GoSirk, saya tertarik untuk membeli publikasi: " . $pub->title_id);
                                                 $wa_link = "https://wa.me/{$wa_number}?text={$message}";
                                             ?>
-                                            <a href="<?= $wa_link ?>" target="_blank" class="btn btn-sm btn-primary rounded-pill flex-grow-1 py-2 d-flex align-items-center justify-content-center gap-2">
+                                            <a href="<?= $wa_link ?>" target="_blank" class="btn btn-sm btn-primary rounded-pill flex-grow-1 py-2 d-flex align-items-center justify-content-center gap-2" data-i18n="publication.btn.buy_wa">
                                                 <i class="fab fa-whatsapp"></i> Buy via WhatsApp
                                             </a>
                                             <?php if (!empty($pub->preview_path)) : ?>
-                                                <a href="<?= ASSETS_URL ?>docs/<?= $pub->preview_path ?>" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-3 d-flex align-items-center justify-content-center gap-2">
+                                                <a href="<?= ASSETS_URL ?>docs/<?= $pub->preview_path ?>" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-3 d-flex align-items-center justify-content-center gap-2" data-i18n="publication.btn.preview">
                                                     <i class="fas fa-eye"></i> Pratinjau
                                                 </a>
                                             <?php endif; ?>
                                         <?php else : ?>
-                                            <a href="<?= ASSETS_URL ?>docs/<?= $pub->file_path ?>" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-3 flex-grow-1">Buka PDF</a>
+                                            <a href="<?= ASSETS_URL ?>docs/<?= $pub->file_path ?>" target="_blank" class="btn btn-sm btn-outline-secondary rounded-pill px-3 flex-grow-1" data-i18n="publication.btn.open_pdf">Buka PDF</a>
                                             <a href="<?= ASSETS_URL ?>docs/<?= $pub->file_path ?>" download class="btn btn-sm btn-primary rounded-pill px-3 flex-grow-1">Download</a>
                                         <?php endif; ?>
                                     </div>
@@ -108,7 +108,7 @@
                 <?php endforeach; ?>
             <?php else : ?>
                 <div class="col-12 text-center py-5">
-                    <h3 class="text-muted">Belum ada publikasi yang tersedia.</h3>
+                    <p class="text-muted" data-i18n="publication.gosirk.empty">Belum ada publikasi yang tersedia.</p>
                 </div>
             <?php endif; ?>
         </div>

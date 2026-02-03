@@ -142,9 +142,7 @@ const resources = {
                     "title": "JARINGAN KAMI",
                     "empty": "Belum ada mitra jaringan."
                 },
-                "blog": {
-                    "title": "BLOG & ARTIKEL"
-                },
+
                 "cta": {
                     "title": "Siap Berkolaborasi Bersama Kami?",
                     "desc": "Dapatkan detail profil perusahaan atau konsultasikan kebutuhan Anda.",
@@ -633,18 +631,18 @@ const resources = {
                 }
             },
             "partnership": {
-                "showcase": "Project Showcase",
+                "showcase": "Etalase Proyek",
                 "ongoing": "Proyek Sedang Berjalan",
                 "hero_desc": "Kami telah dipercaya untuk menjalankan berbagai proyek di bidang sanitasi, mulai dari pelatihan teknis, pendampingan mitra implementasi, hingga layanan konsultansi strategis",
                 "clocc_title": "Program Pendampingan Desa: CLOCC x GOSIRK",
-                "clocc_badge_1": "Community Impact",
-                "clocc_badge_2": "Village Circular",
+                "clocc_badge_1": "Dampak Komunitas",
+                "clocc_badge_2": "Sirkular Desa",
                 "clocc_loc": "Kabupaten Tabanan, Bali",
                 "clocc_dur": "2023 - 2025",
                 "clocc_desc": "Inisiatif kolaboratif untuk mempercepat kemandirian pengelolaan sampah di tingkat desa melalui penerapan skema bisnis sirkular yang terintegrasi, pemberdayaan UMKM lokal, dan edukasi masif kepada masyarakat.",
                 "see_detail": "Lihat Detail",
-                "collab_model": "Collaboration Model",
-                "our_partnership": "OUR PARTNERSHIP",
+                "collab_model": "Model Kolaborasi",
+                "our_partnership": "KEMITRAAN KAMI",
                 "comm_desc": "Bekerja sama dengan berbagai komunitas lokal untuk meningkatkan kesadaran publik, mengimplementasikan sistem pengomposan mandiri, dan meningkatkan praktik pengurangan sampah dari sumbernya melalui keterlibatan aktif tingkat rukun warga (RW).",
                 "acad_desc": "Mendorong inovasi dan penelitian berbasis data dengan menggandeng universitas dan pusat studi untuk memformulasikan solusi pengelolaan sampah yang aplikatif dan berbasis teknologi tepat guna.",
                 "prog_desc": "Mendukung penyelarasan program tanggung jawab sosial perusahaan dan kebijakan publik untuk menciptakan skalabilitas dampak dalam pengelolaan sampah di berbagai daerah di Indonesia.",
@@ -729,7 +727,12 @@ const resources = {
                 "highlight_badge": "HIGHLIGHT",
                 "read_main": "Baca Artikel Utama",
                 "read_more": "Baca Selengkapnya",
-                "empty": "Belum ada artikel yang dipublikasikan."
+                "empty": "Belum ada artikel yang dipublikasikan.",
+                "cat_partner": "Implementing Partner",
+                "cat_training": "Pelatihan",
+                "cat_enviro": "Lingkungan",
+                "cat_innov": "Inovasi",
+                "cat_comm": "Komunitas"
             },
             "library": {
                 "badge": "GOSIRK INSTITUTE",
@@ -915,9 +918,7 @@ const resources = {
                     "title": "OUR NETWORK",
                     "empty": "No network partners yet."
                 },
-                "blog": {
-                    "title": "BLOG"
-                },
+
                 "cta": {
                     "title": "Ready to Collaborate With Us?",
                     "desc": "Get company profile details or consult your needs.",
@@ -1246,6 +1247,10 @@ const resources = {
                 "adv3_desc": "Productive collaboration between Government, Private Sector, Donor Agencies (e.g., Norad), and Community.",
                 "adv4_title": "Transparency & Accountability",
                 "adv4_desc": "Ensuring measurable, traceable, and accountable processes and results for every partner.",
+                "p1_title": "Based on Field Experience",
+                "p1_desc": "Deep understanding of Indonesia's local context, ensuring applicable solutions.",
+                "p2_title": "Integrative & Solution-Oriented",
+                "p2_desc": "Combining technical, fiscal, and social aspects for financial resilience.",
                 "service_subheader": "Key Services",
                 "service_title": "Strategic Solution Options",
                 "service1_title": "Policy Advisory",
@@ -1492,7 +1497,12 @@ const resources = {
                 "highlight_badge": "HIGHLIGHT",
                 "read_main": "Read Main Article",
                 "read_more": "Read More",
-                "empty": "No articles published yet."
+                "empty": "No articles published yet.",
+                "cat_partner": "Implementing Partner",
+                "cat_training": "Training",
+                "cat_enviro": "Environment",
+                "cat_innov": "Innovation",
+                "cat_comm": "Community"
             },
             "library": {
                 "badge": "GOSIRK INSTITUTE",

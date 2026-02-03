@@ -486,8 +486,8 @@
                         <div class="advantage-icon-box">
                             <span class="material-symbols-outlined">map</span>
                         </div>
-                        <h4 class="advantage-title" data-i18n="konsultan.p1_title">Berbasis Pengalaman Lapangan</h4>
-                        <p class="advantage-text" data-i18n="konsultan.p1_desc">Pemahaman mendalam konteks lokal Indonesia, memastikan solusi yang aplikatif.</p>
+                        <h4 class="advantage-title" data-i18n="konsultan.adv1_title">Berbasis Pengalaman Lapangan</h4>
+                        <p class="advantage-text" data-i18n="konsultan.adv1_desc">Pemahaman mendalam konteks lokal Indonesia, memastikan solusi yang aplikatif.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">
@@ -495,8 +495,8 @@
                         <div class="advantage-icon-box">
                             <span class="material-symbols-outlined">hub</span>
                         </div>
-                        <h4 class="advantage-title" data-i18n="konsultan.p2_title">Integratif & Solutif</h4>
-                        <p class="advantage-text" data-i18n="konsultan.p2_desc">Menggabungkan aspek teknis, fiskal, dan sosial untuk ketangguhan finansial.</p>
+                        <h4 class="advantage-title" data-i18n="konsultan.adv2_title">Integratif & Solutif</h4>
+                        <p class="advantage-text" data-i18n="konsultan.adv2_desc">Menggabungkan aspek teknis, fiskal, dan sosial untuk ketangguhan finansial.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3">

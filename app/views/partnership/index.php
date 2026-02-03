@@ -8,7 +8,7 @@
             <span class="text-primary">PERSAMPAHAN BERKELANJUTAN</span>
         </h1>
         <p class="lead mb-5 text-secondary animate__animated animate__fadeInUp animate__delay-1s mx-auto" style="max-width: 800px;" data-i18n="partnership.hero_desc">
-            We have been trusted to execute various sanitation projects, ranging from technical training, assistance with implementation partners, to strategic consultancy services.
+            Kami telah dipercaya untuk menjalankan berbagai proyek di bidang sanitasi...
         </p>
         <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeInUp animate__delay-2s mb-5">
              <a href="#partnership" class="btn btn-primary rounded-pill px-4 py-2 fw-bold shadow-sm" data-i18n="partnership.our_partnership">

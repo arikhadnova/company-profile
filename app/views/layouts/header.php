@@ -8,7 +8,7 @@ $site_logo = $settings['site_logo'] ?? 'Logo-GoSirk-01.png';
 $logo_url = (strpos($site_logo, 'http') === 0) ? $site_logo : ASSETS_URL . 'img/' . $site_logo;
 ?>
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -291,8 +291,8 @@ $logo_url = (strpos($site_logo, 'http') === 0) ? $site_logo : ASSETS_URL . 'img/
                     
                     <li class="nav-item dropdown ms-lg-3">
                         <a class="nav-link dropdown-toggle lang-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            <img id="current-flag" src="https://flagcdn.com/w20/id.png" width="20" alt="ID"> 
-                            <span id="current-lang" class="ms-1">ID</span>
+                            <img id="current-flag" src="https://flagcdn.com/w20/gb.png" width="20" alt="EN"> 
+                            <span id="current-lang" class="ms-1">EN</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end border-0 shadow">
                             <li><a class="dropdown-item small lang-select" href="#" data-lang="id" data-flag="id">Bahasa Indonesia</a></li>

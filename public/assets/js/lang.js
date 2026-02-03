@@ -23,12 +23,18 @@
     };
 
     // Default language
-    const DEFAULT_LANG = 'id';
+    const DEFAULT_LANG = 'en';
 
     /**
      * Get current language from localStorage or default
      */
     function getCurrentLanguage() {
+        // If not migrated to new default EN, force reset once
+        if (!localStorage.getItem('gosirk_lang_migrated_v1')) {
+            localStorage.setItem('gosirk_lang_migrated_v1', 'true');
+            localStorage.setItem('gosirk_language', DEFAULT_LANG);
+            return DEFAULT_LANG;
+        }
         return localStorage.getItem('gosirk_language') || DEFAULT_LANG;
     }
 
@@ -102,7 +108,7 @@
         const dynamicElements = document.querySelectorAll('[data-lang-id][data-lang-en]');
         dynamicElements.forEach(element => {
             const translation = lang === 'en' ? element.getAttribute('data-lang-en') : element.getAttribute('data-lang-id');
-            if (translation) {
+            if (translation && translation.trim() !== '') {
                 if (element.hasAttribute('data-i18n-html') || (translation && translation.includes('<'))) {
                     element.innerHTML = translation;
                 } else {

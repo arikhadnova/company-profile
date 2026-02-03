@@ -16,28 +16,18 @@
             <div class="card border-0 shadow-sm rounded-4 mb-4">
                 <div class="card-header bg-white border-bottom p-4 d-flex justify-content-between align-items-center">
                     <h5 class="fw-bold mb-0 text-primary"><i class="fas fa-file-alt me-2"></i>Informasi Layanan</h5>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="toggleEnglish">
-                        <label class="form-check-label small fw-bold" for="toggleEnglish">Edit Versi English</label>
-                    </div>
                 </div>
                 <div class="card-body p-4">
                     <div class="mb-4">
                         <label class="form-label fw-bold small text-dark">Judul Layanan</label>
                         <input type="text" name="title_id" class="form-control form-control-lg" placeholder="Contoh: Training dan Workshop" required>
-                    </div>
-                    <div class="mb-4 english-field" style="display: none;">
-                        <label class="form-label fw-bold small text-muted">Service Title (English)</label>
-                        <input type="text" name="title_en" class="form-control" placeholder="Empty for auto-translate">
+                        <input type="hidden" name="title_en" value="">
                     </div>
 
                     <div class="mb-4">
                         <label class="form-label fw-bold small text-dark">Deskripsi Singkat</label>
                         <textarea name="description_id" class="form-control" rows="3" placeholder="Ringkasan layanan untuk kartu di halaman utama..."></textarea>
-                    </div>
-                    <div class="mb-4 english-field" style="display: none;">
-                        <label class="form-label fw-bold small text-muted">Short Description (English)</label>
-                        <textarea name="description_en" class="form-control" rows="3" placeholder="Empty for auto-translate"></textarea>
+                        <input type="hidden" name="description_en" value="">
                     </div>
 
                     <hr class="my-4 border-dashed">
@@ -69,10 +59,7 @@
                     <div class="mb-4">
                         <label class="form-label fw-bold small text-dark"><i class="fas fa-align-left me-1 text-primary"></i> KONTEN DETAIL (Rich Text)</label>
                         <textarea name="detail_content_id" id="editor_detail" class="form-control" rows="15"></textarea>
-                    </div>
-                    <div class="mb-4 english-field" style="display: none;">
-                        <label class="form-label fw-bold small text-muted">Detailed Content (English)</label>
-                        <textarea name="detail_content_en" class="form-control" rows="10" placeholder="Empty for auto-translate"></textarea>
+                        <input type="hidden" name="detail_content_en" value="">
                     </div>
 
                     <hr class="my-4 border-dashed">
@@ -125,16 +112,12 @@
                     <div class="mb-4">
                         <label class="form-label fw-bold small text-dark">Lokasi Layanan</label>
                         <input type="text" name="location_id" class="form-control" placeholder="Contoh: Online / Offline (Disesuaikan)" value="Online / Offline (Disesuaikan)">
-                        <div class="mt-1 english-field" style="display: none;">
-                            <input type="text" name="location_en" class="form-control form-control-sm" placeholder="English Location">
-                        </div>
+                        <input type="hidden" name="location_en" value="">
                     </div>
                     <div class="mb-4">
                         <label class="form-label fw-bold small text-dark">Sifat Layanan</label>
                         <input type="text" name="service_type_id" class="form-control" placeholder="Contoh: Profesional & Adaptif" value="Profesional & Adaptif">
-                        <div class="mt-1 english-field" style="display: none;">
-                            <input type="text" name="service_type_en" class="form-control form-control-sm" placeholder="English Service Type">
-                        </div>
+                        <input type="hidden" name="service_type_en" value="">
                     </div>
                     <hr class="my-4">
                     <button type="submit" class="btn btn-primary w-100 py-3 fw-bold rounded-pill shadow-sm">
@@ -163,15 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    // Toggle English Fields
-    const toggleEnglish = document.getElementById('toggleEnglish');
-    const englishFields = document.querySelectorAll('.english-field');
-    
-    toggleEnglish.addEventListener('change', function() {
-        englishFields.forEach(el => {
-            el.style.display = this.checked ? 'block' : 'none';
-        });
-    });
+
 
     // Dynamic Lists Handler
     const setupDynamicList = (containerId, addButtonId, rowClass, removeBtnClass, template) => {

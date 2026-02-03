@@ -2057,7 +2057,24 @@ class Admin extends Controller {
 
             $data['description_en'] = $data['description_en'] ?: Translator::translate($data['description_id']);
             $data['detail_content_en'] = $data['detail_content_en'] ?: Translator::translate($data['detail_content_id']);
-            $data['program_points_en'] = $data['program_points_en'] ?: Translator::translate($data['program_points_id']);
+            
+            // Handle JSON Translation for Program Points
+            if (empty($data['program_points_en']) && !empty($data['program_points_id'])) {
+                $points_id = json_decode($data['program_points_id'], true);
+                if (is_array($points_id)) {
+                    $points_en = [];
+                    foreach ($points_id as $point) {
+                        $points_en[] = [
+                            'title' => Translator::translate($point['title'] ?? ''),
+                            'desc' => Translator::translate($point['desc'] ?? '')
+                        ];
+                    }
+                    $data['program_points_en'] = json_encode($points_en);
+                } else {
+                     $data['program_points_en'] = $data['program_points_id']; // Fallback
+                }
+            }
+            
             $data['location_en'] = $data['location_en'] ?: Translator::translate($data['location_id'] ?: '');
             $data['service_type_en'] = $data['service_type_en'] ?: Translator::translate($data['service_type_id'] ?: '');
 
@@ -2145,7 +2162,24 @@ class Admin extends Controller {
 
             $data['description_en'] = $data['description_en'] ?: Translator::translate($data['description_id']);
             $data['detail_content_en'] = $data['detail_content_en'] ?: Translator::translate($data['detail_content_id']);
-            $data['program_points_en'] = $data['program_points_en'] ?: Translator::translate($data['program_points_id']);
+
+            // Handle JSON Translation for Program Points
+            if (empty($data['program_points_en']) && !empty($data['program_points_id'])) {
+                $points_id = json_decode($data['program_points_id'], true);
+                if (is_array($points_id)) {
+                    $points_en = [];
+                    foreach ($points_id as $point) {
+                        $points_en[] = [
+                            'title' => Translator::translate($point['title'] ?? ''),
+                            'desc' => Translator::translate($point['desc'] ?? '')
+                        ];
+                    }
+                    $data['program_points_en'] = json_encode($points_en);
+                } else {
+                     $data['program_points_en'] = $data['program_points_id']; // Fallback
+                }
+            }
+
             $data['location_en'] = $data['location_en'] ?: Translator::translate($data['location_id']);
             $data['service_type_en'] = $data['service_type_en'] ?: Translator::translate($data['service_type_id']);
 

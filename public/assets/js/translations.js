@@ -232,6 +232,8 @@ const resources = {
                     }
                 },
             "partner": {
+                "main_title": "IMPLEMENTASI PARTNER",
+                "cta_explore": "Eksplorasi",
                 "badge": "Ringkasan Program",
                 "hero_title": "Bersama Menghadapi Tantangan Persampahan di Indonesia",
                 "hero_desc_short": "Transformasi sampah menjadi solusi yang berkelanjutan, inklusif, dan inovatif.",
@@ -835,7 +837,7 @@ const resources = {
             "nav": {
                 "services": "Our Services",
                 "capacity_building": "Capacity Building",
-                "program_dev": "Program Development & Partner Implementation",
+                "program_dev": "Program Development & Implementing Partner",
                 "consultancy": "Consultancy",
                 "partnership": "Partnership",
                 "about": "About Us",
@@ -924,7 +926,7 @@ const resources = {
                     "title": "OUR SERVICES",
                     "subtitle": "Each of our service pillars synergizes to deliver relevant, locally applicable, and sustainable solutions.",
                     "cb_title": "Capacity Building Services",
-                    "pd_title": "Program Development and Implementation Partner",
+                    "pd_title": "Program Development and Implementing Partner",
                     "cs_title": "Consultancy & Strategic Advisory Services",
                     "cb": {
                         "title": "Waste Management Capacity Building",
@@ -935,11 +937,11 @@ const resources = {
                     "title": "OUR PORTFOLIO & PARTNERSHIPS",
                     "subtitle": "Our partnership portfolio reflects GoSirk's commitment to expanding impact through strategic collaboration.",
                     "cb_title": "Capacity Building (GoSirk Institute)",
-                    "pd_title": "Program Development and Implementation Partner",
+                    "pd_title": "Program Development and Implementing Partner",
                     "cs_title": "Consultancy & Strategic Advisory Services"
                 },
                 "pd": {
-                    "title": "Program Development and Partner Implementation",
+                    "title": "Program Development and Implementing Partner",
                     "desc": "Our mission is to transform waste challenges into sustainable, inclusive, and innovative solutions. Our main focus is ensuring the success of field projects that are not only technically effective but also create significant social impact."
                 },
                 "consult": {
@@ -1058,6 +1060,8 @@ const resources = {
                     }
                 },
             "partner": {
+                "main_title": "PROJECT DEVELOPMENT & IMPLEMENTING PARTNER",
+                "cta_explore": "Explore",
                 "badge": "Program Overview",
                 "hero_title": "Together Facing Waste Challenges in Indonesia",
                 "hero_desc_short": "Transforming waste into sustainable, inclusive, and innovative solutions.",
@@ -1146,8 +1150,8 @@ const resources = {
                 "faq": {
                     "title": "Implementation FAQ",
                     "empty": "FAQ is not yet available for this category.",
-                    "q1": "What is an Implementation Partner?",
-                    "a1": "An Implementation Partner is a GoSirk collaboration program with various parties (Villages, Communities, Private Sector) to execute waste management projects directly in the field.",
+                    "q1": "What is an Implementing Partner?",
+                    "a1": "An Implementing Partner is a GoSirk collaboration program with various parties (Villages, Communities, Private Sector) to execute waste management projects directly in the field.",
                     "q2": "How to become a partner?",
                     "a2": "You can contact us via the 'Contact Us' button to discuss potential collaboration and your specific location's needs.",
                     "q3": "Are there any special criteria?",
@@ -1274,6 +1278,9 @@ const resources = {
             },
             "konsultan": {
                 "badge": "Our Services",
+                "explore": "Explore",
+                "about_badge": "ABOUT OUR SERVICES",
+                "about_title": "Strategic Solutions Based on Data and Field Experience",
                 "hero_title": "Strategy Consulting & Advisory",
                 "hero_desc_short": "Professional solution-oriented services to strengthen waste management systems.",
                 "hero_desc": "GoSirk provides professional and solution-oriented consulting services to strengthen waste management systems in Indonesia, backed by a solid track record since 2022 in formulating strategic policies and financing innovations.",
@@ -1466,7 +1473,7 @@ const resources = {
             "partnership": {
                 "showcase": "Project Showcase",
                 "ongoing": "Ongoing Projects",
-                "hero_desc": "We have been trusted to execute various sanitation projects, ranging from technical training, implementation partner assistance, to strategic consultancy services",
+                "hero_desc": "We have been trusted to execute various sanitation projects, ranging from technical training, implementing partner assistance, to strategic consultancy services",
                 "clocc_title": "Village Assistance Program: CLOCC x GOSIRK",
                 "clocc_badge_1": "Community Impact",
                 "clocc_badge_2": "Village Circular",

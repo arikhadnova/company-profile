@@ -641,7 +641,7 @@
     ?>
     <section class="hero-partner" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('<?= $bgPartner ?>') center/cover no-repeat !important;">
         <div class="container">
-            <h1 class="display-3 fw-bold text-uppercase mb-3" data-lang-id="<?= $heroPartner ? $heroPartner->title_id : 'IMPLEMENTASI PARTNER' ?>" data-lang-en="<?= $heroPartner ? $heroPartner->title_en : 'PARTNER IMPLEMENTATION' ?>" data-i18n-html="true">
+            <h1 class="display-3 fw-bold text-uppercase mb-3" data-i18n="partner.main_title">
                 <?= $heroPartner ? $heroPartner->title_id : 'IMPLEMENTASI PARTNER' ?>
             </h1>
             <p class="lead fs-4 mb-2 text-light opacity-90 mx-auto" style="max-width: 900px;" data-lang-id="<?= $heroPartner ? $heroPartner->subtitle_id : 'Program pendampingan desa dan pengembangan komunitas berbasis ekonomi sirkular.' ?>" data-lang-en="<?= $heroPartner ? $heroPartner->subtitle_en : 'Village assistance program and community development based on circular economy.' ?>">
@@ -649,7 +649,7 @@
             </p>
             <p class="text-light fs-5 mb-5 opacity-75 fw-medium" data-lang-id="<?= $heroPartner ? $heroPartner->tag_id : '#GoSirkImpact' ?>" data-lang-en="<?= $heroPartner ? $heroPartner->tag_en : '#GoSirkImpact' ?>"><?= $heroPartner ? $heroPartner->tag_id : '#GoSirkImpact' ?></p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a href="#tentang" class="btn btn-light rounded-pill px-5 py-3 fw-bold text-uppercase" style="color: var(--gosirk-orange) !important;">Eksplorasi</a>
+                <a href="#tentang" class="btn btn-light rounded-pill px-5 py-3 fw-bold text-uppercase" style="color: var(--gosirk-orange) !important;" data-i18n="partner.cta_explore">Eksplorasi</a>
                 <a href="<?= BASE_URL ?>contact" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold text-uppercase" data-i18n="partner.cta_secondary">Hubungi Kami</a>
             </div>
         </div>

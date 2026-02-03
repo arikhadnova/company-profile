@@ -261,7 +261,7 @@ $logo_url = (strpos($site_logo, 'http') === 0) ? $site_logo : ASSETS_URL . 'img/
                         </a>
                         <ul class="dropdown-menu border-0 shadow">
                             <li><a class="dropdown-item small py-2" href="<?= BASE_URL ?>gi" data-i18n="nav.capacity_building">Capacity Building</a></li>
-                            <li><a class="dropdown-item small py-2" href="<?= BASE_URL ?>implementasi_partner" data-i18n="nav.program_dev">Program Development & Partner Implementation</a></li>
+                            <li><a class="dropdown-item small py-2" href="<?= BASE_URL ?>implementasi_partner" data-i18n="nav.program_dev">Program Development & Implementing Partner</a></li>
                              <li><a class="dropdown-item small py-2" href="<?= BASE_URL ?>konsultan" data-i18n="nav.consultancy">Consultancy</a></li>
                         </ul>
                     </li>

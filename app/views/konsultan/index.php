@@ -475,7 +475,7 @@
     <section class="konsultan-advantages">
         <div class="container">
             <div class="text-center mb-1 pb-3">
-                <span class="section-subheader" data-i18n="home.common.advantages">Nilai Tambah</span>
+                <span class="section-subheader" data-i18n="konsultan.method_subheader">Nilai Tambah</span>
                 <h2 class="section-title display-6" data-i18n="konsultan.method_title">Pendekatan Kami</h2>
                 <div class="mx-auto mt-3 rounded-pill bg-orange opacity-25" style="width: 60px; height: 3px;"></div>
             </div>
@@ -636,10 +636,6 @@
                         <span data-i18n="konsultan.cta_button">Hubungi Tim GoSirk</span>
                         </a>
                     </div>
-                </div>
-                <!-- Decor element - Logo Overlay -->
-                <div class="position-absolute bottom-0 end-0 p-4 opacity-10">
-                    <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="GoSirk" style="max-height: 100px; filter: brightness(0) invert(1);">
                 </div>
             </div>
         </div>

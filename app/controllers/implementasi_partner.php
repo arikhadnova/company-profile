@@ -3,7 +3,7 @@
 class implementasi_partner extends Controller {
     public function index() {
         $data = [
-            'hero' => $this->model('Hero_model')->getByPage('clocc'),
+            'hero' => $this->model('Hero_model')->getByPage('partner'),
             'impacts' => $this->model('Impact_model')->getByPage('clocc'),
             'testimonials' => $this->model('Testimonial_model')->getByPage('implentasi_partner'),
             'faqs' => $this->model('Faq_model')->getByPage('implentasi_partner'),

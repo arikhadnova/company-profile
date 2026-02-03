@@ -155,30 +155,20 @@
     }
     
     /* Lead Form */
-    .lead-form-section {
-        background-color: #fff;
-        padding: 80px 0;
-    }
-    .form-container {
+    .cta-banner {
+        background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop') no-repeat center center/cover;
+        min-height: 250px;
         display: flex;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        align-items: center;
     }
-    .form-left {
-        background-color: #0d385f;
-        color: white;
-        padding: 60px 40px;
-        width: 40%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-    .form-right {
-        background-color: #fff;
-        padding: 60px 40px;
-        width: 60%;
-        border-top: 5px solid #FF8F56;
+    .cta-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, #FF8F56 0%, #e5763d 100%);
+        z-index: 1;
     }
 
     .highlight-card {
@@ -371,39 +361,23 @@
     </div>
 </section>
 
-<!-- LEAD FORM -->
-<section class="lead-form-section bg-light">
+<!-- CTA SECTION -->
+<section class="py-5">
     <div class="container">
-        <div class="form-container">
-            <div class="form-left bg-gradient-dark">
-                <h3 class="fw-bold mb-4">Diskusikan Kebutuhan Anda Sekarang.</h3>
-                <ul class="list-unstyled d-flex flex-column gap-3 mb-5">
-                    <li class="d-flex gap-3"><i class="fas fa-check-circle text-orange"></i> Konsultasi Strategis</li>
-                    <li class="d-flex gap-3"><i class="fas fa-check-circle text-orange"></i> Penawaran Harga Khusus</li>
-                    <li class="d-flex gap-3"><i class="fas fa-check-circle text-orange"></i> Penjadwalan Cepat</li>
-                </ul>
-            </div>
-            <div class="form-right">
-                <h5 class="fw-bold mb-4">Hubungi Kami</h5>
-                <form action="<?= BASE_URL ?>contact/send" method="POST">
-                    <div class="mb-4">
-                        <label class="form-label small fw-bold">NAMA / INSTANSI*</label>
-                        <input type="text" name="name" class="form-control border-0 bg-light py-3 border-bottom rounded-0 shadow-none" placeholder="Tuliskan nama Anda" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label small fw-bold">EMAIL*</label>
-                        <input type="email" name="email" class="form-control border-0 bg-light py-3 border-bottom rounded-0 shadow-none" placeholder="Tuliskan email aktif" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label small fw-bold">NOMOR TELEPON*</label>
-                        <input type="text" name="phone" class="form-control border-0 bg-light py-3 border-bottom rounded-0 shadow-none" placeholder="Contoh: 08123456789" required>
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label small fw-bold">PESAN / KEBUTUHAN</label>
-                        <textarea name="message" class="form-control border-0 bg-light py-3 border-bottom rounded-0 shadow-none" rows="3" placeholder="Jelaskan kebutuhan Anda..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-orange-gi w-100 py-3 mt-3 shadow-sm">Kirim Permintaan Sekarang</button>
-                </form>
+        <!-- CTA Box -->
+        <div class="cta-banner rounded-5 overflow-hidden position-relative shadow-lg">
+            <div class="cta-overlay"></div>
+            
+            <div class="row align-items-center position-relative z-3 p-5">
+                <div class="col-lg-8 text-center text-lg-start">
+                    <h2 class="display-6 fw-bold text-white mb-3" data-i18n="gi.cta_box_title">Belajar dan Bertumbuh Bersama</h2>
+                    <p class="text-white-50 mb-0 fs-5" data-i18n="gi.cta_box_subtitle">Terbuka untuk kolaborasi dan pengembangan kapasitas</p>
+                </div>
+                <div class="col-lg-4 text-center text-lg-end mt-4 mt-lg-0">
+                    <a href="<?= BASE_URL ?>contact" class="btn btn-light rounded-pill px-5 py-3 fw-bold shadow-sm" style="color: #FF8F56;">
+                        <span data-i18n="gi.cta_box_btn">Daftar Sekarang</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>

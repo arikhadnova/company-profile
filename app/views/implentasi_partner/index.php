@@ -634,20 +634,20 @@
     <!-- HERO SECTION -->
     <?php
     $heroPartner = $data['hero'];
-    $bgPartner = $heroPartner->image;
+    $bgPartner = $heroPartner ? $heroPartner->image : 'IMG_8084.jpg';
     if ($bgPartner && !filter_var($bgPartner, FILTER_VALIDATE_URL)) {
         $bgPartner = ASSETS_URL . 'img/' . $bgPartner;
     }
     ?>
     <section class="hero-partner" style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('<?= $bgPartner ?>') center/cover no-repeat !important;">
         <div class="container">
-            <h1 class="display-3 fw-bold text-uppercase mb-3" data-lang-id="<?= $heroPartner->title_id ?>" data-lang-en="<?= $heroPartner->title_en ?>" data-i18n-html="true">
-                <?= $heroPartner->title_id ?>
+            <h1 class="display-3 fw-bold text-uppercase mb-3" data-lang-id="<?= $heroPartner ? $heroPartner->title_id : 'IMPLEMENTASI PARTNER' ?>" data-lang-en="<?= $heroPartner ? $heroPartner->title_en : 'PARTNER IMPLEMENTATION' ?>" data-i18n-html="true">
+                <?= $heroPartner ? $heroPartner->title_id : 'IMPLEMENTASI PARTNER' ?>
             </h1>
-            <p class="lead fs-4 mb-2 text-light opacity-90 mx-auto" style="max-width: 900px;" data-lang-id="<?= $heroPartner->subtitle_id ?>" data-lang-en="<?= $heroPartner->subtitle_en ?>">
-                <?= $heroPartner->subtitle_id ?>
+            <p class="lead fs-4 mb-2 text-light opacity-90 mx-auto" style="max-width: 900px;" data-lang-id="<?= $heroPartner ? $heroPartner->subtitle_id : 'Program pendampingan desa dan pengembangan komunitas berbasis ekonomi sirkular.' ?>" data-lang-en="<?= $heroPartner ? $heroPartner->subtitle_en : 'Village assistance program and community development based on circular economy.' ?>">
+                <?= $heroPartner ? $heroPartner->subtitle_id : 'Program pendampingan desa dan pengembangan komunitas berbasis ekonomi sirkular.' ?>
             </p>
-            <p class="text-light fs-5 mb-5 opacity-75 fw-medium" data-lang-id="<?= $heroPartner->tag_id ?>" data-lang-en="<?= $heroPartner->tag_en ?>"><?= $heroPartner->tag_id ?></p>
+            <p class="text-light fs-5 mb-5 opacity-75 fw-medium" data-lang-id="<?= $heroPartner ? $heroPartner->tag_id : '#GoSirkImpact' ?>" data-lang-en="<?= $heroPartner ? $heroPartner->tag_en : '#GoSirkImpact' ?>"><?= $heroPartner ? $heroPartner->tag_id : '#GoSirkImpact' ?></p>
             <div class="d-flex justify-content-center gap-3 flex-wrap">
                 <a href="#tentang" class="btn btn-light rounded-pill px-5 py-3 fw-bold text-uppercase" style="color: var(--gosirk-orange) !important;">Eksplorasi</a>
                 <a href="<?= BASE_URL ?>contact" class="btn btn-outline-light rounded-pill px-5 py-3 fw-bold text-uppercase" data-i18n="partner.cta_secondary">Hubungi Kami</a>
@@ -1032,8 +1032,8 @@
                                 aria-expanded="<?= $first ? 'true' : 'false' ?>" 
                                 aria-controls="collapse<?= $wp_id ?>"
                                 style="background: white; color: var(--gi-dark);">
-                            <span data-lang-id="<?= $section_title_id ?>" data-lang-en="<?= $section_title_en ?>">
-                                <?= $section_title_id ?>
+                            <span data-lang-id="<?= preg_replace('/WP\s*\d+:\s*/i', '', $section_title_id) ?>" data-lang-en="<?= preg_replace('/WP\s*\d+:\s*/i', '', $section_title_en) ?>">
+                                <?= preg_replace('/WP\s*\d+:\s*/i', '', $section_title_id) ?>
                             </span>
                         </button>
                     </h2>

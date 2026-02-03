@@ -134,51 +134,31 @@
     <div class="container text-center">
         <h2 class="fw-bold mb-5 text-primary text-uppercase" data-i18n="about.founder.title">Meet Our Founder</h2>
         <div class="row justify-content-center g-5">
-
-             <!-- Founder 2 -->
-             <div class="col-md-4 col-sm-6">
-                <div class="founder-card">
-                    <div class="founder-img-wrapper">
-                         <img src="<?= ASSETS_URL ?>img/founder-2.jpg" class="founder-img" alt="Nurul Hamidah">
+            <?php if (!empty($founders)) : ?>
+                <?php foreach ($founders as $founder) : ?>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="founder-card">
+                            <div class="founder-img-wrapper">
+                                <img src="<?= ASSETS_URL ?>img/<?= $founder->image ?>" class="founder-img" alt="<?= $founder->name ?>">
+                            </div>
+                            <h5 class="fw-bold mb-1"><?= $founder->name ?></h5>
+                            <p class="text-muted mb-3 small" data-lang-id="<?= $founder->role_id ?>" data-lang-en="<?= $founder->role_en ?>">
+                                <?= $founder->role_id // Default to ID ?>
+                            </p>
+                            <?php if (!empty($founder->linkedin_url) && $founder->linkedin_url != '#') : ?>
+                                <a href="<?= $founder->linkedin_url ?>" class="linkedin-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <?php else : ?>
+                                <a href="#" class="linkedin-btn"><i class="fab fa-linkedin-in"></i></a>
+                            <?php endif; ?>
+                            <div class="mt-3 mx-auto border-top w-50 pt-3">
+                                <p class="text-muted small fst-italic" data-lang-id="<?= htmlspecialchars($founder->quote_id) ?>" data-lang-en="<?= htmlspecialchars($founder->quote_en) ?>">
+                                    "<?= htmlspecialchars($founder->quote_id) ?>"
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <h5 class="fw-bold mb-1">Nurul Hamidah</h5>
-                    <p class="text-muted mb-3 small" data-i18n="about.founder.role_pm">- Project Manager -</p>
-                    <a href="#" class="linkedin-btn"><i class="fab fa-linkedin-in"></i></a>
-                    <div class="mt-3 mx-auto border-top w-50 pt-3">
-                         <p class="text-muted small fst-italic" data-i18n="about.founder.quote">"Lorem Ipsum is simply dummy text of the printing and typesetting industry."</p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Founder 1 -->
-            <div class="col-md-4 col-sm-6">
-                <div class="founder-card">
-                    <div class="founder-img-wrapper">
-                         <img src="<?= ASSETS_URL ?>img/founder-1.jpg" class="founder-img" alt="Amrizal Amir">
-                    </div>
-                    <h5 class="fw-bold mb-1">Amrizal Amir</h5>
-                    <p class="text-muted mb-3 small" data-i18n="about.founder.role_director">- Director -</p>
-                    <a href="#" class="linkedin-btn"><i class="fab fa-linkedin-in"></i></a>
-                    <div class="mt-3 mx-auto border-top w-50 pt-3">
-                         <p class="text-muted small fst-italic" data-i18n="about.founder.quote">"Lorem Ipsum is simply dummy text of the printing and typesetting industry."</p>
-                    </div>
-                </div>
-            </div>
-
-             <!-- Founder 3 -->
-             <div class="col-md-4 col-sm-6">
-                <div class="founder-card">
-                    <div class="founder-img-wrapper">
-                         <img src="<?= ASSETS_URL ?>img/founder-3.jpg" class="founder-img" alt="Reza Nabila">
-                    </div>
-                    <h5 class="fw-bold mb-1">Reza Nabila</h5>
-                    <p class="text-muted mb-3 small" data-i18n="about.founder.role_finance">- Adm. Finance Officer -</p>
-                    <a href="#" class="linkedin-btn"><i class="fab fa-linkedin-in"></i></a>
-                    <div class="mt-3 mx-auto border-top w-50 pt-3">
-                         <p class="text-muted small fst-italic" data-i18n="about.founder.quote">"Lorem Ipsum is simply dummy text of the printing and typesetting industry."</p>
-                    </div>
-                </div>
-            </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 </section>

@@ -18,6 +18,7 @@ class Admin extends Controller {
     private $giServiceModel;
     private $faqModel;
     private $giVideoModel;
+    private $founderModel;
 
     public function __construct() {
         if (!isset($_SESSION['admin_logged_in'])) {
@@ -40,6 +41,7 @@ class Admin extends Controller {
         $this->giServiceModel = $this->model('GiService_model');
         $this->faqModel = $this->model('Faq_model');
         $this->giVideoModel = $this->model('GiVideo_model');
+        $this->founderModel = $this->model('Founder_model');
 
         // Auto-initialize settings table
         $db = new Database();
@@ -334,6 +336,117 @@ class Admin extends Controller {
         }
 
         header('Location: ' . BASE_URL . 'admin/hero');
+        exit;
+    }
+
+    // Founders Management
+    public function founders($action = null, $id = null) {
+        if ($action === 'create') return $this->founders_create();
+        if ($action === 'edit' && $id) return $this->founders_edit($id);
+        if ($action === 'delete' && $id) return $this->founders_delete($id);
+
+        $data = [
+            'title' => 'Kelola Founders',
+            'active' => 'founders',
+            'founders' => $this->founderModel->getAll()
+        ];
+        $this->views('layouts/admin_header', $data);
+        $this->views('admin/founders', $data);
+        $this->views('layouts/admin_footer');
+    }
+
+    public function founders_create() {
+        $data = [
+            'title' => 'Tambah Founder',
+            'active' => 'founders'
+        ];
+        $this->views('layouts/admin_header', $data);
+        $this->views('admin/founders_create', $data);
+        $this->views('layouts/admin_footer');
+    }
+
+    public function founders_store() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $image = '';
+            if (!empty($_FILES['image']['name'])) {
+                $image = Upload::file($_FILES['image'], 'img');
+            }
+
+            $data = [
+                'name' => $_POST['name'],
+                'role_id' => $_POST['role_id'],
+                'role_en' => Translator::translate($_POST['role_id']),
+                'quote_id' => $_POST['quote_id'],
+                'quote_en' => Translator::translate($_POST['quote_id']),
+                'linkedin_url' => $_POST['linkedin_url'],
+                'display_order' => $_POST['display_order'] ?? 0,
+                'image' => $image
+            ];
+
+            if ($this->founderModel->add($data)) {
+                Flasher::setFlash('Founder', 'berhasil ditambahkan', 'success');
+            } else {
+                Flasher::setFlash('Founder', 'gagal ditambahkan', 'danger');
+            }
+            header('Location: ' . BASE_URL . 'admin/founders');
+            exit;
+        }
+    }
+
+    public function founders_edit($id) {
+        $data = [
+            'title' => 'Edit Founder',
+            'active' => 'founders',
+            'founder' => $this->founderModel->getById($id)
+        ];
+        $this->views('layouts/admin_header', $data);
+        $this->views('admin/founders_edit', $data);
+        $this->views('layouts/admin_footer');
+    }
+
+    public function founders_update() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $old_founder = $this->founderModel->getById($id);
+            $image = $old_founder->image;
+
+            if (!empty($_FILES['image']['name'])) {
+                $new_image = Upload::file($_FILES['image'], 'img');
+                if ($new_image) {
+                    // Upload::delete($old_founder->image, 'img'); // Optional: delete old image
+                    $image = $new_image;
+                }
+            }
+
+            $data = [
+                'id' => $id,
+                'name' => $_POST['name'],
+                'role_id' => $_POST['role_id'],
+                'role_en' => Translator::translate($_POST['role_id']),
+                'quote_id' => $_POST['quote_id'],
+                'quote_en' => Translator::translate($_POST['quote_id']),
+                'linkedin_url' => $_POST['linkedin_url'],
+                'display_order' => $_POST['display_order'] ?? 0,
+                'image' => $image
+            ];
+
+            if ($this->founderModel->update($data)) {
+                Flasher::setFlash('Founder', 'berhasil diperbarui', 'success');
+            } else {
+                Flasher::setFlash('Founder', 'gagal diperbarui', 'danger');
+            }
+            header('Location: ' . BASE_URL . 'admin/founders');
+            exit;
+        }
+    }
+
+    public function founders_delete($id) {
+        if ($this->founderModel->delete($id)) {
+            Flasher::setFlash('Founder', 'berhasil dihapus', 'success');
+        } else {
+            Flasher::setFlash('Founder', 'gagal dihapus', 'danger');
+        }
+        header('Location: ' . BASE_URL . 'admin/founders');
         exit;
     }
 

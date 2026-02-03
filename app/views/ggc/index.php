@@ -223,8 +223,6 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
   <div class="container">
             <!-- Gallery Header -->
             <div class="position-relative text-center mb-5">
-                <div class="title-bg" data-i18n="ggc.gallery.title_bg">Gallery</div>
-                <div class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-bold mb-3" data-i18n="ggc.gallery.badge">HIGHLIGHT</div>
                 <h4 class="fw-bold fs-2 mb-2 text-success" data-i18n="ggc.gallery.title">AKSI KAMI</h4>
                 <p class="text-muted" data-i18n="ggc.gallery.subtitle">Momen-momen inspiratif dalam setiap kegiatan komunitas kami.</p>
             </div>

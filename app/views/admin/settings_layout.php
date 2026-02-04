@@ -67,7 +67,7 @@
             <div class="card-header bg-white border-bottom p-4">
                 <div class="d-flex align-items-center">
                     <div class="stat-icon-box stat-icon-orange me-3">
-                        <i class="fas fa-dock"></i>
+                        <i class="fas fa-columns"></i>
                     </div>
                     <div>
                         <h5 class="fw-bold mb-0">Footer Configuration</h5>
@@ -115,7 +115,7 @@
                         </div>
                     </div>
                     <div class="d-grid">
-                        <button type="submit" class="btn btn-primary py-2 fw-bold" style="background: var(--accent-orange) !important; border-color: var(--accent-orange) !important;">
+                        <button type="submit" class="btn btn-primary py-2 fw-bold">
                             <i class="fas fa-save me-2"></i> Simpan Perubahan Footer
                         </button>
                     </div>

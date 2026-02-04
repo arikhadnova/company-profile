@@ -19,6 +19,7 @@ class Admin extends Controller {
     private $faqModel;
     private $giVideoModel;
     private $founderModel;
+    private $activityLogModel;
 
     public function __construct() {
         if (!isset($_SESSION['admin_logged_in'])) {
@@ -41,7 +42,9 @@ class Admin extends Controller {
         $this->giServiceModel = $this->model('GiService_model');
         $this->faqModel = $this->model('Faq_model');
         $this->giVideoModel = $this->model('GiVideo_model');
+        $this->giVideoModel = $this->model('GiVideo_model');
         $this->founderModel = $this->model('Founder_model');
+        $this->activityLogModel = $this->model('ActivityLog_model');
 
         // Auto-initialize settings table
         $db = new Database();
@@ -59,57 +62,11 @@ class Admin extends Controller {
     public function index() {
         $contactModel = $this->model('Contact_model');
         
-        // Fetch document requests (Limit 10)
-        $requests = $this->collaborationModel->getAllRequests();
-        $requests = array_slice($requests, 0, 10);
-        foreach($requests as $r) {
-            $r->activity_type = 'request';
-            $r->timestamp = strtotime($r->requested_at . ' UTC');
-        }
-
-        // Fetch recent articles (Limit 5)
-        $articles = $this->articleModel->getAll();
-        $articles = array_slice($articles, 0, 5);
-        foreach($articles as $a) {
-            $a->activity_type = 'article';
-            $a->timestamp = strtotime($a->created_at . ' UTC');
-        }
-
-        // Fetch recent messages (Limit 5)
-        $messages = $contactModel->getAll();
-        $messages = array_slice($messages, 0, 5);
-        foreach($messages as $m) {
-            $m->activity_type = 'message';
-            $m->timestamp = strtotime($m->created_at . ' UTC');
-        }
-
-        // Fetch recent portfolios (Limit 5)
-        $portfolios = $this->portfolioModel->getAll();
-        $portfolios = array_slice($portfolios, 0, 5);
-        foreach($portfolios as $p) {
-            $p->activity_type = 'portfolio';
-            // Assuming created_at exists, otherwise use a fallback or current time
-            $p->timestamp = isset($p->created_at) ? strtotime($p->created_at . ' UTC') : time();
-            $p->display_title = $p->title_id;
-        }
-
-        // Fetch recent GI services (Limit 5)
-        $gi_services = $this->giServiceModel->getAll();
-        $gi_services = array_slice($gi_services, 0, 5);
-        foreach($gi_services as $s) {
-            $s->activity_type = 'service';
-            $s->timestamp = strtotime($s->created_at . ' UTC');
-            $s->display_title = $s->title_id;
-        }
-
-        // Merge and sort activities
-        $activities = array_merge($requests, $articles, $messages, $portfolios, $gi_services);
-        usort($activities, function($a, $b) {
-            return $b->timestamp - $a->timestamp;
-        });
+        // Fetch activity logs
+        $activities = $this->activityLogModel->getRecent(15);
         
-        // Take top 15
-        $activities = array_slice($activities, 0, 15);
+        // Format for view compatibility if needed, but view will change to use this structure directly
+        // The view expects objects with: user_name, action_type, target_type, description, created_at
 
         $data = [
             'title' => 'Admin Dashboard',
@@ -146,6 +103,7 @@ class Admin extends Controller {
 
                 if ($this->userModel->updateProfile($user_id, $data)) {
                     $_SESSION['user_name'] = $data['name']; // Update session name
+                    $this->activityLogModel->log('UPDATE', 'Profile', "Memperbarui informasi profil pengguna {$data['username']}");
                     Flasher::setFlash('Profil', 'berhasil diperbarui', 'success');
                 } else {
                     Flasher::setFlash('Profil', 'gagal diperbarui', 'danger');
@@ -165,6 +123,7 @@ class Admin extends Controller {
                                 'password' => $new
                             ];
                             if ($this->userModel->updateProfile($user_id, $data)) {
+                                $this->activityLogModel->log('UPDATE', 'Profile', "Mengubah password pengguna {$user->username}");
                                 Flasher::setFlash('Password', 'berhasil diperbarui', 'success');
                             } else {
                                 Flasher::setFlash('Password', 'gagal diperbarui', 'danger');
@@ -224,6 +183,7 @@ class Admin extends Controller {
         }
         
         Flasher::setFlash('Header', 'berhasil diperbarui', 'success');
+        $this->activityLogModel->log('UPDATE', 'Settings', "Memperbarui Pengaturan Header Website");
         header('Location: ' . BASE_URL . 'admin/settings');
         exit;
     }
@@ -245,6 +205,7 @@ class Admin extends Controller {
         }
         
         Flasher::setFlash('Footer', 'berhasil diperbarui', 'success');
+        $this->activityLogModel->log('UPDATE', 'Settings', "Memperbarui Pengaturan Footer Website");
         header('Location: ' . BASE_URL . 'admin/settings');
         exit;
     }
@@ -274,6 +235,7 @@ class Admin extends Controller {
                 }
             }
             Flasher::setFlash('Settings Partnership', 'berhasil diperbarui', 'success');
+            $this->activityLogModel->log('UPDATE', 'Settings', "Memperbarui Pengaturan Partnership");
             header('Location: ' . BASE_URL . 'admin/partnership_settings');
             exit;
         }
@@ -330,6 +292,7 @@ class Admin extends Controller {
         }
 
         if ($this->heroModel->update($page, $data)) {
+            $this->activityLogModel->log('UPDATE', 'Hero Section', "Memperbarui Hero Section halaman '{$page}'");
             Flasher::setFlash('Hero ' . ucfirst($page), 'berhasil diperbarui', 'success');
         } else {
             Flasher::setFlash('Hero ' . ucfirst($page), 'gagal diperbarui', 'danger');
@@ -384,6 +347,7 @@ class Admin extends Controller {
             ];
 
             if ($this->founderModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'Founder', "Menambahkan founder baru '{$_POST['name']}'");
                 Flasher::setFlash('Founder', 'berhasil ditambahkan', 'success');
             } else {
                 Flasher::setFlash('Founder', 'gagal ditambahkan', 'danger');
@@ -431,6 +395,7 @@ class Admin extends Controller {
             ];
 
             if ($this->founderModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'Founder', "Memperbarui founder '{$_POST['name']}'");
                 Flasher::setFlash('Founder', 'berhasil diperbarui', 'success');
             } else {
                 Flasher::setFlash('Founder', 'gagal diperbarui', 'danger');
@@ -441,7 +406,10 @@ class Admin extends Controller {
     }
 
     public function founders_delete($id) {
+        $founder = $this->founderModel->getById($id);
         if ($this->founderModel->delete($id)) {
+            $name = $founder ? $founder->name : 'Unknown';
+            $this->activityLogModel->log('DELETE', 'Founder', "Menghapus founder '{$name}'");
             Flasher::setFlash('Founder', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Founder', 'gagal dihapus', 'danger');
@@ -568,6 +536,7 @@ class Admin extends Controller {
             ];
 
             if ($this->portfolioModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'Portfolio', "Menambahkan portofolio baru '{$_POST['title_id']}'");
                 Flasher::setFlash('Portofolio', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/portfolio');
             } else {
@@ -707,6 +676,7 @@ class Admin extends Controller {
             ];
 
             if ($this->portfolioModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'Portfolio', "Memperbarui portofolio '{$_POST['title_id']}'");
                 Flasher::setFlash('Portofolio', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/portfolio');
             } else {
@@ -723,6 +693,8 @@ class Admin extends Controller {
         }
 
         if ($this->portfolioModel->delete($id)) {
+            $name = $portfolio ? $portfolio->title_id : 'Unknown Portfolio';
+            $this->activityLogModel->log('DELETE', 'Portfolio', "Menghapus portofolio '{$name}'");
             Flasher::setFlash('Portofolio', 'berhasil dihapus', 'success');
             header('Location: ' . BASE_URL . 'admin/portfolio');
         } else {
@@ -850,6 +822,8 @@ class Admin extends Controller {
 
                 if ($this->articleModel->update($data)) {
                     $redirect = ($_POST['type'] == 'blog' ? 'admin/articles' : 'admin/library');
+                    $type_label = ($data['type'] == 'blog') ? 'Artikel' : 'Pustaka';
+                    $this->activityLogModel->log('UPDATE', $type_label, "Memperbarui {$type_label} '{$_POST['title_id']}'");
                     Flasher::setFlash('Artikel', 'berhasil diperbarui', 'success');
                     header('Location: ' . BASE_URL . $redirect);
                     exit;
@@ -919,6 +893,8 @@ class Admin extends Controller {
 
                 if ($this->articleModel->add($data)) {
                     $redirect = ($_POST['type'] == 'blog' ? 'admin/articles' : 'admin/library');
+                    $type_label = ($data['type'] == 'blog') ? 'Artikel' : 'Pustaka';
+                    $this->activityLogModel->log('CREATE', $type_label, "Membuat {$type_label} baru '{$_POST['title_id']}'");
                     Flasher::setFlash('Artikel', 'berhasil ditambahkan', 'success');
                     header('Location: ' . BASE_URL . $redirect);
                     exit;
@@ -942,6 +918,9 @@ class Admin extends Controller {
         }
 
         if ($this->articleModel->delete($id)) {
+            $name = $article ? $article->title_id : 'Unknown Article';
+            $type_label = ($type == 'blog') ? 'Artikel' : 'Pustaka';
+            $this->activityLogModel->log('DELETE', $type_label, "Menghapus {$type_label} '{$name}'");
             Flasher::setFlash('Artikel', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Artikel', 'gagal dihapus', 'danger');
@@ -1176,6 +1155,7 @@ class Admin extends Controller {
             ];
 
             if ($this->serviceModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'Services', "Menambahkan kategori layanan baru '{$_POST['name_id']}'");
                 Flasher::setFlash('Kategori Layanan', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/services');
             } else {
@@ -1224,6 +1204,7 @@ class Admin extends Controller {
             ];
 
             if ($this->serviceModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'Services', "Memperbarui kategori layanan '{$_POST['name_id']}'");
                 Flasher::setFlash('Kategori Layanan', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/services');
             } else {
@@ -1240,6 +1221,8 @@ class Admin extends Controller {
         }
 
         if ($this->serviceModel->delete($id)) {
+            $name = $service ? $service->name_id : 'Unknown Service';
+            $this->activityLogModel->log('DELETE', 'Services', "Menghapus kategori layanan '{$name}'");
             Flasher::setFlash('Kategori Layanan', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Kategori Layanan', 'gagal dihapus', 'danger');
@@ -1290,6 +1273,7 @@ class Admin extends Controller {
             $data['description_en'] = $_POST['description_en'] ?: Translator::translate($_POST['description_id']);
             
             if ($this->serviceItemModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'Service Items', "Menambahkan item layanan baru '{$_POST['title_id']}'");
                 Flasher::setFlash('Item layanan', 'berhasil ditambahkan', 'success');
             } else {
                 Flasher::setFlash('Item layanan', 'gagal ditambahkan', 'danger');
@@ -1330,6 +1314,7 @@ class Admin extends Controller {
             $data['description_en'] = $_POST['description_en'] ?: Translator::translate($_POST['description_id']);
 
             if ($this->serviceItemModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'Service Items', "Memperbarui item layanan '{$_POST['title_id']}'");
                 Flasher::setFlash('Item layanan', 'berhasil diperbarui', 'success');
             } else {
                 Flasher::setFlash('Item layanan', 'gagal diperbarui', 'danger');
@@ -1349,6 +1334,8 @@ class Admin extends Controller {
         }
 
         if ($this->serviceItemModel->delete($id)) {
+            $name = $item ? $item->title_id : 'Unknown Item';
+            $this->activityLogModel->log('DELETE', 'Service Items', "Menghapus item layanan '{$name}'");
             Flasher::setFlash('Item layanan', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Item layanan', 'gagal dihapus', 'danger');
@@ -1418,6 +1405,7 @@ class Admin extends Controller {
             ];
 
             if ($this->impactModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'Impact', "Menambahkan metrik dampak baru '{$_POST['label_id']}' pada halaman {$page}");
                 Flasher::setFlash('Metrik', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/impact/' . $page);
             } else {
@@ -1475,6 +1463,7 @@ class Admin extends Controller {
             ];
 
             if ($this->impactModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'Impact', "Memperbarui metrik dampak '{$_POST['label_id']}' pada halaman {$page}");
                 Flasher::setFlash('Metrik', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/impact/' . $page);
             } else {
@@ -1490,6 +1479,8 @@ class Admin extends Controller {
         $page = $impact ? $impact->page : 'home';
         
         if ($this->impactModel->delete($id)) {
+            $label = $impact ? $impact->label_id : 'Unknown Metric';
+            $this->activityLogModel->log('DELETE', 'Impact', "Menghapus metrik dampak '{$label}' dari halaman {$page}");
             Flasher::setFlash('Metrik', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Metrik', 'gagal dihapus', 'danger');
@@ -1561,6 +1552,7 @@ class Admin extends Controller {
             ];
 
             if ($this->partnerModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'Partner', "Menambahkan partner baru '{$_POST['name']}'");
                 Flasher::setFlash('Partner', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/partners');
             } else {
@@ -1608,6 +1600,7 @@ class Admin extends Controller {
             ];
 
             if ($this->partnerModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'Partner', "Memperbarui partner '{$_POST['name']}'");
                 Flasher::setFlash('Partner', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/partners');
             } else {
@@ -1624,6 +1617,8 @@ class Admin extends Controller {
         }
 
         if ($this->partnerModel->delete($id)) {
+            $name = $partner ? $partner->name : 'Unknown Partner';
+            $this->activityLogModel->log('DELETE', 'Partner', "Menghapus partner '{$name}'");
             Flasher::setFlash('Partner', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Partner', 'gagal dihapus', 'danger');
@@ -1669,6 +1664,7 @@ class Admin extends Controller {
                 ];
 
                 if ($this->collaborationModel->addDocument($data)) {
+                    $this->activityLogModel->log('CREATE', 'Collaboration', "Menambahkan dokumen kolaborasi baru '{$_POST['title_id']}'");
                     Flasher::setFlash('Dokumen', 'berhasil ditambahkan', 'success');
                     header('Location: ' . BASE_URL . 'admin/collaboration');
                     exit;
@@ -1716,6 +1712,7 @@ class Admin extends Controller {
             ];
 
             if ($this->collaborationModel->updateDocument($data)) {
+                $this->activityLogModel->log('UPDATE', 'Collaboration', "Memperbarui dokumen kolaborasi '{$_POST['title_id']}'");
                 Flasher::setFlash('Dokumen', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/collaboration');
                 exit;
@@ -1733,6 +1730,8 @@ class Admin extends Controller {
         }
 
         if ($this->collaborationModel->deleteDocument($id)) {
+            $name = $doc ? $doc->title_id : 'Unknown Document';
+            $this->activityLogModel->log('DELETE', 'Collaboration', "Menghapus dokumen kolaborasi '{$name}'");
             Flasher::setFlash('Dokumen', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Dokumen', 'gagal dihapus', 'danger');
@@ -1793,6 +1792,7 @@ class Admin extends Controller {
         }
 
         if ($this->userModel->createUser($_POST)) {
+            $this->activityLogModel->log('CREATE', 'Users', "Menambahkan pengguna baru '{$_POST['username']}'");
             Flasher::setFlash('Berhasil', 'Akun baru telah ditambahkan.', 'success');
         } else {
             Flasher::setFlash('Gagal', 'Terjadi kesalahan saat menambahkan akun.', 'danger');
@@ -1825,6 +1825,7 @@ class Admin extends Controller {
         }
 
         if ($this->userModel->updateUser($_POST['id'], $_POST)) {
+            $this->activityLogModel->log('UPDATE', 'Users', "Memperbarui data pengguna '{$_POST['username']}'");
             Flasher::setFlash('Berhasil', 'Data akun telah diperbarui.', 'success');
         } else {
             Flasher::setFlash('Gagal', 'Terjadi kesalahan saat memperbarui akun.', 'danger');
@@ -1846,6 +1847,7 @@ class Admin extends Controller {
         }
 
         if ($this->userModel->deleteUser($id)) {
+            $this->activityLogModel->log('DELETE', 'Users', "Menghapus pengguna (ID: {$id})");
             Flasher::setFlash('Berhasil', 'Akun telah dihapus.', 'success');
         } else {
             Flasher::setFlash('Gagal', 'Terjadi kesalahan saat menghapus akun.', 'danger');
@@ -1875,6 +1877,7 @@ class Admin extends Controller {
                 if ($this->userModel->updateProfile($user_id, $data)) {
                     // Update session if needed
                     $_SESSION['user_photo'] = $file_name;
+                    $this->activityLogModel->log('UPDATE', 'Profile', "Mengganti foto profil");
                     echo json_encode(['status' => 'success', 'photo' => $file_name, 'url' => ASSETS_URL . 'img/profile/' . $file_name]);
                 } else {
                     echo json_encode(['status' => 'error', 'message' => 'Failed to update database']);
@@ -1904,6 +1907,7 @@ class Admin extends Controller {
             if ($this->userModel->updateProfile($user_id, $data)) {
                 // Update session
                 $_SESSION['user_photo'] = NULL;
+                $this->activityLogModel->log('UPDATE', 'Profile', "Menghapus foto profil");
                 echo json_encode(['status' => 'success', 'message' => 'Foto profil berhasil dihapus']);
             } else {
                 echo json_encode(['status' => 'error', 'message' => 'Gagal memperbarui database']);
@@ -1958,6 +1962,7 @@ class Admin extends Controller {
             $data['content_en'] = $data['content_en'] ?: Translator::translate($data['content_id']);
 
             if ($this->testimonialModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'Testimonials', "Menambahkan testimoni baru dari '{$data['client_name']}'");
                 Flasher::setFlash('Testimoni', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/testimonials');
                 exit;
@@ -2001,6 +2006,7 @@ class Admin extends Controller {
             $data['content_en'] = $data['content_en'] ?: Translator::translate($data['content_id']);
 
             if ($this->testimonialModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'Testimonials', "Memperbarui testimoni dari '{$data['client_name']}'");
                 Flasher::setFlash('Testimoni', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/testimonials');
                 exit;
@@ -2059,6 +2065,7 @@ class Admin extends Controller {
             $_POST['answer_en'] = $_POST['answer_en'] ?: Translator::translate($_POST['answer_id']);
 
             if ($this->faqModel->add($_POST)) {
+                $this->activityLogModel->log('CREATE', 'FAQ', "Menambahkan FAQ baru '{$_POST['question_id']}'");
                 Flasher::setFlash('FAQ', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/faqs');
                 exit;
@@ -2087,6 +2094,7 @@ class Admin extends Controller {
             $_POST['answer_en'] = $_POST['answer_en'] ?: Translator::translate($_POST['answer_id']);
 
             if ($this->faqModel->update($_POST)) {
+                $this->activityLogModel->log('UPDATE', 'FAQ', "Memperbarui FAQ '{$_POST['question_id']}'");
                 Flasher::setFlash('FAQ', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/faqs');
                 exit;
@@ -2099,7 +2107,10 @@ class Admin extends Controller {
     }
 
     public function faqs_delete($id) {
+        $faq = $this->faqModel->getById($id);
         if ($this->faqModel->delete($id)) {
+            $question = $faq ? $faq->question_id : 'Unknown FAQ';
+            $this->activityLogModel->log('DELETE', 'FAQ', "Menghapus FAQ '{$question}'");
             Flasher::setFlash('FAQ', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('FAQ', 'gagal dihapus', 'danger');
@@ -2193,7 +2204,16 @@ class Admin extends Controller {
 
             $data['slug'] = str_replace(' ', '-', strtolower($data['title_en']));
 
+            // Ensure unique slug
+            $base_slug = $data['slug'];
+            $counter = 1;
+            while ($this->giServiceModel->getBySlug($data['slug'])) {
+                $data['slug'] = $base_slug . '-' . $counter;
+                $counter++;
+            }
+
             if ($this->giServiceModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'GI Services', "Menambahkan layanan GI baru '{$data['title_id']}'");
                 Flasher::setFlash('Layanan GI', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/services_cb');
             } else {
@@ -2298,7 +2318,18 @@ class Admin extends Controller {
 
             $data['slug'] = str_replace(' ', '-', strtolower($data['title_en']));
 
+            // Ensure unique slug for update
+            $base_slug = $data['slug'];
+            $counter = 1;
+            $existing = $this->giServiceModel->getBySlug($data['slug']);
+            while ($existing && $existing->id != $id) {
+                $data['slug'] = $base_slug . '-' . $counter;
+                $counter++;
+                $existing = $this->giServiceModel->getBySlug($data['slug']);
+            }
+
             if ($this->giServiceModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'GI Services', "Memperbarui layanan GI '{$data['title_id']}'");
                 Flasher::setFlash('Layanan GI', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/services_cb');
             } else {
@@ -2315,6 +2346,8 @@ class Admin extends Controller {
         }
 
         if ($this->giServiceModel->delete($id)) {
+            $name = $service ? $service->title_id : 'Unknown GI Service';
+            $this->activityLogModel->log('DELETE', 'GI Services', "Menghapus layanan GI '{$name}'");
             Flasher::setFlash('Layanan GI', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Layanan GI', 'gagal dihapus', 'danger');
@@ -2369,6 +2402,7 @@ class Admin extends Controller {
                     ];
                     $this->giVideoModel->update($updateData);
                 }
+                $this->activityLogModel->log('CREATE', 'GI Videos', "Menambahkan video GI baru '{$data['title_id']}'");
                 Flasher::setFlash('Video GI', 'berhasil ditambahkan', 'success');
                 header('Location: ' . BASE_URL . 'admin/gi_videos');
             } else {
@@ -2410,6 +2444,7 @@ class Admin extends Controller {
             $data['description_en'] = Translator::translate($data['description_id']);
 
             if ($this->giVideoModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'GI Videos', "Memperbarui video GI '{$data['title_id']}'");
                 Flasher::setFlash('Video GI', 'berhasil diperbarui', 'success');
                 header('Location: ' . BASE_URL . 'admin/gi_videos');
             } else {
@@ -2426,6 +2461,8 @@ class Admin extends Controller {
         }
 
         if ($this->giVideoModel->delete($id)) {
+            $name = $video ? $video->title_id : 'Unknown GI Video';
+            $this->activityLogModel->log('DELETE', 'GI Videos', "Menghapus video GI '{$name}'");
             Flasher::setFlash('Video GI', 'berhasil dihapus', 'success');
         } else {
             Flasher::setFlash('Video GI', 'gagal dihapus', 'danger');

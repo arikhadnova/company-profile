@@ -126,31 +126,46 @@ function time_elapsed_string($datetime, $full = false) {
             <div class="activity-list" style="max-height: 580px; overflow-y: auto; padding-right: 10px;">
                 <?php if (!empty($activities)): ?>
                     <?php foreach ($activities as $index => $activity): ?>
-                        <div class="activity-item d-flex align-items-center <?= $index === count($activities)-1 ? 'border-0' : ''; ?>">
+                        <div class="activity-item d-flex align-items-center <?= $index === count($activities)-1 ? 'border-0' : ''; ?> py-3">
                             <?php 
-                                $dot_bg = 'bg-primary';
-                                $message = '';
-                                if ($activity->activity_type == 'request') {
-                                    $dot_bg = 'bg-warning';
-                                    $message = "<strong>{$activity->name}</strong> baru saja meminta dokumen <strong>" . ($activity->doc_title ?? 'Company Profile') . "</strong>";
-                                } elseif ($activity->activity_type == 'article') {
-                                    $dot_bg = 'bg-success';
-                                    $message = "Artikel <strong>\"{$activity->title_id}\"</strong> telah dipublikasikan";
-                                } elseif ($activity->activity_type == 'message') {
-                                    $dot_bg = 'bg-info';
-                                    $message = "Menerima pesan baru dari <strong>{$activity->name}</strong> di formulir kontak";
-                                } elseif ($activity->activity_type == 'portfolio') {
-                                    $dot_bg = 'bg-primary';
-                                    $message = "Portofolio baru <strong>\"{$activity->display_title}\"</strong> telah ditambahkan";
-                                } elseif ($activity->activity_type == 'service') {
-                                    $dot_bg = 'bg-secondary';
-                                    $message = "Layanan GI baru <strong>\"{$activity->display_title}\"</strong> telah ditambahkan";
+                                $dot_bg = 'bg-secondary';
+                                $icon = 'fa-circle';
+                                
+                                switch($activity->action_type) {
+                                    case 'CREATE': 
+                                        $dot_bg = 'bg-success'; 
+                                        $icon = 'fa-plus';
+                                        break;
+                                    case 'UPDATE': 
+                                        $dot_bg = 'bg-info'; 
+                                        $icon = 'fa-pen';
+                                        break;
+                                    case 'DELETE': 
+                                        $dot_bg = 'bg-danger'; 
+                                        $icon = 'fa-trash';
+                                        break;
+                                    case 'LOGIN': 
+                                        $dot_bg = 'bg-primary'; 
+                                        $icon = 'fa-sign-in-alt';
+                                        break;
                                 }
                             ?>
-                            <div class="activity-dot <?= $dot_bg; ?>"></div>
+                            <div class="activity-icon-wrapper me-3">
+                                <span class="badge rounded-circle p-2 <?= $dot_bg; ?>">
+                                    <i class="fas <?= $icon; ?> text-white" style="font-size: 0.75rem;"></i>
+                                </span>
+                            </div>
                             <div class="flex-grow-1">
-                                <p class="mb-0 fw-bold small text-dark"><?= $message; ?></p>
-                                <small class="text-muted"><?= time_elapsed_string($activity->timestamp); ?></small>
+                                <div class="d-flex justify-content-between align-items-start mb-1">
+                                    <span class="badge bg-light text-dark border me-2"><?= $activity->target_type; ?></span>
+                                    <small class="text-muted" title="<?= date('d M Y H:i', strtotime($activity->created_at . ' UTC')); ?>">
+                                        <?= time_elapsed_string(strtotime($activity->created_at . ' UTC')); ?>
+                                    </small>
+                                </div>
+                                <p class="mb-1 text-dark" style="font-size: 0.95rem;"><?= $activity->description; ?></p>
+                                <small class="text-muted">
+                                    <i class="fas fa-user-circle me-1"></i> <?= $activity->user_name; ?>
+                                </small>
                             </div>
                         </div>
                     <?php endforeach; ?>

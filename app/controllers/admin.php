@@ -64,7 +64,7 @@ class Admin extends Controller {
         $requests = array_slice($requests, 0, 10);
         foreach($requests as $r) {
             $r->activity_type = 'request';
-            $r->timestamp = strtotime($r->requested_at);
+            $r->timestamp = strtotime($r->requested_at . ' UTC');
         }
 
         // Fetch recent articles (Limit 5)
@@ -72,7 +72,7 @@ class Admin extends Controller {
         $articles = array_slice($articles, 0, 5);
         foreach($articles as $a) {
             $a->activity_type = 'article';
-            $a->timestamp = strtotime($a->created_at);
+            $a->timestamp = strtotime($a->created_at . ' UTC');
         }
 
         // Fetch recent messages (Limit 5)
@@ -80,7 +80,7 @@ class Admin extends Controller {
         $messages = array_slice($messages, 0, 5);
         foreach($messages as $m) {
             $m->activity_type = 'message';
-            $m->timestamp = strtotime($m->created_at);
+            $m->timestamp = strtotime($m->created_at . ' UTC');
         }
 
         // Fetch recent portfolios (Limit 5)
@@ -89,7 +89,7 @@ class Admin extends Controller {
         foreach($portfolios as $p) {
             $p->activity_type = 'portfolio';
             // Assuming created_at exists, otherwise use a fallback or current time
-            $p->timestamp = isset($p->created_at) ? strtotime($p->created_at) : time();
+            $p->timestamp = isset($p->created_at) ? strtotime($p->created_at . ' UTC') : time();
             $p->display_title = $p->title_id;
         }
 
@@ -98,7 +98,7 @@ class Admin extends Controller {
         $gi_services = array_slice($gi_services, 0, 5);
         foreach($gi_services as $s) {
             $s->activity_type = 'service';
-            $s->timestamp = strtotime($s->created_at);
+            $s->timestamp = strtotime($s->created_at . ' UTC');
             $s->display_title = $s->title_id;
         }
 

@@ -1,3 +1,20 @@
+<?php
+// Pre-filter partners to make the view logic cleaner
+$contributionPartners = [];
+$networkPartners = [];
+
+foreach ($partners as $p) {
+    // Logic from original file to maintain backward capability
+    if (($p->category ?? '') == 'contribution') {
+        $contributionPartners[] = $p;
+    } 
+    // Logic from original file: anything not strictly contribution that matches network default
+    elseif (($p->category ?? 'network') == 'network') {
+        $networkPartners[] = $p;
+    }
+}
+?>
+
 <div class="admin-header-section d-flex justify-content-between align-items-center flex-wrap gap-3">
     <div>
         <span class="admin-header-badge d-inline-block">DASHBOARD / STRATEGIC PARTNERS</span>
@@ -27,6 +44,26 @@
     </div>
 </div>
 
+<style>
+    .partner-scroll-container {
+        max-height: 600px; /* Approx 10 items height */
+        overflow-y: auto;
+        position: relative;
+    }
+    .partner-scroll-container thead th {
+        position: sticky;
+        top: 0;
+        background-color: #f8f9fa; /* bg-light */
+        z-index: 2;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .partner-logo-img {
+        max-height: 40px;
+        max-width: 80px;
+        object-fit: contain;
+    }
+</style>
+
 <!-- CATEGORY 1: OUR CONTRIBUTION & PARTNER -->
 <div class="row mb-5">
     <div class="col-12 mb-3 d-flex align-items-center">
@@ -34,49 +71,59 @@
             <i class="fas fa-handshake text-success"></i>
         </div>
         <h4 class="fw-bold mb-0">Our Contribution & Partner</h4>
+        <span class="badge bg-success bg-opacity-10 text-success ms-3"><?= count($contributionPartners); ?> Items</span>
     </div>
     
     <div class="col-12">
-        <div class="row g-4">
-            <?php 
-            $countContribution = 0;
-            foreach ($partners as $p) : 
-                if (($p->category ?? '') == 'contribution') :
-                    $countContribution++;
-            ?>
-                <div class="col-xl-3 col-lg-4 col-md-6 partner-item">
-                    <div class="card h-100 border-0 p-4 text-center partner-card-modern shadow-sm">
-                        <div class="partner-actions-overlay">
-                            <a href="<?= BASE_URL; ?>admin/partners/edit/<?= $p->id; ?>" class="btn btn-sm btn-light text-primary shadow-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" title="Edit Partner">
-                                <i class="fas fa-edit extra-small"></i>
-                            </a>
-                            <a href="<?= BASE_URL; ?>admin/partners_delete/<?= $p->id; ?>" class="btn btn-sm btn-light text-danger shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-confirm" style="width: 32px; height: 32px;" title="Hapus Partner">
-                                <i class="fas fa-trash extra-small"></i>
-                            </a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-center mb-3" style="height: 100px;">
-                            <?php if ($p->logo) : ?>
-                                <img src="<?= ASSETS_URL; ?>img/partners/<?= $p->logo; ?>" alt="<?= $p->name; ?>" style="max-height: 70px; max-width: 140px; object-fit: contain;" onerror="this.src='<?= ASSETS_URL ?>img/<?= $p->logo ?>';">
-                            <?php else : ?>
-                                <i class="fas fa-building fa-3x text-muted opacity-25"></i>
-                            <?php endif; ?>
-                        </div>
-                        <h6 class="fw-bold mb-1 text-dark"><?= $p->name; ?></h6>
-                        <span class="badge bg-light text-muted fw-normal extra-small px-3 mt-2"><?= $p->type; ?></span>
-                    </div>
+        <?php if (!empty($contributionPartners)) : ?>
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="partner-scroll-container">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-4 py-3" width="50">#</th>
+                                <th class="py-3" width="120">Logo</th>
+                                <th class="py-3" width="25%">Nama Partner</th>
+                                <th class="py-3">Kategori & Tipe</th>
+                                <th class="pe-4 py-3 text-end" width="150">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($contributionPartners as $index => $p) : ?>
+                            <tr>
+                                <td class="ps-4 text-muted small"><?= $index + 1; ?></td>
+                                <td>
+                                    <?php if ($p->logo) : ?>
+                                        <img src="<?= ASSETS_URL; ?>img/partners/<?= $p->logo; ?>" alt="<?= $p->name; ?>" class="partner-logo-img" onerror="this.src='<?= ASSETS_URL ?>img/<?= $p->logo ?>';">
+                                    <?php else : ?>
+                                        <i class="fas fa-building text-muted fa-lg"></i>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <h6 class="fw-bold mb-0 text-dark"><?= $p->name; ?></h6>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-muted fw-normal border"><?= $p->type; ?></span>
+                                </td>
+                                <td class="pe-4 text-end">
+                                    <a href="<?= BASE_URL; ?>admin/partners/edit/<?= $p->id; ?>" class="btn btn-sm btn-light text-primary shadow-sm rounded-circle me-1" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;" title="Edit Partner">
+                                        <i class="fas fa-edit extra-small"></i>
+                                    </a>
+                                    <a href="<?= BASE_URL; ?>admin/partners_delete/<?= $p->id; ?>" class="btn btn-sm btn-light text-danger shadow-sm rounded-circle btn-delete-confirm" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;" title="Hapus Partner">
+                                        <i class="fas fa-trash extra-small"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
-            <?php 
-                endif;
-            endforeach; 
-            
-            if ($countContribution == 0) : ?>
-                <div class="col-12">
-                    <div class="bg-white rounded-4 p-4 text-center border" style="border-style: dashed !important;">
-                        <p class="text-muted mb-0 small">Belum ada partner di kategori kontribusi.</p>
-                    </div>
-                </div>
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php else : ?>
+            <div class="bg-white rounded-4 p-4 text-center border" style="border-style: dashed !important;">
+                <p class="text-muted mb-0 small">Belum ada partner di kategori kontribusi.</p>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 
@@ -89,93 +136,80 @@
             <i class="fas fa-network-wired text-info"></i>
         </div>
         <h4 class="fw-bold mb-0">Our Network</h4>
+        <span class="badge bg-info bg-opacity-10 text-info ms-3"><?= count($networkPartners); ?> Items</span>
     </div>
 
     <div class="col-12">
-        <div class="row g-4" id="partnerGrid">
-            <?php 
-            $countNetwork = 0;
-            foreach ($partners as $p) : 
-                if (($p->category ?? 'network') == 'network') :
-                    $countNetwork++;
-            ?>
-                <div class="col-xl-3 col-lg-4 col-md-6 partner-item">
-                    <div class="card h-100 border-0 p-4 text-center partner-card-modern shadow-sm">
-                        <div class="partner-actions-overlay">
-                            <a href="<?= BASE_URL; ?>admin/partners/edit/<?= $p->id; ?>" class="btn btn-sm btn-light text-primary shadow-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" title="Edit Partner">
-                                <i class="fas fa-edit extra-small"></i>
-                            </a>
-                            <a href="<?= BASE_URL; ?>admin/partners_delete/<?= $p->id; ?>" class="btn btn-sm btn-light text-danger shadow-sm rounded-circle d-flex align-items-center justify-content-center btn-delete-confirm" style="width: 32px; height: 32px;" title="Hapus Partner">
-                                <i class="fas fa-trash extra-small"></i>
-                            </a>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-center mb-3" style="height: 100px;">
-                            <?php if ($p->logo) : ?>
-                                <img src="<?= ASSETS_URL; ?>img/partners/<?= $p->logo; ?>" alt="<?= $p->name; ?>" style="max-height: 70px; max-width: 140px; object-fit: contain;" onerror="this.src='<?= ASSETS_URL ?>img/<?= $p->logo ?>';">
-                            <?php else : ?>
-                                <i class="fas fa-building fa-3x text-muted opacity-25"></i>
-                            <?php endif; ?>
-                        </div>
-                        <h6 class="fw-bold mb-1 text-dark"><?= $p->name; ?></h6>
-                        <span class="badge bg-light text-muted fw-normal extra-small px-3 mt-2"><?= $p->type; ?></span>
-                    </div>
+        <?php if (!empty($networkPartners)) : ?>
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="partner-scroll-container">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light">
+                            <tr>
+                                <th class="ps-4 py-3" width="50">#</th>
+                                <th class="py-3" width="120">Logo</th>
+                                <th class="py-3" width="25%">Nama Partner</th>
+                                <th class="py-3">Kategori & Tipe</th>
+                                <th class="pe-4 py-3 text-end" width="150">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($networkPartners as $index => $p) : ?>
+                            <tr>
+                                <td class="ps-4 text-muted small"><?= $index + 1; ?></td>
+                                <td>
+                                    <?php if ($p->logo) : ?>
+                                        <img src="<?= ASSETS_URL; ?>img/partners/<?= $p->logo; ?>" alt="<?= $p->name; ?>" class="partner-logo-img" onerror="this.src='<?= ASSETS_URL ?>img/<?= $p->logo ?>';">
+                                    <?php else : ?>
+                                        <i class="fas fa-building text-muted fa-lg"></i>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <h6 class="fw-bold mb-0 text-dark"><?= $p->name; ?></h6>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-muted fw-normal border"><?= $p->type; ?></span>
+                                </td>
+                                <td class="pe-4 text-end">
+                                    <a href="<?= BASE_URL; ?>admin/partners/edit/<?= $p->id; ?>" class="btn btn-sm btn-light text-primary shadow-sm rounded-circle me-1" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;" title="Edit Partner">
+                                        <i class="fas fa-edit extra-small"></i>
+                                    </a>
+                                    <a href="<?= BASE_URL; ?>admin/partners_delete/<?= $p->id; ?>" class="btn btn-sm btn-light text-danger shadow-sm rounded-circle btn-delete-confirm" style="width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center;" title="Hapus Partner">
+                                        <i class="fas fa-trash extra-small"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
                 </div>
-            <?php 
-                endif;
-            endforeach; 
-            
-            if ($countNetwork == 0) : ?>
-                <div class="col-12 text-center py-5">
-                    <div class="bg-white rounded-4 p-5 border" style="border-style: dashed !important;">
-                        <i class="fas fa-users-slash fa-3x text-muted opacity-25 mb-3"></i>
-                        <h6 class="text-muted">Belum ada data network partner.</h6>
-                    </div>
+            </div>
+        <?php else : ?>
+            <div class="text-center py-5">
+                <div class="bg-white rounded-4 p-5 border" style="border-style: dashed !important;">
+                    <i class="fas fa-users-slash fa-3x text-muted opacity-25 mb-3"></i>
+                    <h6 class="text-muted">Belum ada data network partner.</h6>
                 </div>
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
-
-<style>
-.partner-actions-overlay {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    display: flex;
-    gap: 8px;
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-.partner-card-modern:hover .partner-actions-overlay {
-    opacity: 1;
-}
-.partner-card-modern {
-    position: relative;
-    background: #fff;
-    border-radius: 16px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-.partner-card-modern:hover {
-    transform: translateY(-5px);
-}
-</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('partnerSearch');
-    const partnerCards = document.querySelectorAll('.partner-card-modern');
-
+    
     searchInput.addEventListener('input', function() {
         const term = this.value.toLowerCase();
-        partnerCards.forEach(card => {
-            const name = card.querySelector('h6').innerText.toLowerCase();
-            const typeAndCat = card.innerText.toLowerCase();
-            if (name.includes(term) || typeAndCat.includes(term)) {
-                card.style.display = 'block';
+        // Target all rows in all bodies
+        const rows = document.querySelectorAll('tbody tr');
+        
+        rows.forEach(row => {
+            const textContent = row.innerText.toLowerCase();
+            if (textContent.includes(term)) {
+                row.style.display = '';
             } else {
-                card.style.display = 'none';
+                row.style.display = 'none';
             }
         });
     });

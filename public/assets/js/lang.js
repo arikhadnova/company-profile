@@ -104,6 +104,16 @@
             }
         });
 
+        // Handle data-i18n-placeholder
+        const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+        placeholderElements.forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            const translation = getNestedValue(translations, key);
+            if (translation) {
+                element.placeholder = translation;
+            }
+        });
+
         // Translate dynamic elements from database
         const dynamicElements = document.querySelectorAll('[data-lang-id][data-lang-en]');
         dynamicElements.forEach(element => {

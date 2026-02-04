@@ -734,13 +734,13 @@ const resources = {
                 }
             },
             "blog": {
-                "badge": "OUR STORIES",
+                "badge": "CERITA KAMI",
                 "title": "Berita & Artikel",
                 "subtitle": "Insight, update program, dan cerita perubahan dari lapangan.",
                 "search_placeholder": "Cari berita atau artikel menarik...",
                 "search_btn": "Cari",
                 "category_all": "Semua",
-                "highlight_badge": "HIGHLIGHT",
+                "highlight_badge": "SOROTAN",
                 "read_main": "Baca Artikel Utama",
                 "read_more": "Baca Selengkapnya",
                 "empty": "Belum ada artikel yang dipublikasikan.",

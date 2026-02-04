@@ -51,10 +51,10 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
             <div class="metric-card">
               <div class="metric-value"><?= $imp->value ?></div>
               <div class="metric-unit" data-i18n="ggc.impact.m<?= $idx ?>_unit"><?= $imp->unit ?></div>
-              <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
+              <div class="metric-label" data-i18n="ggc.impact.m<?= $idx ?>_label">
                 <?= $imp->label_id ?>
               </div>
-              <div class="metric-note" data-lang-id="<?= $imp->note_id ?>" data-lang-en="<?= $imp->note_en ?>">
+              <div class="metric-note" data-i18n="ggc.impact.m<?= $idx ?>_note">
                 <?= $imp->note_id ?>
               </div>
             </div>
@@ -74,10 +74,10 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
               <div class="metric-card">
                 <div class="metric-value"><?= $imp->value ?></div>
                 <div class="metric-unit" data-i18n="ggc.impact.m<?= $idx ?>_unit"><?= $imp->unit ?></div>
-                <div class="metric-label" data-lang-id="<?= $imp->label_id ?>" data-lang-en="<?= $imp->label_en ?>">
+                <div class="metric-label" data-i18n="ggc.impact.m<?= $idx ?>_label">
                   <?= $imp->label_id ?>
                 </div>
-                <div class="metric-note" data-lang-id="<?= $imp->note_id ?>" data-lang-en="<?= $imp->note_en ?>">
+                <div class="metric-note" data-i18n="ggc.impact.m<?= $idx ?>_note">
                   <?= $imp->note_id ?>
                 </div>
               </div>
@@ -261,17 +261,18 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
               "desc" => "Koordinasi rutin perencanaan program pemberdayaan."
           ]
       ];
-      foreach($gallery_items as $item): ?>
-      <div class="col-lg-4 col-md-6">
-        <div class="gallery-item shadow-sm">
-          <img src="<?= $item['img'] ?>" alt="<?= $item['title'] ?>">
-          <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
-              <h5 class="text-white fw-bold mb-1"><?= $item['title'] ?></h5>
-              <p class="text-white-50 small mb-0"><?= $item['desc'] ?></p>
-          </div>
-        </div>
-      </div>
-      <?php endforeach; ?>
+       $idx = 1;
+       foreach($gallery_items as $item): ?>
+       <div class="col-lg-4 col-md-6">
+         <div class="gallery-item shadow-sm">
+           <img src="<?= $item['img'] ?>" alt="<?= $item['title'] ?>">
+           <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
+               <h5 class="text-white fw-bold mb-1" data-i18n="ggc.gallery.i<?= $idx ?>_title"><?= $item['title'] ?></h5>
+               <p class="text-white-50 small mb-0" data-i18n="ggc.gallery.i<?= $idx ?>_desc"><?= $item['desc'] ?></p>
+           </div>
+         </div>
+       </div>
+       <?php $idx++; endforeach; ?>
     </div>
   </div>
 </section>

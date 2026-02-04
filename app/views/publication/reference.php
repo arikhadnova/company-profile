@@ -100,15 +100,15 @@
                                                 <i class="fab fa-whatsapp"></i> Buy via WhatsApp
                                             </a>
                                         <?php else : ?>
-                                            <?php if ($pub->source_url) : ?>
-                                                <a href="<?= $pub->source_url ?>" target="_blank" class="btn btn-sm btn-outline-warning text-dark rounded-pill px-3 flex-grow-1" data-i18n="publication.btn.external">Sumber Eksternal</a>
+                                            <?php if ($pub->external_link) : ?>
+                                                <a href="<?= $pub->external_link ?>" target="_blank" class="btn btn-sm btn-outline-warning text-dark rounded-pill px-3 flex-grow-1" data-i18n="publication.btn.external">Sumber Eksternal</a>
                                             <?php endif; ?>
                                             <?php if (!empty($pub->file_path)) : ?>
-                                                <a href="<?= ASSETS_URL ?>docs/<?= $pub->file_path ?>" download class="btn btn-sm btn-warning text-dark rounded-pill px-3" data-i18n="publication.btn.download">Download</a>
+                                                <a href="<?= ASSETS_URL ?>docs/<?= $pub->file_path ?>" download class="btn btn-sm btn-warning text-dark rounded-pill px-3 flex-grow-1" data-i18n="publication.btn.download">Download</a>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     </div>
-                                    <?php if ($pub->external_link) : ?>
+                                    <?php if ($pub->is_paid && $pub->external_link) : ?>
                                         <a href="<?= $pub->external_link ?>" target="_blank" class="btn btn-sm btn-outline-primary rounded-pill w-100 py-2 d-flex align-items-center justify-content-center gap-2">
                                             <i class="fas fa-external-link-alt"></i> Sumber Eksternal
                                         </a>

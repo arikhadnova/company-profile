@@ -110,7 +110,8 @@ const resources = {
                     "subtitle": "Portofolio kerja sama kami mencerminkan komitmen GoSirk dalam memperluas dampak melalui kolaborasi strategis.",
                     "cb_title": "Capacity Building (GoSirk Institute)",
                     "pd_title": "Pengembangan Program dan Implementasi Partner",
-                    "cs_title": "Konsultansi & Advisory Strategis"
+                    "cs_title": "Konsultansi & Advisory Strategis",
+                    "empty": "Belum ada portofolio tersedia saat ini."
                 },
                 "pd": {
                     "title": "Pengembangan Program dan Implementasi Partner",
@@ -938,7 +939,8 @@ const resources = {
                     "subtitle": "Our partnership portfolio reflects GoSirk's commitment to expanding impact through strategic collaboration.",
                     "cb_title": "Capacity Building (GoSirk Institute)",
                     "pd_title": "Program Development and Implementing Partner",
-                    "cs_title": "Consultancy & Strategic Advisory Services"
+                    "cs_title": "Consultancy & Strategic Advisory Services",
+                    "empty": "Portfolio currently unavailable."
                 },
                 "pd": {
                     "title": "Program Development and Implementing Partner",

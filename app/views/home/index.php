@@ -340,9 +340,13 @@
       
       <div class="swiper portfolio-slider-1">
         <div class="swiper-wrapper">
-          <?php if (!empty($portfolios)) : ?>
-            <?php foreach ($portfolios as $p) : ?>
-              <?php if ($p->show_home && $p->home_category == 'institute') : ?>
+          <?php 
+          $foundInstitute = false;
+          if (!empty($portfolios)) : 
+            foreach ($portfolios as $p) : 
+              if ($p->show_home && $p->home_category == 'institute') :
+                $foundInstitute = true;
+          ?>
                 <div class="swiper-slide">
                   <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
                     <?php if ($p->cover_image) : ?>
@@ -365,6 +369,14 @@
               <?php endif; ?>
             <?php endforeach; ?>
           <?php endif; ?>
+
+          <?php if (!$foundInstitute) : ?>
+            <div class="swiper-slide">
+                <div class="text-center p-5 w-100">
+                    <p class="text-muted fst-italic" data-i18n="home.portfolio.empty">Belum ada portofolio tersedia saat ini.</p>
+                </div>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -385,9 +397,13 @@
       
       <div class="swiper portfolio-slider-2">
         <div class="swiper-wrapper">
-          <?php if (!empty($portfolios)) : ?>
-            <?php foreach ($portfolios as $p) : ?>
-              <?php if ($p->show_home && $p->home_category == 'partner') : ?>
+          <?php 
+          $foundPartner = false;
+          if (!empty($portfolios)) : 
+            foreach ($portfolios as $p) : 
+              if ($p->show_home && $p->home_category == 'partner') :
+                $foundPartner = true;
+          ?>
                 <div class="swiper-slide">
                   <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
                     <?php if ($p->cover_image) : ?>
@@ -410,6 +426,14 @@
               <?php endif; ?>
             <?php endforeach; ?>
           <?php endif; ?>
+
+          <?php if (!$foundPartner) : ?>
+            <div class="swiper-slide">
+                <div class="text-center p-5 w-100">
+                    <p class="text-muted fst-italic" data-i18n="home.portfolio.empty">Belum ada portofolio tersedia saat ini.</p>
+                </div>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -430,9 +454,13 @@
       
       <div class="swiper portfolio-slider-3">
         <div class="swiper-wrapper">
-          <?php if (!empty($portfolios)) : ?>
-            <?php foreach ($portfolios as $p) : ?>
-              <?php if ($p->show_home && $p->home_category == 'advisory') : ?>
+          <?php 
+          $foundAdvisory = false;
+          if (!empty($portfolios)) : 
+            foreach ($portfolios as $p) : 
+              if ($p->show_home && $p->home_category == 'advisory') :
+                $foundAdvisory = true;
+          ?>
                 <div class="swiper-slide">
                   <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
                     <?php if ($p->cover_image) : ?>
@@ -454,6 +482,14 @@
                 </div>
               <?php endif; ?>
             <?php endforeach; ?>
+          <?php endif; ?>
+
+          <?php if (!$foundAdvisory) : ?>
+            <div class="swiper-slide">
+                <div class="text-center p-5 w-100">
+                    <p class="text-muted fst-italic" data-i18n="home.portfolio.empty">Belum ada portofolio tersedia saat ini.</p>
+                </div>
+            </div>
           <?php endif; ?>
         </div>
       </div>

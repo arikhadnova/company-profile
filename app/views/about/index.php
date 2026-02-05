@@ -15,7 +15,7 @@
         <div class="row align-items-center g-5">
             <div class="col-lg-6">
                 <div class="about-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop" class="about-image" alt="About Presentation">
+                    <img src="<?= ASSETS_URL ?>img/about-2.jpg" class="about-image" alt="About Presentation">
                     <div class="logo-overlay m-3">
                          <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="Logo">
                     </div>

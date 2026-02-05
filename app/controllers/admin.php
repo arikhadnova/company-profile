@@ -20,6 +20,8 @@ class Admin extends Controller {
     private $giVideoModel;
     private $founderModel;
     private $activityLogModel;
+    private $pilotVillageModel;
+    private $ggcActionModel;
 
     public function __construct() {
         if (!isset($_SESSION['admin_logged_in'])) {
@@ -45,6 +47,8 @@ class Admin extends Controller {
         $this->giVideoModel = $this->model('GiVideo_model');
         $this->founderModel = $this->model('Founder_model');
         $this->activityLogModel = $this->model('ActivityLog_model');
+        $this->pilotVillageModel = $this->model('PilotVillage_model');
+        $this->ggcActionModel = $this->model('GgcAction_model');
 
         // Auto-initialize settings table
         $db = new Database();
@@ -214,7 +218,8 @@ class Admin extends Controller {
         $data = [
             'title' => 'Partnership Settings',
             'active' => 'partnership_settings',
-            'settings' => $this->settingModel->getAll()
+            'settings' => $this->settingModel->getAll(),
+            'portfolios' => $this->portfolioModel->getAll()
         ];
         $this->views('layouts/admin_header', $data);
         $this->views('admin/partnership_settings', $data);
@@ -234,6 +239,22 @@ class Admin extends Controller {
                     $this->settingModel->update($en_key, $en_value);
                 }
             }
+
+            // Handle Image Uploads for Categories
+            $image_keys = ['ps_comm_img', 'ps_acad_img', 'ps_prog_img'];
+            foreach ($image_keys as $key) {
+                if (!empty($_FILES[$key]['name'])) {
+                    $newImage = Upload::file($_FILES[$key], 'img');
+                    if ($newImage) {
+                        $oldImage = $this->settingModel->getByKey($key);
+                        if ($oldImage) {
+                            Upload::delete($oldImage, 'img');
+                        }
+                        $this->settingModel->update($key, $newImage);
+                    }
+                }
+            }
+
             Flasher::setFlash('Settings Partnership', 'berhasil diperbarui', 'success');
             $this->activityLogModel->log('UPDATE', 'Settings', "Memperbarui Pengaturan Partnership");
             header('Location: ' . BASE_URL . 'admin/partnership_settings');
@@ -2498,6 +2519,178 @@ class Admin extends Controller {
             Flasher::setFlash('Pesan', 'gagal dihapus', 'danger');
         }
         header('Location: ' . BASE_URL . 'admin/contacts');
+        exit;
+    }
+
+    // --- PILOT VILLAGES (Implementasi Partner) ---
+    public function pilot_villages() {
+        $data = [
+            'title' => 'Kelola Desa Pilot',
+            'active' => 'pilot_villages',
+            'villages' => $this->pilotVillageModel->getAll()
+        ];
+        $this->views('layouts/admin_header', $data);
+        $this->views('admin/pilot_villages', $data);
+        $this->views('layouts/admin_footer');
+    }
+
+    public function pilot_villages_store() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $image = '';
+            if (!empty($_FILES['image']['name'])) {
+                $image = Upload::file($_FILES['image'], 'img');
+            }
+
+            $data = [
+                'name_id' => $_POST['name_id'],
+                'name_en' => $_POST['name_en'] ?: Translator::translate($_POST['name_id']),
+                'image' => $image,
+                'order_priority' => $_POST['order_priority'] ?: 0
+            ];
+
+            if ($this->pilotVillageModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'Pilot Village', "Menambahkan desa pilot baru '{$_POST['name_id']}'");
+                Flasher::setFlash('Desa Pilot', 'berhasil ditambahkan', 'success');
+            } else {
+                Flasher::setFlash('Desa Pilot', 'gagal ditambahkan', 'danger');
+            }
+            header('Location: ' . BASE_URL . 'admin/pilot_villages');
+            exit;
+        }
+    }
+
+    public function pilot_villages_update() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $old = $this->pilotVillageModel->getById($id);
+            $image = '';
+
+            if (!empty($_FILES['image']['name'])) {
+                $image = Upload::file($_FILES['image'], 'img');
+                if ($image && $old->image) {
+                    Upload::delete($old->image, 'img');
+                }
+            }
+
+            $data = [
+                'id' => $id,
+                'name_id' => $_POST['name_id'],
+                'name_en' => $_POST['name_en'] ?: Translator::translate($_POST['name_id']),
+                'image' => $image,
+                'order_priority' => $_POST['order_priority'] ?: 0
+            ];
+
+            if ($this->pilotVillageModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'Pilot Village', "Memperbarui desa pilot '{$_POST['name_id']}'");
+                Flasher::setFlash('Desa Pilot', 'berhasil diperbarui', 'success');
+            } else {
+                Flasher::setFlash('Desa Pilot', 'gagal diperbarui', 'danger');
+            }
+            header('Location: ' . BASE_URL . 'admin/pilot_villages');
+            exit;
+        }
+    }
+
+    public function pilot_villages_delete($id) {
+        $old = $this->pilotVillageModel->getById($id);
+        if ($old && $old->image) {
+            Upload::delete($old->image, 'img');
+        }
+        if ($this->pilotVillageModel->delete($id)) {
+            $this->activityLogModel->log('DELETE', 'Pilot Village', "Menghapus desa pilot '{$old->name_id}'");
+            Flasher::setFlash('Desa Pilot', 'berhasil dihapus', 'success');
+        } else {
+            Flasher::setFlash('Desa Pilot', 'gagal dihapus', 'danger');
+        }
+        header('Location: ' . BASE_URL . 'admin/pilot_villages');
+        exit;
+    }
+
+    // --- GGC ACTIONS (Aksi Kami) ---
+    public function ggc_actions() {
+        $data = [
+            'title' => 'Kelola Aksi GGC',
+            'active' => 'ggc_actions',
+            'actions' => $this->ggcActionModel->getAll()
+        ];
+        $this->views('layouts/admin_header', $data);
+        $this->views('admin/ggc_actions', $data);
+        $this->views('layouts/admin_footer');
+    }
+
+    public function ggc_actions_store() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $image = '';
+            if (!empty($_FILES['image']['name'])) {
+                $image = Upload::file($_FILES['image'], 'img');
+            }
+
+            $data = [
+                'title_id' => $_POST['title_id'],
+                'title_en' => $_POST['title_en'] ?: Translator::translate($_POST['title_id']),
+                'description_id' => $_POST['description_id'],
+                'description_en' => $_POST['description_en'] ?: Translator::translate($_POST['description_id']),
+                'image' => $image,
+                'order_priority' => $_POST['order_priority'] ?: 0
+            ];
+
+            if ($this->ggcActionModel->add($data)) {
+                $this->activityLogModel->log('CREATE', 'GGC Action', "Menambahkan aksi GGC baru '{$_POST['title_id']}'");
+                Flasher::setFlash('Aksi GGC', 'berhasil ditambahkan', 'success');
+            } else {
+                Flasher::setFlash('Aksi GGC', 'gagal ditambahkan', 'danger');
+            }
+            header('Location: ' . BASE_URL . 'admin/ggc_actions');
+            exit;
+        }
+    }
+
+    public function ggc_actions_update() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id = $_POST['id'];
+            $old = $this->ggcActionModel->getById($id);
+            $image = '';
+
+            if (!empty($_FILES['image']['name'])) {
+                $image = Upload::file($_FILES['image'], 'img');
+                if ($image && $old->image && !filter_var($old->image, FILTER_VALIDATE_URL)) {
+                    Upload::delete($old->image, 'img');
+                }
+            }
+
+            $data = [
+                'id' => $id,
+                'title_id' => $_POST['title_id'],
+                'title_en' => $_POST['title_en'] ?: Translator::translate($_POST['title_id']),
+                'description_id' => $_POST['description_id'],
+                'description_en' => $_POST['description_en'] ?: Translator::translate($_POST['description_id']),
+                'image' => $image,
+                'order_priority' => $_POST['order_priority'] ?: 0
+            ];
+
+            if ($this->ggcActionModel->update($data)) {
+                $this->activityLogModel->log('UPDATE', 'GGC Action', "Memperbarui aksi GGC '{$_POST['title_id']}'");
+                Flasher::setFlash('Aksi GGC', 'berhasil diperbarui', 'success');
+            } else {
+                Flasher::setFlash('Aksi GGC', 'gagal diperbarui', 'danger');
+            }
+            header('Location: ' . BASE_URL . 'admin/ggc_actions');
+            exit;
+        }
+    }
+
+    public function ggc_actions_delete($id) {
+        $old = $this->ggcActionModel->getById($id);
+        if ($old && $old->image && !filter_var($old->image, FILTER_VALIDATE_URL)) {
+            Upload::delete($old->image, 'img');
+        }
+        if ($this->ggcActionModel->delete($id)) {
+            $this->activityLogModel->log('DELETE', 'GGC Action', "Menghapus aksi GGC '{$old->title_id}'");
+            Flasher::setFlash('Aksi GGC', 'berhasil dihapus', 'success');
+        } else {
+            Flasher::setFlash('Aksi GGC', 'gagal dihapus', 'danger');
+        }
+        header('Location: ' . BASE_URL . 'admin/ggc_actions');
         exit;
     }
 }

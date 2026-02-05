@@ -66,6 +66,9 @@
             <a href="<?= BASE_URL; ?>admin/founders" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'founders') ? 'active' : '' ?>">
                 <i class="fas fa-user-tie"></i> Founders
             </a>
+            <a href="<?= BASE_URL; ?>admin/partnership_settings" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'partnership_settings') ? 'active' : '' ?>">
+                <i class="fas fa-users-cog"></i> Partnership Settings
+            </a>
             <!-- Impact Data -->
             <div class="mt-4 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">Impact Data</small></div>
             <a href="<?= BASE_URL; ?>admin/impact/home" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'impact_home') ? 'active' : '' ?>">
@@ -119,14 +122,17 @@
             <a href="<?= BASE_URL; ?>admin/faqs" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'faqs') ? 'active' : '' ?>">
                 <i class="fas fa-question-circle"></i> FAQs
             </a>
+            <a href="<?= BASE_URL; ?>admin/ggc_actions" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'ggc_actions') ? 'active' : '' ?>">
+                <i class="fas fa-running"></i> GGC Actions
+            </a>
+            <a href="<?= BASE_URL; ?>admin/pilot_villages" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'pilot_villages') ? 'active' : '' ?>">
+                <i class="fas fa-map-marker-alt"></i> Pilot Villages
+            </a>
 
             <!-- Collaboration -->
             <div class="mt-4 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">Collaboration</small></div>
             <a href="<?= BASE_URL; ?>admin/partners" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'partners') ? 'active' : '' ?>">
                 <i class="fas fa-handshake"></i> Partners list
-            </a>
-            <a href="<?= BASE_URL; ?>admin/partnership_settings" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'partnership_settings') ? 'active' : '' ?>">
-                <i class="fas fa-users-cog"></i> Partnership Settings
             </a>
             <?php if ($_SESSION['user_role'] == 'admin') : ?>
             <a href="<?= BASE_URL; ?>admin/contacts" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'contacts') ? 'active' : '' ?>">

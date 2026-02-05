@@ -17,12 +17,8 @@
         <div class="col-lg-8">
             <!-- Main Content: Indonesian -->
             <div class="card border-0 shadow-sm rounded-4 mb-4">
-                <div class="card-header bg-white border-bottom p-4 d-flex justify-content-between align-items-center">
-                    <h5 class="fw-bold mb-0 text-primary"><i class="fas fa-file-alt me-2"></i>Konten Proyek (Bahasa Indonesia)</h5>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="toggleEnglish">
-                        <label class="form-check-label small fw-bold" for="toggleEnglish">Edit Versi English</label>
-                    </div>
+                <div class="card-header bg-white border-bottom p-4">
+                    <h5 class="fw-bold mb-0 text-primary"><i class="fas fa-file-alt me-2"></i>Konten Proyek</h5>
                 </div>
                 <div class="card-body p-4">
                     <!-- Basic Info -->
@@ -30,27 +26,15 @@
                         <label class="form-label small fw-bold text-dark">Judul Proyek</label>
                         <input type="text" name="title_id" class="form-control form-control-lg" value="<?= $portfolio->title_id; ?>" required>
                     </div>
-                    <div class="mb-4 english-field" style="display: none;">
-                        <label class="form-label small fw-bold text-muted">Project Title (English)</label>
-                        <input type="text" name="title_en" class="form-control" value="<?= $portfolio->title_en; ?>" placeholder="Kosongkan untuk auto-translate">
-                    </div>
 
                     <div class="mb-4">
                         <label class="form-label small fw-bold text-dark">Sub-judul / Nama Klien</label>
                         <input type="text" name="subtitle_id" class="form-control" value="<?= $portfolio->subtitle_id; ?>">
                     </div>
-                    <div class="mb-4 english-field" style="display: none;">
-                        <label class="form-label small fw-bold text-muted">Subtitle / Client Name (English)</label>
-                        <input type="text" name="subtitle_en" class="form-control" value="<?= $portfolio->subtitle_en; ?>" placeholder="Kosongkan untuk auto-translate">
-                    </div>
 
                     <div class="mb-4">
                         <label class="form-label small fw-bold text-dark">Deskripsi Ringkas (Card Link)</label>
                         <textarea name="description_id" class="form-control" rows="3"><?= $portfolio->description_id; ?></textarea>
-                    </div>
-                    <div class="mb-4 english-field" style="display: none;">
-                        <label class="form-label small fw-bold text-muted">Short Description (English)</label>
-                        <textarea name="description_en" class="form-control" rows="3" placeholder="Kosongkan untuk auto-translate"><?= $portfolio->description_en; ?></textarea>
                     </div>
 
                     <hr class="my-4 border-dashed">
@@ -135,7 +119,6 @@
                         </div>
                         <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="add-metric"><i class="fas fa-plus me-1"></i> Tambah Metrik</button>
                         <input type="hidden" name="metrics_id" id="metrics_json">
-                        <input type="hidden" name="metrics_en" value="<?= $portfolio->metrics_en; ?>">
                     </div>
                 </div>
             </div>
@@ -150,19 +133,11 @@
                         <label class="form-label small fw-bold text-dark"><i class="fas fa-info-circle me-1 text-primary"></i> 1. TENTANG PROYEK (Isi Detail)</label>
                         <textarea name="detail_content_id" id="editor_detail" class="form-control" rows="10"><?= $portfolio->detail_content_id; ?></textarea>
                     </div>
-                    <div class="mb-4 english-field" style="display: none;">
-                        <label class="form-label small fw-bold text-muted">About Project (English)</label>
-                        <textarea name="detail_content_en" class="form-control" rows="8" placeholder="Kosongkan untuk auto-translate"><?= $portfolio->detail_content_en; ?></textarea>
-                    </div>
 
                     <div class="mb-4">
                         <label class="form-label small fw-bold text-dark"><i class="fas fa-bullseye me-1 text-primary"></i> 2. TARGET & SASARAN</label>
                         <textarea name="targets_id" class="form-control" rows="4" placeholder="Contoh per baris..."><?= $portfolio->targets_id; ?></textarea>
                         <small class="text-muted extra-small">Gunakan baris baru untuk setiap poin.</small>
-                    </div>
-                    <div class="mb-4 english-field" style="display: none;">
-                        <label class="form-label small fw-bold text-muted">Project Targets (English)</label>
-                        <textarea name="targets_en" class="form-control" rows="4" placeholder="Kosongkan untuk auto-translate"><?= $portfolio->targets_en; ?></textarea>
                     </div>
 
                     <div class="mb-4">
@@ -188,7 +163,6 @@
                         </div>
                         <button type="button" class="btn btn-sm btn-outline-primary mt-2" id="add-approach"><i class="fas fa-plus me-1"></i> Tambah Tahapan</button>
                         <input type="hidden" name="approach_id" id="approach_json">
-                        <input type="hidden" name="approach_en" value="<?= $portfolio->approach_en; ?>">
                     </div>
 
                     <div class="mb-0">
@@ -382,15 +356,6 @@
                 console.error(error);
             });
 
-    // Toggle English Fields
-    const toggleEnglish = document.getElementById('toggleEnglish');
-    const englishFields = document.querySelectorAll('.english-field');
-    
-    toggleEnglish.addEventListener('change', function() {
-        englishFields.forEach(el => {
-            el.style.display = this.checked ? 'block' : 'none';
-        });
-    });
 
     // Dynamic Lists Handler
     const setupDynamicList = (containerId, addButtonId, rowClass, removeBtnClass, template) => {

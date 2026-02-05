@@ -901,7 +901,6 @@
                         </p>
                     </div>
                 </div>
-            </div>
 
             <!-- Village Part -->
             <div class="row justify-content-center mb-4">
@@ -912,45 +911,30 @@
             </div>
 
             <div class="row g-4 justify-content-center">
-                <!-- Village 1: Bengkel -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden border-top-orange-3" style="border-radius: 20px !important; transition: all 0.3s ease;">
-                        <div class="position-relative overflow-hidden">
-                            <img src="<?= ASSETS_URL ?>img/IMG_8082.jpg" class="card-img-top" alt="Desa Bengkel" style="height: 280px; object-fit: cover;">
-                            <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
-                                <div class="w-100 p-4 text-center">
-                                    <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" data-i18n="partner.village_bengkel">Desa Bengkel</h5>
+                <?php if (!empty($data['villages'])) : ?>
+                    <?php foreach ($data['villages'] as $v) : ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden border-top-orange-3" style="border-radius: 20px !important; transition: all 0.3s ease;">
+                                <div class="position-relative overflow-hidden">
+                                    <img src="<?= ASSETS_URL ?>img/<?= $v->image ?>" class="card-img-top" alt="<?= $v->name_id ?>" style="height: 280px; object-fit: cover;">
+                                    <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
+                                        <div class="w-100 p-4 text-center">
+                                            <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" 
+                                                data-lang-id="<?= $v->name_id ?>" 
+                                                data-lang-en="<?= $v->name_en ?>">
+                                                <?= $v->name_id ?>
+                                            </h5>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    <?php endforeach; ?>
+                <?php else : ?>
+                    <div class="col-12 text-center py-5">
+                        <p class="text-muted italic">Data desa percontohan belum tersedia.</p>
                     </div>
-                </div>
-                <!-- Village 2: Dauh Peken -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden border-top-orange-3" style="border-radius: 20px !important; transition: all 0.3s ease;">
-                        <div class="position-relative overflow-hidden">
-                            <img src="<?= ASSETS_URL ?>img/IMG_8084.jpg" class="card-img-top" alt="Desa Dauh Peken" style="height: 280px; object-fit: cover;">
-                            <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
-                                <div class="w-100 p-4 text-center">
-                                    <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" data-i18n="partner.village_dauh_peken">Desa Dauh Peken</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Village 3: Wongaya Gede -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="card h-100 border border-1 shadow-sm rounded-4 overflow-hidden border-top-orange-3" style="border-radius: 20px !important; transition: all 0.3s ease;">
-                        <div class="position-relative overflow-hidden">
-                            <img src="<?= ASSETS_URL ?>img/IMG_8097.jpg" class="card-img-top" alt="Desa Wongaya Gede" style="height: 280px; object-fit: cover;">
-                            <div class="card-img-overlay d-flex align-items-end p-0" style="background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);">
-                                <div class="w-100 p-4 text-center">
-                                    <h5 class="fw-bold mb-0 text-white text-uppercase tracking-wider" data-i18n="partner.village_wongaya_gede">Desa Wongaya Gede</h5>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php endif; ?>
             </div>
 
             <!-- Button Part -->

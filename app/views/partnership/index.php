@@ -33,7 +33,7 @@
             <div class="row g-0">
                 <div class="col-lg-6">
                     <div class="project-img-container h-100">
-                        <img src="<?= ASSETS_URL ?>img/petugas-baju-biru.png" class="img-fluid h-100 w-100 object-fit-cover" alt="Program Pendampingan Desa">
+                        <img src="<?= ASSETS_URL ?>img/petugas-baju-biru.png" class="img-fluid h-100 w-100 object-fit-cover" alt="Ongoing Project">
                     </div>
                 </div>
                 <div class="col-lg-6 p-4 p-md-5 d-flex flex-column justify-content-center">
@@ -41,17 +41,22 @@
                         <span class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill fw-semibold" data-i18n="partnership.clocc_badge_1">Community Impact</span>
                         <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill fw-semibold ms-2" style="background-color: #FF8F56 !important; color: white !important;" data-i18n="partnership.clocc_badge_2">Village Circular</span>
                     </div>
-                    <h3 class="fw-bold mb-3" data-i18n="partnership.clocc_title">Program Pendampingan Desa: CLOCC x GOSIRK</h3>
+                    <h3 class="fw-bold mb-3" 
+                        data-lang-id="Program Pendampingan Desa: CLOCC x GOSIRK" 
+                        data-lang-en="Village Mentoring Program: CLOCC x GOSIRK">
+                        Program Pendampingan Desa: CLOCC x GOSIRK
+                    </h3>
                     <div class="d-flex align-items-center text-muted mb-4">
                         <i class="fas fa-map-marker-alt me-2 text-primary" style="color: #FF8F56 !important;"></i>
-                        <span data-i18n="partnership.clocc_loc">Kabupaten Tabanan, Bali</span>
-                        <span class="mx-2">•</span>
-                        <i class="fas fa-calendar-alt me-2 text-primary" style="color: #FF8F56 !important;"></i>
-                        <span data-i18n="partnership.clocc_dur">2023 - 2025</span>
+                        <span data-lang-id="Kabupaten Tabanan, Bali" 
+                              data-lang-en="Tabanan Regency, Bali">
+                            Kabupaten Tabanan, Bali
+                        </span>
                     </div>
-                    <p class="text-secondary mb-4 fs-6" data-i18n="partnership.clocc_desc">
-                        Inisiatif kolaboratif untuk mempercepat kemandirian pengelolaan sampah di tingkat desa melalui 
-                        penerapan skema bisnis sirkular yang terintegrasi, pemberdayaan UMKM lokal, dan edukasi masif kepada masyarakat.
+                    <p class="text-secondary mb-4 fs-6" 
+                       data-lang-id="Inisiatif kolaboratif untuk mempercepat kemandirian pengelolaan sampah di tingkat desa melalui penerapan skema bisnis sirkular yang terintegrasi, pemberdayaan UMKM lokal, dan edukasi masif kepada masyarakat." 
+                       data-lang-en="A collaborative initiative to accelerate waste management independence at the village level through the implementation of an integrated circular business scheme, empowerment of local MSMEs, and massive community education.">
+                        Inisiatif kolaboratif untuk mempercepat kemandirian pengelolaan sampah di tingkat desa melalui penerapan skema bisnis sirkular yang terintegrasi, pemberdayaan UMKM lokal, dan edukasi masif kepada masyarakat.
                     </p>
                     <div class="d-flex align-items-center gap-4 mb-4 flex-wrap">
                         <img src="<?= ASSETS_URL ?>img/Logo-GoSirk-01.png" alt="GoSirk" style="max-height: 40px; width: auto;">
@@ -68,6 +73,7 @@
     </div>
 </section>
 
+
 <!-- Our Partnership Categories -->
 <section class="partnership-categories py-5 bg-light-subtle" id="partnership">
     <div class="container py-lg-5">
@@ -82,7 +88,11 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5">
                         <div class="rounded-4 overflow-hidden shadow-sm mb-4 mb-lg-0">
-                            <img src="<?= ASSETS_URL ?>img/IMG_8084.jpg" class="img-fluid" alt="Community Partnership">
+                            <?php if (isset($settings['ps_comm_img'])) : ?>
+                                <img src="<?= ASSETS_URL ?>img/<?= $settings['ps_comm_img'] ?>" class="img-fluid" alt="Community Partnership">
+                            <?php else : ?>
+                                <img src="<?= ASSETS_URL ?>img/IMG_8084.jpg" class="img-fluid" alt="Community Partnership">
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="col-lg-7 ps-lg-5">
@@ -180,7 +190,11 @@
                     </div>
                     <div class="col-lg-5 order-1 order-lg-2">
                         <div class="rounded-4 overflow-hidden shadow-sm mb-4 mb-lg-0">
-                            <img src="<?= ASSETS_URL ?>img/pexels-fauxels-3184416.jpg" class="img-fluid" alt="Academic Partnership">
+                            <?php if (isset($settings['ps_acad_img'])) : ?>
+                                <img src="<?= ASSETS_URL ?>img/<?= $settings['ps_acad_img'] ?>" class="img-fluid" alt="Academic Partnership">
+                            <?php else : ?>
+                                <img src="<?= ASSETS_URL ?>img/pexels-fauxels-3184416.jpg" class="img-fluid" alt="Academic Partnership">
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -228,7 +242,11 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5">
                         <div class="rounded-4 overflow-hidden shadow-sm mb-4 mb-lg-0">
-                            <img src="<?= ASSETS_URL ?>img/Gocircular-Indonesia-Compro-1536x864.png" class="img-fluid" alt="Program Partnership">
+                            <?php if (isset($settings['ps_prog_img'])) : ?>
+                                <img src="<?= ASSETS_URL ?>img/<?= $settings['ps_prog_img'] ?>" class="img-fluid" alt="Program Partnership">
+                            <?php else : ?>
+                                <img src="<?= ASSETS_URL ?>img/Gocircular-Indonesia-Compro-1536x864.png" class="img-fluid" alt="Program Partnership">
+                            <?php endif; ?>
                         </div>
                     </div>
                     <div class="col-lg-7 ps-lg-5">

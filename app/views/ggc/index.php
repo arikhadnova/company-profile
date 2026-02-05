@@ -1,10 +1,16 @@
 <!-- HERO SECTION -->
 <?php
 $heroGGC = $data['hero'];
-$bgGGC = $heroGGC->image;
-if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
-    $bgGGC = ASSETS_URL . 'img/' . $bgGGC;
+$bgGGC = $heroGGC->image ?? '';
+if ($bgGGC && strpos($bgGGC, 'http') !== 0) {
+    if (strpos($bgGGC, 'img/') === 0) {
+        $bgGGC = ASSETS_URL . $bgGGC;
+    } else {
+        $bgGGC = ASSETS_URL . 'img/' . $bgGGC;
+    }
 }
+// Fallback if still empty
+if (!$bgGGC) $bgGGC = ASSETS_URL . 'img/petugas-baju-biru.png';
 ?>
 <section class="hero-ggc">
   <div class="container">
@@ -228,51 +234,31 @@ if ($bgGGC && !filter_var($bgGGC, FILTER_VALIDATE_URL)) {
             </div>
 
     <div class="row g-4 overflow-hidden">
-      <?php 
-      $gallery_items = [
-          [
-              "img" => "https://images.unsplash.com/photo-1542601906990-b4d3fb7d5fa5?auto=format&fit=crop&q=80&w=600",
-              "title" => "Aksi Tanam Mangrove",
-              "desc" => "Restorasi kawasan pesisir bersama pemuda desa setempat."
-          ],
-          [
-              "img" => "https://images.unsplash.com/photo-1536964542287-430ae5f1394c?auto=format&fit=crop&q=80&w=600",
-              "title" => "Workshop Kompos",
-              "desc" => "Pelatihan pengolahan sampah organik rumah tangga."
-          ],
-          [
-              "img" => "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&q=80&w=600",
-              "title" => "Edukasi Lingkungan",
-              "desc" => "Menanamkan nilai kelestarian kepada generasi muda."
-          ],
-          [
-              "img" => "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&q=80&w=600",
-              "title" => "Kebun Toga Komunitas",
-              "desc" => "Pemanfaatan pekarangan untuk ketahanan pangan."
-          ],
-          [
-              "img" => "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=600",
-              "title" => "Aksi Pilah Sampah",
-              "desc" => "Gerakan pilah dari sumber di lingkup rukun tetangga."
-          ],
-          [
-              "img" => "https://images.unsplash.com/photo-1526951521990-620dc14c214b?auto=format&fit=crop&q=80&w=600",
-              "title" => "Pertemuan Kader GGC",
-              "desc" => "Koordinasi rutin perencanaan program pemberdayaan."
-          ]
-      ];
-       $idx = 1;
-       foreach($gallery_items as $item): ?>
-       <div class="col-lg-4 col-md-6">
-         <div class="gallery-item shadow-sm">
-           <img src="<?= $item['img'] ?>" alt="<?= $item['title'] ?>">
-           <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
-               <h5 class="text-white fw-bold mb-1" data-i18n="ggc.gallery.i<?= $idx ?>_title"><?= $item['title'] ?></h5>
-               <p class="text-white-50 small mb-0" data-i18n="ggc.gallery.i<?= $idx ?>_desc"><?= $item['desc'] ?></p>
-           </div>
-         </div>
-       </div>
-       <?php $idx++; endforeach; ?>
+      <?php if (!empty($data['actions'])) : ?>
+        <?php foreach ($data['actions'] as $item) : ?>
+          <div class="col-lg-4 col-md-6">
+            <div class="gallery-item shadow-sm">
+              <img src="<?= (filter_var($item->image, FILTER_VALIDATE_URL)) ? $item->image : ASSETS_URL . 'img/' . $item->image ?>" alt="<?= $item->title_id ?>">
+              <div class="gallery-overlay d-flex flex-column justify-content-end p-4">
+                  <h5 class="text-white fw-bold mb-1" 
+                      data-lang-id="<?= $item->title_id ?>" 
+                      data-lang-en="<?= $item->title_en ?>">
+                      <?= $item->title_id ?>
+                  </h5>
+                  <p class="text-white-50 small mb-0" 
+                      data-lang-id="<?= $item->description_id ?>" 
+                      data-lang-en="<?= $item->description_en ?>">
+                      <?= $item->description_id ?>
+                  </p>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else : ?>
+        <div class="col-12 text-center py-5">
+            <p class="text-muted italic">Data aksi belum tersedia.</p>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </section>

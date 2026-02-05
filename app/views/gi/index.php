@@ -289,8 +289,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h5 class="fw-bold mb-4" data-i18n="gi.cat1_title">1. Peningkatan Kapasitas Pengelolaan Sampah Tingkat Daerah</h5>
                 <div class="row g-4">
                     <?php if (!empty($portfolios)) : ?>
-                        <?php foreach ($portfolios as $p) : ?>
-                            <?php if ($p->show_gi && $p->gi_category == 'daerah') : ?>
+                        <?php $found = false; foreach ($portfolios as $p) : ?>
+                            <?php if ($p->show_gi && $p->gi_category == 'daerah') : $found = true; ?>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card h-100 portfolio-card">
                                         <div class="portfolio-img-wrapper" style="height: 180px; overflow: hidden;">
@@ -311,6 +311,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
+                        <?php if (!$found) : ?>
+                            <div class="col-12 text-center py-4">
+                                <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                            </div>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <div class="col-12 text-center py-4">
+                            <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -321,8 +330,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h5 class="fw-bold mb-4" data-i18n="gi.cat2_title">2. Pendampingan Optimalisasi Pengelolaan Sampah Tingkat Desa</h5>
                 <div class="row g-4">
                     <?php if (!empty($portfolios)) : ?>
-                        <?php foreach ($portfolios as $p) : ?>
-                            <?php if ($p->show_gi && $p->gi_category == 'desa') : ?>
+                        <?php $found = false; foreach ($portfolios as $p) : ?>
+                            <?php if ($p->show_gi && $p->gi_category == 'desa') : $found = true; ?>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card h-100 portfolio-card">
                                         <div class="portfolio-img-wrapper" style="height: 180px; overflow: hidden;">
@@ -343,6 +352,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
+                        <?php if (!$found) : ?>
+                            <div class="col-12 text-center py-4">
+                                <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                            </div>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <div class="col-12 text-center py-4">
+                            <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -353,8 +371,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h5 class="fw-bold mb-4" data-i18n="gi.cat3_title">3. Kampanye Edukasi dan Perubahan Perilaku Masyarakat</h5>
                 <div class="row g-4">
                     <?php if (!empty($portfolios)) : ?>
-                        <?php foreach ($portfolios as $p) : ?>
-                            <?php if ($p->show_gi && $p->gi_category == 'kampanye') : ?>
+                        <?php $found = false; foreach ($portfolios as $p) : ?>
+                            <?php if ($p->show_gi && $p->gi_category == 'kampanye') : $found = true; ?>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card h-100 portfolio-card shadow-sm border-0 rounded-4 overflow-hidden">
                                         <div class="portfolio-img-wrapper" style="height: 180px; overflow: hidden;">
@@ -377,6 +395,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
+                        <?php if (!$found) : ?>
+                            <div class="col-12 text-center py-4">
+                                <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                            </div>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <div class="col-12 text-center py-4">
+                            <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -387,8 +414,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h5 class="fw-bold mb-4" data-i18n="gi.cat4_title">4. Penyusunan Modul Pelatihan dan Toolkit Pengelolaan Sampah</h5>
                 <div class="row g-4">
                     <?php if (!empty($portfolios)) : ?>
-                        <?php foreach ($portfolios as $p) : ?>
-                            <?php if ($p->show_gi && $p->gi_category == 'modul') : ?>
+                        <?php $found = false; foreach ($portfolios as $p) : ?>
+                            <?php if ($p->show_gi && $p->gi_category == 'modul') : $found = true; ?>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card h-100 portfolio-card shadow-sm border-0 rounded-4 overflow-hidden">
                                         <div class="portfolio-img-wrapper" style="height: 180px; overflow: hidden;">
@@ -411,6 +438,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
+                        <?php if (!$found) : ?>
+                            <div class="col-12 text-center py-4">
+                                <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                            </div>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <div class="col-12 text-center py-4">
+                            <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -421,8 +457,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h5 class="fw-bold mb-4" data-i18n="gi.cat5_title">5. Penyelenggaraan Webinar dan Pengembangan E-learning</h5>
                 <div class="row g-4">
                     <?php if (!empty($portfolios)) : ?>
-                        <?php foreach ($portfolios as $p) : ?>
-                            <?php if ($p->show_gi && $p->gi_category == 'webinar') : ?>
+                        <?php $found = false; foreach ($portfolios as $p) : ?>
+                            <?php if ($p->show_gi && $p->gi_category == 'webinar') : $found = true; ?>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card h-100 portfolio-card shadow-sm border-0 rounded-4 overflow-hidden">
                                         <div class="portfolio-img-wrapper" style="height: 180px; overflow: hidden;">
@@ -445,6 +481,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
+                        <?php if (!$found) : ?>
+                            <div class="col-12 text-center py-4">
+                                <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                            </div>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <div class="col-12 text-center py-4">
+                            <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>
@@ -455,8 +500,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h5 class="fw-bold mb-4" data-i18n="gi.cat6_title">6. Academic Partnership & Research Support</h5>
                 <div class="row g-4">
                     <?php if (!empty($portfolios)) : ?>
-                        <?php foreach ($portfolios as $p) : ?>
-                            <?php if ($p->show_gi && $p->gi_category == 'akademik') : ?>
+                        <?php $found = false; foreach ($portfolios as $p) : ?>
+                            <?php if ($p->show_gi && $p->gi_category == 'akademik') : $found = true; ?>
                                 <div class="col-lg-4 col-md-6">
                                     <div class="card h-100 portfolio-card shadow-sm border-0 rounded-4 overflow-hidden">
                                         <div class="portfolio-img-wrapper" style="height: 180px; overflow: hidden;">
@@ -479,6 +524,15 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>
+                        <?php if (!$found) : ?>
+                            <div class="col-12 text-center py-4">
+                                <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                            </div>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <div class="col-12 text-center py-4">
+                            <p class="text-muted italic" data-i18n="gi.no_portfolio">Portofolio belum tersedia.</p>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>

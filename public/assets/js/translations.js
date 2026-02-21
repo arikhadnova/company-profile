@@ -8,7 +8,7 @@ const resources = {
             "nav": {
                 "services": "Layanan Kami",
                 "capacity_building": "Peningkatan Kapasitas",
-                "program_dev": "Pengembangan Program & Implementasi Partner",
+                "program_dev": "Mitra Pengembangan Proyek & Implementasi",
                 "consultancy": "Konsultansi",
                 "partnership": "Kemitraan",
                 "about": "Tentang Kami",
@@ -109,7 +109,7 @@ const resources = {
                     "title": "PORTOFOLIO & KEMITRAAN KAMI",
                     "subtitle": "Portofolio kerja sama kami mencerminkan komitmen GoSirk dalam memperluas dampak melalui kolaborasi strategis.",
                     "cb_title": "Capacity Building (GoSirk Institute)",
-                    "pd_title": "Pengembangan Program dan Implementasi Partner",
+                    "pd_title": "Mitra Pengembangan Proyek dan Implementasi",
                     "cs_title": "Konsultansi & Advisory Strategis",
                     "empty": "Belum ada portofolio tersedia saat ini."
                 },
@@ -838,7 +838,7 @@ const resources = {
             "nav": {
                 "services": "Our Services",
                 "capacity_building": "Capacity Building",
-                "program_dev": "Program Development & Implementing Partner",
+                "program_dev": "Project Development and Implementing Partners",
                 "consultancy": "Consultancy",
                 "partnership": "Partnership",
                 "about": "About Us",
@@ -927,7 +927,7 @@ const resources = {
                     "title": "OUR SERVICES",
                     "subtitle": "Each of our service pillars synergizes to deliver relevant, locally applicable, and sustainable solutions.",
                     "cb_title": "Capacity Building Services",
-                    "pd_title": "Program Development and Implementing Partner",
+                    "pd_title": "Project Development and Implementing Partners",
                     "cs_title": "Consultancy & Strategic Advisory Services",
                     "cb": {
                         "title": "Waste Management Capacity Building",
@@ -938,7 +938,7 @@ const resources = {
                     "title": "OUR PORTFOLIO & PARTNERSHIPS",
                     "subtitle": "Our partnership portfolio reflects GoSirk's commitment to expanding impact through strategic collaboration.",
                     "cb_title": "Capacity Building (GoSirk Institute)",
-                    "pd_title": "Program Development and Implementing Partner",
+                    "pd_title": "Project Development and Implementing Partners",
                     "cs_title": "Consultancy & Strategic Advisory Services",
                     "empty": "Portfolio currently unavailable."
                 },

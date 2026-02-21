@@ -4,11 +4,11 @@
         <h1 class="fw-bold mb-0">Founder Management</h1>
         <p class="text-muted small mb-0">Kelola daftar founder yang ditampilkan di halaman About.</p>
     </div>
-    <!-- <div>
+     <div>
         <a href="<?= BASE_URL; ?>admin/founders/create" class="btn btn-primary">
             <i class="fas fa-plus-circle me-2"></i> Tambah Founder
         </a>
-    </div> -->
+    </div>
 </div>
 
 <div class="row">
@@ -33,7 +33,7 @@
                     <div class="col-xl-4 col-md-6 founder-item">
                         <div class="card h-100 border-0 p-4 text-center founder-card-modern shadow-sm position-relative">
                             <div class="founder-actions-overlay">
-                                <a href="<?= BASE_URL; ?>admin/founders/edit/<?= $f->id; ?>" class="btn btn-sm btn-light text-primary shadow-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" title="Edit">
+                                <a href="<?= BASE_URL; ?>admin/founders/edit/<?= $f->id; ?>" class="btn btn-sm btn-light text-primary shadow-sm rounded-5 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" title="Edit">
                                     <i class="fas fa-edit extra-small"></i>
                                 </a>
                                 <a href="<?= BASE_URL; ?>admin/founders/delete/<?= $f->id; ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus founder ini?')" class="btn btn-sm btn-light text-danger shadow-sm rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;" title="Hapus">

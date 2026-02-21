@@ -32,7 +32,7 @@
                 if (!empty($main_impacts)) : 
                     foreach ($main_impacts as $imp) : 
                 ?>
-                    <div class="col-md-2 col-6">
+                    <div class="col-md-4 col-6">
                         <div class="stat-box">
                             <h1 class="fw-bold text-primary counter" 
                                 data-target="<?= $imp->value ?>" 

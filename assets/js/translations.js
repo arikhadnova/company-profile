@@ -233,7 +233,7 @@ const resources = {
                     }
                 },
             "partner": {
-                "main_title": "IMPLEMENTASI PARTNER",
+                "main_title": "MITRA PENGEMBANGAN PROYEK DAN IMPLEMENTASI",
                 "cta_explore": "Eksplorasi",
                 "badge": "Ringkasan Program",
                 "hero_title": "Bersama Menghadapi Tantangan Persampahan di Indonesia",

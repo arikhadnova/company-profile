@@ -2,7 +2,7 @@
 // config/config.php
 
 // Base URL Configuration
-define('BASE_URL', 'http://localhost/gosirk_website/public/');
+define('BASE_URL', 'http://localhost/gosirk_website/');
 // define('BASE_URL', 'https://gocircularindonesia.com/');
 define('ASSETS_URL', BASE_URL . 'assets/');
 

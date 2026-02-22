@@ -5,7 +5,7 @@ Options -MultiViews
 
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /gosirk_website/public/
+    RewriteBase /gosirk_website/
 
     # If the request is for an existing file or directory, serve it directly
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -13,4 +13,4 @@ Options -MultiViews
 
     # Otherwise forward the request to index.php and pass the path as `url`
     RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
-</IfModule> 
+</IfModule>

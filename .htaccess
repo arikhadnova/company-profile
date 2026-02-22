@@ -1,9 +1,16 @@
+# Enable clean URLs for the front controller
+# Place this file inside the `public/` folder.
+
+Options -MultiViews
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    
-    # Redirect empty path to public/
-    RewriteRule ^$ public/ [L]
-    
-    # Redirect all other paths to public/
-    RewriteRule (.*) public/$1 [L]
-</IfModule>
+    RewriteBase /gosirk_website/public/
+
+    # If the request is for an existing file or directory, serve it directly
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Otherwise forward the request to index.php and pass the path as `url`
+    RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+</IfModule> 

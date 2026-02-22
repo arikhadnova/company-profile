@@ -2693,4 +2693,26 @@ class Admin extends Controller {
         header('Location: ' . BASE_URL . 'admin/ggc_actions');
         exit;
     }
+    public function maintenance() {
+        $data = [
+            'title' => 'Maintenance Mode',
+            'active' => 'maintenance',
+            'is_maintenance' => $this->settingModel->getByKey('is_maintenance')
+        ];
+        $this->views('layouts/admin_header', $data);
+        $this->views('admin/maintenance', $data);
+        $this->views('layouts/admin_footer');
+    }
+
+    public function update_maintenance() {
+        $status = isset($_POST['is_maintenance']) ? '1' : '0';
+        $this->settingModel->update('is_maintenance', $status);
+        
+        $msg = ($status == '1') ? 'diaktifkan' : 'dinonaktifkan';
+        $this->activityLogModel->log('UPDATE', 'System', "Mode Maintenance {$msg}");
+        Flasher::setFlash('Maintenance Mode', 'berhasil ' . $msg, 'success');
+        
+        header('Location: ' . BASE_URL . 'admin/maintenance');
+        exit;
+    }
 }

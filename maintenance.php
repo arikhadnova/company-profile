@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pemeliharaan Sistem - Go Circular Solutions Indonesia</title>
+    <title>Pemeliharaan Sistem - GoSirk</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -191,10 +191,13 @@
         </div>
 
         <h1>Sedang Dalam Pemeliharaan</h1>
-        <p>Mohon maaf atas ketidaknyamanannya. Kami sedang memperbarui sistem kami untuk memberikan pengalaman yang lebih luar biasa bagi Anda.</p>
+        <p>Untuk sementara, silakan kunjungi portofolio kami di platform berikut:
+Linked in: <a href="https://www.linkedin.com/company/gocircular-indonesia-gosirk/">Go Circular Indonesia</a><br>
+Youtube: <a href="https://youtube.com/@gosirk_institute?si=hQw8hSkxQei5qcTD">GoSirk Institute</a><br>
+Instagram: <a href="https://www.instagram.com/gosirk_indonesia?igsh=MW5yOThxZXV5bzR6cQ==">gosirk_indonesia</a></p>
         
         <div class="footer">
-            &copy; <?= date('Y'); ?> <a href="#">Go Circular Solutions Indonesia</a>
+            <a href="#">GoSirk</a>
         </div>
     </div>
 </body>

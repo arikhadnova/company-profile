@@ -148,6 +148,9 @@
 
             <!-- System -->
             <div class="mt-4 mb-2 ps-3"><small class="text-uppercase text-muted fw-bold" style="font-size: 10px; letter-spacing: 1px;">System</small></div>
+            <a href="<?= BASE_URL; ?>admin/maintenance" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'maintenance') ? 'active' : '' ?>">
+                <i class="fas fa-tools"></i> Maintenance Mode
+            </a>
             <?php if ($_SESSION['user_role'] == 'admin') : ?>
             <a href="<?= BASE_URL; ?>admin/users" class="list-group-item list-group-item-action d-flex align-items-center <?= (isset($data['active']) && $data['active'] == 'users') ? 'active' : '' ?>">
                 <i class="fas fa-users-gear"></i> User Accounts

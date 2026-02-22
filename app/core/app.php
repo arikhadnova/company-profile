@@ -14,6 +14,23 @@ class App {
 
         $url = $this->parseUrl() ?: [];
 
+        // Maintenance Mode Check
+        require_once dirname(__DIR__) . '/models/Setting_model.php';
+        $settingModel = new Setting_model();
+        $isMaintenance = $settingModel->getByKey('is_maintenance');
+
+        if ($isMaintenance == '1') {
+            // Allow if admin is logged in OR accessing auth controller
+            $isAdmin = isset($_SESSION['admin_logged_in']) && $_SESSION['admin_logged_in'] === true;
+            $isAuthPage = isset($url[0]) && $url[0] === 'auth';
+            $isAdminPage = isset($url[0]) && $url[0] === 'admin';
+
+            if (!$isAdmin && !$isAuthPage && !$isAdminPage) {
+                require_once dirname(dirname(__DIR__)) . '/maintenance.php';
+                exit;
+            }
+        }
+
         $base = dirname(__DIR__); // app/
 
         // Check for controller (ensure index exists before accessing)
